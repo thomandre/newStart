@@ -1,0 +1,10 @@
+new_start_api:
+    resource: "@newStartAPIBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+new_start_common:
+    resource: "@newStartCommonBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

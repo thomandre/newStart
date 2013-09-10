@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	<div class="container">
+		{% verbatim %}
+		<h1 class="form-signin-heading">HaveFyve is comming soon.</h2>
+		<div class="row">
+			<script type="text/x-handlebars" id="register" data-template-name="index">
+				{{#if hasNotRegistered}}
+					<p class="col-md-offset-1">Register to be the first to hear from us when we'll be ready:</p>
+					<br />
+					<div class="input-group form-register">
+						<span class="input-group-addon">@</span>
+						{{input type="email" class="form-control" name="email" id="email" placeholder="email"}}
+						<div class="input-group-btn btn-group">
+							<button {{action 'register'}} class="btn btn-primary" type="submit">go</button>
+						</div>
+					</div>
+				{{else}}
+					<div class="input-group form-register">
+						<p class="col-md-offset-1">We'll keep you informed about the rocket launch.</p>
+					</div>
+				{{/if}}
+			</script>
+
+			<script type="text/x-handlebars" data-template-name="loading">
+				Loading...
+			</script>
+		</div>
+		{% endverbatim %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+app/cache/*
+app/logs/*
+build/*
+web/bundles/*
+nbproject/*
+*.php~
+*.orig
+app/tmp/*
+.DS_Store
