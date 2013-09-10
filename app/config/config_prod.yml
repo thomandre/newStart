@@ -21,3 +21,10 @@ monolog:
             type:  stream
             path:  %kernel.logs_dir%/%kernel.environment%.log
             level: debug
+
+parameters: 
+    database_driver: pdo_mysql
+    database_host: mysql51-96.perso
+    database_name: havefivprod
+    database_user: havefivprod
+    database_password: jAZgHBwk

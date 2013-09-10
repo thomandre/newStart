@@ -41,8 +41,8 @@ class DefaultController extends Controller
     		$betaUser->setEmail($email);
 
             try {
-                $this->getDoctrine()->getEntityManager()->persist($betaUser);
-                $this->getDoctrine()->getEntityManager()->flush();
+                $this->getDoctrine()->getManager()->persist($betaUser);
+                $this->getDoctrine()->getManager()->flush();
             } catch (\Exception $e) {
                 return new JsonResponse(array('status' => 'ko', 'message' => 'This email is already used.'));
             }
