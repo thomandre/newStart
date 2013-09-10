@@ -7,18 +7,21 @@
 		<div class="row">
 			<script type="text/x-handlebars" id="register" data-template-name="index">
 				{{#if hasNotRegistered}}
-					<p class="col-md-offset-1">Register to be the first to hear from us when we'll be ready:</p>
+					<p class="col-md-offset-1">
+						{{#if message}}
+							{{message}}
+						{{else}}
+							Register to be the first to hear when we'll be ready:
+						{{/if}}
+					</p>
 					<br />
+
 					<div class="input-group form-register">
 						<span class="input-group-addon">@</span>
 						{{input type="email" class="form-control" name="email" id="email" placeholder="email"}}
 						<div class="input-group-btn btn-group">
 							<button {{action 'register'}} class="btn btn-primary" type="submit">go</button>
 						</div>
-					</div>
-				{{else}}
-					<div class="input-group form-register">
-						<p class="col-md-offset-1">We'll keep you informed about the rocket launch.</p>
 					</div>
 				{{/if}}
 			</script>

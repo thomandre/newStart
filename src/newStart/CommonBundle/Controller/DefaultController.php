@@ -39,12 +39,17 @@ class DefaultController extends Controller
     	if(preg_match("/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i", $email)) {
     		$betaUser = new BetaUser();
     		$betaUser->setEmail($email);
-            $this->getDoctrine()->getEntityManager()->persist($betaUser);
-            $this->getDoctrine()->getEntityManager()->flush();
+
+            try {
+                $this->getDoctrine()->getEntityManager()->persist($betaUser);
+                $this->getDoctrine()->getEntityManager()->flush();
+            } catch (\Exception $e) {
+                return new JsonResponse(array('status' => 'ko', 'message' => 'This email is already used.'));
+            }
 
 	        return new JsonResponse(array('status' => 'ok', 'email' => $email));
     	}
-        return new JsonResponse(array('status' => 'ko'));
+        return new JsonResponse(array('status' => 'ko', 'message' => 'This email doesn\'t seems to be valid.'));
     }
 
     /**

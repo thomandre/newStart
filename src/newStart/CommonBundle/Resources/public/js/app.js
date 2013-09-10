@@ -6,6 +6,7 @@ App.Router.map(function() {
 
 App.IndexController = Ember.ObjectController.extend({
 	hasNotRegistered: true,
+	message: '',
 	register: function() {
 		var me = this;
 
@@ -16,10 +17,19 @@ App.IndexController = Ember.ObjectController.extend({
 			data: { email: $("#email").val()},
 			success: function (msg) {
 				if(msg.status  == 'ok') {
-					me.set('hasNotRegistered', false);
+					me.set('message', 'We\'ll keep you informed about the rocket launch.');
+				} else {
+					me.set('message', msg.message);
 				}
-				console.log(msg.status);
 			}
 		});
 	}
+});
+
+App.IndexView = Em.View.extend({
+  	keyDown: function(e) {
+		if(e.keyCode == 13) {
+			this.get('controller').send('register');
+		}
+    },
 });

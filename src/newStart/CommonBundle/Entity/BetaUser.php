@@ -23,7 +23,7 @@ class BetaUser
     /**
      * @var string
      *
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true, unique=true)
      */
     protected $email;
 
@@ -60,6 +60,7 @@ class BetaUser
      *
      * @param string $email
      * @return BetaUsers
+     *
      */
     public function setEmail($email)
     {

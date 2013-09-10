@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+		
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{HTTP_HOST} ^(.*)(.local)$ [NC,OR]
+	RewriteCond %{HTTP_HOST} ^(localhost)$ [NC,OR]
+	RewriteCond %{HTTP_HOST} ^(192.168.56.101)$ [NC]
+	RewriteRule ^(.*)$ web/app_dev.php [QSA,L]
+	
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{HTTP_HOST} ^(recette.) [NC,OR]
+	RewriteCond %{HTTP_HOST} ^(172.17.8.154)$ [NC]
+	RewriteRule ^(.*)$ web/app.php [QSA,L]
+	
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^(.*)$ app.php [QSA,L]
+</IfModule>
