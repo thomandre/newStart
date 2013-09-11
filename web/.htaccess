@@ -1,6 +1,16 @@
-# Use the front controller as index file. It serves as fallback solution when
-# every other rewrite/redirect fails (e.g. in an aliased environment without
-# mod_rewrite). Additionally, this reduces the matching process for the
-# startpage (path "/") because otherwise Apache will apply the rewritting rules
-# to each configured DirectoryIndex file (e.g. index.php, index.html, index.pl).
-DirectoryIndex app.php
+SetEnv SHORT_OPEN_TAGS 0
+SetEnv REGISTER_GLOBALS 0
+SetEnv MAGIC_QUOTES 0
+SetEnv SESSION_AUTOSTART 0
+SetEnv ZEND_OPTIMIZER 1
+SetEnv PHP_VER 5_3
+SetEnv SESSION_USE_TRANS_SID 0
+
+<IfModule mod_rewrite.c>
+    Options -MultiViews
+ 
+    RewriteEngine On
+    #RewriteBase /path/to/app
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ app.php [L]
+</IfModule>
