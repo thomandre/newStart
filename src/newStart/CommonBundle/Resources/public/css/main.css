@@ -5,8 +5,34 @@
 	margin: 0 auto;
 }
 
+
+
+@media screen and (max-width: 480px) {
+	html {
+		background: url(../images/background_480.jpg) no-repeat center center fixed !important; 
+	}
+}
+
+@media screen and (min-width: 480px) and (max-width: 1024px) {
+	html {
+		background: url(../images/background_1024.jpg) no-repeat center center fixed !important; 
+	}
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1450px) {
+	html {
+		background: url(../images/background_1450.jpg) no-repeat center center fixed !important; 
+	}
+}
+
+@media screen and (min-width: 1450px) {
+	html {
+		background: url(../images/background_original.jpg) no-repeat center center fixed !important; 
+	}
+}
+
+
 html { 
-  background: url(../images/5872629189_ba71e8b841_o.jpg) no-repeat center center fixed !important; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
