@@ -27,7 +27,12 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        if(strpos($_SERVER['HTTP_USER_AGENT'], 'Googlebot') === false) {
+            $isGoogle = false;
+        } else {
+            $isGoogle = true;
+        }
+        return array('isGoogle' => $isGoogle);
     }
 
     /**
