@@ -43,7 +43,7 @@ body {
 	background: none;
 }
 
-h1, h2, h3, p {
+#slide-home h1, #slide-home h2, #slide-home h3, #slide-home p, #slide-home a, .whiteText {
 	color: #fff;
 	text-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
 }
@@ -55,8 +55,11 @@ p {
 	font-size:30px;
 }
 
-@media screen and (max-width: 1024px) {
-  html {
-	
-  }
+#slide-home, #slide-faq {
+	min-height:750px;
+	width:100%;
+}
+#slide-faq {
+	padding:50px;
+	background-color:#fff;
 }

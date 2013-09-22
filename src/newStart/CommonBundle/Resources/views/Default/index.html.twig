@@ -1,40 +1,61 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-	<div class="container">
+	{% if not isGoogle %}
 		{% verbatim %}
-		<h1 class="form-signin-heading">HaveFyve is comming soon.</h2>
-		<div class="row">
 			<script type="text/x-handlebars" id="register" data-template-name="index">
-				{{#if hasNotRegistered}}
+				<div id="slide-home">
 					<div class="container">
-						<p>
-							{{#if message}}
-								{{message}}
-							{{else}}
-								Register to be the first to hear when we'll be ready:
-							{{/if}}
-						</p>
+						<h1 class="form-signin-heading">HaveFyve arrive bientôt.</h2>
+						{{#if hasNotRegistered}}
+							<p>
+								{{#if message}}
+									{{message}}
+								{{else}}
+									Donnez-nous votre email et nous vous préviendrons quand nous serons prêts :
+								{{/if}}
+							</p>
+							<br />
+							<br />
+							<div class="input-group form-register">
+								<span class="input-group-addon">@</span>
+								{{input type="email" class="form-control" name="email" id="email" placeholder="email"}}
+								<div class="input-group-btn btn-group">
+									<button {{action 'register'}} class="btn btn-primary" type="submit">go</button>
+								</div>
+							</div>
+
+							<p><a href="#questce">Qu'est-ce qu'HaveFyve ?</a></p>
+						{{/if}}
 					</div>
-					<br />
-					<div class="input-group form-register">
-						<span class="input-group-addon">@</span>
-						{{input type="email" class="form-control" name="email" id="email" placeholder="email"}}
-						<div class="input-group-btn btn-group">
-							<button {{action 'register'}} class="btn btn-primary" type="submit">go</button>
-						</div>
+				</div>
+
+				<div id="slide-faq">
+					<div class="container" id="questce">
+						{% endverbatim %}
+							{% include 'newStartCommonBundle:Default:faq.html.twig' %}
+						{% verbatim %}
 					</div>
-				{{/if}}
+				</div>
+
+
 			</script>
 
 			<script type="text/x-handlebars" data-template-name="loading">
 				Loading...
 			</script>
-
-			
-
-		</div>
 		{% endverbatim %}
-    </div>
-
+		<noscript>
+			<div class="container">
+				<p class="whiteText" style="margin-top:25%;">HaveFyve necessite l'activation de Javascript pour fonctionner correctement</p>
+			</div>
+		</noscript>
+	{% else %}
+		<div id="slide-faq">
+			<div class="container" id="questce">
+				{% include 'newStartCommonBundle:Default:faq.html.twig' %}
+			</div>
+		</div>
+	{% endif %}
+		
 {% endblock %}
