@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:fb="http://www.facebook.com/2008/fbml">
     <head>
         <meta charset="utf-8">
         <meta name="description" content="HaveFyve, le réseau social des cadeaux. Idées de cadeaux pour faire vraiment plaisir." />
@@ -13,6 +13,8 @@
             <link rel="stylesheet" href="{{ asset('bundles/newstartcommon/css/vendor/style.css') }}">
             <link rel="stylesheet" href="{{ asset('bundles/newstartcommon/css/main.css') }}">
         {% endblock %}
+        {{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}
+
     </head>
     <body>
         {% block body %}{% endblock %}

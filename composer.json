@@ -32,7 +32,8 @@
         "doctrine/data-fixtures": "1.0.*@dev",
         "doctrine/doctrine-fixtures-bundle": "2.1.*@dev",
         "kriswallsmith/assetic": "1.1.*",
-        "friendsofsymfony/facebook-bundle": "1.2.*"
+        "friendsofsymfony/facebook-bundle": "1.2.*",
+        "friendsofsymfony/user-bundle": "~2.0@dev"
     },
     "scripts": {
         "post-install-cmd": [

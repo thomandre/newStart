@@ -27,8 +27,6 @@ class SecurityController extends Controller {
      */
     public function loginAction(Request $request)
     {
-    	var_dump('plop');
-		return array();
 	}		
 
     /**
@@ -37,7 +35,6 @@ class SecurityController extends Controller {
      */
     public function logoutAction(Request $request)
     {
-		return array();
 	}		
 
 }

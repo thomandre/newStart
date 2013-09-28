@@ -9,13 +9,10 @@ new_start_common:
     prefix:   /
 
 _security_check:
-    pattern:  /login_check
+    pattern:  /fb_login_check
 
 _security_logout:
-    pattern:  /logout
-
-fos_facebook_channel:
-    resource: "@FOSFacebookBundle/Resources/config/routing.xml"
+    pattern:  /fb_logout
 
 _facebook_secured:
     pattern: /secured/

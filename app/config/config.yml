@@ -64,11 +64,16 @@ swiftmailer:
     password:  %mailer_password%
     spool:     { type: memory }
 
+# app/config/config.yml
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Newstart\UserBundle\Entity\User
 
 fos_facebook:
   alias:  facebook
   app_id: 636452619713648
   secret: 0e3d267ff33acdf1fb685a2ad16813d0
   cookie: true
-  permissions: [email, user_birthday, user_friends, user_likes, user_interests]
+  permissions: [email, user_birthday, user_likes, user_interests]
 
