@@ -18,7 +18,9 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new newStart\CommonBundle\newStartCommonBundle(),
             new newStart\APIBundle\newStartAPIBundle(),
+            new newStart\UserBundle\UserBundle(),
             new FOS\FacebookBundle\FOSFacebookBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
