@@ -1,10 +1,8 @@
 <?php
-
 namespace newStart\UserBundle\Entity;
 
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-
 
 /**
  * @ORM\Entity
@@ -12,109 +10,118 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends BaseUser
 {
-	/**
-    * @ORM\Id
-    * @ORM\Column(type="integer")
-    * @ORM\GeneratedValue(strategy="AUTO")
-    */
-	protected $id;
-
     /**
-    * @var string
-    *
-    * @ORM\Column(name="firstname", type="string", length=255)
-    */
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+    
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
     protected $firstname;
 
     /**
-    * @var string
-    *
-    * @ORM\Column(name="lastname", type="string", length=255)
-    */
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
     protected $lastname;
 
     /**
-    * @var string
-    *
-    * @ORM\Column(name="facebookId", type="string", length=255)
-    */
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
     protected $facebookId;
 
-    /**
-    * @return int
-    */
-    public function getId()
+    public function __construct()
     {
-        return $this->id;
+        parent::__construct();
+        // your own logic        
+    }
+    
+    public function serialize()
+    {
+        return serialize(array($this->facebookId, parent::serialize()));
     }
 
+    public function unserialize($data)
+    {
+        list($this->facebookId, $parentData) = unserialize($data);
+        parent::unserialize($parentData);
+    }
+    
     /**
-    * @return string
-    */
+     * @return string
+     */
     public function getFirstname()
     {
         return $this->firstname;
     }
 
     /**
-    * @param string $firstname
-    */
-    public function setFirstname($firstname)
+     * @param string $firstname
+     */
+    public function setFirstname($firstname=null)
     {
         $this->firstname = $firstname;
     }
 
     /**
-    * @return string
-    */
+     * @return string
+     */
     public function getLastname()
     {
         return $this->lastname;
     }
 
     /**
-    * @param string $lastname
-    */
-    public function setLastname($lastname)
+     * @param string $lastname
+     */
+    public function setLastname($lastname=null)
     {
         $this->lastname = $lastname;
     }
 
     /**
-    * Get the full name of the user (first + last name)
-    * @return string
-    */
+     * Get the full name of the user (first + last name)
+     * @return string
+     */
     public function getFullName()
     {
         return $this->getFirstName() . ' ' . $this->getLastname();
     }
 
     /**
-    * @param string $facebookId
-    * @return void
-    */
-    public function setFacebookId($facebookId)
+     * @param string $facebookID
+     * @return void
+     */
+    public function setFacebookID($facebookID=null)
     {
-        $this->facebookId = $facebookId;
-        $this->setUsername($facebookId);
-        $this->salt = '';
+        $this->facebookId = $facebookID;        
+        if ($this->username=="")    //si on n'a pas de username
+        {
+            //on met le facebook id a la place
+            $this->setUsername($facebookID);
+        }        
     }
 
     /**
-    * @return string
-    */
-    public function getFacebookId()
+     * @return string
+     */
+    public function getFacebookID()
     {
         return $this->facebookId;
     }
 
     /**
-    * @param Array
-    */
-    public function setFBData($fbdata) // C'est dans cette méthode que vous ajouterez vos informations
-    {
+     * @param Array
+     */
+    public function setFBData($fbdata)
+    {        
         if (isset($fbdata['id'])) {
-            $this->setFacebookId($fbdata['id']);
+            $this->setFacebookID($fbdata['id']);
             $this->addRole('ROLE_FACEBOOK');
         }
         if (isset($fbdata['first_name'])) {
@@ -127,4 +134,5 @@ class User extends BaseUser
             $this->setEmail($fbdata['email']);
         }
     }
+    
 }
