@@ -623,12 +623,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/schmittjoh/JMSDiExtraBundle.git",
-            "reference": "782ecc42faff1a40e38ab587862f74564cee1dd7"
+            "reference": "01029f6a19c5a4131b80878311cd44a990ff923a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/schmittjoh/JMSDiExtraBundle/zipball/782ecc42faff1a40e38ab587862f74564cee1dd7",
-            "reference": "782ecc42faff1a40e38ab587862f74564cee1dd7",
+            "url": "https://api.github.com/repos/schmittjoh/JMSDiExtraBundle/zipball/01029f6a19c5a4131b80878311cd44a990ff923a",
+            "reference": "01029f6a19c5a4131b80878311cd44a990ff923a",
             "shasum": ""
         },
         "require": {
@@ -652,7 +652,7 @@
             "symfony/validator": "*",
             "symfony/yaml": "*"
         },
-        "time": "2013-09-17 09:48:21",
+        "time": "2013-10-02 11:10:43",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -1200,57 +1200,6 @@
         "homepage": "http://www.doctrine-project.org",
         "keywords": [
             "database"
-        ]
-    },
-    {
-        "name": "twig/twig",
-        "version": "v1.13.2",
-        "version_normalized": "1.13.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/fabpot/Twig.git",
-            "reference": "6d6a1009427d1f398c9d40904147bf9f723d5755"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/fabpot/Twig/zipball/6d6a1009427d1f398c9d40904147bf9f723d5755",
-            "reference": "6d6a1009427d1f398c9d40904147bf9f723d5755",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.2.4"
-        },
-        "time": "2013-08-03 15:35:31",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.13-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Twig_": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Armin Ronacher",
-                "email": "armin.ronacher@active-4.com"
-            }
-        ],
-        "description": "Twig, the flexible, fast, and secure template language for PHP",
-        "homepage": "http://twig.sensiolabs.org",
-        "keywords": [
-            "templating"
         ]
     },
     {
@@ -2407,12 +2356,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-            "reference": "b4840d8b3293386dba685d91169559eb20f2d767"
+            "reference": "5e236332c3934fbc16b79eff3cf6ee9ee21b7519"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/b4840d8b3293386dba685d91169559eb20f2d767",
-            "reference": "b4840d8b3293386dba685d91169559eb20f2d767",
+            "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/5e236332c3934fbc16b79eff3cf6ee9ee21b7519",
+            "reference": "5e236332c3934fbc16b79eff3cf6ee9ee21b7519",
             "shasum": ""
         },
         "require": {
@@ -2432,7 +2381,7 @@
         "suggest": {
             "willdurand/propel-typehintable-behavior": "Needed when using the propel implementation"
         },
-        "time": "2013-09-23 12:09:51",
+        "time": "2013-10-02 23:38:05",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -2969,6 +2918,103 @@
         "keywords": [
             "Fixture",
             "persistence"
+        ]
+    },
+    {
+        "name": "twig/twig",
+        "version": "v1.14.0",
+        "version_normalized": "1.14.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fabpot/Twig.git",
+            "reference": "224fc55635d544a2ec8edb3592be18db5a093f59"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fabpot/Twig/zipball/224fc55635d544a2ec8edb3592be18db5a093f59",
+            "reference": "224fc55635d544a2ec8edb3592be18db5a093f59",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.4"
+        },
+        "time": "2013-10-03 06:41:20",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.14-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Twig_": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Armin Ronacher",
+                "email": "armin.ronacher@active-4.com"
+            }
+        ],
+        "description": "Twig, the flexible, fast, and secure template language for PHP",
+        "homepage": "http://twig.sensiolabs.org",
+        "keywords": [
+            "templating"
+        ]
+    },
+    {
+        "name": "jms/debugging-bundle",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "target-dir": "JMS/DebuggingBundle",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/schmittjoh/JMSDebuggingBundle.git",
+            "reference": "5566021922720429ab0daf9f2bbc32c0aa778af0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/schmittjoh/JMSDebuggingBundle/zipball/5566021922720429ab0daf9f2bbc32c0aa778af0",
+            "reference": "5566021922720429ab0daf9f2bbc32c0aa778af0",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "symfony/framework-bundle": "~2.0"
+        },
+        "time": "2013-08-04 10:47:51",
+        "type": "symfony-bundle",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "JMS\\DebuggingBundle": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache2"
+        ],
+        "authors": [
+            {
+                "name": "Johannes M. Schmitt",
+                "email": "schmittjoh@gmail.com",
+                "homepage": "http://jmsyst.com",
+                "role": "Developer of wrapped JMSSerializerBundle"
+            }
+        ],
+        "description": "This bundle provides advanced debugging tools (for your Symfony2 project).",
+        "homepage": "http://jmsyst.com/bundles/JMSDebuggingBundle",
+        "keywords": [
+            "debugging"
         ]
     }
 ]
