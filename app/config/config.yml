@@ -76,7 +76,7 @@ fos_facebook:
   app_id: %facebookAppId%
   secret: %facebookAppSecret%
   cookie: true
-  permissions: [email]
+  permissions: [email, user_birthday, user_likes, user_interests]
 
 services:
     my.facebook.user:
@@ -86,3 +86,8 @@ services:
             userManager: "@fos_user.user_manager"
             validator: "@validator"
             container: "@service_container"
+    my_fos_facebook_auth_success_handler:
+        class: newStart\CommonBundle\Service\myFosFacebookAuthSuccessHandlerService
+        arguments:
+            userManager: "@fos_user.user_manager"
+
