@@ -8,11 +8,10 @@ new_start_common:
     type:     annotation
     prefix:   /
 
-_security_check:
-    pattern:  /login_fb_check
-
-_security_logout:
-    pattern:  /logout
+new_start_user:
+    resource: "@UserBundle/Controller/"
+    type:     annotation
+    prefix:   /
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
@@ -35,3 +34,4 @@ _security_logout:
   pattern:  /logout
 #_facebook_secured:
 #  pattern: /secured/
+
