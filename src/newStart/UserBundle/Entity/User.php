@@ -35,12 +35,26 @@ class User extends BaseUser
      */
     protected $facebookId;
 
+    /**
+     * @var boolean
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    protected $new;
+
     public function __construct()
     {
         parent::__construct();
         // your own logic        
     }
+
+    public function setNew($new) {
+        $this->new = $new;
+    }
     
+    public function isNew() {
+        return $this->new;
+    }
+
     public function serialize()
     {
         return serialize(array($this->facebookId, parent::serialize()));

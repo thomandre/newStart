@@ -27,11 +27,6 @@ security:
     firewalls:        
         main:
             pattern: ^/
-            form_login:
-                login_path: /login
-                check_path: /login_check
-                provider: fos_userbundle
-                csrf_provider: form.csrf_provider
             fos_facebook:
                 app_url: %facebookAppUrl%
                 server_url: %facebookServerUrl%
@@ -39,6 +34,7 @@ security:
                 check_path: /login_fb_check
                 #default_target_path: /
                 provider: my_fos_facebook_provider
+                success_handler: my_fos_facebook_auth_success_handler
             #logout: true
             anonymous: true
             logout:
@@ -47,10 +43,6 @@ security:
                 #handlers: ["fos_facebook.logout_handler"]
 
     access_control:
-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         # FOS facebook
         - { path: ^/secured/.*, role: [IS_AUTHENTICATED_FULLY] }
         - { path: ^/login_check, role: IS_AUTHENTICATED_ANONYMOUSLY }
