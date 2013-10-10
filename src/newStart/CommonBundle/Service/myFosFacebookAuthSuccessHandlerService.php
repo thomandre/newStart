@@ -8,6 +8,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerI
 use Symfony\Component\Security\Http\Authentication\AuthenticationFailureHandlerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * @Service("my_fos_facebook_auth_success_handler", public=true)
@@ -15,31 +16,24 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 class myFosFacebookAuthSuccessHandlerService implements AuthenticationSuccessHandlerInterface
 {
 	
-	private $userManager;
+	private $container;
 
-    public function __construct($userManager)
+    public function __construct($container)
     {
-        $this->userManager = $userManager;
+        $this->container = $container;
     }
-
-    /**
-     * @DI\Inject("doctrine.orm.entity_manager")
-     * @var \Doctrine\ORM\EntityManager
-     */
-    public $em;
-
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token)
     {
         //$currentUser = $this->userManager->findUserBy(array('facebookId' => $token));
-
         if($token->getUser()->isNew()) {
-        	echo 'You must select 20 friends.';
+			return new RedirectResponse($this->container->get('router')->generate('friends-select'));
         } else {
-        	echo 'Everything is good my friend';
+        	return new RedirectResponse($this->container->get('router')->generate('me'));
         }
-        
+
     }
 
 
 }
+

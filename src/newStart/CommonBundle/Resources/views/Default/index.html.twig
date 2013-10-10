@@ -62,7 +62,10 @@
 		
 {% endblock %}
 
-
+{% block stylesheets %}
+	{{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/newstartcommon/css/home.css') }}">
+{% endblock %}
 
 {% block javascripts %}
 	{{ parent() }}

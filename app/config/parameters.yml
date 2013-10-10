@@ -5,7 +5,7 @@ parameters:
     database_port: null
     database_name: newStart
     database_user: root
-    database_password: null
+    database_password: root
     mailer_transport: gmail
     mailer_user: thomandre
     mailer_password: kdyaypfetadehpdd
