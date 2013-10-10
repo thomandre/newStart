@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use newStart\CommonBundle\Entity\BetaUser;
 use JMS\DiExtraBundle\Annotation as DI;
+use newStart\UserBundle\Security\User\Provider\FacebookProvider;
 
 class DefaultController extends Controller
 {
@@ -20,6 +21,15 @@ class DefaultController extends Controller
      * @var \Doctrine\ORM\EntityManager
      */
     public $em;
+
+    /** @DI\Inject("mailer") */
+    public $mailer;
+
+    /** @DI\Inject("swiftmailer.transport.real") */
+    public $transport;
+
+    /** @DI\Inject("security.context") */
+    private $sc;
 
     /**
      * @Route("/")
@@ -32,6 +42,7 @@ class DefaultController extends Controller
         } else {
             $isGoogle = true;
         }
+
         return array('isGoogle' => $isGoogle);
     }
 
@@ -51,6 +62,25 @@ class DefaultController extends Controller
             } catch (\Exception $e) {
                 return new JsonResponse(array('status' => 'ko', 'message' => 'This email is already used.'));
             }
+
+
+            $mail = \Swift_Message::newInstance();
+
+            $mail
+                    ->setFrom('admin@havefyve.com')
+                    ->setTo($email)
+                    ->setSubject('test')
+                    ->setBody('this is a test')
+                    ->setContentType('text/html');
+
+            $result = $this->mailer->send($mail, $failures);
+            
+            //SPOOL
+            $spool = $this->mailer->getTransport()->getSpool();
+            $spool->flushQueue($this->transport);
+
+
+
 
 	        return new JsonResponse(array('status' => 'ok', 'email' => $email));
     	}

@@ -5,44 +5,6 @@
 	margin: 0 auto;
 }
 
-
-
-@media screen and (max-width: 480px) {
-	html {
-		background: url(../images/background_480.jpg) no-repeat center center fixed !important; 
-	}
-}
-
-@media screen and (min-width: 480px) and (max-width: 1024px) {
-	html {
-		background: url(../images/background_1024.jpg) no-repeat center center fixed !important; 
-	}
-}
-
-@media screen and (min-width: 1024px) and (max-width: 1450px) {
-	html {
-		background: url(../images/background_1450.jpg) no-repeat center center fixed !important; 
-	}
-}
-
-@media screen and (min-width: 1450px) {
-	html {
-		background: url(../images/background_original.jpg) no-repeat center center fixed !important; 
-	}
-}
-
-
-html { 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover !important;
-}
-
-body {
-	background: none;
-}
-
 #slide-home h1, #slide-home h2, #slide-home h3, #slide-home p, #slide-home a, .whiteText {
 	color: #fff;
 	text-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
@@ -67,4 +29,35 @@ a.faq {
 	position:absolute;
 	margin-top:110px;
 	cursor:pointer;
+}
+.friend p {
+	font-size:17px;
+	line-height:normal;
+}
+.friend {
+	margin-bottom: 5px;
+
+}
+.myWell {
+	background-color:#fff;
+    padding: 7px;
+    border-radius:3px;
+	border-style:solid;
+	border-color:#949494;
+}
+.selected .myWell {
+	border-color:#00349a;
+}
+.friend.notSelected span.glyphicon {
+	display:none;
+}
+.friends {
+	height:500px;
+	overflow:scroll;
+	margin:5px 0;
+	border-style:solid;
+	border-radius:3px;
+	border-color:#949494;
+	padding:12px 0;
+	border-width: 1px;
 }

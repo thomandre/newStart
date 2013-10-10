@@ -89,5 +89,5 @@ services:
     my_fos_facebook_auth_success_handler:
         class: newStart\CommonBundle\Service\myFosFacebookAuthSuccessHandlerService
         arguments:
-            userManager: "@fos_user.user_manager"
+            container: "@service_container"
 
