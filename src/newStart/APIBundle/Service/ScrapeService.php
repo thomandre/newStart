@@ -21,7 +21,7 @@ class scrapeService
 		$my_xpath_query = "//b[@class='price']";
 
 		$results = $xpath->query($my_xpath_query);
-		var_dump($results->hasChildNodes());
+		//var_dump($results->hasChildNodes());
 		return $results->item(0)->firstChild->nodeValue;
 	}	
 }
