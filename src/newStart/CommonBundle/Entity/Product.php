@@ -53,10 +53,10 @@ class Product
     /**
      * Set id
      *
-     * @param \int $id
+     * @param $id
      * @return Product
      */
-    public function setId(\int $id)
+    public function setId($id)
     {
         $this->id = $id;
     
@@ -65,8 +65,6 @@ class Product
 
     /**
      * Get id
-     *
-     * @return \int 
      */
     public function getId()
     {
@@ -122,10 +120,10 @@ class Product
     /**
      * Set price
      *
-     * @param \int $price
+     * @param $price
      * @return Product
      */
-    public function setPrice(\int $price)
+    public function setPrice($price)
     {
         $this->price = $price;
     
@@ -135,7 +133,7 @@ class Product
     /**
      * Get price
      *
-     * @return \int 
+     * @return  
      */
     public function getPrice()
     {
