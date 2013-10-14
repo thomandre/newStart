@@ -1,0 +1,34 @@
+default:
+  filters:
+    tags: '~@javascript'
+  formatter:
+    name: pretty
+  extensions:
+    Behat\Symfony2Extension\Extension:
+      mink_driver: true
+      kernel:
+        env: test
+        debug: false
+    Behat\MinkExtension\Extension:
+      base_url: 'http://localhost:8888/newstart/web/app_dev.php/'
+      show_cmd: open -a firefox %s &
+      javascript_session: sahi
+      browser_name: firefox
+      goutte: ~
+      sahi: ~
+
+
+javascript:
+  filters:
+    tags: '@javascript'
+  extensions:
+    Behat\MinkExtension\Extension:
+      show_cmd: open -a firefox %s &
+      default_session: sahi
+      javascript_session: sahi
+      base_url: 'http://localhost:8888/newstart/web/app_dev.php/'
+      sahi:
+        host: localhost
+        port: 9999
+      browser_name: firefox
+
