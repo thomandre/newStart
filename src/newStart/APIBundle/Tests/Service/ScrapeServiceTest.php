@@ -19,7 +19,7 @@ class scrapeServiceTest extends WebTestCase
 	{
 		$scrapeService = new ScrapeService();
 
-		$this->assertEquals('13.64$', $scrapeService->getPrice('<html><b class="pricep">13.64$</b></html>'));
+		$this->assertEquals('13.64$', $scrapeService->getPrice('<html><b class="price">13.64$</b></html>'));
 		// $this->assertEquals($scrapeService->getPrice('<b class="Price">13.64 Eur</b>'), '13.64 Eur');
 		// $this->assertEquals($scrapeService->getPrice('<b class="Price">13.64 usd</b>'), '13.64 usd');
 		// $this->assertEquals($scrapeService->getPrice('<span>34$</span><b class="MMpriCeKK">13.64$</b>'), '13.64$');
