@@ -12,7 +12,7 @@ Et je devrais voir "HaveFyve necessite l'activation de Javascript pour fonctionn
 Scénario: J'ai le JS activé et je dois voir le texe
 Soit je suis sur "/"
 Et je devrais voir "HaveFyve arrive "
-Alors je remplis "email" avec "thomandr1@gmail.com"
+Alors je remplis "email" avec "thomandre@gmail.com"
 Et je presse "go"
 Et j'attend "1" secondes
 Alors je devrais voir "Nous vous tiendrons informés quand nous lancerons la fusée."
