@@ -30,6 +30,7 @@ class GiftController extends Controller
      */
     public function indexAction(Request $request)
     {   
+        $facebook = $this->container->get('fos_facebook.api');
 
         $user = $this->getUser();
         //var_dump($user);
@@ -40,14 +41,36 @@ class GiftController extends Controller
             $error = $request->getSession()->get(SecurityContext::AUTHENTICATION_ERROR);
         }
 
+        $response = $facebook->api('/me/friends?fields=name,id,email');
+        $fbFriends = $response['data'];
+        $fbFriends = array_slice($fbFriends, 0, 10*5);
+
+        $friends = array(
+                            array('id' => '516107440', 'name' => 'Alban Margain'),
+                            array('id' => '197811250', 'name' => 'Angus Ross'),
+                            array('id' => '538657916', 'name' => 'Charlotte Hao-Chiu André'),
+                            array('id' => '581496566', 'name' => 'Charles Pugliesi-Conti'),
+                            array('id' => '607175812', 'name' => 'Pierre du Chesne'),
+                            array('id' => '507231631', 'name' => 'Maxime Aoustin'),
+                            array('id' => '513728698', 'name' => 'Michael Canil'),
+                            array('id' => '693496533', 'name' => 'François Le Pøul'),
+
+                        );
 
 
-        return array('gifts' => array('http://www.valette.fr/65-72-large/les-truffes-noires-du-perigord-brossees-extra-1ere-cuisson.jpg', 
-                                      'http://lsco.scene7.com/is/image/lsco/Levi/clothing/131040002-2013-fall-front-pdp.jpg?$1366x768$',
-                                      'http://www.hast.fr/12-138/chemise-blanche.jpg',
-                                      'http://www.boutique-saint-james.fr/ICEO_catalogue/pki21100006680.jpg',
-                                      'http://www.cuissedegrenouille.com/109-615-large/ceinture-laine-tressee-rouge-bleu-anthracite-james.jpg'
-                                      ));
+        return array('gifts' => array(
+                                        array('url' => 'http://lsco.scene7.com/is/image/lsco/Levi/clothing/131040002-2013-fall-front-pdp.jpg?$1366x768$', "title" => "Chino Levis Commuter"),
+                                        array('url' => 'http://www.hast.fr/12-138/chemise-blanche.jpg', "title" => "Chemise popeline blanche Hast"),
+                                        array('url' => 'http://gourmandisedeluxe.com/73-216-large/car.jpg', "title" => "Truffe noire 100gr"), 
+                                        //array('url' => 'http://www.boutique-saint-james.fr/ICEO_catalogue/pki21100006680.jpg', "title" => "Pull marine St James"),
+                                        //array('url' => 'http://www.cuissedegrenouille.com/109-615-large/ceinture-laine-tressee-rouge-bleu-anthracite-james.jpg', "title" => "Ceinture Cuisse de Grenouille")
+                                ),
+                    'user' => $user,
+                    'fbFriends' => $fbFriends,
+                    'friends' => $friends,
+                    'img_size' => 75
+
+        );
 
     }
 
