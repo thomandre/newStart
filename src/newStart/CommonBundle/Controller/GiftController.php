@@ -25,14 +25,14 @@ class GiftController extends Controller
     public $em;
 
     /**
-     * @Route("/me/")
+     * @Route("/me/", name="me")
      * @Template()
      */
     public function indexAction(Request $request)
     {   
 
         $user = $this->getUser();
-        var_dump($user);
+        //var_dump($user);
 
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
             $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
@@ -42,8 +42,12 @@ class GiftController extends Controller
 
 
 
-        return array('gifts' => array('http://www.balibaris.com/862-4963-large/mercer-clan-rouge-navy.jpg', 
-                                 'http://lsco.scene7.com/is/image/lsco/Levi/clothing/131040002-2013-fall-front-pdp.jpg?$1366x768$'));
+        return array('gifts' => array('http://www.valette.fr/65-72-large/les-truffes-noires-du-perigord-brossees-extra-1ere-cuisson.jpg', 
+                                      'http://lsco.scene7.com/is/image/lsco/Levi/clothing/131040002-2013-fall-front-pdp.jpg?$1366x768$',
+                                      'http://www.hast.fr/12-138/chemise-blanche.jpg',
+                                      'http://www.boutique-saint-james.fr/ICEO_catalogue/pki21100006680.jpg',
+                                      'http://www.cuissedegrenouille.com/109-615-large/ceinture-laine-tressee-rouge-bleu-anthracite-james.jpg'
+                                      ));
 
     }
 
