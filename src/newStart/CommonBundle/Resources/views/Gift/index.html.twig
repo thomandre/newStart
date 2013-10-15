@@ -1,6 +1,98 @@
+{% extends '::base.html.twig' %}
 
+{% block body %}
+	<div class="container">
+		<div class="row header">
+			<div class="col-md-1 col-md-offset-8 col-sm-3 col-sm-offset-7 col-xs-5 col-xs-offset-5 ">
+				<span id="profile">Thomas ANDRE</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2 col-sm-2 col-xs-4 user-profile">
+				<div class="viewed-profile">
+					<img src="https://graph.facebook.com/{{ user.username }}/picture?width=150&height=150" />
+					<br /><h2>{{ user.firstName }} {{ user.lastName }}</h2>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-6 url-block">
+				<div class="input-group url">
+					<span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
+					<input type="url" name="url" id="url" class="form-control" placeholder="Copier-coller l'URL du cadeau que vous aimeriez qu'on vous offre" />
+					<span class="input-group-btn">
+						<button class="btn btn-primary" type="button">Go !</button>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="row products">
+			<h2>Votre liste de cadeaux</h2>
+			{% for gift in gifts %}
+				<div class="col-md-2 col-sm-3 col-xs-5 product">
+					<div class="product-image">
+						<img src='{{ gift.url }}' class="img-responsive" />
+						<br /><span>{{ gift.title }}</span>
+					</div>
+				</div>
+				{% if loop.last %}
+					{% if loop.length < 5%}
+						{% for i in loop.length..4 %}
+							<div class="col-md-2  col-sm-3 col-xs-3 product">
+								<div class="product-image">
+									<div class="cadre"></div>
+								</div>
+							</div>
+						{% endfor %}
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+		</div>
 
+		<div class="row">
+			<h2>Ils sont déjà sur HaveFyve</h2>
+			{% for friend in friends %}
+				<div class="col-md-2 col-sm-3 col-xs-5 friend notSelected" id="{{ friend.id }}">
+					<div class="myWell media">
+						<span class="pull-left"><img src="https://graph.facebook.com/{{ friend.id }}/picture?width={{ img_size }}&height={{ img_size }}" class="media-object" height="{{ img_size }}px"/></span>
+						<p class="media-body">
+							<div><a href="#">{{ friend.name }}</a></div>
+							<div><span class="glyphicon glyphicon-ok"></span></div>
+						</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
 
-{% for gift in gifts %}
-	<img src='{{ gift }}' height="250px" />
-{% endfor %}
+		<div class="row">
+			<h2>Invitez-les à vous rejoindre</h2>
+			<div class="friends">
+				{% for friend in fbFriends %}
+					<div class="col-md-2 col-sm-3 col-xs-5 friend notSelected" id="{{ friend.id }}">
+						<div class="myWell media">
+							<span class="pull-left"><img src="https://graph.facebook.com/{{ friend.id }}/picture?width={{ img_size }}&height={{ img_size }}" class="media-object" height="{{ img_size }}px"/></span>
+							<p class="media-body">
+								<div><a href="#">{{ friend.name }}</a></div>
+								<div><span class="glyphicon glyphicon-ok"></span></div>
+							</p>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('bundles/newstartcommon/js/vendor/jquery.resizecrop-1.0.3.min.js') }}"></script>
+	<script>
+	  $(document).ready(function(){
+	    $('.product img').resizecrop({
+	      width:150,
+	      height:220,
+	      vertical:"top"
+	    });  
+	  });  
+
+	</script>
+{% endblock %}

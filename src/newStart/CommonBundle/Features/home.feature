@@ -9,10 +9,10 @@ Soit je suis sur "/"
 Et je devrais voir "HaveFyve necessite l'activation de Javascript pour fonctionner correctement"
 
 @javascript
-Scénario: J'ai le JS activé et je dois voir le texe
+Scénario: J'ai le JS activé et je dois voir le texte
 Soit je suis sur "/"
 Et je devrais voir "HaveFyve arrive "
-Alors je remplis "email" avec "thomandre@gmail.com"
-Et je presse "go"
+Alors je remplis "email" avec "thomand@gmail.com"
+Et je presse "Go !"
 Et j'attend "1" secondes
 Alors je devrais voir "Nous vous tiendrons informés quand nous lancerons la fusée."

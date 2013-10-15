@@ -16,7 +16,9 @@ h1 {
 p {
 	font-size:30px;
 }
-
+body {
+	background-color: #fafafa;
+}
 #slide-home, #slide-faq {
 	min-height:750px;
 	width:100%;
@@ -52,11 +54,13 @@ a.faq {
 
 }
 .myWell {
-	background-color:#fff;
-    padding: 7px;
-    border-radius:3px;
+	background-color:#;
+    padding: 4px;
+    background-color:#FAFAFA;
 	border-style:solid;
-	border-color:#949494;
+	border-color:#F1F1F1;
+	border-width:2px;
+	border-radius:3px;
 }
 .selected .myWell {
 	border-color:#00349a;
@@ -65,12 +69,116 @@ a.faq {
 	display:none;
 }
 .friends {
-	height:500px;
+	height:340px;
 	overflow:scroll;
 	margin:5px 0;
 	border-style:solid;
-	border-radius:3px;
-	border-color:#949494;
+	border-color:#1B1B7B;
+	color:#0A0A5A;
 	padding:12px 0;
 	border-width: 1px;
 }
+#profile {
+    background-color: #0A0A5A;
+    color: #FFFFFF;
+    display: block;
+    padding: 5px;
+    text-align: center;
+    width: 190px;
+}
+.product img {
+	-ms-interpolation-mode: bicubic;
+}
+.product {
+	margin-bottom: 10px;
+	padding:0 3px;
+}
+.product:first-of-type {
+	padding:0 3px 0 0;
+}
+.product-image {
+	background-color: #FFF;
+    border-color: #000000;
+    box-shadow: 3px 3px 3px #CCCCCC;
+    color: #000000;
+    height: 278px;
+    padding: 10px;
+    text-align: center;	
+}
+.product-image .cadre {
+    background-color: #EAEAEA;
+    border-color: #FAFAFA;
+    border-style: solid;
+    border-width: 1px;
+    height: 220px;
+}
+div.url {
+	margin:100px 0 0;
+}
+#url-block {
+    margin: 20px 0;
+}
+.url-block {
+	text-align: center;
+}
+.btn-primary {
+	background-color: #0A0A5A;
+	border-color: #1B1B7B;
+}
+.missing-gift {
+	font-size: 58px;
+    height: 220px;
+    text-align: center;
+    border-style:dashed;
+    border-color:#1B1B7B;
+    color:#0A0A5A;
+    border-radius: 5px;
+    background-color:#FAFAFD;
+    border-width:2px;
+}
+.missing-gift span {
+    border-radius: 47px 47px 47px 47px;
+    border-style: dotted;
+    border-width: 2px;
+    display: block;
+    height: 90px;
+    left: 65px;
+    position: absolute;
+    top: 65px;
+    vertical-align: middle;
+    width: 90px;
+}
+
+.row.header {
+	background-color:#0A0A5A;
+}
+
+.viewed-profile {
+	margin-top:50px;
+}
+
+.viewed-profile h2 {
+	font-size:18px;
+	margin: 12px 0;
+}
+
+.user-profile {
+	padding-left: 0px;
+	padding-right: 0px; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
