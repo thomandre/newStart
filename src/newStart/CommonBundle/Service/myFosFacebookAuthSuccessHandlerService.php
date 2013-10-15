@@ -26,11 +26,11 @@ class myFosFacebookAuthSuccessHandlerService implements AuthenticationSuccessHan
     public function onAuthenticationSuccess(Request $request, TokenInterface $token)
     {
         //$currentUser = $this->userManager->findUserBy(array('facebookId' => $token));
-        if($token->getUser()->isNew()) {
-			return new RedirectResponse($this->container->get('router')->generate('friends-select'));
-        } else {
+        //if($token->getUser()->isNew()) {
+		//	return new RedirectResponse($this->container->get('router')->generate('friends-select'));
+        //} else {
         	return new RedirectResponse($this->container->get('router')->generate('me'));
-        }
+        //}
 
     }
 
