@@ -73,11 +73,11 @@ class DefaultController extends Controller
                     ->setBody('this is a test')
                     ->setContentType('text/html');
 
-            $result = $this->mailer->send($mail, $failures);
+            //$result = $this->mailer->send($mail, $failures);
             
             //SPOOL
-            $spool = $this->mailer->getTransport()->getSpool();
-            $spool->flushQueue($this->transport);
+            //$spool = $this->mailer->getTransport()->getSpool();
+            //$spool->flushQueue($this->transport);
 
 
 
