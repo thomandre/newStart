@@ -32,7 +32,7 @@ class DefaultController extends Controller
     private $sc;
 
     /**
-     * @Route("/")
+     * @Route("/", name="public_home")
      * @Template()
      */
     public function indexAction()
@@ -60,7 +60,7 @@ class DefaultController extends Controller
                 $this->getDoctrine()->getManager()->persist($betaUser);
                 $this->getDoctrine()->getManager()->flush();
             } catch (\Exception $e) {
-                return new JsonResponse(array('status' => 'ko', 'message' => 'This email is already used.'));
+                return new JsonResponse(array('status' => 'ko', 'message' => 'Cet email est déjà utilisé.'));
             }
 
 
@@ -84,7 +84,7 @@ class DefaultController extends Controller
 
 	        return new JsonResponse(array('status' => 'ok', 'email' => $email));
     	}
-        return new JsonResponse(array('status' => 'ko', 'message' => 'This email doesn\'t seems to be valid.'));
+        return new JsonResponse(array('status' => 'ko', 'message' => 'Cet email ne semble pas valide.'));
     }
 
     /**
