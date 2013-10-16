@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use newStart\CommonBundle\Entity\BetaUser;
 use JMS\DiExtraBundle\Annotation as DI;
 use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
 
 class GiftController extends Controller
 {
@@ -30,9 +32,13 @@ class GiftController extends Controller
      */
     public function indexAction(Request $request)
     {   
-        $facebook = $this->container->get('fos_facebook.api');
 
-        $user = $this->getUser();
+        try {
+            $facebook = $this->container->get('fos_facebook.api');
+            $user = $this->getUser();
+        } catch (\Exception $e) {
+            var_dump("not logged");
+        }
         //var_dump($user);
 
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
@@ -41,7 +47,11 @@ class GiftController extends Controller
             $error = $request->getSession()->get(SecurityContext::AUTHENTICATION_ERROR);
         }
 
-        $response = $facebook->api('/me/friends?fields=name,id,email');
+        try {
+            $response = $facebook->api('/me/friends?fields=name,id,email');
+        } catch (\Exception $e) {
+            return new RedirectResponse($this->container->get('router')->generate('public_home'));
+        }
         $fbFriends = $response['data'];
         $fbFriends = array_slice($fbFriends, 0, 10*5);
 

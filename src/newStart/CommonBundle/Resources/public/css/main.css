@@ -19,6 +19,9 @@ p {
 body {
 	background-color: #fafafa;
 }
+html,body {
+    margin:0; padding:0; height:100%;
+}
 #slide-home, #slide-faq {
 	min-height:750px;
 	width:100%;
@@ -51,16 +54,15 @@ a.faq {
 
 .friend {
 	margin-bottom: 5px;
+	padding: 0 2px;
+	box-shadow: 2px 2px 2px #CCCCCC;
 
 }
 .myWell {
 	background-color:#;
     padding: 4px;
-    background-color:#FAFAFA;
-	border-style:solid;
-	border-color:#F1F1F1;
-	border-width:2px;
-	border-radius:3px;
+    background-color:#fff;
+	font-weight: 200;
 }
 .selected .myWell {
 	border-color:#00349a;
@@ -72,11 +74,10 @@ a.faq {
 	height:340px;
 	overflow:scroll;
 	margin:5px 0;
-	border-style:solid;
-	border-color:#1B1B7B;
 	color:#0A0A5A;
 	padding:12px 0;
 	border-width: 1px;
+	margin: 2px;
 }
 #profile {
     background-color: #0A0A5A;
@@ -85,6 +86,7 @@ a.faq {
     padding: 5px;
     text-align: center;
     width: 190px;
+    font-weight: 200;
 }
 .product img {
 	-ms-interpolation-mode: bicubic;
@@ -112,8 +114,15 @@ a.faq {
     border-width: 1px;
     height: 220px;
 }
+.product-image p {
+    font-size: 17px;
+    height: 24px;
+    margin-top: 14px;
+    overflow: hidden;
+    font-weight: 200;
+}
 div.url {
-	margin:100px 0 0;
+	margin:145px 0 0;
 }
 #url-block {
     margin: 20px 0;
@@ -157,22 +166,47 @@ div.url {
 	margin-top:50px;
 }
 
-.viewed-profile h2 {
-	font-size:18px;
-	margin: 12px 0;
-}
-
 .user-profile {
 	padding-left: 0px;
 	padding-right: 0px; 
 }
 
+@font-face {
+	font-family: 'Conv_always forever';
+	src: url('fonts/always forever.eot');
+	src: local('☺'), url('fonts/always forever.woff') format('woff'), url('fonts/always forever.ttf') format('truetype'), url('fonts/always forever.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 
+@font-face {
+	font-family: 'Conv_olivier_demo';
+	src: url('fonts/olivier_demo.eot');
+	src: local('☺'), url('fonts/olivier_demo.woff') format('woff'), url('fonts/olivier_demo.ttf') format('truetype'), url('fonts/olivier_demo.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 
+h2 {
+	font-weight: 100;
+	font-size:18px;
+	margin-bottom: 20px;
+}
 
+.viewed-profile h2 {
+	margin: 12px 0 0;
+}
 
+.form-control, .btn {
+	font-weight:200;
+}
 
-
+.row-user-profile {
+    border-bottom: 1px groove #AAAAAA;
+    border-width: 1px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
 
 
 
