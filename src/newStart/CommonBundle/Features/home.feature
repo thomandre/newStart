@@ -3,12 +3,11 @@ Fonctionnalité: Voir la home
 
 Contexte: Je souhaite voir la home et la FAQ
 
-@plop
 Scénario: Je vois la home avec un message affichant que le JS doit être activé
 Soit je suis sur "/"
 Et je devrais voir "HaveFyve necessite l'activation de Javascript pour fonctionner correctement"
 
-@javascript
+@javascript @first
 Scénario: J'ai le JS activé et je peux enregistrer un email
 Soit je suis sur "/"
 Et je devrais voir "HaveFyve arrive bientôt"
