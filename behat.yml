@@ -10,12 +10,12 @@ default:
         env: test
         debug: false
     Behat\MinkExtension\Extension:
-      base_url: 'http://localhost:8888/newstart/web/app_dev.php/'
+      base_url: 'http://192.168.1.11:8888/newstart/web/app_test.php/'
       show_cmd: open -a firefox %s &
-      javascript_session: sahi
+      javascript_session: selenium2
       browser_name: firefox
       goutte: ~
-      sahi: ~
+      selenium2: ~
 
 
 javascript:
@@ -24,11 +24,7 @@ javascript:
   extensions:
     Behat\MinkExtension\Extension:
       show_cmd: open -a firefox %s &
-      default_session: sahi
-      javascript_session: sahi
-      base_url: 'http://localhost:8888/newstart/web/app_dev.php/'
-      sahi:
-        host: localhost
-        port: 9999
-      browser_name: firefox
+      default_session: selenium2
+      javascript_session: selenium2
+      base_url: 'http://192.168.1.11:8888/newstart/web/app_test.php/'
 
