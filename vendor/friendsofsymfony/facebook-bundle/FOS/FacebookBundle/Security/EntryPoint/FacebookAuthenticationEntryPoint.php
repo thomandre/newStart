@@ -51,6 +51,8 @@ class FacebookAuthenticationEntryPoint implements AuthenticationEntryPointInterf
         $redirect_to_facebook = $this->options->get('redirect_to_facebook_login');
         if ($redirect_to_facebook == false) {
             $loginPath = $this->options->get('login_path');
+            var_dump('die');
+            exit;
             return new RedirectResponse($loginPath);
         }
 

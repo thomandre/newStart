@@ -58,7 +58,7 @@ class FeatureContext extends FeatureGlobal
             $submit = $this->getSession()->getPage()->findAll('css', '#u_0_1');
             $submit[0]->click();
 
-            $this->getSession()->wait(1000*2);
+            $this->getSession()->wait(1000*10);
           
             $this->getSession()->switchToWindow($this->originalWindowName);           
         } catch(\Exception $e) {
