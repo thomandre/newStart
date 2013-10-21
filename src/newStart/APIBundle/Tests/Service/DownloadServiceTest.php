@@ -2,8 +2,6 @@
 
 namespace newStart\APIBundle\Tests\Service;
 
-use JMS\DiExtraBundle\Annotation\Service;
-use JMS\DiExtraBundle\Annotation as DI;
 use newStart\APIBundle\Service\DownloadService;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use newStart\CommonBundle\Tests\NewStartWebTestCase;

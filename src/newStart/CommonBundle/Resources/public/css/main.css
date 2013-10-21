@@ -207,9 +207,18 @@ h2 {
     margin-bottom: 20px;
     padding-bottom: 20px;
 }
-
-
-
+div#complete {
+    background-color: #C0C0C0;
+    margin-left: 40px;
+    padding: 6px;
+    position: absolute;
+    text-align: left;
+    width: 496px;
+    z-index: 5;
+}
+div#complete img {
+	height:200px;
+}
 
 
 

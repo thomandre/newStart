@@ -2,14 +2,13 @@
 
 namespace newStart\APIBundle\Tests\Service;
 
-use JMS\DiExtraBundle\Annotation\Service;
-use JMS\DiExtraBundle\Annotation as DI;
 use newStart\APIBundle\Service\ScrapeService;
 use newStart\APIBundle\Service\UrlService;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use newStart\CommonBundle\Tests\NewStartWebTestCase;
 
 
-class scrapeServiceTest extends WebTestCase
+class scrapeServiceTest extends NewStartWebTestCase
 {
 
 	/**
@@ -78,6 +77,7 @@ class scrapeServiceTest extends WebTestCase
 	/**
 	 * @test
 	 * @group scrape
+	 * @group ko
 	 */
 	public function realImgAbsoluteUrlScrapeTest()
 	{
@@ -86,8 +86,9 @@ class scrapeServiceTest extends WebTestCase
 		$images = $scrapeService->getAbsoluteUrlImages('http://fr.selfhtml.org/');
 		$this->assertTrue(in_array('http://src.selfhtml.org/logo.gif', $images));
 
+		$scrapeService = new ScrapeService();
 		$images = $scrapeService->getAbsoluteUrlImages('http://www.wornby.co.uk/mens/sweats/graffiti-alley-sweat-grey-marl.html');
-		$this->assertTrue(in_array('http://www.wornby.co.uk/media/catalog/product/cache/1/image/483x/17f82f742ffe127f42dca9de82fb58b1/W/o/Worn_By_Graffiti_Alley_Sweat_1_2.jpg', $images));
+		$this->assertContains('http://www.wornby.co.uk/media/catalog/product/cache/1/image/483x/17f82f742ffe127f42dca9de82fb58b1/W/o/Worn_By_Graffiti_Alley_Sweat_1_2.jpg', $images);
 	}
 
 	/**
@@ -105,7 +106,17 @@ class scrapeServiceTest extends WebTestCase
 		
 	}
 
+	/**
+	 * @test
+	 * @group wip
+	 */
+	public function titleScrapeTest()
+	{
+		$scrapeService = new ScrapeService();
 
+		$title = $scrapeService->getTitle('http://www.wornby.co.uk/mens/sweats/graffiti-alley-sweat-grey-marl.html');
+		$this->assertEquals('Graffiti Alley Sweat - Grey Marl   | Worn By', $title);
+	}
 
 
 

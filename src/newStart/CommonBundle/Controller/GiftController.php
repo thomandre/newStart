@@ -40,8 +40,6 @@ class GiftController extends Controller
             var_dump("not logged");
         }
 
-        var_dump($user);
-
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
             $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
         } else {

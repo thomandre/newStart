@@ -29,24 +29,16 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $description;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(type="string", nullable=false)
      */
     protected $url;
 
     /**
-     * @var intger
+     * @var string
      *
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    protected $price;
-
+    protected $imgUrl;
 
 
 
@@ -97,24 +89,24 @@ class Product
     /**
      * Set description
      *
-     * @param string $description
+     * @param string $imgUrl
      * @return Product
      */
-    public function setDescription($description)
+    public function setImgUrl($imgUrl)
     {
-        $this->description = $description;
+        $this->imgUrl = $imgUrl;
     
         return $this;
     }
 
     /**
-     * Get description
+     * Get imgUrl
      *
      * @return string 
      */
-    public function getDescription()
+    public function getImgUrl()
     {
-        return $this->description;
+        return $this->imgUrl;
     }
 
     /**
