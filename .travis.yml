@@ -1,8 +1,5 @@
 language: php
 php:
   - 5.3
-
 script: ./phpunit.sh
-
-before_script:composer update
-
+before_script: composer update
