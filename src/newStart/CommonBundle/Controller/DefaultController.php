@@ -47,17 +47,6 @@ class DefaultController extends Controller
         return array('isGoogle' => $isGoogle);
     }
 
-    /**
-     * @Route("/login", name="login")
-     * @Template()
-     */
-    public function loginAction()
-    {
-        var_dump("plop");
-        //return new RedirectResponse($this->container->get('router')->generate('me'));
-    }
-
-
 
     /**
      * @Route("/register_beta")

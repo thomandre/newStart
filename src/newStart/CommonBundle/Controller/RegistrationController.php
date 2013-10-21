@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use newStart\CommonBundle\Entity\BetaUser;
 use JMS\DiExtraBundle\Annotation as DI;
 use newStart\UserBundle\Security\User\Provider\FacebookProvider;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class RegistrationController extends Controller
 {
@@ -39,6 +40,27 @@ class RegistrationController extends Controller
         return array('friends' => $friends, 'bestFriendsLimit' => 5, 'img_size' => 75);
     }
 
+    /**
+     * @Route("/login", name="login")
+     * @Template()
+     */
+    public function loginAction()
+    {
+        try {
+            $facebook = $this->container->get('fos_facebook.api');
+            $user = $this->getUser();
+        } catch (\Exception $e) {
+            var_dump("not logged");
+        }
+
+
+        try {
+            $response = $facebook->api('/me/friends?fields=name,id,email');
+            return new RedirectResponse($this->container->get('router')->generate('me'));
+        } catch (\Exception $e) {
+            return new RedirectResponse($this->container->get('router')->generate('public_home'));
+        }
+    }
 
 
 

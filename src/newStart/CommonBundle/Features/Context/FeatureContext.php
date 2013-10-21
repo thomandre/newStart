@@ -35,12 +35,11 @@ class FeatureContext extends FeatureGlobal
     public function jeCliqueSurDansLIframe($arg1)
     {
         $iframes = $this->getSession()->getPage()->findAll('css', 'iframe');
-
+        
         $name = $iframes[2]->getAttribute('name');
+        
         $this->getSession()->switchToIFrame($name);
         
-        //var_dump($this->getSession()->getPage()->getContent());
-
         $element = $this->getSession()->getPage()->findAll('css', $arg1);
         if($element != false) {
             $element[0]->click();

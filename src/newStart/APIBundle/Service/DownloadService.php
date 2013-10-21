@@ -6,10 +6,14 @@ use JMS\DiExtraBundle\Annotation\Service;
 use JMS\DiExtraBundle\Annotation as DI;
 
 /**
- * @Service("newstart.api.service.download", public=true)
+ * @Service("newstart_api_service_download", public=true)
  */
-class downloadService
+class DownloadService
 {
+
+    /** @DI\Inject("service_container") */
+    public $container;
+
 
 	public function download($url)
 	{
@@ -20,6 +24,14 @@ class downloadService
 		curl_close($ch);
 
 		return $content;
+	}
+
+	public function save($content, $name)
+	{
+		$rootDir = $this->container->getParameter('kernel.root_dir');
+		$filePath = $rootDir.'/../web/bundles/newstartcommon/images/web/'.$name;
+
+		return file_put_contents($filePath, $content);
 	}
 
 }

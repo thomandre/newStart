@@ -7,9 +7,9 @@ use JMS\DiExtraBundle\Annotation as DI;
 use newStart\APIBundle\Service\UrlService;
 
 /**
- * @Service("newstart.api.service.scrape", public=true)
+ * @Service("newstart_api_service_scrape", public=true)
  */
-class scrapeService
+class ScrapeService
 {
 	public function getPrice($html)
 	{
@@ -55,7 +55,8 @@ class scrapeService
 	public function getAbsoluteUrlImages($url) 
 	{
 		$urlService = new UrlService();
-		$html = file_get_contents($url);
+		$dlService  = new DownloadService(); 
+		$html = $dlService->download($url);
 
 		$images = $this->getImages($html);
 
@@ -72,24 +73,28 @@ class scrapeService
 	public function getBiggestImg($url) 
 	{
 		$images = $this->getAbsoluteUrlImages($url);
-		$biggestImages = "";
-		$biggestSurface = 0;
 
-		foreach($images as $img) {
+		usort($images, function ($a, $b) {
 			try {
-				list($width, $height) = getimagesize($img);
-
-				$imgSurface = $width * $height;
-				if($imgSurface > $biggestSurface) {
-					$biggestSurface = $imgSurface;
-					$biggestImage = $img;
-				}
+				list($aWidth, $aHeight) = getimagesize($a);
 			} catch(\Exception $e) {
-				// add some log here
+				return -1;
 			}
-		}
+			try {
+				list($bWidth, $bHeight) = getimagesize($b);
+			} catch(\Exception $e) {
+				return 1;
+			}
 
-		return $biggestImage;
+			if(($aWidth * $aHeight) >= ($bWidth * $bHeight)) {
+				return -1;
+			} else {
+				return 1;
+			}
+
+		});
+
+		return $images;
 	}
 
 }
