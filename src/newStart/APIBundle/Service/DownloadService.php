@@ -29,7 +29,7 @@ class DownloadService
 	public function save($content, $name)
 	{
 		$rootDir = $this->container->getParameter('kernel.root_dir');
-		$filePath = $rootDir.'/../web/bundles/newstartcommon/images/web/'.$name;
+		$filePath = $rootDir.'/../web/images/'.$name;
 
 		return file_put_contents($filePath, $content);
 	}

@@ -6,11 +6,15 @@ use JMS\DiExtraBundle\Annotation\Service;
 use JMS\DiExtraBundle\Annotation as DI;
 use newStart\APIBundle\Service\UrlService;
 
-/**
- * @Service("newstart_api_service_scrape", public=true)
- */
+use JMS\DiExtraBundle\Annotation\Inject;
+use JMS\DiExtraBundle\Annotation\InjectParams;
+
+/** @DI\Service("newstart_api_service_scrape") */
 class ScrapeService
 {
+
+	protected $html;
+
 	public function getPrice($html)
 	{
 		$dom = new \DOMDocument();
@@ -22,16 +26,15 @@ class ScrapeService
 		$my_xpath_query = "//b[@class='price']";
 
 		$results = $xpath->query($my_xpath_query);
-		//var_dump($results->hasChildNodes());
 		return $results->item(0)->firstChild->nodeValue;
 	}
 
 	public function getImages($html) 
 	{
-		$dom = new \DOMDocument();
-		$dom->loadHTML($html);
-		$dom->strictErrorChecking = false;
 		libxml_use_internal_errors(true);
+		$dom = new \DOMDocument();
+		$dom->strictErrorChecking = false;
+		$dom->loadHTML($html);
 		$xpath = new \DOMXPath($dom);
 		$xpath->registerNamespace("html", "http://www.w3.org/1999/xhtml"); 
 		 
@@ -56,9 +59,12 @@ class ScrapeService
 	{
 		$urlService = new UrlService();
 		$dlService  = new DownloadService(); 
-		$html = $dlService->download($url);
+		
+		if(!isset($this->html)) {
+			$this->html = $dlService->download($url);
+		}
 
-		$images = $this->getImages($html);
+		$images = $this->getImages($this->html);
 
 		foreach($images as $key => $image) {
 			$images[$key] = $urlService->url_to_absolute($url, $image);
@@ -68,6 +74,31 @@ class ScrapeService
 		}
 
 		return $images;
+	}
+
+	public function getTitle($url) {
+		$urlService = new UrlService();
+		$dlService  = new DownloadService(); 
+
+		if(!isset($this->html)) {
+			$this->html = $dlService->download($url);
+		}
+		
+		libxml_use_internal_errors(true);
+		$dom = new \DOMDocument();
+		$dom->strictErrorChecking = false;
+		$dom->loadHTML($this->html);
+		$xpath = new \DOMXPath($dom);
+		$xpath->registerNamespace("html", "http://www.w3.org/1999/xhtml"); 
+		 
+		$my_xpath_query = "//title";
+
+		$results = $xpath->query($my_xpath_query);
+		if($results == false) {
+			return '';
+		} else {
+			return (string) $results->item(0)->nodeValue;
+		}
 	}
 
 	public function getBiggestImg($url) 

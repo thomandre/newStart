@@ -4,8 +4,7 @@
 	<div class="container">
 		<div class="row header">
 			<div class="col-md-1 col-md-offset-8 col-sm-3 col-sm-offset-7 col-xs-5 col-xs-offset-5 ">
-				<span id="profile">Thomas André <span class="glyphicon glyphicon-chevron-down"></span>
-</span>
+				<span id="profile">{{ user.firstName }} {{ user.lastName }} <span class="glyphicon glyphicon-chevron-down"></span>
 			</div>
 		</div>
 		<div class="row row-user-profile">
@@ -24,6 +23,7 @@
 					</span>
 				</div>
 			</div>
+			<div id="completeContainer" class="col-md-6 col-sm-6 col-xs-6"></div>
 		</div>
 		<div class="row products">
 			<h2>Votre liste de cadeaux</h2>
@@ -92,8 +92,33 @@
 	      width:180,
 	      height:220,
 	      vertical:"top"
-	    });  
+	    });
+
+	    $('#url').keypress(function () {
+			$.ajax({
+				url: "{{ path('scrape') }}",
+				data: "url=" + encodeURIComponent($(this).val()),
+				success: function (data) {
+					var div = "<div id='complete'>";
+					$(data.images).each(function (index, element) {
+						//console.log(element);
+						if(index == 0) {
+							div+= "<img src='" + element + "' />";
+						} else {
+							div+= "<img src='" + element + "' style='display:none;' />";
+						}
+						
+					});
+					div+= "<h3>" + data.title + "</h3>";
+					div+= "</div>";
+					$("#completeContainer").empty();
+					$("#completeContainer").append(div);
+				}
+			});
+	    });
+
 	  });  
+
 
 	</script>
 {% endblock %}
