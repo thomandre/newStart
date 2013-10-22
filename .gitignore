@@ -1,5 +1,7 @@
 app/cache/*
 app/logs/*
+/app/bootstrap*
+/vendor/
 build/*
 web/bundles/*
 nbproject/*
