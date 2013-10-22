@@ -8,6 +8,7 @@ Scénario: Je me logue et je vois ma page
 Soit je suis sur "/"
 Et j'attend "2" secondes
 Alors je clique sur "#u_0_0" dans l'iFrame
+Et j'attend "1" secondes
 Et je bascule sur la popup
 Et je remplis "email" avec "albanthomas1@gmail.com"
 Et je remplis "pass" avec "projetreecomate"

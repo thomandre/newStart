@@ -104,7 +104,6 @@ class scrapeServiceTest extends NewStartWebTestCase
 	/**
 	 * @test
 	 * @group scrape
-	 * @group wip
 	 */
 	public function sortedImgScrapeTest()
 	{
@@ -118,7 +117,7 @@ class scrapeServiceTest extends NewStartWebTestCase
 
 		$scrapeService = new ScrapeService();
 		$images = $scrapeService->getBiggestImg('http://us.levi.com/product/index.jsp?productId=21467686&');
-		var_dump($images);
+//		var_dump($images);
 
 //		$scrapeService = new ScrapeService();
 //		$images = $scrapeService->getBiggestImg('');
