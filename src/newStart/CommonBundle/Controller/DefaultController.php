@@ -32,12 +32,20 @@ class DefaultController extends Controller
     /** @DI\Inject("security.context") */
     private $sc;
 
+    /** @DI\Inject("kernel") */
+    public $kernel;
+
+
     /**
      * @Route("/", name="public_home")
      * @Template()
      */
     public function indexAction()
     {
+        if($this->kernel->getEnvironment() == 'test') {
+            session_start();
+        }
+        
         if(strpos($_SERVER['HTTP_USER_AGENT'], 'Googlebot') === false) {
             $isGoogle = false;
         } else {
