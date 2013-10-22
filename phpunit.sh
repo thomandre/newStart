@@ -3,4 +3,4 @@
 ./sf doctrine:database:create --env=test
 ./sf doctrine:schema:update --force --env=test
 
-phpunit -c app $1 $2
+phpunit --strict -c app $1 $2
