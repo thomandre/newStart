@@ -21,8 +21,11 @@ class DownloadService
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
 		curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 6.1; fr; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13'); 
 		$content = curl_exec($ch);
+		$infos = curl_getinfo($ch);
 		curl_close($ch);
-
+		if($infos['http_code'] == '404') {
+			throw new \Exception('404');
+		}
 		return $content;
 	}
 

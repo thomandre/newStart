@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use JMS\DiExtraBundle\Annotation\Service;
 use JMS\DiExtraBundle\Annotation as DI;
 use newStart\CommonBundle\Entity\Product;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
+
 
 class DefaultController extends Controller
 {
@@ -21,12 +23,21 @@ class DefaultController extends Controller
     /**
      * @Route("/api/v1/product/scrape", name="scrape")
      * @Template()
+     * @Cache(expires="+5min")
      */
     public function scrapeProductAction(Request $request)
     {
-        if($request->get('url') && $request->get('url') != '') {
-            $images = $this->scrapeService->getBiggestImg($request->get('url'));
-            $title  = $this->scrapeService->getTitle($request->get('url'));
+        $images = array();
+        $title = '';
+        try {
+            if($request->get('url') && $request->get('url') != '') {
+                $images = $this->scrapeService->getBiggestImg($request->get('url'));
+                $title  = $this->scrapeService->getTitle($request->get('url'));
+            }
+        } catch(\Exception $e) {
+            if($e->getMessage() == '404') {
+                throw $this->createNotFoundException('Le produit n\'existe pas');
+            }
         }
 
         $response = new JsonResponse();
@@ -35,15 +46,31 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/api/v1/product/add")
+     * @Route("/api/v1/product/add", name="product_add")
      * @Template()
      */
     public function addProductAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        
         $product = new Product();
-        $product->setName('no name');
-        $product->setUrl($this->get('url'));
-        $product->setImgUrl($this->get('img'));
+        $product->setName(stripslashes($request->get('title')));
+        $product->setUrl($request->get('url'));
+        $product->setImgUrl($request->get('img'));
+        //$product->setUser($user);
+
+        $user->addProduct($product);
+        $em->persist($product);
+        $em->persist($user);
+        $em->flush();
+
+        $response = new JsonResponse();
+
+        $products = $em->getRepository('newStartCommonBundle:Product')->findAll(array('user' => $user));
+
+        $response->setData($products);
+        return $response;
     }
 
 }

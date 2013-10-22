@@ -3,6 +3,8 @@ namespace newStart\UserBundle\Entity;
 
 use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use newStart\CommonBundle\Entity\Product;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -40,6 +42,11 @@ class User extends BaseUser
      * @ORM\Column(type="boolean", nullable=false)
      */
     protected $new;
+
+    /**
+     * @@ORM\OneToMany(targetEntity="\newStart\CommonBundle\Entity\Product", mappedBy="user")
+     */
+    protected $products;
 
     public function __construct()
     {
@@ -148,5 +155,38 @@ class User extends BaseUser
             $this->setEmail($fbdata['email']);
         }
     }
+
+    /**
+     * @param Product
+     */
+    public function addProduct(Product $product) 
+    {
+        if(count($this->products) < 5) {
+            $this->products[] = $product;
+            $product->setUser($this);
+        } else {
+            throw new \Exception('5 products max');
+        }
+    }
     
+    /**
+     * Remove Product
+     *
+     * @param Product $product
+     */
+    public function removeProduct(Product $product)
+    {
+        $this->request->removeElement($product);
+    }
+
+    
+    /**
+     * Get products
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getProducts() {
+        return $this->products;
+    }
+
 }
