@@ -14,7 +14,7 @@ class StorySuiteTest extends NewStartWebTestCase
      */
     public function behatIsOk()
     {
-//        $this->scenariosMeetAcceptanceCriteria('newStartCommonBundle');
+        $this->scenariosMeetAcceptanceCriteria('newStartCommonBundle');
     }
 
 }
