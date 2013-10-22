@@ -55,7 +55,7 @@ return array(
     'Buzz' => array($vendorDir . '/kriswallsmith/buzz/lib'),
     'Behat\\Symfony2Extension' => array($vendorDir . '/behat/symfony2-extension/src'),
     'Behat\\SahiClient' => array($vendorDir . '/behat/sahi-client/src'),
-    'Behat\\Mink\\Driver' => array($vendorDir . '/behat/mink-browserkit-driver/src', $vendorDir . '/behat/mink-sahi-driver/src', $vendorDir . '/behat/mink-goutte-driver/src', $vendorDir . '/behat/mink-selenium2-driver/src'),
+    'Behat\\Mink\\Driver' => array($vendorDir . '/behat/mink-browserkit-driver/src', $vendorDir . '/behat/mink-goutte-driver/src', $vendorDir . '/behat/mink-selenium2-driver/src', $vendorDir . '/behat/mink-sahi-driver/src'),
     'Behat\\MinkExtension' => array($vendorDir . '/behat/mink-extension/src'),
     'Behat\\Mink' => array($vendorDir . '/behat/mink/src'),
     'Behat\\Gherkin' => array($vendorDir . '/behat/gherkin/src'),
