@@ -70,7 +70,7 @@ class scrapeServiceTest extends NewStartWebTestCase
 		$html = file_get_contents('http://fr.selfhtml.org/');
 
 		//var_dump($html);
-		$images = $scrapeService->getImages($html, $url);
+		$images = $scrapeService->getImages($html, 'http://fr.selfhtml.org');
 		$this->assertTrue(in_array('//src.selfhtml.org/logo.gif', $images));
 	}
 
@@ -91,6 +91,7 @@ class scrapeServiceTest extends NewStartWebTestCase
 
 		$scrapeService = new ScrapeService();
 		$images = $scrapeService->getAbsoluteUrlImages('http://us.levi.com/product/index.jsp?productId=21467686&');
+
 //		var_dump($images);
 //		$this->assertContains('', $images);
 
