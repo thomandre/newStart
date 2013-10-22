@@ -103,29 +103,32 @@ class ScrapeService
 
 	public function getBiggestImg($url) 
 	{
+		$sortableImages = array();
 		$images = $this->getAbsoluteUrlImages($url);
 
-		usort($images, function ($a, $b) {
+		foreach($images as $image) {
 			try {
-				list($aWidth, $aHeight) = getimagesize($a);
+				list($width, $height) = getimagesize($image);
+				if(($width * $height) > 4000) {
+					$sortableImages[] = array('image' => $image, 'pixels' => ($width * $height));
+				}
 			} catch(\Exception $e) {
-				return -1;
-			}
-			try {
-				list($bWidth, $bHeight) = getimagesize($b);
-			} catch(\Exception $e) {
-				return 1;
-			}
+			}			
+		}
 
-			if(($aWidth * $aHeight) >= ($bWidth * $bHeight)) {
-				return -1;
+		usort($sortableImages, function ($a, $b) {			
+			if($a['pixels'] == $b['pixels']) {
+				return 0;
 			} else {
-				return 1;
+				if($a['pixels'] > $b['pixels']) {
+					return -1;
+				} else {
+					return 1;
+				}
 			}
-
 		});
-
-		return $images;
+		//var_dump($sortableImages);
+		return $sortableImages;
 	}
 
 }

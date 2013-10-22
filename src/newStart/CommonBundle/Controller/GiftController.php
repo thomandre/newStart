@@ -66,14 +66,9 @@ class GiftController extends Controller
 
                         );
 
+        $products = $this->em->getRepository('newStartCommonBundle:Product')->findAll(array('user' => $user));
 
-        return array('gifts' => array(
-                                        array('url' => 'http://lsco.scene7.com/is/image/lsco/Levi/clothing/131040002-2013-fall-front-pdp.jpg?$1366x768$', "title" => "Chino Levis Commuter"),
-                                        array('url' => 'http://www.hast.fr/12-138/chemise-blanche.jpg', "title" => "Chemise popeline blanche Hast"),
-                                        array('url' => 'http://gourmandisedeluxe.com/73-216-large/car.jpg', "title" => "Truffe noire 100gr"), 
-                                        //array('url' => 'http://www.boutique-saint-james.fr/ICEO_catalogue/pki21100006680.jpg', "title" => "Pull marine St James"),
-                                        //array('url' => 'http://www.cuissedegrenouille.com/109-615-large/ceinture-laine-tressee-rouge-bleu-anthracite-james.jpg', "title" => "Ceinture Cuisse de Grenouille")
-                                ),
+        return array('gifts' => $products,
                     'user' => $user,
                     'fbFriends' => $fbFriends,
                     'friends' => $friends,

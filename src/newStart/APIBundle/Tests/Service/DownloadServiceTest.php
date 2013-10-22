@@ -21,7 +21,8 @@ class downloadServiceTest extends NewStartWebTestCase
 
 		$this->assertRegExp('/Apple iPad 3 1GHz 64GB 9.7" Tablet & Accessories Package/', $content);
 
-
+		$content = $downloadService->download("http://us.levi.com/product/index.jsp?productId=21467686&");
+		$this->assertRegExp('/Slim Fit Pants/', $content);
 	}
 	
 	/**

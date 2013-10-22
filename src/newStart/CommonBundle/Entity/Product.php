@@ -16,6 +16,7 @@ class Product
      *
      * @ORM\Id
      * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
@@ -40,7 +41,11 @@ class Product
      */
     protected $imgUrl;
 
-
+    /**
+     * @ORM\ManyToOne(targetEntity="\newStart\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
 
     /**
      * Set id
@@ -154,4 +159,28 @@ class Product
     {
         return $this->url;
     }
+
+    /**
+     * Set user
+     *
+     * @param \newStart\UserBundle\Entity\User $user
+     * @return \newStart\MarketplaceBundle\Entity\BuyOffer
+     */
+    public function setUser(\newStart\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \newStart\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
 }
