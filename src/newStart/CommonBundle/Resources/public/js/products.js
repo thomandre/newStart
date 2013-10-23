@@ -1,4 +1,13 @@
 $(document).ready(function() {
+
+	var delay = (function(){
+	  var timer = 0;
+	  return function(callback, ms){
+	    clearTimeout (timer);
+	    timer = setTimeout(callback, ms);
+	  };
+	})();
+
 	function scrape() {
 		$.ajax({
 			url: $("#path_scrape").val(),
@@ -47,7 +56,9 @@ $(document).ready(function() {
 	  vertical:"top"
 	});
 
-	$('#url').keyup(scrape);
+	$('#url').keyup(function () {
+		delay(scrape, 200);
+	});
 	$('#go_btn').click(scrape);
 
 	$('#next_btn').click(function () {

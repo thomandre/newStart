@@ -10,14 +10,58 @@ use Behat\Behat\Context\ClosuredContextInterface,
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
 use newStart\CommonBundle\Features\Context\FeatureGlobal;
-
+use Behat\Behat\Context\Step;
 /**
  * Features context
  */
 class FeatureContext extends FeatureGlobal
 {
 
-    var $originalWindowName = '';
+    public $originalWindowName = '';
+
+    /**
+     * @Given /^je me logue en tant que "([^"]*)"$/
+     */
+    public function jeMeLogueEnTantQue($arg1)
+    {
+        return array(
+            new Step\When('je clique sur le bouton Facebook Connect'),
+            new Step\When('je remplis mon login avec "albanthomas1@gmail.com"'),
+            new Step\When('je valide le formulaire'),
+            new Step\Then('je reviens sur la fenêtre principale'),
+            new Step\When('j\'attend "5" secondes'),
+            new Step\Then('je devrais voir "Alban Thomas"'),
+            new Step\Then('je devrais voir "Votre liste de cadeaux"'),
+        );
+    }
+
+
+    /**
+     * @Given /^je remplis mon login avec "([^"]*)"$/
+     */
+    public function jeRemplisMonLoginAvec($arg1)
+    {
+        return array(
+            new Step\When('je remplis "email" avec "'.$arg1.'"'),
+            new Step\When('je remplis "pass" avec "projetreecomate"'),
+        );
+    }
+
+
+    /**
+     * @Given /^je clique sur le bouton Facebook Connect$/
+     */
+    public function jeCliqueSurLeBoutonFacebookConnect()
+    {
+        return array(
+            new Step\When('j\'attend "2" secondes'),
+            new Step\When('je clique sur "#u_0_0" dans l\'iFrame "2"'),
+            new Step\When('j\'attend "1" secondes'),
+            new Step\When('je bascule sur la popup'),
+            new Step\Then('je devrais voir "Facebook"'),
+            new Step\Then('je devrais voir "HaveFyve"')
+        );
+    }
 
     /**
      * @Given /^j\'attend "([^"]*)" secondes$/
@@ -30,13 +74,13 @@ class FeatureContext extends FeatureGlobal
     }
 
     /**
-     * @Given /^je clique sur "([^"]*)" dans l\'iFrame$/
+     * @Given /^je clique sur "([^"]*)" dans l\'iFrame "([^"]*)"$/
      */
-    public function jeCliqueSurDansLIframe($arg1)
+    public function jeCliqueSurDansLIframe($arg1, $arg2)
     {
         $iframes = $this->getSession()->getPage()->findAll('css', 'iframe');
         
-        $name = $iframes[2]->getAttribute('name');
+        $name = $iframes[$arg2]->getAttribute('name');
         
         $this->getSession()->switchToIFrame($name);
         
@@ -49,22 +93,18 @@ class FeatureContext extends FeatureGlobal
     }
 
     /**
-     * @Given /^je fais mon job$/
+     * @Given /^je valide le formulaire$/
      */
-    public function jeFaisMonJob()
+    public function jeValideLeFormulaire()
     {
-        try {
-            $submit = $this->getSession()->getPage()->findAll('css', '#u_0_1');
-            $submit[0]->click();
+        $submit = $this->getSession()->getPage()->findAll('css', '#u_0_1');
+        $submit[0]->click();
 
+        try {
             $this->getSession()->wait(1000*10);
           
             $this->getSession()->switchToWindow($this->originalWindowName);           
-        } catch(\Exception $e) {
-//            var_dump('error deal with it.');
-        }
-
-        //throw new PendingException();
+        } catch(\Exception $e) {}
     }
 
 
