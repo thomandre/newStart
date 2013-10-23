@@ -54,6 +54,32 @@ $(document).ready(function() {
 		});
 	}
 
+	function product_reload(data) {
+		var products = $('.product');
+		$(data).each(function (index, element) {
+			var img = $(products[index]).find('.img-responsive img');
+			if(img[0] != undefined) {
+				$(img[0]).attr('src', element.img_url);
+			} else {
+				console.log('img not detected');
+				$(products[index]).find('.cadre').remove();
+				var product_img = $(products[index]).find('.product-image');
+				$(product_img[0]).append('<img src="' + element.img_url + '" class="img-responsive" />');
+				$(product_img[0]).append('<p><span>' + element.name + '</span></p>');
+			}
+
+			var img = $(products[index]).find('img');
+
+			$(img[0]).resizecrop({
+			  width:180,
+			  height:220,
+			  vertical:'top'
+			});
+			
+		});
+	}
+
+
 	$('.product img').resizecrop({
 	  width:180,
 	  height:220,
@@ -105,7 +131,7 @@ $(document).ready(function() {
 				  '&title=' + encodeURIComponent($('#complete h4').html()) +
 				  '&comment=' + encodeURIComponent($('#comment').html()),
 			success: function (data) {
-				
+				product_reload(data);
 			},
 			beforeSend: function () {
 				$('#save_btn span').addClass('glyphicon');

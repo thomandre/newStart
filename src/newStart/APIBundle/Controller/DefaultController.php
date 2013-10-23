@@ -23,7 +23,7 @@ class DefaultController extends Controller
     /**
      * @Route("/api/v1/product/scrape", name="scrape")
      * @Template()
-     * @Cache(expires="+5min")
+     * @Cache(expires="+50min")
      */
     public function scrapeProductAction(Request $request)
     {
@@ -65,11 +65,21 @@ class DefaultController extends Controller
         $em->persist($user);
         $em->flush();
 
-        $response = new JsonResponse();
-
         $products = $em->getRepository('newStartCommonBundle:Product')->findAll(array('user' => $user));
 
-        $response->setData($products);
+        $data = array();
+        foreach($products as $product) {
+            $data[] = array(
+                            'id' => $product->getId(),
+                            'name' => $product->getName(),
+                            'comment' => $product->getComment(),
+                            'url' => $product->getUrl(),
+                            'img_url' => $product->getImgUrl(),
+                        );
+        }
+
+        $response = new JsonResponse();
+        $response->setData($data);
         return $response;
     }
 

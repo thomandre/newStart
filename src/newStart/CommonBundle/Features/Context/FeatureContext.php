@@ -19,6 +19,19 @@ class FeatureContext extends FeatureGlobal
 
     public $originalWindowName = '';
 
+
+    /**
+     * @Given /^je ne devrais plus voir l\'element "([^"]*)"$/
+     */
+    public function jeNeDevraisPlusVoirLElement($arg1)
+    {
+        $div = $this->getSession()->getPage()->findAll('css', $arg1);
+        $style = $div[0]->getAttribute('style');
+        if(strpos(str_replace(' ', '', $style), 'display:none') === false) {
+            throw new \Exception('L\'élément "'.$arg1.'" est visible.');
+        }
+    }
+
     /**
      * @Given /^je me logue en tant que "([^"]*)"$/
      */

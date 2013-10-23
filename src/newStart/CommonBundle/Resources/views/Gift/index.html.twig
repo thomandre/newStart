@@ -17,7 +17,7 @@
 			<div class="col-md-6 col-sm-6 col-xs-6 url-block">
 				<div class="input-group url">
 					<span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
-					<input type="url" name="url" id="url" class="form-control" placeholder="Copier-coller l'URL du cadeau que vous aimeriez qu'on vous offre" />
+					<input type="url" name="url" id="url" class="form-control" value="http://www.levi.com/FR/fr_FR/men-clothing-pants/p/131120011" placeholder="Copier-coller l'URL du cadeau que vous aimeriez qu'on vous offre" />
 					<span class="input-group-btn">
 						<button class="btn btn-primary" type="button" id="go_btn"><span class="loader"></span>Go !</button>
 					</span>
@@ -44,12 +44,12 @@
  				<div class="col-md-2 col-sm-3 col-xs-5 product">
  					<div class="product-image">
  						<img src='{{ gift.imgUrl }}' class="img-responsive" />
- 						<p><span>{{ gift.name }}</p>
+ 						<p><span>{{ gift.name }}</span></p>
  					</div>
  				</div>
  				{% if loop.last %}
- 					{% if loop.length < 5%}
- 						{% for i in loop.length..4 %}
+ 					{% if loop.length < 20 %}
+ 						{% for i in loop.length..19 %}
  							<div class="col-md-2  col-sm-3 col-xs-3 product">
  								<div class="product-image">
  									<div class="cadre"></div>
@@ -58,6 +58,14 @@
  						{% endfor %}
  					{% endif %}
  				{% endif %}
+			{% else %}
+				{% for i in loop.length..19 %}
+					<div class="col-md-2  col-sm-3 col-xs-3 product">
+						<div class="product-image">
+							<div class="cadre"></div>
+						</div>
+					</div>
+				{% endfor %}
  			{% endfor %}
 		</div>
 		<input type="hidden" id="path_scrape" value="{{ path('scrape') }}" />
