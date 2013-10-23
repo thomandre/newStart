@@ -213,7 +213,7 @@ div#complete {
     padding: 6px;
     position: absolute;
     text-align: left;
-    width: 496px;
+    width: 492px;
     z-index: 5;
 }
 div#complete img {
@@ -245,10 +245,15 @@ span.loader {
 .loader.glyphicon {
     -webkit-animation: rotate 1s linear infinite;
     -moz-animation: rotate 1s linear infinite;
-
-
 }
 
+h4 {
+    font-weight: 100;
+}
 
-
-
+#complete .row {
+    margin-bottom: 5px;
+}
+#complete textarea {
+    font-weight:100;
+}
