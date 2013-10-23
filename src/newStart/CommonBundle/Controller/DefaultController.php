@@ -43,7 +43,11 @@ class DefaultController extends Controller
     public function indexAction()
     {
         if($this->kernel->getEnvironment() == 'test') {
-            session_start();
+            try {
+                session_start();
+            } catch(\Exception $e) {
+                
+            }
         }
         
         if(strpos($_SERVER['HTTP_USER_AGENT'], 'Googlebot') === false) {

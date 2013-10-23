@@ -3,7 +3,7 @@ Fonctionnalité: Sharing OK
 
 Contexte: Je souhaite me loguer et partager un produit
 
-@javascript @wip
+@javascript @wip @login
 Scénario: Je me logue et je partage un produit
 Soit je suis sur "/"
 Soit je me logue en tant que "albanthomas1@gmail.com"
@@ -16,3 +16,4 @@ Et j'attend "3" secondes
 Alors je ne devrais plus voir l'element "#completeContainer"
 Et le champ "url" devrait contenir ""
 Et je devrais voir "Levi's Levis®"
+Et je me delogue

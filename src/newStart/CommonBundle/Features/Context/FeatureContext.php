@@ -19,6 +19,18 @@ class FeatureContext extends FeatureGlobal
 
     public $originalWindowName = '';
 
+    /**
+     * @Given /^je me delogue$/
+     */
+    public function jeMeDelogue()
+    {
+        return array(
+            new Step\When('je vais sur "/"'),
+            new Step\When('je recharge la page'),
+            new Step\When('je clique sur "#u_0_1" dans l\'iFrame "2"'),
+        );
+    }
+
 
     /**
      * @Given /^je ne devrais plus voir l\'element "([^"]*)"$/
@@ -71,6 +83,7 @@ class FeatureContext extends FeatureGlobal
             new Step\When('je clique sur "#u_0_0" dans l\'iFrame "2"'),
             new Step\When('j\'attend "1" secondes'),
             new Step\When('je bascule sur la popup'),
+            new Step\When('j\'attend "1" secondes'),
             new Step\Then('je devrais voir "Facebook"'),
             new Step\Then('je devrais voir "HaveFyve"')
         );
@@ -92,7 +105,6 @@ class FeatureContext extends FeatureGlobal
     public function jeCliqueSurDansLIframe($arg1, $arg2)
     {
         $iframes = $this->getSession()->getPage()->findAll('css', 'iframe');
-        
         $name = $iframes[$arg2]->getAttribute('name');
         
         $this->getSession()->switchToIFrame($name);
