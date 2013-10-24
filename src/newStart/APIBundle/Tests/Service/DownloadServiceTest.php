@@ -36,7 +36,7 @@ class downloadServiceTest extends NewStartWebTestCase
 		$content = $downloadService->download('http://www.wornby.co.uk/media/catalog/product/cache/1/image/483x/17f82f742ffe127f42dca9de82fb58b1/W/o/Worn_By_Graffiti_Alley_Sweat_1_2.jpg');
 		$result = $downloadService->save($content, 'Worn_By_Graffiti_Alley_Sweat_1_2.jpg');
 
-		$this->assertNotEquals(false, $result);
+		$this->assertNotEquals(false, strpos($result, 'app/../web/images/Worn_By_Graffiti_Alley_Sweat_1_2.jpg'));
 
 	}
 

@@ -34,7 +34,11 @@ class DownloadService
 		$rootDir = $this->container->getParameter('kernel.root_dir');
 		$filePath = $rootDir.'/../web/images/'.$name;
 
-		return file_put_contents($filePath, $content);
+		if(file_put_contents($filePath, $content) == false) {
+			throw new \Exception('Erreur lors de la savegarde');
+		}
+		
+		return $filePath;
 	}
 
 }
