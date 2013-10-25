@@ -109,20 +109,18 @@ class scrapeServiceTest extends NewStartWebTestCase
 	public function sortedImgScrapeTest()
 	{
 		$scrapeService = new ScrapeService();
+		$scrapeService->container = $this->container;
 
 		$images = $scrapeService->getBiggestImg('http://www.wornby.co.uk/mens/sweats/graffiti-alley-sweat-grey-marl.html');
-		$this->assertEquals('http://www.wornby.co.uk/media/catalog/product/cache/1/image/483x/17f82f742ffe127f42dca9de82fb58b1/W/o/Worn_By_Graffiti_Alley_Sweat_1_2.jpg', $images[0]['image']);
-		$this->assertEquals('http://www.wornby.co.uk/media/catalog/category/mensweats_2.jpg', $images[1]['image']);
-		$this->assertEquals('http://www.wornby.co.uk/media/catalog/product/cache/1/thumbnail/155x/17f82f742ffe127f42dca9de82fb58b1/w/o/worn_by_graffiti_alley_sweat_2.jpg', $images[2]['image']);
+		$this->assertEquals('http://www.wornby.co.uk/media/catalog/product/cache/1/image/483x/17f82f742ffe127f42dca9de82fb58b1/W/o/Worn_By_Graffiti_Alley_Sweat_1_2.jpg', $images[0]->getOriginalUrl());
+		$this->assertEquals('http://www.wornby.co.uk/media/catalog/product/cache/1/thumbnail/155x/17f82f742ffe127f42dca9de82fb58b1/w/o/worn_by_graffiti_alley_sweat_2.jpg', $images[1]->getOriginalUrl());
+		$this->assertEquals('http://www.wornby.co.uk/media/catalog/product/cache/1/thumbnail/155x/17f82f742ffe127f42dca9de82fb58b1/W/o/Worn_By_Graffiti_Alley_Sweat_1_2.jpg', $images[2]->getOriginalUrl());
 		
 
 		$scrapeService = new ScrapeService();
+		$scrapeService->container = $this->container;
 		$images = $scrapeService->getBiggestImg('http://us.levi.com/product/index.jsp?productId=21467686&');
-//		var_dump($images);
-
-//		$scrapeService = new ScrapeService();
-//		$images = $scrapeService->getBiggestImg('');
-//		var_dump($images);
+		$this->assertEquals('http://LEVI.imageg.net/graphics/product_images/pLEVI1-16002776t330x400.jpg', $images[0]->getOriginalUrl());
 
 	}
 

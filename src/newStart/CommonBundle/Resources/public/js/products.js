@@ -16,11 +16,11 @@ $(document).ready(function() {
 				var div = '<div id="product" class="row">';
 				div+= '<div class="col-md-5 col-sm-5 col-xs-5">';
 				$(data.images).each(function (index, element) {
-					//console.log(element);
+					console.log(element);
 					if(index == 0) {
-						div+= '<img src="' + element['image'] + '" class="preview" id="main"/>';
+						div+= '<img src="' + element + '" class="preview" id="main"/>';
 					} else {
-						div+= '<img src="' + element['image'] + '" class="preview" />';
+						div+= '<img src="' + element + '" class="preview" />';
 					}
 				});
 				div+= '</div>';
@@ -129,7 +129,7 @@ $(document).ready(function() {
 			data: 'url=' + encodeURIComponent($('#url').val()) + 
 				  '&img=' + encodeURIComponent($('#main img').attr('src')) + 
 				  '&title=' + encodeURIComponent($('#complete h4').html()) +
-				  '&comment=' + encodeURIComponent($('#comment').html()),
+				  '&comment=' + encodeURIComponent($('#comment').val()),
 			success: function (data) {
 				product_reload(data);
 			},
@@ -141,10 +141,15 @@ $(document).ready(function() {
 				$('#save_btn span').removeClass('glyphicon');
 				$('#save_btn span').removeClass('glyphicon-refresh');
 				$('#completeContainer').hide();				
+			},
+			error: function () {
+				$('.products').prepend('<div class="alert alert-warning">Vous avez déjà 5 cadeaux, pour ajouter ' + $('#complete h4').html() + ', vous devez supprimer un cadeau.</div>');
 			}
 		});
 	});
 
+
+	
 
 
 });

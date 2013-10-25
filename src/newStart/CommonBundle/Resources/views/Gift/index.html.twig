@@ -48,8 +48,8 @@
  					</div>
  				</div>
  				{% if loop.last %}
- 					{% if loop.length < 20 %}
- 						{% for i in loop.length..19 %}
+ 					{% if loop.length < 5 %}
+ 						{% for i in loop.length..4 %}
  							<div class="col-md-2  col-sm-3 col-xs-3 product">
  								<div class="product-image">
  									<div class="cadre"></div>
@@ -59,7 +59,7 @@
  					{% endif %}
  				{% endif %}
 			{% else %}
-				{% for i in loop.length..19 %}
+				{% for i in loop.length..4 %}
 					<div class="col-md-2  col-sm-3 col-xs-3 product">
 						<div class="product-image">
 							<div class="cadre"></div>

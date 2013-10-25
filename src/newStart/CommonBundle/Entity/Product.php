@@ -84,8 +84,8 @@ class Product
      */
     public function setName($name)
     {
-        $this->name = $name;
-    
+        $this->name = strip_tags(stripslashes(str_replace('&nbsp;', ' ', $name)));
+        //$this->name = str_replace('&nbsp;', ' ', filter_var($name
         return $this;
     }
 
@@ -107,8 +107,7 @@ class Product
      */
     public function setComment($comment)
     {
-        $this->comment = $comment;
-    
+        $this->comment = strip_tags(stripslashes(str_replace('&nbsp;', ' ', $comment)));
         return $this;
     }
 

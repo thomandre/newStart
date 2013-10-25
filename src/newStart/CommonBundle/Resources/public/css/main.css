@@ -216,10 +216,6 @@ div#complete {
     width: 492px;
     z-index: 5;
 }
-div#complete img {
-	height:200px;
-}
-
 span.loader {
     display: inline-block;
 	margin-right: 5px;

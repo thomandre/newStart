@@ -44,7 +44,7 @@ class User extends BaseUser
     protected $new;
 
     /**
-     * @@ORM\OneToMany(targetEntity="\newStart\CommonBundle\Entity\Product", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="\newStart\CommonBundle\Entity\Product", mappedBy="user")
      */
     protected $products;
 
@@ -156,6 +156,9 @@ class User extends BaseUser
         }
     }
 
+
+
+
     /**
      * @param Product
      */
@@ -185,8 +188,19 @@ class User extends BaseUser
      *
      * @return Doctrine\Common\Collections\Collection 
      */
-    public function getProducts() {
+    public function getProducts()
+    {
         return $this->products;
+    }
+
+    /**
+     * Set products
+     *
+     */
+    public function setProducts($products)
+    {
+        $this->products = $products;
+        return $this;
     }
 
 }

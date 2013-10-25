@@ -15,6 +15,11 @@ class ScrapeService
 
 	protected $html;
 
+    /** @DI\Inject("service_container") */
+    public $container;
+
+    public $sw;
+
 	public function getPrice($html)
 	{
 		$dom = new \DOMDocument();
@@ -59,7 +64,6 @@ class ScrapeService
 	{
 		$urlService = new UrlService();
 		$dlService  = new DownloadService(); 
-		
 		if(!isset($this->html)) {
 			$this->html = $dlService->download($url);
 		}
@@ -103,30 +107,34 @@ class ScrapeService
 
 	public function getBiggestImg($url) 
 	{
+		$dlService = $this->container->get('newstart_api_service_download');
 		$sortableImages = array();
-		$images = $this->getAbsoluteUrlImages($url);
 
+		$images = $this->getAbsoluteUrlImages($url);
+		
 		foreach($images as $image) {
 			try {
-				list($width, $height) = getimagesize($image);
-				if(($width * $height) > 4000) {
-					$sortableImages[] = array('image' => $image, 'pixels' => ($width * $height));
+				$imageEntity = $dlService->getImageViaCache($image);
+				if($imageEntity->getSurface() > 7000 && ($imageEntity->getRatio() < 3 && $imageEntity->getRatio() > 0.33)) {
+					$sortableImages[] = $imageEntity;
 				}
 			} catch(\Exception $e) {
 			}			
 		}
 
 		usort($sortableImages, function ($a, $b) {			
-			if($a['pixels'] == $b['pixels']) {
+			if($a->getSurface() == $b->getSurface()) {
 				return 0;
 			} else {
-				if($a['pixels'] > $b['pixels']) {
+				if($a->getSurface() > $b->getSurface()) {
 					return -1;
 				} else {
 					return 1;
 				}
 			}
 		});
+
+
 		//var_dump($sortableImages);
 		return $sortableImages;
 	}
