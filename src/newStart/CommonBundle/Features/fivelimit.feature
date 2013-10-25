@@ -51,4 +51,8 @@ Et j'attend "3" secondes
 
 Alors je devrais voir "Vous avez déjà 5 cadeaux, pour ajouter Yves Saint Laurent CLASSIC 3 (NE2/EJ), vous devez supprimer un cadeau."
 
+Et je recharge la page
+Alors je ne devrais pas voir "Yves Saint Laurent"
+
+
 Et je me delogue
