@@ -2,11 +2,7 @@
 
 {% block body %}
 	<div class="container">
-		<div class="row header">
-			<div class="col-md-1 col-md-offset-8 col-sm-3 col-sm-offset-7 col-xs-5 col-xs-offset-5 ">
-				<span id="profile">{{ user.firstName }} {{ user.lastName }} <span class="glyphicon glyphicon-chevron-down"></span>
-			</div>
-		</div>
+		{% include '::header.html.twig' %}
 		<div class="row row-user-profile">
 			<div class="col-md-2 col-sm-2 col-xs-4 user-profile">
 				<div class="viewed-profile">
@@ -17,7 +13,7 @@
 			<div class="col-md-6 col-sm-6 col-xs-6 url-block">
 				<div class="input-group url">
 					<span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
-					<input type="url" name="url" id="url" class="form-control" value="http://www.levi.com/FR/fr_FR/men-clothing-pants/p/131120011" placeholder="Copier-coller l'URL du cadeau que vous aimeriez qu'on vous offre" />
+					<input type="url" name="url" id="url" class="form-control" value="" placeholder="Copier-coller l'URL du cadeau que vous aimeriez qu'on vous offre" />
 					<span class="input-group-btn">
 						<button class="btn btn-primary" type="button" id="go_btn"><span class="loader"></span>Go !</button>
 					</span>
@@ -52,7 +48,7 @@
  						{% for i in loop.length..4 %}
  							<div class="col-md-2  col-sm-3 col-xs-3 product">
  								<div class="product-image">
- 									<div class="cadre"></div>
+ 									<div class="cadre"><span class="glyphicon glyphicon-camera"></span></div>
  								</div>
  							</div>
  						{% endfor %}
