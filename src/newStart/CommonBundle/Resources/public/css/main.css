@@ -253,3 +253,9 @@ h4 {
     font-size: 43px;
     top: 72px;
 }
+.hide {
+    display:none;
+}
+.show {
+    display:block;
+}

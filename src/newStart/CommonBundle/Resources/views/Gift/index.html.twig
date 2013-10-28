@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-	<div class="container">
+	<div class="container" ng-controller="ProductListCtrl">
 		{% include '::header.html.twig' %}
 		<div class="row row-user-profile">
 			<div class="col-md-2 col-sm-2 col-xs-4 user-profile">
@@ -15,55 +15,72 @@
 					<span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
 					<input type="url" name="url" id="url" class="form-control" value="" placeholder="Copier-coller l'URL du cadeau que vous aimeriez qu'on vous offre" />
 					<span class="input-group-btn">
-						<button class="btn btn-primary" type="button" id="go_btn"><span class="loader"></span>Go !</button>
+						<button class="btn btn-primary" type="button" id="go_btn" ng-click="productScrape()"><span class="loader"></span>Go !</button>
 					</span>
 				</div>
 			</div>
-			<div id="completeContainer" style="display:none" class="col-md-6 col-sm-6 col-xs-6">
-				<div id="complete">
-					<div class="row">
-						<div class="col-md-5">
-							<button class="btn" type="button" id="prev_btn"><span class="glyphicon glyphicon-arrow-left"></span></button>
-							<button class="btn" type="button" id="next_btn"><span class="glyphicon glyphicon-arrow-right"></span></button>
+
+			{% raw %}
+				<div id="completeContainer" ng-show="scrappedProduct != null" class="col-md-6 col-sm-6 col-xs-6">
+					<div id="complete">
+						<div id="product" class="row">
+							<div class="col-md-5 col-sm-5 col-xs-5" ng-repeat="img in scrappedProduct.images">
+								<img ng-src="{{ img }}" class="preview" width="200" />
+							</div>
+							<div class="col-md-5 col-sm-5 col-xs-5">
+								<h4>{{ scrappedProduct.title }}</h4>
+								<textarea ng:model="scrappedProduct.comment" id="comment" style="width: 226px; height: 121px;" placeholder="Vous pouvez préciser la couleur, la taille..."></textarea>
+							</div>
 						</div>
-						<div class="col-md-5">
-							<button class="btn" type="button" id="cancel_btn">Annuler</button>
-							<button class="btn btn-primary" type="button" id="save_btn"><span class="loader"></span>Enregistrer</button>
+						<div class="row">
+							<div class="col-md-5">
+								<button class="btn" type="button" id="prev_btn"><span class="glyphicon glyphicon-arrow-left"></span></button>
+								<button class="btn" type="button" id="next_btn"><span class="glyphicon glyphicon-arrow-right"></span></button>
+							</div>
+							<div class="col-md-5">
+								<button class="btn" type="button" ng-click="productScrapeCancel()">Annuler</button>
+								<button class="btn btn-primary" type="button" id="save_btn" ng-click="productSave()"><span class="loader"></span>Enregistrer</button>
+							</div>
 						</div>
 					</div>
 				</div>
+			{% endraw %}
+		</div>
+
+
+		<div ng-view>
+			<div class="row products">
+				<h2>Votre liste de cadeaux</h2>
+				{% for gift in gifts %}
+	 				<div class="col-md-2 col-sm-3 col-xs-5 product">
+	 					<div class="product-image">
+	 						<img src='{{ gift.imgUrl }}' class="img-responsive" />
+	 						<p><span>{{ gift.name }}</span></p>
+	 					</div>
+	 				</div>
+	 				{% if loop.last %}
+	 					{% if loop.length < 5 %}
+	 						{% for i in loop.length..4 %}
+	 							<div class="col-md-2  col-sm-3 col-xs-3 product">
+	 								<div class="product-image">
+	 									<div class="cadre"><span class="glyphicon glyphicon-camera"></span></div>
+	 								</div>
+	 							</div>
+	 						{% endfor %}
+	 					{% endif %}
+	 				{% endif %}
+				{% else %}
+					{% for i in loop.length..4 %}
+						<div class="col-md-2  col-sm-3 col-xs-3 product">
+							<div class="product-image">
+								<div class="cadre"></div>
+							</div>
+						</div>
+					{% endfor %}
+	 			{% endfor %}
 			</div>
 		</div>
-		<div class="row products">
-			<h2>Votre liste de cadeaux</h2>
-			{% for gift in gifts %}
- 				<div class="col-md-2 col-sm-3 col-xs-5 product">
- 					<div class="product-image">
- 						<img src='{{ gift.imgUrl }}' class="img-responsive" />
- 						<p><span>{{ gift.name }}</span></p>
- 					</div>
- 				</div>
- 				{% if loop.last %}
- 					{% if loop.length < 5 %}
- 						{% for i in loop.length..4 %}
- 							<div class="col-md-2  col-sm-3 col-xs-3 product">
- 								<div class="product-image">
- 									<div class="cadre"><span class="glyphicon glyphicon-camera"></span></div>
- 								</div>
- 							</div>
- 						{% endfor %}
- 					{% endif %}
- 				{% endif %}
-			{% else %}
-				{% for i in loop.length..4 %}
-					<div class="col-md-2  col-sm-3 col-xs-3 product">
-						<div class="product-image">
-							<div class="cadre"></div>
-						</div>
-					</div>
-				{% endfor %}
- 			{% endfor %}
-		</div>
+
 		<input type="hidden" id="path_scrape" value="{{ path('scrape') }}" />
 		<input type="hidden" id="path_product_add" value="{{ path('product_add') }}" />
 
@@ -105,5 +122,8 @@
 {% block javascripts %}
 	{{ parent() }}
 	<script src="{{ asset('bundles/newstartcommon/js/vendor/jquery.resizecrop-1.0.3.min.js') }}"></script>
-	<script src="{{ asset('bundles/newstartcommon/js/products.js') }}"></script>
+	<script src="{{ asset('bundles/newstartcommon/js/vendor/angular-resource.js') }}"></script>
+	<script src="{{ asset('bundles/newstartcommon/js/app_ng.js') }}"></script>
+	<script src="{{ asset('bundles/newstartcommon/js/controllers.js') }}"></script>
+	<script src="{{ asset('bundles/newstartcommon/js/services.js') }}"></script>
 {% endblock %}

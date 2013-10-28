@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:fb="http://www.facebook.com/2008/fbml">
+<html lang="en" xmlns:fb="http://www.facebook.com/2008/fbml" ng-app="havefyveApp">
     <head>
         <meta charset="utf-8">
         <meta name="description" content="HaveFyve, le réseau social des cadeaux. Idées de cadeaux pour faire vraiment plaisir." />
@@ -20,9 +20,7 @@
         {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-            <script src="{{ asset('bundles/newstartcommon/js/vendor/handlebars-1.0.0.js') }}"></script>
-            <script src="{{ asset('bundles/newstartcommon/js/vendor/ember-1.0.0-rc.8.min.js') }}"></script>
-            <script src="{{ asset('bundles/newstartcommon/js/app.js') }}"></script>
+            <script src="{{ asset('bundles/newstartcommon/js/vendor/angular.min.js') }}"></script>
         {% endblock %}
     </body>
 </html> 

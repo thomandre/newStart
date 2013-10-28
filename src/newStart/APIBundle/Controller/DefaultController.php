@@ -41,7 +41,7 @@ class DefaultController extends Controller
             $imageArray[] = $image->getCurrentUrl($request);
         }
 
-        $response->setData(array('images' => $imageArray, 'title' => $title));
+        $response->setData(array('images' => $imageArray, 'title' => $title, 'url' => $request->get('url')));
 
         return $response;
 
