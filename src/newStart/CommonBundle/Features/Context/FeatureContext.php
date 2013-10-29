@@ -27,6 +27,7 @@ class FeatureContext extends FeatureGlobal
         return array(
             new Step\When('je vais sur "/"'),
             new Step\When('je recharge la page'),
+            new Step\When('j\'attend "2" secondes'),
             new Step\When('je clique sur "#u_0_1" dans l\'iFrame "2"'),
         );
     }
