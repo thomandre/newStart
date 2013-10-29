@@ -1,0 +1,23 @@
+<div id="completeContainer" ng-show="scrappedProduct != null" class="col-md-6 col-sm-6 col-xs-6">
+	<div id="complete">
+		<div id="product" class="row">
+			<div class="col-md-5 col-sm-5 col-xs-5">
+				<img ng-src="{{ scrappedProduct.img }}" class="preview" width="200" />
+			</div>
+			<div class="col-md-5 col-sm-5 col-xs-5">
+				<h4>{{ scrappedProduct.title }}</h4>
+				<textarea ng:model="scrappedProduct.comment" id="comment" style="width: 226px; height: 121px;" placeholder="Vous pouvez préciser la couleur, la taille..."></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-5">
+				<button class="btn" type="button" id="prev_btn"><span class="glyphicon glyphicon-arrow-left"></span></button>
+				<button class="btn" type="button" id="next_btn"><span class="glyphicon glyphicon-arrow-right"></span></button>
+			</div>
+			<div class="col-md-5">
+				<button class="btn" type="button" ng-click="productScrapeCancel()">Annuler</button>
+				<button class="btn btn-primary" type="button" id="save_btn" ng-click="productSave(scrappedProduct)"><span class="loader"></span>Enregistrer</button>
+			</div>
+		</div>
+	</div>
+</div>

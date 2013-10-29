@@ -20,12 +20,13 @@
 				</div>
 			</div>
 
+			
 			{% raw %}
 				<div id="completeContainer" ng-show="scrappedProduct != null" class="col-md-6 col-sm-6 col-xs-6">
 					<div id="complete">
 						<div id="product" class="row">
-							<div class="col-md-5 col-sm-5 col-xs-5" ng-repeat="img in scrappedProduct.images">
-								<img ng-src="{{ img }}" class="preview" width="200" />
+							<div class="col-md-5 col-sm-5 col-xs-5">
+								<img ng-src="{{ scrappedProduct.img }}" class="preview" width="200" />
 							</div>
 							<div class="col-md-5 col-sm-5 col-xs-5">
 								<h4>{{ scrappedProduct.title }}</h4>
@@ -39,7 +40,7 @@
 							</div>
 							<div class="col-md-5">
 								<button class="btn" type="button" ng-click="productScrapeCancel()">Annuler</button>
-								<button class="btn btn-primary" type="button" id="save_btn" ng-click="productSave()"><span class="loader"></span>Enregistrer</button>
+								<button class="btn btn-primary" type="button" id="save_btn" ng-click="productSave(scrappedProduct)"><span class="loader"></span>Enregistrer</button>
 							</div>
 						</div>
 					</div>
@@ -121,6 +122,7 @@
 
 {% block javascripts %}
 	{{ parent() }}
+    <script src="{{ asset('bundles/newstartcommon/js/vendor/angular.min.js') }}"></script>
 	<script src="{{ asset('bundles/newstartcommon/js/vendor/jquery.resizecrop-1.0.3.min.js') }}"></script>
 	<script src="{{ asset('bundles/newstartcommon/js/vendor/angular-resource.js') }}"></script>
 	<script src="{{ asset('bundles/newstartcommon/js/app_ng.js') }}"></script>

@@ -6,31 +6,33 @@ function ProductDetailCtrl($scope, $routeParams) {
 	$scope.productId = $routeParams.productId;
 }
 
-function ProductListCtrl($scope, Product) {
-    $scope.products = Product.query();
+function ProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope) {
 
   	$scope.productScrape = function(name) {
+
 		$http.get('../api/v1/product/scrape?url=' + $('#url').val()).success(function (data) {
 			$scope.scrappedProduct = data;
+			$scope.scrappedProduct.img = data.images[0];
 		});
 	}
 
-  	$scope.productScrapeCancel = function(name) {
+  	$scope.productCancel = function(name) {
   		$scope.scrappedProduct = null;
 	}
 
-  	$scope.productSave = function(name) {
-	/*		$http.get('../api/v1/product/add' + $scope.scrappedProduct).success(function (data) {
-			$scope.scrappedProduct = null;
-		});
-	*/
-	    Products.add($scope.scrappedProduct, function() {
-	      $timeout(function() { $location.path('/'); });
-	    });
-
+  	$scope.productSave = function(scrappedProduct) {
+	  Product.add(scrappedProduct, function(data) {
+		$scope.scrappedProduct = null;
+		$scope.updateProducts();
+   	  });
 	}
 
+	$scope.updateProducts = function () {
+      $rootScope.products = Product.query();
+	}
+
+    $scope.updateProducts();
 }
 
 
-ProductListCtrl.$inject = ['$scope', 'Product'];
+ProductListCtrl.$inject = ['$scope', '$http', 'Product', '$timeout', '$location', '$rootScope'];
