@@ -10,7 +10,7 @@ class ProductTest extends NewStartWebTestCase
 
     /**
      * @test
-     * @group wip
+     * @group product
      */
     public function setNameIsOk()
     {

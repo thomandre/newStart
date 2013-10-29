@@ -29,15 +29,30 @@ class ImageService
 		return array(round($nw), round($nh));
 	}
 
+	public function getDimentionBeforeResize($w, $h, $nw, $nh)
+	{
+		if(($w / $h) < ($nw / $nh)) {
+			$iw = $w;
+			$ih = $w / ($nw / $nh);			
+		} elseif(($w / $h) > ($nw / $nh)) {
+			//$iw = $h / ($nh / $nw);
+			$iw = $h * ($nw / $nh);
+			$ih = $h;
+		} else {
+			$iw = $w;
+			$ih = $w;
+		}
+		return array(round($iw), round($ih));
+	}
+
 	public function getOffset($w, $h, $nw, $nh)
 	{
-
-		if(($w / $h) > ($nw / $nh)) {
-			$wOffset = (($w / ($h / $nh)) - $nw) / 2;
-			$hOffset = 0;
-		} elseif(($w / $h) < ($nw / $nh)) {
+		if(($w / $h) < ($nw / $nh)) {
 			$wOffset = 0;
 			$hOffset = (($h / ($w / $nw)) - $nh) / 2;			
+		} elseif(($w / $h) > ($nw / $nh)) {
+			$wOffset = (($w / ($h / $nh)) - $nw) / 2;
+			$hOffset = 0;
 		} else {
 			$wOffset = 0;
 			$hOffset = 0;
@@ -53,12 +68,32 @@ class ImageService
 	}
 
 
-	public function imageResize($data, $nw, $nh)
+	public function imageResize($fileSrc, $fileDest, $nw, $nh)
 	{
+ 	    $imgData = file_get_contents($fileSrc);
+ 	    list($w, $h) = getimagesize($fileSrc);
 
+		$image = imagecreatefromstring($imgData);
+		$nimage = imagecreatetruecolor($nw, $nh);
 
+		if($nw == null || $nh == null) {
+			list($nw, $nh) = $this->dimentionCalculate($w, $h, $nw, $nh);
+		}
 
+		list($wOffset, $hOffset) = $this->getOffset($w, $h, $nw, $nh);
+		list($iw, $ih) = $this->getDimentionBeforeResize($w, $h, $nw, $nh);
 
+		$result = imagecopyresampled($nimage, $image, 0, 0, $wOffset, $hOffset, $nw, $nh, $iw, $ih);
+
+		if($result == false) {
+			throw new \Exception();
+		}
+
+ 	    $result = imagejpeg($nimage, $fileDest);
+
+		if($result == false) {
+			throw new \Exception();
+		}
 	}
 
 }

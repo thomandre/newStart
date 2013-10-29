@@ -10,6 +10,7 @@ function ProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope
 
 	var timer = false;
 	$scope.warning = false;
+	$scope.imageIndex = 0;
 
 	$scope.autoProductScrape = function () {
 		if(timer) {
@@ -20,11 +21,29 @@ function ProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope
 		}, 300);
 	}
 
+	$scope.nextImg = function () {
+		if($scope.imageIndex < $scope.scrappedProduct.images.length) {
+			$scope.imageIndex++;
+		} else {
+			$scope.imageIndex = 0;
+		}
+		$scope.scrappedProduct.imgThumb = $scope.scrappedProduct.imagesThumb[$scope.imageIndex];  	
+	}
+
+	$scope.prevImg = function () {
+		if($scope.imageIndex > 0) {
+			$scope.imageIndex--;
+		} else {
+			$scope.imageIndex = $scope.scrappedProduct.images.length;
+		}
+		$scope.scrappedProduct.imgThumb = $scope.scrappedProduct.imagesThumb[$scope.imageIndex];
+	}
+
   	$scope.productScrape = function(name) {
   		$scope.scrapeLoading = true;
 		$http.get('../api/v1/product/scrape?url=' + $scope.url).success(function (data) {
 			$scope.scrappedProduct = data;
-			$scope.scrappedProduct.img = data.images[0];
+			$scope.scrappedProduct.imgThumb = data.imagesThumb[$scope.imageIndex];
 	  		$scope.scrapeLoading = false;
 		});
 	}
@@ -37,6 +56,8 @@ function ProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope
   	$scope.productSave = function(scrappedProduct) {
   	  if($rootScope.products.length < 5) {
 	  	  $scope.productLoading = true;
+  		  $scope.scrappedProduct.img = $scope.scrappedProduct.images[$scope.imageIndex];
+
 		  Product.add(scrappedProduct, function(data) {
 			$scope.scrappedProduct = null;
 			$scope.url = null;

@@ -56,10 +56,36 @@ class ImageServiceTest extends NewStartWebTestCase
 	/**
 	 * @test
 	 * @group image
+	 * @group wip
+	 */
+	public function dimentionBeforeResizeIsOK()
+	{
+		$imageService = new ImageService();
+
+		$result = $imageService->getDimentionBeforeResize(300, 120, 60, 12);
+		$this->assertEquals(array(300, 60), $result);
+
+		$result = $imageService->getDimentionBeforeResize(300, 120, 40, 60);
+		$this->assertEquals(array(80, 120), $result);
+
+	}
+
+	/**
+	 * @test
+	 * @group image
+	 * @group wip2
 	 */
 	public function imageResizeIsOk() 
 	{
-		
+		$imageService = new ImageService();
+
+		$name = 'levis';
+		$nw = 330;
+		$nh = 400;
+ 	    $imageService->imageResize('web/test/'.$name.'.jpg', 'web/test/'.$name.'-test.jpg', $nw, $nh);
+ 	    list($w, $h) = getimagesize('web/test/'.$name.'-test.jpg');
+ 	    $this->assertEquals(array($nw, $nh), array($w, $h));
+
 	}
 
 }

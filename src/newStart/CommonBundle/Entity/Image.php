@@ -165,7 +165,12 @@ class Image
 
     public function getCurrentUrl($request)
     {
-        return $request->getScheme().'://'.$request->getHttpHost().$request->getBasePath().'/images/'.basename($this->getPath());
+        return $request->getScheme().'://'.$request->getHttpHost().$request->getBasePath().'/images/'.$this->getName();
+    }
+
+    public function getName()
+    {
+        return basename($this->getPath());
     }
 
     public function getRatio() 

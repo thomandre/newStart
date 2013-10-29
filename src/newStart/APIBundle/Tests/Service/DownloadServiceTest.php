@@ -43,7 +43,6 @@ class downloadServiceTest extends NewStartWebTestCase
 	/**
 	 * @test
 	 * @group download
-	 * @group wip
 	 */
 	public function getImageViaCacheTest()
 	{	

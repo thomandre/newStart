@@ -145,6 +145,18 @@ class Product
     }
 
     /**
+     * Get imgResizedUrl
+     *
+     * @return string 
+     */
+    public function getImgResizedUrl($w, $h)
+    {
+        $imgResizedUrl = str_replace('web/images', 'web/app_dev.php/api/v1/image/resize/'.$w.'/'.$h, $this->getImgUrl());
+
+        return $imgResizedUrl;
+    }
+
+    /**
      * Set price
      *
      * @param $price

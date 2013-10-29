@@ -26,7 +26,7 @@
 					<div id="complete">
 						<div id="product" class="row">
 							<div class="col-md-5 col-sm-5 col-xs-5">
-								<img ng-src="{{ scrappedProduct.img }}" class="preview" width="200" />
+								<img ng-src="{{ scrappedProduct.imgThumb }}" class="preview" />
 							</div>
 							<div class="col-md-5 col-sm-5 col-xs-5">
 								<h4>{{ scrappedProduct.title }}</h4>
@@ -35,8 +35,8 @@
 						</div>
 						<div class="row">
 							<div class="col-md-5">
-								<button class="btn" type="button" id="prev_btn"><span class="glyphicon glyphicon-arrow-left"></span></button>
-								<button class="btn" type="button" id="next_btn"><span class="glyphicon glyphicon-arrow-right"></span></button>
+								<button class="btn" type="button" ng-click="prevImg()"><span class="glyphicon glyphicon-arrow-left"></span></button>
+								<button class="btn" type="button" ng-click="nextImg()"><span class="glyphicon glyphicon-arrow-right"></span></button>
 							</div>
 							<div class="col-md-5">
 								<button class="btn" type="button" ng-click="productScrapeCancel()">Annuler</button>
@@ -58,7 +58,7 @@
 				{% for gift in gifts %}
 	 				<div class="col-md-2 col-sm-3 col-xs-5 product">
 	 					<div class="product-image">
-	 						<img src='{{ gift.imgUrl }}' class="img-responsive" />
+	 						<img src='{{ gift.imgUrl }}' />
 	 						<p><span>{{ gift.name }}</span></p>
 	 					</div>
 	 				</div>
