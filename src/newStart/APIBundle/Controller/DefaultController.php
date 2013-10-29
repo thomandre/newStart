@@ -23,6 +23,7 @@ class DefaultController extends Controller
     /**
      * @Route("/api/v1/product/scrape", name="scrape")
      * @Template()
+     * @Cache(expires="+2hours", public="true")
      */
     public function scrapeProductAction(Request $request)
     {

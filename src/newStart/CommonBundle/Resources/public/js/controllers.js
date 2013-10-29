@@ -8,7 +8,8 @@ function ProductDetailCtrl($scope, $routeParams) {
 
 function ProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope) {
 
-	var timer=false;
+	var timer = false;
+	$scope.warning = false;
 
 	$scope.autoProductScrape = function () {
 		if(timer) {
@@ -34,14 +35,18 @@ function ProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope
 	}
 
   	$scope.productSave = function(scrappedProduct) {
-  	  $scope.productLoading = true;
-	  var success = Product.add(scrappedProduct, function(data) {
-		$scope.scrappedProduct = null;
-		$scope.url = null;
-		$scope.updateProducts();
-		$scope.productLoading = false;
-   	  });
-   	  console.log(success);
+  	  if($rootScope.products.length < 5) {
+	  	  $scope.productLoading = true;
+		  Product.add(scrappedProduct, function(data) {
+			$scope.scrappedProduct = null;
+			$scope.url = null;
+			$rootScope.products = data;
+			$scope.productLoading = false;
+	   	  });
+  	  } else {
+   		  $scope.scrappedProduct = null;
+	   	  $scope.warning = 'Vous avez déjà 5 cadeaux, pour ajouter ' + scrappedProduct.title + ', vous devez supprimer un cadeau.';
+  	  }
 	}
 
 	$scope.updateProducts = function () {
