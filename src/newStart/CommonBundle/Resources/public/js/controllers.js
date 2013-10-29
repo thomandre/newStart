@@ -46,6 +46,9 @@ function ProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope
   	  } else {
    		  $scope.scrappedProduct = null;
 	   	  $scope.warning = 'Vous avez déjà 5 cadeaux, pour ajouter ' + scrappedProduct.title + ', vous devez supprimer un cadeau.';
+	   	  $timeout(function () {
+ 			$scope.warning = null;
+		}, 10000);
   	  }
 	}
 
