@@ -13,9 +13,9 @@
 			<div class="col-md-6 col-sm-6 col-xs-6 url-block">
 				<div class="input-group url">
 					<span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
-					<input type="url" name="url" id="url" class="form-control" value="" placeholder="Copier-coller l'URL du cadeau que vous aimeriez qu'on vous offre" />
+					<input type="url" name="url" id="url" ng-change="autoProductScrape()" class="form-control" ng-model="url" placeholder="Copier-coller l'URL du cadeau que vous aimeriez qu'on vous offre" />
 					<span class="input-group-btn">
-						<button class="btn btn-primary" type="button" id="go_btn" ng-click="productScrape()"><span class="loader"></span>Go !</button>
+						<button class="btn btn-primary" type="button" id="go_btn" ng-click="productScrape()"><span ng-show="scrapeLoading" class="loader glyphicon glyphicon-refresh"></span>Go !</button>
 					</span>
 				</div>
 			</div>
@@ -40,7 +40,7 @@
 							</div>
 							<div class="col-md-5">
 								<button class="btn" type="button" ng-click="productScrapeCancel()">Annuler</button>
-								<button class="btn btn-primary" type="button" id="save_btn" ng-click="productSave(scrappedProduct)"><span class="loader"></span>Enregistrer</button>
+								<button class="btn btn-primary" type="button" id="save_btn" ng-click="productSave(scrappedProduct)"><span ng-show="productLoading" class="loader glyphicon glyphicon-refresh"></span>Enregistrer</button>
 							</div>
 						</div>
 					</div>

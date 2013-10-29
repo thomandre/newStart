@@ -8,11 +8,18 @@ function ProductDetailCtrl($scope, $routeParams) {
 
 function ProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope) {
 
-  	$scope.productScrape = function(name) {
+	$scope.autoProductScrape = function () {
+		$timeout(function () {
+ 			$scope.productScrape();
+		}, 200);
+	}
 
-		$http.get('../api/v1/product/scrape?url=' + $('#url').val()).success(function (data) {
+  	$scope.productScrape = function(name) {
+  		$scope.scrapeLoading = true;
+		$http.get('../api/v1/product/scrape?url=' + $scope.url).success(function (data) {
 			$scope.scrappedProduct = data;
 			$scope.scrappedProduct.img = data.images[0];
+	  		$scope.scrapeLoading = false;
 		});
 	}
 
@@ -21,9 +28,11 @@ function ProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope
 	}
 
   	$scope.productSave = function(scrappedProduct) {
+  	  $scope.productLoading = true;
 	  Product.add(scrappedProduct, function(data) {
 		$scope.scrappedProduct = null;
 		$scope.updateProducts();
+		$scope.productLoading = false;
    	  });
 	}
 
