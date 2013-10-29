@@ -8,10 +8,15 @@ function ProductDetailCtrl($scope, $routeParams) {
 
 function ProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope) {
 
+	var timer=false;
+
 	$scope.autoProductScrape = function () {
-		$timeout(function () {
+		if(timer) {
+			$timeout.cancel(timer);
+		}
+		timer = $timeout(function () {
  			$scope.productScrape();
-		}, 200);
+		}, 300);
 	}
 
   	$scope.productScrape = function(name) {
@@ -25,15 +30,18 @@ function ProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope
 
   	$scope.productCancel = function(name) {
   		$scope.scrappedProduct = null;
+		$scope.url = null;
 	}
 
   	$scope.productSave = function(scrappedProduct) {
   	  $scope.productLoading = true;
-	  Product.add(scrappedProduct, function(data) {
+	  var success = Product.add(scrappedProduct, function(data) {
 		$scope.scrappedProduct = null;
+		$scope.url = null;
 		$scope.updateProducts();
 		$scope.productLoading = false;
    	  });
+   	  console.log(success);
 	}
 
 	$scope.updateProducts = function () {
