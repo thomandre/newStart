@@ -116,7 +116,7 @@ a.faq {
     color: #000000;
     height: 278px;
     padding: 10px;
-    text-align: center;	
+    text-align: left;	
 }
 .product-image .cadre {
     background-color: #EAEAEA;
@@ -258,4 +258,16 @@ h4 {
 }
 .show {
     display:block;
+}
+.product-image .name {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 165px;
+}
+.product-image .glyphicon-trash {
+    position:absolute;
+    left:176px;
+    top:248px;
+    cursor:pointer;
 }

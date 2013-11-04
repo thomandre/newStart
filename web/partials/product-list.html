@@ -5,8 +5,8 @@
 		<div class="product-image" ng-controller="ProductItemCtrl">
 			<a href="#/product/{{product.id}}"><img ng-src='{{ product.thumb_url }}' /></a>
 			<p>
+				<span class="name"><a href="#/product/{{product.id}}">{{ product.name }}</a></span>
 				<span class="glyphicon glyphicon-trash" ng-click="delete()"></span> 
-				<span><a href="#/product/{{product.id}}">{{ product.name }}</a></span>
 			</p>
 		</div>
 	</div>
