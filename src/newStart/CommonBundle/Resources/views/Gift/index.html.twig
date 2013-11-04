@@ -22,7 +22,7 @@
 
 			
 			{% raw %}
-				<div id="completeContainer" ng-show="scrappedProduct != null" class="col-md-6 col-sm-6 col-xs-6">
+				<div id="completeContainer" ng-show="scrappedProduct != null" class="col-md-6 col-sm-6 col-xs-6" style="display:none;">
 					<div id="complete">
 						<div id="product" class="row">
 							<div class="col-md-5 col-sm-5 col-xs-5">
@@ -49,38 +49,18 @@
 		</div>
 
 		{% raw %}
-			<div class="alert alert-warning" ng-show="warning">{{ warning }}</div>
+			<div class="alert alert-warning" ng-show="warning" style="display:none;">{{ warning }}</div>
 		{% endraw %}
 
-		<div ng-view>
+		<div ng-view class="row">
 			<div class="row products">
 				<h2>Votre liste de cadeaux</h2>
 				{% for gift in gifts %}
 	 				<div class="col-md-2 col-sm-3 col-xs-5 product">
 	 					<div class="product-image">
-	 						<img src='{{ gift.imgUrl }}' />
 	 						<p><span>{{ gift.name }}</span></p>
 	 					</div>
 	 				</div>
-	 				{% if loop.last %}
-	 					{% if loop.length < 5 %}
-	 						{% for i in loop.length..4 %}
-	 							<div class="col-md-2  col-sm-3 col-xs-3 product">
-	 								<div class="product-image">
-	 									<div class="cadre"><span class="glyphicon glyphicon-camera"></span></div>
-	 								</div>
-	 							</div>
-	 						{% endfor %}
-	 					{% endif %}
-	 				{% endif %}
-				{% else %}
-					{% for i in loop.length..4 %}
-						<div class="col-md-2  col-sm-3 col-xs-3 product">
-							<div class="product-image">
-								<div class="cadre"></div>
-							</div>
-						</div>
-					{% endfor %}
 	 			{% endfor %}
 			</div>
 		</div>
@@ -126,8 +106,8 @@
 {% block javascripts %}
 	{{ parent() }}
     <script src="{{ asset('bundles/newstartcommon/js/vendor/angular.min.js') }}"></script>
-	<script src="{{ asset('bundles/newstartcommon/js/vendor/jquery.resizecrop-1.0.3.min.js') }}"></script>
 	<script src="{{ asset('bundles/newstartcommon/js/vendor/angular-resource.js') }}"></script>
+	<script src="{{ asset('bundles/newstartcommon/css/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('bundles/newstartcommon/js/app_ng.js') }}"></script>
 	<script src="{{ asset('bundles/newstartcommon/js/controllers.js') }}"></script>
 	<script src="{{ asset('bundles/newstartcommon/js/services.js') }}"></script>

@@ -15,7 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use \Doctrine\Common\Util\Debug;
 use newStart\APIBundle\Service\ImageService;
 
-class DefaultController extends Controller
+class ApiController extends Controller
 {
 
     /** @DI\Inject("newstart_api_service_scrape") */
@@ -41,8 +41,6 @@ class DefaultController extends Controller
                 throw $this->createNotFoundException('Le produit n\'existe pas');
             }
         }
-
-        //$imgResizeRoute = $this->container->get('router')->generate('image_resize');
 
         $response = new JsonResponse();
         $imagesArray = array();
@@ -83,9 +81,32 @@ class DefaultController extends Controller
 
         $em->flush();
 
-        $response = $this->forward('newStartAPIBundle:Default:myProducts', array());
+        $response = $this->forward('newStartAPIBundle:Api:myProducts', array());
         return $response;
     }
+
+    /**
+     * @Route("/api/v1/product/remove/{productId}", name="product_remove")
+     * @Template()
+     */
+    public function removeProductAction(Request $request, $productId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        
+        $product = $em->getRepository('newStartCommonBundle:Product')->find($productId);
+
+        if($product->getUser() == $user) {
+            $em->remove($product);
+            $em->flush();
+        } else {
+            throw $this->createNotFoundException('Fais pas ci, fais pas ça...');
+        }
+
+        $response = $this->forward('newStartAPIBundle:Api:myProducts', array());
+        return $response;
+    }
+
 
     /**
      * @Route("/api/v1/product/show", name="product_show")
@@ -104,7 +125,8 @@ class DefaultController extends Controller
                             'name' => $p->getName(),
                             'comment' => $p->getComment(),
                             'url' => $p->getUrl(),
-                            'img_url' => $p->getImgResizedUrl(222, 183),
+                            'img_url' => $p->getImgUrl(),
+                            'thumb_url' => $this->container->get('router')->generate('image_resize', array('width' => 183, 'height' => 222, 'image' => $p->getImageName()))
                         );
         }
 
@@ -114,10 +136,35 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/api/v1/image/resize/{width}/{height}/{image}", name="image_resize")
+     * @Route("/api/v1/product/show/{productId}", name="product_detail")
      * @Template()
      */
-    public function imageResizeAction($image, $height, $width)
+    public function detailProductAction($productId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $product = $em->getRepository('newStartCommonBundle:Product')->find($productId);
+
+        $data = array(
+                    'id' => $product->getId(),
+                    'name' => $product->getName(),
+                    'comment' => $product->getComment(),
+                    'url' => $product->getUrl(),
+                    'img_url' => $product->getImgUrl(),
+                    'thumb_url' => $this->container->get('router')->generate('image_resize', array('width' => 183, 'height' => 222, 'image' => $product->getImageName()))
+                );
+     
+        $response = new JsonResponse();
+        $response->setData($data);
+        return $response;
+    }
+
+    /**
+     * @Route("/api/v1/image/resize/{width}/{height}/{image}", name="image_resize")
+     * @Template()
+     * @Cache(expires="+2hours", public="true")
+     */
+    public function imageResizeAction($width, $height, $image)
     {
         $imageService = new ImageService();
 
@@ -125,7 +172,7 @@ class DefaultController extends Controller
         try {
             $filePath = $rootDir.'/../web/images/'.$image;
             $fileDest = $rootDir.'/../web/images/thumb/'.$width.'_'.$height.'_'.$image;
-            $image = $imageService->imageResize($filePath, $fileDest, $height, $width);
+            $image = $imageService->imageResize($filePath, $fileDest, $width, $height);
         } catch(\Exception $e) {
             throw $this->createNotFoundException('L\'image n\'existe pas');
         }

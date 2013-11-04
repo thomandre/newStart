@@ -156,6 +156,11 @@ class Product
         return $imgResizedUrl;
     }
 
+    public function getImageName()
+    {
+        return basename($this->getImgUrl());
+    }
+
     /**
      * Set price
      *

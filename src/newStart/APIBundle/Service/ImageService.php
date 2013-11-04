@@ -70,6 +70,9 @@ class ImageService
 
 	public function imageResize($fileSrc, $fileDest, $nw, $nh)
 	{
+		if(file_exists($fileDest)) {
+			return true;
+		}
  	    $imgData = file_get_contents($fileSrc);
  	    list($w, $h) = getimagesize($fileSrc);
 

@@ -1,9 +1,9 @@
-<h3>{{productId}}</h3>
 
-<img src="" />
+<h3>{{ product.name }}</h3>
 
-<p class=""></p>
+<a href="{{ product.url }}" class="btn btn-primary" target="_blank"><img ng-src="{{ product.img_url }}"></img></a>
 
+<p>{{ product.comment }}</p>
 
-TBD: detail view for {{productId}}
-
+<a href="#/">Retour</a>
+<a href="{{ product.url }}" class="btn btn-primary" target="_blank">Acheter</a>
