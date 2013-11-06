@@ -48,17 +48,34 @@ class User extends BaseUser
      */
     protected $products;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="myFriends")
+     **/
+    private $friendsWithMe;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="friendsWithMe")
+     * @ORM\JoinTable(name="friends",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="friend_user_id", referencedColumnName="id")}
+     * )
+     **/
+    private $myFriends;
+
     public function __construct()
     {
         parent::__construct();
-        // your own logic        
+        $this->friendsWithMe = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->myFriends = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    public function setNew($new) {
+    public function setNew($new)
+    {
         $this->new = $new;
     }
     
-    public function isNew() {
+    public function isNew()
+    {
         return $this->new;
     }
 
@@ -114,9 +131,12 @@ class User extends BaseUser
         return $this->getFirstName() . ' ' . $this->getLastname();
     }
 
+
     /**
-     * @param string $facebookID
-     * @return void
+     * Set facebookId
+     *
+     * @param string $facebookId
+     * @return User
      */
     public function setFacebookID($facebookID=null)
     {
@@ -129,7 +149,9 @@ class User extends BaseUser
     }
 
     /**
-     * @return string
+     * Get facebookId
+     *
+     * @return string 
      */
     public function getFacebookID()
     {
@@ -155,9 +177,6 @@ class User extends BaseUser
             $this->setEmail($fbdata['email']);
         }
     }
-
-
-
 
     /**
      * @param Product
@@ -202,5 +221,113 @@ class User extends BaseUser
         $this->products = $products;
         return $this;
     }
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get new
+     *
+     * @return boolean 
+     */
+    public function getNew()
+    {
+        return $this->new;
+    }
+
+    /**
+     * Add friendsWithMe
+     *
+     * @param \newStart\UserBundle\Entity\User $friendsWithMe
+     * @return User
+     */
+    public function addFriendsWithMe(\newStart\UserBundle\Entity\User $friendsWithMe)
+    {
+        $this->friendsWithMe[] = $friendsWithMe;
+    
+        return $this;
+    }
+
+    /**
+     * Remove friendsWithMe
+     *
+     * @param \newStart\UserBundle\Entity\User $friendsWithMe
+     */
+    public function removeFriendsWithMe(\newStart\UserBundle\Entity\User $friendsWithMe)
+    {
+        $this->friendsWithMe->removeElement($friendsWithMe);
+    }
+
+    public function isMyFriendWithMe(\newStart\UserBundle\Entity\User $friendTest)
+    {
+        foreach($this->friendsWithMe as $friend) {
+            if($friendTest->getId() == $friend->getId()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Get friendsWithMe
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFriendsWithMe()
+    {
+        return $this->friendsWithMe;
+    }
+
+    /**
+     * Add myFriends
+     *
+     * @param \newStart\UserBundle\Entity\User $myFriends
+     * @return User
+     */
+    public function addMyFriend(\newStart\UserBundle\Entity\User $myFriends)
+    {
+        $this->myFriends[] = $myFriends;
+    
+        return $this;
+    }
+
+    public function isMyFriend(\newStart\UserBundle\Entity\User $friendTest)
+    {
+        foreach($this->myFriends as $friend) {
+            if($friendTest->getId() == $friend->getId()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Remove myFriends
+     *
+     * @param \newStart\UserBundle\Entity\User $myFriends
+     */
+    public function removeMyFriend(\newStart\UserBundle\Entity\User $myFriends)
+    {
+        $this->myFriends->removeElement($myFriends);
+    }
+
+    /**
+     * Get myFriends
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMyFriends()
+    {
+        return $this->myFriends;
+    }
+
 
 }

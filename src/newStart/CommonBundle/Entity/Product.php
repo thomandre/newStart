@@ -55,6 +55,22 @@ class Product
      */
     private $user;
 
+
+    public function toArray() {
+        return array(
+                        'id'        => $this->id,
+                        'name'      => $this->name,
+                        'comment'   => $this->comment,
+                        'url'       => $this->url,
+                        'imgUrl'    => $this->imgUrl,
+                        'userId'    => $this->user->getId(),
+                        'fbUserId'  => $this->user->getFacebookId(),
+
+                    );
+    }
+
+
+
     /**
      * Set id
      *

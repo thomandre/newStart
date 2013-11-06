@@ -6,10 +6,18 @@ havefyveApp.config(['$routeProvider',
     $routeProvider.
       when('/', {
         templateUrl: '../../partials/product-list.html',
-        controller: 'ProductListCtrl'
+        controller: 'MyProductListCtrl'
       }).
       when('/product/:productId', {
         templateUrl: '../../partials/product-detail.html',
+        controller: 'MyProductDetailCtrl'
+      }).
+      when('/profile/:userId', {
+        templateUrl: '../../partials/user-product-list.html',
+        controller: 'ProductListCtrl'
+      }).      
+      when('/profile/:userId/product/:productId', {
+        templateUrl: '../../partials/user-product-detail.html',
         controller: 'ProductDetailCtrl'
       }).
       otherwise({

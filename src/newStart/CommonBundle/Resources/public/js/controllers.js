@@ -3,7 +3,7 @@ var havefyveControllers = angular.module('havefyveControllers', []);
 
 
 function ProductDetailCtrl($scope, $routeParams, Product, $rootScope) {
-	$scope.product = Product.show({productId: $routeParams.productId});
+	$scope.product = Product.show({id: $routeParams.productId});
 	$scope.productId = $routeParams.productId;
 
 
@@ -11,16 +11,24 @@ function ProductDetailCtrl($scope, $routeParams, Product, $rootScope) {
 
 function ProductItemCtrl($scope, Product, $rootScope) {
 	$scope.delete = function () {
-		//console.log($scope.product);	
-		Product.remove({productId: $scope.product.id}, function (data) {
-	      $rootScope.products = data;
-	      //$scope.product = null;
-		});	
+		if(confirm('Voulez-vous supprimer ' + $scope.product.name + ' ?')) {
+			Product.remove({id: $scope.product.id}, function (data) {
+		      $rootScope.products = data;
+		      //$scope.product = null;
+			});	
+
+		}
 	}
 }
 
-
 function ProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope) {
+	$scope.updateProducts = function () {
+      $rootScope.products = Product.list();
+	}
+    $scope.updateProducts();
+}
+
+function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope) {
 
 	var timer = false;
 	$scope.warning = false;
@@ -88,12 +96,13 @@ function ProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope
 	}
 
 	$scope.updateProducts = function () {
-      $rootScope.products = Product.query();
+      $rootScope.products = Product.listMine();
 	}
     $scope.updateProducts();
 }
 
 
 ProductListCtrl.$inject = ['$scope', '$http', 'Product', '$timeout', '$location', '$rootScope'];
+MyProductListCtrl.$inject = ['$scope', '$http', 'Product', '$timeout', '$location', '$rootScope'];
 ProductDetailCtrl.$inject = ['$scope', '$routeParams', 'Product', '$rootScope'];
 ProductItemCtrl.$inject = ['$scope', 'Product', '$rootScope'];

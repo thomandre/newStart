@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	<div class="container" ng-controller="ProductListCtrl">
+		{% include '::header.html.twig' %}
+		<div class="row row-user-profile">
+			<div class="col-md-2 col-sm-2 col-xs-4 user-profile">
+				<div class="viewed-profile">
+					<h2>{{ userProfile.firstName }} {{ userProfile.lastName }}</h2>
+					<br /><img src="https://graph.facebook.com/{{ userProfile.username }}/picture?width=150&height=150" />
+				</div>
+			</div>
+		</div>
+
+		{% raw %}
+			<div class="alert alert-warning" ng-show="warning" style="display:none;">{{ warning }}</div>
+		{% endraw %}
+
+		<div ng-view class="row">
+			<div class="row products">
+				<h2>Ses idées de cadeaux</h2>
+				{% for gift in gifts %}
+	 				<div class="col-md-2 col-sm-3 col-xs-5 product">
+	 					<div class="product-image">
+							<a href="#/product/{{gift.id}}"><img src='{{ gift['thumb_url'] }}' /></a>
+	 						<p><span>{{ gift.name }}</span></p>
+	 					</div>
+	 				</div>
+	 			{% endfor %}
+			</div>
+		</div>
+
+		<input type="hidden" id="path_scrape" value="{{ path('scrape') }}" />
+		<input type="hidden" id="path_product_add" value="{{ path('product_add') }}" />
+
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+    <script src="{{ asset('bundles/newstartcommon/js/vendor/angular.min.js') }}"></script>
+	<script src="{{ asset('bundles/newstartcommon/js/vendor/angular-resource.js') }}"></script>
+	<script src="{{ asset('bundles/newstartcommon/css/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('bundles/newstartcommon/js/app_ng.js') }}"></script>
+	<script src="{{ asset('bundles/newstartcommon/js/controllers.js') }}"></script>
+	<script src="{{ asset('bundles/newstartcommon/js/services.js') }}"></script>
+{% endblock %}

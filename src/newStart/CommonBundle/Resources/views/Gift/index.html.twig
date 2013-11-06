@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-	<div class="container" ng-controller="ProductListCtrl">
+	<div class="container" ng-controller="MyProductListCtrl">
 		{% include '::header.html.twig' %}
 		<div class="row row-user-profile">
 			<div class="col-md-2 col-sm-2 col-xs-4 user-profile">
@@ -58,7 +58,8 @@
 				{% for gift in gifts %}
 	 				<div class="col-md-2 col-sm-3 col-xs-5 product">
 	 					<div class="product-image">
-	 						<p><span>{{ gift.name }}</span></p>
+							<a href="#/product/{{gift.id}}"><img src='{{ gift.thumb_url }}' /></a>
+							<p><span class="name"><a href="#/product/{{gift.id}}">{{ gift.name }}</a></span></p>
 	 					</div>
 	 				</div>
 	 			{% endfor %}
@@ -68,37 +69,7 @@
 		<input type="hidden" id="path_scrape" value="{{ path('scrape') }}" />
 		<input type="hidden" id="path_product_add" value="{{ path('product_add') }}" />
 
-		<!--div class="row">
-			<h2>Ils sont déjà sur HaveFyve</h2>
-			{% for friend in friends %}
-				<div class="col-md-2 col-sm-3 col-xs-5 friend notSelected" id="{{ friend.id }}">
-					<div class="myWell media">
-						<span class="pull-left"><img src="https://graph.facebook.com/{{ friend.id }}/picture?width={{ img_size }}&height={{ img_size }}" class="media-object" height="{{ img_size }}px"/></span>
-						<p class="media-body">
-							<div><a href="#">{{ friend.name }}</a></div>
-							<div><span class="glyphicon glyphicon-ok"></span></div>
-						</p>
-					</div>
-				</div>
-			{% endfor %}
-		</div>
 
-		<div class="row">
-			<h2>Invitez-les à vous rejoindre</h2>
-			<div class="friends">
-				{% for friend in fbFriends %}
-					<div class="col-md-2 col-sm-3 col-xs-5 friend notSelected" id="{{ friend.id }}">
-						<div class="myWell media">
-							<span class="pull-left"><img src="https://graph.facebook.com/{{ friend.id }}/picture?width={{ img_size }}&height={{ img_size }}" class="media-object" height="{{ img_size }}px"/></span>
-							<p class="media-body">
-								<div><a href="#">{{ friend.name }}</a></div>
-								<div><span class="glyphicon glyphicon-ok"></span></div>
-							</p>
-						</div>
-					</div>
-				{% endfor %}
-			</div>
-		</div!-->
 
 	</div>
 {% endblock %}

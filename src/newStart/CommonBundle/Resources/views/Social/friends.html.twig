@@ -5,13 +5,14 @@
 		{% include '::header.html.twig' %}
 		<div class="row products">
 			<h2>Friends</h2>
-			<div class="col-md-2 col-sm-3 col-xs-5 product">
-				<div class="product-image">
-					<img src='http://www.colette.fr/media/catalog/product/cache/1/image/500x/9df78eab33525d08d6e5fb8d27136e95/i/m/img_9792.jpg' class="img-responsive" />
-					<p><span>Casque audio Bose</span></p>
-					<p><img src="https://graph.facebook.com/alban.margain/picture?width=20&height=20" /> <span>Alban Margain</span></p>
+			{% for friend in user.getMyFriends() %}
+				<div class="col-md-2 col-sm-3 col-xs-5 product">
+					<div class="product-image">
+						<a href="{{ path('profile', {userId:friend.getFacebookId}) }}#/profile/{{ friend.getFacebookId }}"><img src='https://graph.facebook.com/{{ friend.getFacebookId() }}/picture?width=183&height=220' height="220" width="183"/></a>
+						<p><span>{{ friend.getFullName() }}</span></p>
+					</div>
 				</div>
-			</div>
+			{% endfor %}
 		</div>
 	</div>
 {% endblock %}

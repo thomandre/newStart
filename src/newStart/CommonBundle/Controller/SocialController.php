@@ -43,8 +43,28 @@ class SocialController extends Controller
     public function friendsAction()
     {
         $user = $this->getUser();
-
         return array('user' => $user);
+    }
+
+    /**
+     * @Route("/profiles/{userId}", name="profile")
+     * @Template()
+     */
+    public function profileAction($userId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $userProfile = $em->getRepository('UserBundle:User')->findOneByFacebookId($userId);    
+        
+        $gifts = array();
+
+        foreach($userProfile->getProducts() as $key => $p) {
+            $tmp = $p->toArray();
+            $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 189, 'height' => 222, 'image' => $p->getImageName()));
+            $gifts[] = $tmp;
+        }
+
+        return array('user' => $user, 'userProfile' => $userProfile, 'gifts' => $gifts);
     }
 
     /**

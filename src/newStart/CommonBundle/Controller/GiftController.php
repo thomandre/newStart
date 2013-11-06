@@ -54,24 +54,21 @@ class GiftController extends Controller
         $fbFriends = $response['data'];
         $fbFriends = array_slice($fbFriends, 0, 10*5);
 
-        $friends = array(
-                            array('id' => '516107440', 'name' => 'Alban Margain'),
-                            array('id' => '197811250', 'name' => 'Angus Ross'),
-                            array('id' => '538657916', 'name' => 'Charlotte Hao-Chiu André'),
-                            array('id' => '581496566', 'name' => 'Charles Pugliesi-Conti'),
-                            array('id' => '607175812', 'name' => 'Pierre du Chesne'),
-                            array('id' => '507231631', 'name' => 'Maxime Aoustin'),
-                            array('id' => '513728698', 'name' => 'Michael Canil'),
-                            array('id' => '693496533', 'name' => 'François Le Pøul'),
 
-                        );
+        $products = $this->em->getRepository('newStartCommonBundle:Product')->findBy(array('user' => $user));
+        $data = array();
+        
+        foreach($products as $p) {
+            $tmp = $p->toArray();
+            $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 189, 'height' => 222, 'image' => $p->getImageName()));
+        
+            $data[] = $tmp;
+        }
 
-        $products = $this->em->getRepository('newStartCommonBundle:Product')->findAll(array('user' => $user));
 
-        return array('gifts' => $products,
+        return array('gifts' => $data,
                     'user' => $user,
                     'fbFriends' => $fbFriends,
-                    'friends' => $friends,
                     'img_size' => 75
 
         );

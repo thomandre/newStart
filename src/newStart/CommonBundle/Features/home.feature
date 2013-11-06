@@ -3,9 +3,16 @@ Fonctionnalité: Voir la home
 
 Contexte: Je souhaite voir la home et la FAQ
 
-Scénario: Je vois la home avec un message affichant que le JS doit être activé
-Soit je suis sur "/"
-Et je devrais voir "HaveFyve necessite l'activation de Javascript pour fonctionner correctement"
+#@wip
+#Scénario: Je vois la home avec un message affichant que le JS doit être activé
+#Soit je suis sur "/"
+#Et je devrais voir "HaveFyve necessite l'activation de Javascript pour fonctionner correctement"
+#Et je vais sur "http://192.168.1.11:8888/newStart/web/partials/test.php"
+#Et montrer la dernière réponse
+#Et je remplis "plop" avec "test 1"
+#Et je remplis "klop" avec "test 2"
+#Et je presse "ok"
+#Et montrer la dernière réponse
 
 @javascript @first
 Scénario: J'ai le JS activé et je peux enregistrer un email

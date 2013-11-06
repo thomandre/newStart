@@ -3,7 +3,7 @@ Fonctionnalité: Sharing OK
 
 Contexte: Je souhaite me loguer et partager un produit
 
-@javascript @wip @sharing
+@javascript @sharing
 Scénario: Je me logue et je partage un produit
 Soit je suis sur "/"
 Soit je me logue en tant que "albanthomas1@gmail.com"

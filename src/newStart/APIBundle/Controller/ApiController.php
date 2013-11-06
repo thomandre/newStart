@@ -109,25 +109,43 @@ class ApiController extends Controller
 
 
     /**
-     * @Route("/api/v1/product/show", name="product_show")
+     * @Route("/api/v1/product/list-mine", name="product_show")
      * @Template()
      */
     public function myProductsAction()
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
-        $products = $em->getRepository('newStartCommonBundle:Product')->findAll(array('user' => $user));
+        $products = $em->getRepository('newStartCommonBundle:Product')->findBy(array('user' => $user));
 
         $data = array();
         foreach($products as $p) {
-            $data[] = array(
-                            'id' => $p->getId(),
-                            'name' => $p->getName(),
-                            'comment' => $p->getComment(),
-                            'url' => $p->getUrl(),
-                            'img_url' => $p->getImgUrl(),
-                            'thumb_url' => $this->container->get('router')->generate('image_resize', array('width' => 183, 'height' => 222, 'image' => $p->getImageName()))
-                        );
+            $tmp = $p->toArray();
+            $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 189, 'height' => 222, 'image' => $p->getImageName()));
+        
+            $data[] = $tmp;
+        }
+
+        $response = new JsonResponse();
+        $response->setData($data);
+        return $response;
+    }
+
+    /**
+     * @Route("/api/v1/product/list/{userId}", name="user_product_show")
+     * @Template()
+     */
+    public function productsListAction($userId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $userProfile = $em->getRepository('UserBundle:User')->findOneByFacebookId($userId);    
+        
+        $data = array();
+        foreach($userProfile->getProducts() as $key => $p) {
+            $tmp = $p->toArray();
+            $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 189, 'height' => 222, 'image' => $p->getImageName()));
+            $data[] = $tmp;
         }
 
         $response = new JsonResponse();
@@ -145,14 +163,8 @@ class ApiController extends Controller
         $user = $this->getUser();
         $product = $em->getRepository('newStartCommonBundle:Product')->find($productId);
 
-        $data = array(
-                    'id' => $product->getId(),
-                    'name' => $product->getName(),
-                    'comment' => $product->getComment(),
-                    'url' => $product->getUrl(),
-                    'img_url' => $product->getImgUrl(),
-                    'thumb_url' => $this->container->get('router')->generate('image_resize', array('width' => 183, 'height' => 222, 'image' => $product->getImageName()))
-                );
+        $data = $product->toArray();
+        $data['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 183, 'height' => 222, 'image' => $product->getImageName()));
      
         $response = new JsonResponse();
         $response->setData($data);
