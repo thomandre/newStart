@@ -55,6 +55,21 @@ class Product
      */
     private $user;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", options={"default":0}))
+     */
+    protected $beenBought;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", options={"default":0}))
+     */
+    protected $deleted;
+
+
 
     public function toArray() {
         return array(
@@ -63,13 +78,13 @@ class Product
                         'comment'   => $this->comment,
                         'url'       => $this->url,
                         'imgUrl'    => $this->imgUrl,
+                        'beenBought'=> $this->beenBought, 
                         'userId'    => $this->user->getId(),
                         'fbUserId'  => $this->user->getFacebookId(),
+                        'fullName'  => $this->user->getFullname(),
 
                     );
     }
-
-
 
     /**
      * Set id
@@ -244,6 +259,48 @@ class Product
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set beenBought
+     *
+     * @param $beenBought
+     * @return Product
+     */
+    public function setBeenBought($beenBought)
+    {
+        $this->beenBought = $beenBought;
+    
+        return $this;
+    }
+
+    /**
+     * Get beenBought
+     */
+    public function getBeenBought()
+    {
+        return $this->beenBought;
+    }
+
+    /**
+     * Set deleted
+     *
+     * @param $deleted
+     * @return Product
+     */
+    public function setDeleted($deleted)
+    {
+        $this->deleted = $deleted;
+    
+        return $this;
+    }
+
+    /**
+     * Get deleted
+     */
+    public function getDeleted()
+    {
+        return $this->deleted;
     }
 
 }

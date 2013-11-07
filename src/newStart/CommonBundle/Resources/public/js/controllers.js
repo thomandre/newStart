@@ -5,8 +5,6 @@ var havefyveControllers = angular.module('havefyveControllers', []);
 function ProductDetailCtrl($scope, $routeParams, Product, $rootScope) {
 	$scope.product = Product.show({id: $routeParams.productId});
 	$scope.productId = $routeParams.productId;
-
-
 }
 
 function ProductItemCtrl($scope, Product, $rootScope) {
@@ -21,11 +19,14 @@ function ProductItemCtrl($scope, Product, $rootScope) {
 	}
 }
 
-function ProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope) {
+function ProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope, $routeParams) {
 	$scope.updateProducts = function () {
-      $rootScope.products = Product.list();
+      $rootScope.products = Product.list({id: $routeParams.userId});
 	}
-    $scope.updateProducts();
+	if($routeParams.userId != undefined) {
+	    $scope.updateProducts();
+	}
+
 }
 
 function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope) {
@@ -102,7 +103,7 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 }
 
 
-ProductListCtrl.$inject = ['$scope', '$http', 'Product', '$timeout', '$location', '$rootScope'];
+ProductListCtrl.$inject = ['$scope', '$http', 'Product', '$timeout', '$location', '$rootScope', '$routeParams'];
 MyProductListCtrl.$inject = ['$scope', '$http', 'Product', '$timeout', '$location', '$rootScope'];
 ProductDetailCtrl.$inject = ['$scope', '$routeParams', 'Product', '$rootScope'];
 ProductItemCtrl.$inject = ['$scope', 'Product', '$rootScope'];

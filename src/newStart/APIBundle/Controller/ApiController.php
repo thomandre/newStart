@@ -74,6 +74,8 @@ class ApiController extends Controller
         $product->setUrl($request->get('url'));
         $product->setImgUrl($request->get('img'));
         $product->setComment($request->get('comment'));
+        $product->setBeenBought(false);
+        $product->setDeleted(false);
 
         $em->persist($product);
         $user->addProduct($product);
@@ -97,7 +99,9 @@ class ApiController extends Controller
         $product = $em->getRepository('newStartCommonBundle:Product')->find($productId);
 
         if($product->getUser() == $user) {
-            $em->remove($product);
+            //$em->remove($product);
+            $product->setDeleted(true);
+            $em->persist($product);
             $em->flush();
         } else {
             throw $this->createNotFoundException('Fais pas ci, fais pas ça...');
@@ -116,7 +120,7 @@ class ApiController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
-        $products = $em->getRepository('newStartCommonBundle:Product')->findBy(array('user' => $user));
+        $products = $em->getRepository('newStartCommonBundle:Product')->findBy(array('user' => $user, 'deleted' => false));
 
         $data = array();
         foreach($products as $p) {
@@ -139,10 +143,11 @@ class ApiController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
-        $userProfile = $em->getRepository('UserBundle:User')->findOneByFacebookId($userId);    
-        
+        $userProfile = $em->getRepository('UserBundle:User')->findOneBy(array('facebookId' => $userId));    
+        $products = $em->getRepository('newStartCommonBundle:Product')->findBy(array('user' => $userProfile, 'deleted' => false, 'beenBought' => false));
+
         $data = array();
-        foreach($userProfile->getProducts() as $key => $p) {
+        foreach($products as $key => $p) {
             $tmp = $p->toArray();
             $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 189, 'height' => 222, 'image' => $p->getImageName()));
             $data[] = $tmp;
@@ -168,6 +173,28 @@ class ApiController extends Controller
      
         $response = new JsonResponse();
         $response->setData($data);
+        return $response;
+    }
+
+    /**
+     * @Route("/api/v1/product/bought", name="have_bought")
+     * @Template()
+     */
+    public function haveBoughtProductAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $productId = $request->get('productId');
+        $user = $this->getUser();
+        $product = $em->getRepository('newStartCommonBundle:Product')->find($productId);
+        if($product->getUser() == $user) {
+            $product->setDeleted(true);
+        }
+        $product->setBeenBought(true);
+        $em->persist($product);
+        $em->flush();
+
+        $response = new JsonResponse();
+        $response->setData(array('success' => true));
         return $response;
     }
 

@@ -55,7 +55,7 @@ class GiftController extends Controller
         $fbFriends = array_slice($fbFriends, 0, 10*5);
 
 
-        $products = $this->em->getRepository('newStartCommonBundle:Product')->findBy(array('user' => $user));
+        $products = $this->em->getRepository('newStartCommonBundle:Product')->findBy(array('user' => $user, 'deleted' => false));
         $data = array();
         
         foreach($products as $p) {
