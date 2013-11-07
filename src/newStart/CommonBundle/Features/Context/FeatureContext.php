@@ -181,4 +181,13 @@ class FeatureContext extends FeatureGlobal
     }
 
 
+    /**
+     * @Given /^je valide la fenetre de confirmation$/
+     */
+    public function jeValideLaFenetreDeConfirmation()
+    {
+        $this->getSession()->getDriver()->getWebDriverSession()->accept_alert();    
+    }
+
+
 }

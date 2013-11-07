@@ -183,7 +183,15 @@ class User extends BaseUser
      */
     public function addProduct(Product $product) 
     {
-        if(count($this->products) < 5) {
+        $activeProducts = 0;
+
+        foreach($this->products as $p) {
+            if($p->getDeleted() == false) {
+                $activeProducts++;
+            }
+        }
+
+        if($activeProducts < 5) {
             $this->products[] = $product;
             $product->setUser($this);
         } else {
