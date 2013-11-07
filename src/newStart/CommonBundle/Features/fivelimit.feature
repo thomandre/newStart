@@ -6,7 +6,7 @@ Contexte: Je souhaite me loguer et partager un produit
 @javascript @fiveLimit
 Scénario: Je me logue et je partage un produit
 Soit je suis sur "/"
-Soit je me logue en tant que "albanthomas1@gmail.com"
+Soit je me logue en tant que "albanthomas1@gmail.com" / "projetreecomate"
 
 Alors je remplis "url" avec "http://us.levi.com/product/index.jsp?productId=21467686&"
 Et j'attend "12" secondes

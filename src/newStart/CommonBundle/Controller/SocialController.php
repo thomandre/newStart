@@ -55,10 +55,11 @@ class SocialController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $userProfile = $em->getRepository('UserBundle:User')->findOneByFacebookId($userId);    
-        
+        $products = $em->getRepository('newStartCommonBundle:Product')->findBy(array('user' => $userProfile, 'deleted' => false, 'beenBought' => false));
+
         $gifts = array();
 
-        foreach($userProfile->getProducts() as $key => $p) {
+        foreach($products as $key => $p) {
             $tmp = $p->toArray();
             $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 189, 'height' => 222, 'image' => $p->getImageName()));
             $gifts[] = $tmp;
