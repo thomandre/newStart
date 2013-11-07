@@ -56,7 +56,7 @@ class FeatureContext extends FeatureGlobal
             new Step\When('je remplis "pass" avec "'.$arg2.'"'),
             new Step\When('je valide le formulaire'),
             new Step\Then('je reviens sur la fenêtre principale'),
-            new Step\When('j\'attend "5" secondes'),
+            new Step\When('j\'attend "8" secondes'),
             new Step\Then('je devrais voir "Votre liste de cadeaux"'),
         );
     }
