@@ -49,18 +49,14 @@ class User extends BaseUser
     protected $products;
 
     /**
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="myFriends")
-     **/
-    private $friendsWithMe;
+     * @ORM\OneToMany(targetEntity="newStart\UserBundle\Entity\Friends", mappedBy="myFriends", cascade={"persist"})
+     */
+    protected $friendsWithMe;
 
     /**
-     * @ORM\ManyToMany(targetEntity="User", inversedBy="friendsWithMe")
-     * @ORM\JoinTable(name="friends",
-     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="friend_user_id", referencedColumnName="id")}
-     * )
-     **/
-    private $myFriends;
+     * @ORM\OneToMany(targetEntity="newStart\UserBundle\Entity\Friends", mappedBy="friendsWithMe", cascade={"persist"})
+     */
+    protected $myFriends;
 
     public function __construct()
     {
@@ -146,16 +142,6 @@ class User extends BaseUser
             //on met le facebook id a la place
             $this->setUsername($facebookID);
         }        
-    }
-
-    /**
-     * Get facebookId
-     *
-     * @return string 
-     */
-    public function getFacebookID()
-    {
-        return $this->facebookId;
     }
 
     /**
@@ -251,33 +237,10 @@ class User extends BaseUser
         return $this->new;
     }
 
-    /**
-     * Add friendsWithMe
-     *
-     * @param \newStart\UserBundle\Entity\User $friendsWithMe
-     * @return User
-     */
-    public function addFriendsWithMe(\newStart\UserBundle\Entity\User $friendsWithMe)
-    {
-        $this->friendsWithMe[] = $friendsWithMe;
-    
-        return $this;
-    }
-
-    /**
-     * Remove friendsWithMe
-     *
-     * @param \newStart\UserBundle\Entity\User $friendsWithMe
-     */
-    public function removeFriendsWithMe(\newStart\UserBundle\Entity\User $friendsWithMe)
-    {
-        $this->friendsWithMe->removeElement($friendsWithMe);
-    }
-
     public function isMyFriendWithMe(\newStart\UserBundle\Entity\User $friendTest)
     {
         foreach($this->friendsWithMe as $friend) {
-            if($friendTest->getId() == $friend->getId()) {
+            if($friendTest->getId() == $friend->getMyFriends()->getId()) {
                 return true;
             }
         }
@@ -294,37 +257,14 @@ class User extends BaseUser
         return $this->friendsWithMe;
     }
 
-    /**
-     * Add myFriends
-     *
-     * @param \newStart\UserBundle\Entity\User $myFriends
-     * @return User
-     */
-    public function addMyFriend(\newStart\UserBundle\Entity\User $myFriends)
-    {
-        $this->myFriends[] = $myFriends;
-    
-        return $this;
-    }
-
     public function isMyFriend(\newStart\UserBundle\Entity\User $friendTest)
     {
         foreach($this->myFriends as $friend) {
-            if($friendTest->getId() == $friend->getId()) {
+            if($friendTest->getId() == $friend->getMyFriends()->getId()) {
                 return true;
             }
         }
         return false;
-    }
-
-    /**
-     * Remove myFriends
-     *
-     * @param \newStart\UserBundle\Entity\User $myFriends
-     */
-    public function removeMyFriend(\newStart\UserBundle\Entity\User $myFriends)
-    {
-        $this->myFriends->removeElement($myFriends);
     }
 
     /**
@@ -335,6 +275,62 @@ class User extends BaseUser
     public function getMyFriends()
     {
         return $this->myFriends;
+    }
+
+    /**
+     * Get facebookId
+     *
+     * @return string 
+     */
+    public function getFacebookId()
+    {
+        return $this->facebookId;
+    }
+
+    /**
+     * Add friendsWithMe
+     *
+     * @param \newStart\UserBundle\Entity\Friends $friendsWithMe
+     * @return User
+     */
+    public function addFriendsWithMe(\newStart\UserBundle\Entity\Friends $friendsWithMe)
+    {
+        $this->friendsWithMe[] = $friendsWithMe;
+    
+        return $this;
+    }
+
+    /**
+     * Remove friendsWithMe
+     *
+     * @param \newStart\UserBundle\Entity\Friends $friendsWithMe
+     */
+    public function removeFriendsWithMe(\newStart\UserBundle\Entity\Friends $friendsWithMe)
+    {
+        $this->friendsWithMe->removeElement($friendsWithMe);
+    }
+
+    /**
+     * Add myFriends
+     *
+     * @param \newStart\UserBundle\Entity\Friends $myFriends
+     * @return User
+     */
+    public function addMyFriend(\newStart\UserBundle\Entity\Friends $myFriends)
+    {
+        $this->myFriends[] = $myFriends;
+    
+        return $this;
+    }
+
+    /**
+     * Remove myFriends
+     *
+     * @param \newStart\UserBundle\Entity\Friends $myFriends
+     */
+    public function removeMyFriend(\newStart\UserBundle\Entity\Friends $myFriends)
+    {
+        $this->myFriends->removeElement($myFriends);
     }
 
 

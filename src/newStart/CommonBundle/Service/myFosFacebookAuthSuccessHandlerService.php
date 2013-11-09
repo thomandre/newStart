@@ -9,6 +9,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationFailureHandlerI
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use newStart\UserBundle\Entity\Friends;
 
 /**
  * @Service("my_fos_facebook_auth_success_handler", public=true)
@@ -40,15 +41,23 @@ class myFosFacebookAuthSuccessHandlerService implements AuthenticationSuccessHan
             $friendObj = $userRepository->findOneByFacebookId($friend['id']);
 //            \Doctrine\Common\Util\Debug::dump($friendObj);
             if($friendObj != null && $user->isMyFriend($friendObj) == false) {
-                $user->addMyFriend($friendObj);
+                $friend = new Friends();
+                $friend->setFriendsWithMe($friendObj);
+                $friend->setMyFriends($user);
+
+                $em->persist($friend);
             }
             if($friendObj != null && $friendObj->isMyFriend($user) == false) {
-                $friendObj->addMyFriend($user);
-                $em->persist($friendObj);
+                $friend = new Friends();
+                $friend->setFriendsWithMe($user);
+                $friend->setMyFriends($friendObj);
+
+                $em->persist($friend);
             }
 
         }
 
+        $user->setNew(false);
         $em->persist($user);
 //        $em->persist($friendObj);
         $em->flush();

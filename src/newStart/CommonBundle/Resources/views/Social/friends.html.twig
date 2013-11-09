@@ -8,8 +8,8 @@
 			{% for friend in user.getMyFriends() %}
 				<div class="col-md-2 col-sm-3 col-xs-5 product">
 					<div class="product-image">
-						<a href="{{ path('profile', {userId:friend.getFacebookId}) }}#/profile/{{ friend.getFacebookId }}"><img src='https://graph.facebook.com/{{ friend.getFacebookId() }}/picture?width=183&height=220' height="220" width="183"/></a>
-						<p><span><a href="{{ path('profile', {userId:friend.getFacebookId}) }}#/profile/{{ friend.getFacebookId }}">{{ friend.getFullName() }}</a></span></p>
+						<a href="{{ path('profile', {userId:friend.myFriends.getFacebookId}) }}#/profile/{{ friend.myFriends.getFacebookId }}"><img src='https://graph.facebook.com/{{ friend.myFriends.getFacebookId() }}/picture?width=183&height=220' height="220" width="183"/></a>
+						<p><span><a href="{{ path('profile', {userId:friend.myFriends.getFacebookId}) }}#/profile/{{ friend.myFriends.getFacebookId }}">{{ friend.myFriends.getFullName() }}</a></span></p>
 					</div>
 				</div>
 			{% endfor %}
