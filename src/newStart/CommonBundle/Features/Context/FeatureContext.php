@@ -27,7 +27,7 @@ class FeatureContext extends FeatureGlobal
         return array(
             new Step\When('je vais sur "/"'),
             new Step\When('je recharge la page'),
-            new Step\When('j\'attend "2" secondes'),
+            new Step\When('j\'attend que "#u_0_1" soit sur l\'iFrame "2"'),
             new Step\When('je clique sur "#u_0_1" dans l\'iFrame "2"'),
         );
     }
@@ -44,6 +44,38 @@ class FeatureContext extends FeatureGlobal
             throw new \Exception('L\'élément "'.$arg1.'" est visible.');
         }
     }
+    
+    /**
+     * @Given /^j\'attend que "([^"]*)" soit visible$/
+     */
+    public function jAttendQueSoitVisible($arg1)
+    {
+        $this->getSession()->wait(30000,
+            "$('".$arg1."').css('display') != 'none';"
+        );
+        
+    }
+
+
+    /**
+     * @Given /^j\'attend que "([^"]*)" soit sur l\'iFrame "([^"]*)"$/
+     */
+    public function jAttendQueSoitSurLIFrame($arg1, $arg2)
+    {
+        $this->getSession()->wait(30000,
+            "function () {var iframe = $('iframe'); return (iframe[".$arg2."].contents().find('".$arg1."').length > 0);}"
+        );
+    }
+
+    /**
+     * @Given /^j\'attend que "([^"]*)" soit sur la page$/
+     */
+    public function jAttendQueSoitSurLaPage($arg1)
+    {
+        $this->getSession()->wait(30000,
+            "$('".$arg1."').length > 0;"
+        );
+    }
 
     /**
      * @Given /^je me logue en tant que "([^"]*)" \/ "([^"]*)"$/
@@ -56,10 +88,11 @@ class FeatureContext extends FeatureGlobal
             new Step\When('je remplis "pass" avec "'.$arg2.'"'),
             new Step\When('je valide le formulaire'),
             new Step\Then('je reviens sur la fenêtre principale'),
-            new Step\When('j\'attend "8" secondes'),
+            new Step\When('j\'attend que ".products h2" soit sur la page'),
             new Step\Then('je devrais voir "Votre liste de cadeaux"'),
         );
     }
+
 
 
     /**
@@ -80,7 +113,7 @@ class FeatureContext extends FeatureGlobal
     public function jeCliqueSurLeBoutonFacebookConnect()
     {
         return array(
-            new Step\When('j\'attend "2" secondes'),
+            new Step\When('j\'attend que "#u_0_0" soit sur l\'iFrame "2"'),
             new Step\When('je clique sur "#u_0_0" dans l\'iFrame "2"'),
             new Step\When('j\'attend "1" secondes'),
             new Step\When('je bascule sur la popup'),
