@@ -57,6 +57,12 @@ class myFosFacebookAuthSuccessHandlerService implements AuthenticationSuccessHan
 
         }
 
+        $me = $facebook->api('/me/');
+
+        //var_dump($me['birthday']);
+        $birthday = explode('/', $me['birthday']);
+        $user->setBirthday(new \Datetime($birthday[2].'-'.$birthday[0].'-'.$birthday[1]));
+
         $user->setNew(false);
         $em->persist($user);
 //        $em->persist($friendObj);

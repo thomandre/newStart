@@ -58,6 +58,13 @@ class User extends BaseUser
      */
     protected $myFriends;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="birthday", type="datetime", nullable=true)
+     */
+    protected $birthday;
+
     public function __construct()
     {
         parent::__construct();
@@ -73,6 +80,17 @@ class User extends BaseUser
                         'facebookId'    => $this->facebookId,
                         'fullName'      => $this->getFullname(),
                     );
+    }
+
+    public function setBirthday(\DateTime $birthday)
+    {
+        $this->birthday = $birthday;
+        return $this;
+    }
+
+    public function getBirthday()
+    {
+        return $this->birthday;
     }
 
     public function setNew($new)
