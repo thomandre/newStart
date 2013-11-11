@@ -26,6 +26,11 @@ class Friends
      */
     protected $myFriends;
 
+    /**
+     * @var boolean
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $favorite;
 
     /**
      * Set friendsWithMe
@@ -71,5 +76,28 @@ class Friends
     public function getMyFriends()
     {
         return $this->myFriends;
+    }
+
+    /**
+     * Set favorite
+     *
+     * @param boolean $favorite
+     * @return Friends
+     */
+    public function setFavorite($favorite)
+    {
+        $this->favorite = $favorite;
+    
+        return $this;
+    }
+
+    /**
+     * Get favorite
+     *
+     * @return boolean 
+     */
+    public function isFavorite()
+    {
+        return $this->favorite;
     }
 }

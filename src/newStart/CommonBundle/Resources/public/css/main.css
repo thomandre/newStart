@@ -268,9 +268,16 @@ h4 {
     text-overflow: ellipsis;
     width: 165px;
 }
-.product-image .glyphicon-trash {
+
+.product-image .glyphicon-trash, .product-image .glyphicon-star {
     position:absolute;
     left:176px;
     top:248px;
     cursor:pointer;
+}
+.product-image .glyphicon-star.favorized {
+    color:#428BCA;
+}
+.product-image .glyphicon-star {
+    color:#ddd;
 }

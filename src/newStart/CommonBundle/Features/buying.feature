@@ -7,7 +7,7 @@ Scénario: Je suis Thomas et je veux partager un le MacBook Air de mes reves
 Soit je suis sur "/"
 Soit je me logue en tant que "thomandr1@yahoo.fr" / "c@d153512"
 Alors je remplis "url" avec "http://www.apple.com/fr/macbook-air/"
-Et j'attend "12" secondes
+Et j'attend que "#completeContainer" soit visible 
 Alors je devrais voir "Apple - MacBook Air"
 Soit je remplis "comment" avec "Core i7 1,7 GHz - 512 de SSD - 8Go de RAM"
 Et je presse "Enregistrer"
@@ -22,6 +22,7 @@ Scénario: Je suis AlbanThomas et je veux offrir un beau cadeau a Thomas
 Soit je vais sur "/"
 Soit je me logue en tant que "albanthomas1@gmail.com" / "projetreecomate"
 Et je suis "Friends"
+Et j'attend "1" secondes
 Alors je devrais voir "Thomas André"
 Et je suis "Thomas André"
 Et j'attend "0.5" secondes
@@ -41,8 +42,8 @@ Et je devrais voir "Avez-vous réelement acheté \"Apple - MacBook Air\" ?"
 Et je presse "Oui, j'ai acheté ce produit"
 Et j'attend "0.5" secondes
 Et je ne devrais pas voir "Avez-vous réelement acheté \"Apple - MacBook Air\" ?"
-
 Et je suis "Friends"
+Et j'attend "0.5" secondes
 Alors je devrais voir "Thomas André"
 Et je suis "Thomas André"
 Et j'attend "0.5" secondes
@@ -53,6 +54,7 @@ Et je me delogue
 Scénario: Je suis Thomas et je ne dois pas voir qu'Alban m'a fait un cadeau
 Soit je vais sur "/"
 Soit je me logue en tant que "thomandr1@yahoo.fr" / "c@d153512"
+Et j'attend "0.5" secondes
 Alors je devrais voir "Apple - MacBook Air"
 Et je me delogue
 

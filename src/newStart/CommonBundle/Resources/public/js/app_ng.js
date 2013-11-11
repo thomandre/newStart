@@ -20,6 +20,10 @@ havefyveApp.config(['$routeProvider',
         templateUrl: '../../partials/user-product-detail.html',
         controller: 'ProductDetailCtrl'
       }).
+      when('/friends/', {
+        templateUrl: '../../partials/friends-list.html',
+        controller: 'MyFriendsListCtrl'
+      }).
       otherwise({
         redirectTo: '/'
       });

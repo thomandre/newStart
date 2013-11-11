@@ -2,6 +2,22 @@ var havefyveControllers = angular.module('havefyveControllers', []);
 
 
 
+function FriendCtrl($scope, Friend, $rootScope) {
+	$scope.favorize = function () {
+		Friend.favorize({id: $scope.friend.facebookId}, function (data) {
+			$scope.friend.favorite = data.favorized;
+		});	
+	}
+}
+
+function MyFriendsListCtrl($scope, Friend, $rootScope) {
+	$scope.updateFriends = function () {
+		$rootScope.friends = Friend.listMine();
+    }
+    $scope.updateFriends();
+}
+
+
 function ProductDetailCtrl($scope, $routeParams, Product, $rootScope) {
 	$scope.product = Product.show({id: $routeParams.productId});
 	$scope.productId = $routeParams.productId;
@@ -12,14 +28,12 @@ function ProductItemCtrl($scope, Product, $rootScope) {
 		if(confirm('Voulez-vous supprimer ' + $scope.product.name + ' ?')) {
 			Product.remove({id: $scope.product.id}, function (data) {
 		      $rootScope.products = data;
-		      //$scope.product = null;
 			});	
-
 		}
 	}
 }
 
-function ProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope, $routeParams) {
+function ProductListCtrl($scope, Product, $timeout, $location, $rootScope, $routeParams) {
 	$scope.updateProducts = function () {
       $rootScope.products = Product.list({id: $routeParams.userId});
 	}
@@ -103,7 +117,9 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 }
 
 
-ProductListCtrl.$inject = ['$scope', '$http', 'Product', '$timeout', '$location', '$rootScope', '$routeParams'];
-MyProductListCtrl.$inject = ['$scope', '$http', 'Product', '$timeout', '$location', '$rootScope'];
+ProductListCtrl.$inject = ['$scope', 'Product', '$timeout', '$location', '$rootScope', '$routeParams'];
+MyProductListCtrl.$inject = ['$scope', '$http','Product', '$timeout', '$location', '$rootScope'];
 ProductDetailCtrl.$inject = ['$scope', '$routeParams', 'Product', '$rootScope'];
 ProductItemCtrl.$inject = ['$scope', 'Product', '$rootScope'];
+MyFriendsListCtrl.$inject = ['$scope', 'Friend', '$rootScope'];
+FriendCtrl.$inject = ['$scope', 'Friend', '$rootScope'];

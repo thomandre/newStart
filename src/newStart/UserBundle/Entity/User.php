@@ -65,6 +65,16 @@ class User extends BaseUser
         $this->myFriends = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public function toArray() {
+        return array(
+                        'id'            => $this->id,
+                        'firstname'     => $this->firstname,
+                        'lastname'      => $this->lastname,
+                        'facebookId'    => $this->facebookId,
+                        'fullName'      => $this->getFullname(),
+                    );
+    }
+
     public function setNew($new)
     {
         $this->new = $new;

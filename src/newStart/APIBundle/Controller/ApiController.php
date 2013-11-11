@@ -199,6 +199,57 @@ class ApiController extends Controller
     }
 
     /**
+     * @Route("/api/v1/friends/list-mine", name="friend_api")
+     * @Template()
+     */
+    public function friendsAction()
+    {
+        $user = $this->getUser();
+
+        $data = array();
+        foreach($user->getMyFriends() as $friend) {
+            $tmp = $friend->getMyFriends()->toArray();
+            $tmp['favorite'] = $friend->isFavorite();
+            $data[] = $tmp;
+        }
+        $response = new JsonResponse();
+        $response->setData($data);
+        
+        return $response;
+    }
+
+    /**
+     * @Route("/api/v1/friends/favorize/{friendId}", name="friend_favorize")
+     * @Template()
+     */
+    public function friendFavorizeAction($friendId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        foreach($user->getMyFriends() as $friend) {
+            if($friend->getMyFriends()->getFacebookId() == $friendId) {
+                if($friend->isFavorite()) {
+                    $friend->setFavorite(false);
+                } else {
+                    $friend->setFavorite(true);                    
+                }
+                $em->persist($friend);
+                $em->flush();                
+        
+                $response = new JsonResponse();
+                $response->setData(array('success' => true, 'favorized' => $friend->isFavorite()));
+                
+                return $response;
+            }
+        }
+        $response = new JsonResponse();
+        $response->setData(array('success' => false));
+
+        return $response;
+    }
+
+    /**
      * @Route("/api/v1/image/resize/{width}/{height}/{image}", name="image_resize")
      * @Template()
      * @Cache(expires="+2hours", public="true")

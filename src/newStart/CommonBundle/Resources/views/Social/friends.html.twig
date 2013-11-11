@@ -1,18 +1,31 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-	<div class="container">
+	<div class="container" ng-controller="MyFriendsListCtrl">
 		{% include '::header.html.twig' %}
 		<div class="row products">
 			<h2>Friends</h2>
-			{% for friend in user.getMyFriends() %}
-				<div class="col-md-2 col-sm-3 col-xs-5 product">
-					<div class="product-image">
-						<a href="{{ path('profile', {userId:friend.myFriends.getFacebookId}) }}#/profile/{{ friend.myFriends.getFacebookId }}"><img src='https://graph.facebook.com/{{ friend.myFriends.getFacebookId() }}/picture?width=183&height=220' height="220" width="183"/></a>
-						<p><span><a href="{{ path('profile', {userId:friend.myFriends.getFacebookId}) }}#/profile/{{ friend.myFriends.getFacebookId }}">{{ friend.myFriends.getFullName() }}</a></span></p>
+			<div ng-view>
+				{% for friend in user.getMyFriends() %}
+					<div class="col-md-2 col-sm-3 col-xs-5 product">
+						<div class="product-image">
+							<a href="{{ path('profile', {userId:friend.myFriends.getFacebookId}) }}#/profile/{{ friend.myFriends.getFacebookId }}"><img src='https://graph.facebook.com/{{ friend.myFriends.getFacebookId() }}/picture?width=183&height=220' height="220" width="183"/></a>
+							<p><span><a href="{{ path('profile', {userId:friend.myFriends.getFacebookId}) }}#/profile/{{ friend.myFriends.getFacebookId }}">{{ friend.myFriends.getFullName() }}</a></span></p>
+						</div>
 					</div>
-				</div>
-			{% endfor %}
+				{% endfor %}
+			</div>
 		</div>
 	</div>
+{% endblock %}
+
+
+{% block javascripts %}
+	{{ parent() }}
+    <script src="{{ asset('bundles/newstartcommon/js/vendor/angular.min.js') }}"></script>
+	<script src="{{ asset('bundles/newstartcommon/js/vendor/angular-resource.js') }}"></script>
+	<script src="{{ asset('bundles/newstartcommon/css/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('bundles/newstartcommon/js/app_ng.js') }}"></script>
+	<script src="{{ asset('bundles/newstartcommon/js/controllers.js') }}"></script>
+	<script src="{{ asset('bundles/newstartcommon/js/services.js') }}"></script>
 {% endblock %}
