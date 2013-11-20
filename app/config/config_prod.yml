@@ -24,7 +24,7 @@ monolog:
 
 parameters: 
     database_driver: pdo_mysql
-    database_host: mysql51-96.perso
+    database_host: localhost
     database_name: havefivprod
     database_user: havefivprod
-    database_password: jAZgHBwk
+    database_password: jAZgHBwkhavefyve
