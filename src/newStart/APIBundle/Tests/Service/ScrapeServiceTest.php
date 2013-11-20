@@ -135,6 +135,8 @@ class scrapeServiceTest extends NewStartWebTestCase
 		$title = $scrapeService->getTitle('http://www.wornby.co.uk/mens/sweats/graffiti-alley-sweat-grey-marl.html');
 		$this->assertEquals('Graffiti Alley Sweat - Grey Marl   | Worn By', $title);
 
+		$scrapeService = new ScrapeService();
+
 		$title = $scrapeService->getTitle('http://www.apple.com/fr/ipad-mini/?cid=wwa-fr-kwg-ipad-com');
 		$this->assertEquals('Apple - iPad mini avec écran Retina', $title);
 	}
