@@ -127,6 +127,7 @@ class scrapeServiceTest extends NewStartWebTestCase
 	/**
 	 * @test
 	 * @group scrape
+	 * @group scrapeTitle
 	 */
 	public function titleScrapeTest()
 	{
@@ -138,7 +139,7 @@ class scrapeServiceTest extends NewStartWebTestCase
 		$scrapeService = new ScrapeService();
 
 		$title = $scrapeService->getTitle('http://www.apple.com/fr/ipad-mini/?cid=wwa-fr-kwg-ipad-com');
-		$this->assertEquals('Apple - iPad mini avec écran Retina', $title);
+		$this->assertEquals('Apple - iPad mini avec écran Retina', $title);
 	}
 
 
