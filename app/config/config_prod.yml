@@ -28,3 +28,12 @@ parameters:
     database_name: havefivprod
     database_user: havefivprod
     database_password: jAZgHBwkhavefyve
+    ;Enter your facebook App Id here
+    facebookAppID =     "514467415283257"
+
+    ;Enter your facebook App secret here
+    facebookAppSecret=  "51fb549f13b96b2c931edeb69399f14c"
+    
+    ;Enter locale here (for language on the login button). Enter for exemple en_US for english, fr_FR for french etc...
+    ;See https://www.facebook.com/translations/FacebookLocales.xml for the whole list of locales
+    facebookLocale=    "en_US"
