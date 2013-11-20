@@ -22,6 +22,9 @@ class ProductTest extends NewStartWebTestCase
     	$product->setName('Apple - <b>iPad&nbsp;mini avec écran Retina</b>');
     	$this->assertEquals('Apple - iPad mini avec écran Retina', $product->getName());
 
+      $product->setName('Apple - iPad mini avec écran Retina');
+      $this->assertEquals('Apple - iPad mini avec écran Retina', $product->getName());
+
     	$product->setName('Apple - <script>alert("plop");</script>iPad&nbsp;mini avec écran Retina');
     	$this->assertEquals('Apple - alert("plop");iPad mini avec écran Retina', $product->getName());
 

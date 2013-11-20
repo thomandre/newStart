@@ -95,6 +95,7 @@ a.faq {
     left:7px;
     top:3px;
     transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
 }
 .header a .glyphicon {
     right: 7px;
