@@ -91,7 +91,6 @@ class ScrapeService
 		libxml_use_internal_errors(true);
 		$dom = new \DOMDocument();
 		$dom->strictErrorChecking = false;
-		//$this->html = mb_convert_encoding($this->html, 'HTML-ENTITIES', 'UTF-8');
 		$dom->loadHTML($this->html);
 		$xpath = new \DOMXPath($dom);
 		$xpath->registerNamespace("html", "http://www.w3.org/1999/xhtml"); 
@@ -102,7 +101,13 @@ class ScrapeService
 		if($results == false) {
 			return '';
 		} else {
-			return (string) $results->item(0)->nodeValue;
+			$title = (string) $results->item(0)->nodeValue;
+
+			if(strpos($title, 'Ã©') !== false) {
+				return utf8_decode($title);
+			} else {
+				return $title;
+			}
 		}
 	}
 
