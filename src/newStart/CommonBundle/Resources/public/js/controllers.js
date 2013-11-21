@@ -20,7 +20,7 @@ function MyFriendsListCtrl($scope, Friend, $rootScope) {
 
 function ProductDetailCtrl($scope, $routeParams, Product, $rootScope) {
 	$scope.product = Product.show({id: $routeParams.productId}, function () {
-		$('body').append('<style>body:before{background:url(' + $scope.product.imgUrl + '); background-size: cover;</style>');
+		$('body').append('<style>body:before{background:url(' + $scope.product.imgUrl + '); background-size: cover;filter: url("#blur-effect");</style>');
 	});
 	$scope.productId = $routeParams.productId;
 }
@@ -38,7 +38,7 @@ function ProductItemCtrl($scope, Product, $rootScope) {
 function ProductListCtrl($scope, Product, $timeout, $location, $rootScope, $routeParams) {
 	$scope.updateProducts = function () {
       $rootScope.products = Product.list({id: $routeParams.userId});
-	  $('body').append('<style>body:before{background:url(' + $('.viewed-profile img').attr('src') + '); background-size: cover;</style>');
+	  $('body').append('<style>body:before{background:url(' + $('.viewed-profile img').attr('src') + '); background-size: cover;filter: url("#blur-effect");</style>');
 	}
 	if($routeParams.userId != undefined) {
 	    $scope.updateProducts();
@@ -51,15 +51,6 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 	var timer = false;
 	$scope.warning = false;
 	$scope.imageIndex = 0;
-
-	$scope.autoProductScrape = function () {
-		if(timer) {
-			$timeout.cancel(timer);
-		}
-		timer = $timeout(function () {
- 			$scope.productScrape();
-		}, 300);
-	}
 
 	$scope.nextImg = function () {
 		if($scope.imageIndex < $scope.scrappedProduct.images.length) {
@@ -82,10 +73,12 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
   	$scope.productScrape = function(name) {
   		if($scope.url != undefined) {
 	  		$scope.scrapeLoading = true;
+	  		$('#go_btn .lbl').html('');
 			$http.get('../api/v1/product/scrape?url=' + $scope.url).success(function (data) {
 				$scope.scrappedProduct = data;
 				$scope.scrappedProduct.imgThumb = data.imagesThumb[$scope.imageIndex];
 		  		$scope.scrapeLoading = false;
+		  		$('#go_btn .lbl').html('Go !');
 			});
   		}
 	}
@@ -118,7 +111,7 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 
 	$scope.updateProducts = function () {
       $rootScope.products = Product.listMine();
-	  $('body').append('<style>body:before{background:url(' + $('.viewed-profile img').attr('src') + '); background-size: cover;</style>');
+	  $('body').append('<style>body:before{background:url(' + $('.viewed-profile img').attr('src') + '); background-size: cover;filter: url("#blur-effect");</style>');
 	  //console.log( $('.viewed-profile img').attr('src'));
 	}
     $scope.updateProducts();

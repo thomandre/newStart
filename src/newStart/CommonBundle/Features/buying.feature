@@ -7,6 +7,8 @@ Scénario: Je suis Thomas et je veux partager un le MacBook Air de mes reves
 Soit je suis sur "/"
 Soit je me logue en tant que "thomandr1@yahoo.fr" / "c@d153512"
 Alors je remplis "url" avec "http://www.apple.com/fr/macbook-air/"
+Et je presse "Go !"
+Et je ne devrais pas voir "Go !"
 Et j'attend que "#completeContainer" soit visible 
 Alors je devrais voir "Apple - MacBook Air"
 Soit je remplis "comment" avec "Core i7 1,7 GHz - 512 de SSD - 8Go de RAM"
