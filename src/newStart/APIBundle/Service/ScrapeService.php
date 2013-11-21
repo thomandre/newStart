@@ -91,7 +91,8 @@ class ScrapeService
 		libxml_use_internal_errors(true);
 		$dom = new \DOMDocument();
 		$dom->strictErrorChecking = false;
-		$dom->loadHTML(mb_convert_encoding($this->html, 'HTML-ENTITIES', 'UTF-8'));
+		//$this->html = mb_convert_encoding($this->html, 'HTML-ENTITIES', 'UTF-8');
+		$dom->loadHTML($this->html);
 		$xpath = new \DOMXPath($dom);
 		$xpath->registerNamespace("html", "http://www.w3.org/1999/xhtml"); 
 		 

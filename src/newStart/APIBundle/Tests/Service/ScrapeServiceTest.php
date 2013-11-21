@@ -67,11 +67,10 @@ class scrapeServiceTest extends NewStartWebTestCase
 	public function realImgScrapeTest()
 	{
 		$scrapeService = new ScrapeService();
-		$html = file_get_contents('http://fr.selfhtml.org/');
+		$html = file_get_contents('http://www.decathlon.fr/tente-t2-id_2859520.html');
 
-		//var_dump($html);
-		$images = $scrapeService->getImages($html, 'http://fr.selfhtml.org');
-		$this->assertTrue(in_array('//src.selfhtml.org/logo.gif', $images));
+		$images = $scrapeService->getImages($html);
+		$this->assertContains('/media/285/2859520/zoom_400PX_asset_70437021.jpg', $images);
 	}
 
 	/**
@@ -81,9 +80,8 @@ class scrapeServiceTest extends NewStartWebTestCase
 	public function realImgAbsoluteUrlScrapeTest()
 	{
 		$scrapeService = new ScrapeService();
-
-		$images = $scrapeService->getAbsoluteUrlImages('http://fr.selfhtml.org/');
-		$this->assertTrue(in_array('http://src.selfhtml.org/logo.gif', $images));
+		$images = $scrapeService->getAbsoluteUrlImages('http://www.decathlon.fr/tente-t2-id_2859520.html');
+		$this->assertContains('http://www.decathlon.fr/media/285/2859520/zoom_400PX_asset_70437021.jpg', $images);
 
 		$scrapeService = new ScrapeService();
 		$images = $scrapeService->getAbsoluteUrlImages('http://www.wornby.co.uk/mens/sweats/graffiti-alley-sweat-grey-marl.html');
@@ -91,6 +89,7 @@ class scrapeServiceTest extends NewStartWebTestCase
 
 		$scrapeService = new ScrapeService();
 		$images = $scrapeService->getAbsoluteUrlImages('http://us.levi.com/product/index.jsp?productId=21467686&');
+		$this->assertContains('http://LEVI.imageg.net/graphics/product_images/pLEVI1-16002776t330x400.jpg', $images);
 
 //		var_dump($images);
 //		$this->assertContains('', $images);
@@ -132,14 +131,16 @@ class scrapeServiceTest extends NewStartWebTestCase
 	public function titleScrapeTest()
 	{
 		$scrapeService = new ScrapeService();
-
 		$title = $scrapeService->getTitle('http://www.wornby.co.uk/mens/sweats/graffiti-alley-sweat-grey-marl.html');
 		$this->assertEquals('Graffiti Alley Sweat - Grey Marl   | Worn By', $title);
 
 		$scrapeService = new ScrapeService();
-
 		$title = $scrapeService->getTitle('http://www.apple.com/fr/ipad-mini/?cid=wwa-fr-kwg-ipad-com');
 		$this->assertEquals('Apple - iPad mini avec écran Retina', $title);
+
+		$scrapeService = new ScrapeService();
+		$title = $scrapeService->getTitle('http://www.boutique-saint-james.fr/pull-raye-homme-rochefort-p654-z6680.html');
+		$this->assertEquals('SAINT JAMES Pull rayé homme ROCHEFORT', $title);
 	}
 
 

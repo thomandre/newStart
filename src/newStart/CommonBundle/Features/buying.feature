@@ -25,7 +25,7 @@ Et je suis "Friends"
 Et j'attend "1" secondes
 Alors je devrais voir "Thomas André"
 Et je suis "Thomas André"
-Et j'attend "0.5" secondes
+Et j'attend "1" secondes
 Alors je devrais voir "Apple - MacBook Air"
 Et je suis "Apple - MacBook Air"
 Et j'attend "0.5" secondes

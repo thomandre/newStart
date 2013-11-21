@@ -19,7 +19,9 @@ function MyFriendsListCtrl($scope, Friend, $rootScope) {
 
 
 function ProductDetailCtrl($scope, $routeParams, Product, $rootScope) {
-	$scope.product = Product.show({id: $routeParams.productId});
+	$scope.product = Product.show({id: $routeParams.productId}, function () {
+		$('body').append('<style>body:before{background:url(' + $scope.product.imgUrl + '); background-size: cover;</style>');
+	});
 	$scope.productId = $routeParams.productId;
 }
 
@@ -36,6 +38,7 @@ function ProductItemCtrl($scope, Product, $rootScope) {
 function ProductListCtrl($scope, Product, $timeout, $location, $rootScope, $routeParams) {
 	$scope.updateProducts = function () {
       $rootScope.products = Product.list({id: $routeParams.userId});
+	  $('body').append('<style>body:before{background:url(' + $('.viewed-profile img').attr('src') + '); background-size: cover;</style>');
 	}
 	if($routeParams.userId != undefined) {
 	    $scope.updateProducts();
@@ -77,17 +80,20 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 	}
 
   	$scope.productScrape = function(name) {
-  		$scope.scrapeLoading = true;
-		$http.get('../api/v1/product/scrape?url=' + $scope.url).success(function (data) {
-			$scope.scrappedProduct = data;
-			$scope.scrappedProduct.imgThumb = data.imagesThumb[$scope.imageIndex];
-	  		$scope.scrapeLoading = false;
-		});
+  		if($scope.url != undefined) {
+	  		$scope.scrapeLoading = true;
+			$http.get('../api/v1/product/scrape?url=' + $scope.url).success(function (data) {
+				$scope.scrappedProduct = data;
+				$scope.scrappedProduct.imgThumb = data.imagesThumb[$scope.imageIndex];
+		  		$scope.scrapeLoading = false;
+			});
+  		}
 	}
 
-  	$scope.productCancel = function(name) {
+  	$scope.productScrapeCancel = function(name) {
   		$scope.scrappedProduct = null;
 		$scope.url = null;
+  		$scope.scrapeLoading = false;
 	}
 
   	$scope.productSave = function(scrappedProduct) {
@@ -112,6 +118,8 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 
 	$scope.updateProducts = function () {
       $rootScope.products = Product.listMine();
+	  $('body').append('<style>body:before{background:url(' + $('.viewed-profile img').attr('src') + '); background-size: cover;</style>');
+	  //console.log( $('.viewed-profile img').attr('src'));
 	}
     $scope.updateProducts();
 }

@@ -1,5 +1,5 @@
 # language: fr
-Fonctionnalité: Sharing OK
+Fonctionnalité: Five Limit OK
 
 Contexte: Je souhaite me loguer et partager un produit
 
@@ -13,7 +13,7 @@ Et j'attend que "#completeContainer" soit visible
 Alors je devrais voir "Levi's Levis® Commuter™ 511™ Slim Fit Pants - Performance Hunter - Jeans"
 Et je presse "Enregistrer"
 Et j'attend "1" secondes
-Et je devrais voir "Levi's Levis®"
+Et je devrais voir "Levi's Levis"
 
 Alors je remplis "url" avec "http://www.amazon.fr/gp/product/B00DOQ3DGU/ref=amb_link_177745767_2/278-7656610-6981916"
 Et j'attend que "#completeContainer" soit visible 
@@ -55,7 +55,7 @@ Et je recharge la page
 Alors je ne devrais pas voir "Yves Saint Laurent"
 
 Et j'attend "0.5" secondes
-Et je devrais voir "Levi's Levis®" 
+Et je devrais voir "Levi's Levis" 
 Et je suis "supprimer"
 Et je valide la fenetre de confirmation
 Et j'attend "1" secondes
