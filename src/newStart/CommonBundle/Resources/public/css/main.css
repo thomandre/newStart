@@ -154,8 +154,9 @@ a.faq {
     display:none;
     float: left;
     position: absolute;
-    left: 28px;
+    left: 39px;
     width: 181px;
+    z-index: 10;
 }
 #settings {
     display: inline-block;  

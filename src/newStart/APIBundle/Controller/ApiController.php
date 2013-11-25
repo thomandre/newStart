@@ -240,18 +240,21 @@ class ApiController extends Controller
     }
 
     /**
-     * @Route("/api/v1/friends/list-mine", name="friend_api")
+     * @Route("/api/v1/friends/list-mine/{friendName}", name="friend_api")
      * @Template()
      */
-    public function friendsAction()
+    public function friendsAction($friendName = null)
     {
         $user = $this->getUser();
 
         $data = array();
         foreach($user->getMyFriends() as $friend) {
-            $tmp = $friend->getMyFriends()->toArray();
-            $tmp['favorite'] = $friend->isFavorite();
-            $data[] = $tmp;
+            $patern = '/^'.$friendName.'/i';
+            if(preg_match($patern, $friend->getMyFriends()->getFirstName()) || preg_match($patern, $friend->getMyFriends()->getLastName())) {
+                $tmp = $friend->getMyFriends()->toArray();
+                $tmp['favorite'] = $friend->isFavorite();
+                $data[] = $tmp;                
+            }
         }
         $response = new JsonResponse();
         $response->setData($data);

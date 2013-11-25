@@ -5,6 +5,12 @@
 		{% include '::header.html.twig' %}
 		<div class="row products">
 			<h2>Friends</h2>
+			<div class="input-group input-lg">
+				<input type="text" class="form-control" ng-model="name" ng-change="autoFriendsSearch()" name="search" id="search" />
+				<span class="input-group-btn">
+					<button class="btn btn-primary" type="button" id="go_btn" ng-click="productScrape()"><span class="glyphicon glyphicon-search"></span></button>
+				</span>
+			</div>
 			<div ng-view>
 				{% for friend in user.getMyFriends() %}
 					<div class="col-md-2 col-sm-3 col-xs-5 product">

@@ -10,9 +10,19 @@ function FriendCtrl($scope, Friend, $rootScope) {
 	}
 }
 
-function MyFriendsListCtrl($scope, Friend, $rootScope) {
+function MyFriendsListCtrl($scope, $timeout, Friend, $rootScope) {
+	var timer = false;
+    $scope.autoFriendsSearch = function () {
+        if(timer) {
+            $timeout.cancel(timer);
+        }
+        timer = $timeout(function () {
+			$scope.updateFriends();
+        }, 300);
+    }
+
 	$scope.updateFriends = function () {
-		$rootScope.friends = Friend.listMine();
+		$rootScope.friends = Friend.listMine({'id':$scope.name});
     }
     $scope.updateFriends();
 }
@@ -49,7 +59,6 @@ function ProductListCtrl($scope, Product, $timeout, $location, $rootScope, $rout
 
 function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope) {
 
-	var timer = false;
 	$scope.warning = false;
 	$scope.imageIndex = 0;
 
@@ -149,5 +158,5 @@ ProductListCtrl.$inject = ['$scope', 'Product', '$timeout', '$location', '$rootS
 MyProductListCtrl.$inject = ['$scope', '$http','Product', '$timeout', '$location', '$rootScope'];
 ProductDetailCtrl.$inject = ['$scope', '$routeParams', 'Product', '$rootScope'];
 ProductItemCtrl.$inject = ['$scope', 'Product', '$rootScope'];
-MyFriendsListCtrl.$inject = ['$scope', 'Friend', '$rootScope'];
+MyFriendsListCtrl.$inject = ['$scope', '$timeout', 'Friend', '$rootScope'];
 FriendCtrl.$inject = ['$scope', 'Friend', '$rootScope'];
