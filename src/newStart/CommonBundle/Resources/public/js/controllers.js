@@ -30,6 +30,7 @@ function ProductItemCtrl($scope, Product, $rootScope) {
 		if(confirm('Voulez-vous supprimer ' + $scope.product.name + ' ?')) {
 			Product.remove({id: $scope.product.id}, function (data) {
 		      $rootScope.products = data;
+	    	  $scope.countProducts();
 			});	
 		}
 	}
@@ -100,7 +101,7 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 	}
 
   	$scope.productSave = function(scrappedProduct) {
-  	  if($rootScope.products.length < 5) {
+  	  if($rootScope.nbProducts < 5) {
 	  	  $scope.productLoading = true;
 	  	  if($scope.scrappedProduct.images != undefined) {
 	  		  $scope.scrappedProduct.img = $scope.scrappedProduct.images[$scope.imageIndex];
@@ -112,6 +113,7 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 			$scope.scrappedProduct = null;
 			$scope.url = null;
 			$rootScope.products = data;
+			$scope.countProducts();
 			$scope.productLoading = false;
 	   	  });
   	  } else {
@@ -123,8 +125,19 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
   	  }
 	}
 
+	$scope.countProducts = function () {
+		$rootScope.nbProducts = 0;
+		while($rootScope.products.length && $rootScope.nbProducts < 5 && $rootScope.products[$rootScope.nbProducts]['name'] != undefined) {
+			$rootScope.nbProducts++;
+		}
+		console.log('count: ' + $rootScope.nbProducts);
+	}
+
 	$scope.updateProducts = function () {
-      $rootScope.products = Product.listMine();
+      $rootScope.products = Product.listMine(function (response) {
+		$scope.countProducts();
+      });
+
 	  $('body').append('<style>body:before{background:url(' + $('.viewed-profile img').attr('src') + '); background-size: cover;filter: url("#blur-effect");</style>');
 	  //console.log( $('.viewed-profile img').attr('src'));
 	}

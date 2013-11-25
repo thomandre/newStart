@@ -165,11 +165,11 @@ class ApiController extends Controller
             $data[] = $tmp;
         }
         
-        $productSize = count($data);
+        $nbProducts = count($data);
 
-        /*for($i=$productSize; $i < 5; $i++) {
+        for($i=$nbProducts; $i < 5; $i++) {
             $data[] = array();
-        }*/
+        }
 
         $response = new JsonResponse();
         $response->setData($data);
