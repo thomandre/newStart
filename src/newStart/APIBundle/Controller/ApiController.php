@@ -28,12 +28,10 @@ class ApiController extends Controller
      */
     public function scrapeProductAction(Request $request)
     {
-        $images = array();
         $title = '';
 
         try {
             if($request->get('url') && $request->get('url') != '') {
-                $images = $this->scrapeService->getBiggestImg($request->get('url'));
                 $title  = $this->scrapeService->getTitle($request->get('url'));
             }
         } catch(\Exception $e) {
@@ -43,6 +41,31 @@ class ApiController extends Controller
         }
 
         $response = new JsonResponse();
+        $response->setData(array('title' => $title, 'url' => $request->get('url')));
+
+        return $response;
+    }
+
+    /**
+     * @Route("/api/v1/image/scrape", name="image_scrape")
+     * @Template()
+     * @Cache(expires="+2hours", public="true")
+     */
+    public function scrapeImagesAction(Request $request) 
+    {
+        $images = array();
+
+        try {
+            if($request->get('url') && $request->get('url') != '') {
+                $images = $this->scrapeService->getBiggestImg($request->get('url'));
+            }
+        } catch(\Exception $e) {
+            if($e->getMessage() == '404') {
+                throw $this->createNotFoundException('Le produit n\'existe pas');
+            }
+        }
+        
+        $response = new JsonResponse();
         $imagesArray = array();
         $imagesThumbArray = array();
         
@@ -51,11 +74,9 @@ class ApiController extends Controller
             $imagesArray[] = $image->getCurrentUrl($request);
         }
 
-        $response->setData(array('images' => $imagesArray, 'imagesThumb' => $imagesThumbArray, 'title' => $title, 'url' => $request->get('url')));
+        $response->setData(array('images' => $imagesArray, 'imagesThumb' => $imagesThumbArray, 'imgNumber' => count($imagesArray)));
 
         return $response;
-
-        //return array();
     }
 
     /**
@@ -65,14 +86,29 @@ class ApiController extends Controller
     public function addProductAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+
         $user = $this->getUser();
         
         $product = new Product();
-//        var_dump($request->get('title'));
         $product->setName($request->get('title'));
-//        var_dump($product->getName());
         $product->setUrl($request->get('url'));
-        $product->setImgUrl($request->get('img'));
+
+        if($request->get('img') == null || $request->get('img') == 'null') {
+            try{
+                if($request->get('url') && $request->get('url') != '') {
+                    $images = $this->scrapeService->getBiggestImg($request->get('url'));
+                    //var_dump($images[0]->getCurrentUrl($request));
+                    $product->setImgUrl($images[0]->getCurrentUrl($request));
+                } else {
+                    $product->setImgUrl('error.png');
+                }
+            } catch(\Exception $e) {
+                $product->setImgUrl('error.png');
+            }
+        } else {
+            $product->setImgUrl($request->get('img'));
+        }
+
         $product->setComment($request->get('comment'));
         $product->setBeenBought(false);
         $product->setDeleted(false);
@@ -99,7 +135,6 @@ class ApiController extends Controller
         $product = $em->getRepository('newStartCommonBundle:Product')->find($productId);
 
         if($product->getUser() == $user) {
-            //$em->remove($product);
             $product->setDeleted(true);
             $em->persist($product);
             $em->flush();
@@ -125,10 +160,16 @@ class ApiController extends Controller
         $data = array();
         foreach($products as $p) {
             $tmp = $p->toArray();
-            $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 189, 'height' => 222, 'image' => $p->getImageName()));
+            $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 180, 'height' => 222, 'image' => $p->getImageName()));
         
             $data[] = $tmp;
         }
+        
+        $productSize = count($data);
+
+        /*for($i=$productSize; $i < 5; $i++) {
+            $data[] = array();
+        }*/
 
         $response = new JsonResponse();
         $response->setData($data);
@@ -149,7 +190,7 @@ class ApiController extends Controller
         $data = array();
         foreach($products as $key => $p) {
             $tmp = $p->toArray();
-            $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 189, 'height' => 222, 'image' => $p->getImageName()));
+            $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 180, 'height' => 222, 'image' => $p->getImageName()));
             $data[] = $tmp;
         }
 
@@ -169,7 +210,7 @@ class ApiController extends Controller
         $product = $em->getRepository('newStartCommonBundle:Product')->find($productId);
 
         $data = $product->toArray();
-        $data['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 183, 'height' => 222, 'image' => $product->getImageName()));
+        $data['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 180, 'height' => 222, 'image' => $product->getImageName()));
      
         $response = new JsonResponse();
         $response->setData($data);

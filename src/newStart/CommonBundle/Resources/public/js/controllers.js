@@ -53,7 +53,7 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 	$scope.imageIndex = 0;
 
 	$scope.nextImg = function () {
-		if($scope.imageIndex < $scope.scrappedProduct.images.length) {
+		if($scope.imageIndex < $scope.scrappedProduct.images.length-1) {
 			$scope.imageIndex++;
 		} else {
 			$scope.imageIndex = 0;
@@ -65,19 +65,29 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 		if($scope.imageIndex > 0) {
 			$scope.imageIndex--;
 		} else {
-			$scope.imageIndex = $scope.scrappedProduct.images.length;
+			$scope.imageIndex = $scope.scrappedProduct.images.length-1;
 		}
 		$scope.scrappedProduct.imgThumb = $scope.scrappedProduct.imagesThumb[$scope.imageIndex];
 	}
 
   	$scope.productScrape = function(name) {
+  		$scope.scrappedProduct = null;
+  		$scope.imageIndex = 0;
+
   		if($scope.url != undefined) {
 	  		$scope.scrapeLoading = true;
 	  		$('#go_btn .lbl').html('');
 			$http.get('../api/v1/product/scrape?url=' + $scope.url).success(function (data) {
 				$scope.scrappedProduct = data;
-				$scope.scrappedProduct.imgThumb = data.imagesThumb[$scope.imageIndex];
-		  		$scope.scrapeLoading = false;
+				$http.get('../api/v1/image/scrape?url=' + $scope.url).success(function (data) {
+					$scope.scrappedProduct.imgThumb = data.imagesThumb[$scope.imageIndex];
+					$scope.scrappedProduct.imagesThumb = data.imagesThumb;
+					$scope.scrappedProduct.imgNumber = data.imgNumber;
+					$scope.scrappedProduct.images = data.images;
+				});
+				$scope.scrappedProduct.imgNumber = 1;
+		  		$scope.scrappedProduct.imgThumb = '../../bundles/newstartcommon/images/loader.gif';
+				$scope.scrapeLoading = false;
 		  		$('#go_btn .lbl').html('Go !');
 			});
   		}
@@ -92,7 +102,11 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
   	$scope.productSave = function(scrappedProduct) {
   	  if($rootScope.products.length < 5) {
 	  	  $scope.productLoading = true;
-  		  $scope.scrappedProduct.img = $scope.scrappedProduct.images[$scope.imageIndex];
+	  	  if($scope.scrappedProduct.images != undefined) {
+	  		  $scope.scrappedProduct.img = $scope.scrappedProduct.images[$scope.imageIndex];
+	  	  } else {
+	  		  $scope.scrappedProduct.img = null;
+	  	  }
 
 		  Product.add(scrappedProduct, function(data) {
 			$scope.scrappedProduct = null;

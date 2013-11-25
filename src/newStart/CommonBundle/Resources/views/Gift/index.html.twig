@@ -31,12 +31,13 @@
 							</div>
 							<div class="col-md-5 col-sm-5 col-xs-5">
 								<h4>{{ scrappedProduct.title }}</h4>
-								<textarea ng:model="scrappedProduct.comment" id="comment" style="width: 226px; height: 121px;" placeholder="Vous pouvez préciser la couleur, la taille..."></textarea>
+								<textarea ng:model="scrappedProduct.comment" id="comment" style="width: 205px; height: 75px;" placeholder="Vous pouvez préciser la couleur, la taille..."></textarea>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-5">
 								<button class="btn" type="button" ng-click="prevImg()"><span class="glyphicon glyphicon-arrow-left"></span></button>
+								<span>{{ imageIndex + 1 }} / {{ scrappedProduct.imgNumber }}</span>
 								<button class="btn" type="button" ng-click="nextImg()"><span class="glyphicon glyphicon-arrow-right"></span></button>
 							</div>
 							<div class="col-md-5">
@@ -62,7 +63,6 @@
 				{% for gift in gifts %}
 	 				<div class="col-md-2 col-sm-3 col-xs-5 product">
 	 					<div class="product-image">
-							<a href="#/product/{{gift.id}}"><img src='{{ gift.thumb_url }}' /></a>
 							<p><span class="name"><a href="#/product/{{gift.id}}">{{ gift.name }}</a></span></p>
 	 					</div>
 	 				</div>

@@ -13,8 +13,7 @@ Et j'attend que "#completeContainer" soit visible
 Alors je devrais voir "Apple - MacBook Air"
 Soit je remplis "comment" avec "Core i7 1,7 GHz - 512 de SSD - 8Go de RAM"
 Et je presse "Enregistrer"
-Et j'attend "3" secondes
-Alors je ne devrais plus voir l'element "#completeContainer"
+Et j'attend que "#completeContainer" ne soit plus visible 
 Et le champ "url" devrait contenir ""
 Et je devrais voir "Apple - MacBook Air"
 Et je me delogue

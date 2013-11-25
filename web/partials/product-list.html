@@ -3,11 +3,12 @@
 	<h2>Ma liste de cadeaux</h2>
 	<div class="col-md-2 col-sm-3 col-xs-5 product" ng-repeat="product in products">
 		<div class="product-image" ng-controller="ProductItemCtrl">
-			<a href="#/product/{{product.id}}"><img ng-src='{{ product.thumb_url }}' /></a>
-			<p>
+			<a href="#/product/{{product.id}}" ng-show="product.thumb_url != null"><img ng-src='{{ product.thumb_url }}' /></a>
+			<p ng-show="product.thumb_url != null">
 				<span class="name"><a href="#/product/{{product.id}}">{{ product.name }}</a></span>
 				<a href="#" title="supprimer" class="glyphicon glyphicon-trash" ng-click="delete()"></a> 
 			</p>
+			<span class="glyphicon glyphicon-camera" ng-show="product.thumb_url == null"></span>
 		</div>
 	</div>
 </div>

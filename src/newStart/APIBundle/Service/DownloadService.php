@@ -47,14 +47,13 @@ class DownloadService
 	public function getImageViaCache($url) 
 	{
 		$em = $this->container->get('doctrine.orm.entity_manager');
-        $image = $em->getRepository('newStartCommonBundle:Image')->findOneByOriginalUrl($url);
+        $image = $em->getRepository('newStartCommonBundle:Image')->findOneByOriginalUrl(substr($url, 0, 255));
 
 		if($image == null) {
 			$image = new Image();
 			$image->setOriginalUrl($url);
 
 			// on detecte l'extention
-			
  			$ext = $this->getExtension($url);
 
 			// on génère un nom
@@ -75,8 +74,12 @@ class DownloadService
 			$image->setPath($path);
 			
 			// on sauve l'image dans la base
-	        $em->persist($image);
-	        $em->flush();
+			try {
+		        $em->persist($image);
+		        $em->flush();
+			} catch(\exception $e) {
+				echo 'erreur 334455 : '.$e->getMessage();
+			}
 
 			return $image;
 		} else {

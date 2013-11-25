@@ -65,6 +65,16 @@ class FeatureContext extends FeatureGlobal
         
     }
 
+    /**
+     * @Given /^j\'attend que "([^"]*)" ne soit plus visible$/
+     */
+    public function jAttendQueNeSoitPlusVisible($arg1)
+    {
+        $this->getSession()->wait(30000,
+            "$('".$arg1."').css('display') == 'none';"
+        );
+        
+    }
 
     /**
      * @Given /^j\'attend que "([^"]*)" soit sur l\'iFrame "([^"]*)"$/
