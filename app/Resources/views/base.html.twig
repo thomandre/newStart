@@ -12,7 +12,6 @@
             <link rel="stylesheet" href="{{ asset('bundles/newstartcommon/css/vendor/style.css') }}">
             <link rel="stylesheet" href="{{ asset('bundles/newstartcommon/css/main.css') }}">
         {% endblock %}
-        {{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}
 
     </head>
     <body>
@@ -25,7 +24,7 @@
                 }
 
                 function onFbInit() {
-                    if (typeof(FB) != 'undefined' && FB != null ) {              
+                    if (typeof(FB) != 'undefined' && FB != null ) {
                         FB.Event.subscribe('auth.statusChange', function(response) {
                             if (response.session || response.authResponse) {
                                 setTimeout(goLogIn, 500);
@@ -33,9 +32,29 @@
                                 window.location.href = "{{ path('_security_logout') }}";
                             }
                         });
+                        FB.Event.subscribe('auth.logout', function(response) {
+                            console.log('logout');
+                            window.location.href = "{{ path('_security_logout') }}";
+                        });
+
                     }
                 }
+                $('.settings').click(function (event) {
+                    event.preventDefault();
+                    $('#profile .ddown-menu').toggle();
+                });
+
+                $('#logout').click(function (event) {
+                    event.preventDefault();
+                    FB.getLoginStatus(function () {
+                        FB.logout(function(response) {
+                            console.log('logout');
+                            return;
+                        });
+                    });
+                });
             </script>
+            {{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}
         {% endblock %}
     </body>
 </html> 

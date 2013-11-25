@@ -35,12 +35,10 @@ security:
                 #default_target_path: /
                 provider: my_fos_facebook_provider
                 success_handler: my_fos_facebook_auth_success_handler
-            #logout: true
             anonymous: true
             logout:
                 path: /logout
-                #target: /login
-                #handlers: ["fos_facebook.logout_handler"]
+                target: public_home
 
     access_control:
         # FOS facebook

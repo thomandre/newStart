@@ -60,3 +60,13 @@ Et j'attend "0.5" secondes
 Alors je devrais voir "Apple - MacBook Air"
 Et je me delogue
 
+@javascript @logout
+Scénario: Je veux pouvoir me deloguer
+Soit je vais sur "/"
+Soit je me logue en tant que "thomandr1@yahoo.fr" / "c@d153512"
+Et j'attend "0.5" secondes
+Et je me delogue
+Soit je vais sur "/"
+Soit je me logue en tant que "albanthomas1@gmail.com" / "projetreecomate"
+Et j'attend "0.5" secondes
+Et je me delogue

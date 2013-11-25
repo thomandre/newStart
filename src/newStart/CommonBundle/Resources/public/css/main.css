@@ -129,7 +129,7 @@ a.faq {
     text-align: right;
 }
 
-.header a .glyphicon-play {
+.header .settings {
     left:7px;
     top:3px;
     transform:rotate(90deg);
@@ -142,6 +142,23 @@ a.faq {
 }
 .header a:hover {
     color:#EAEAEA;
+}
+.header .ddown-menu li {
+    list-style: none outside none;
+}
+.header .ddown-menu li a {
+    text-align: left;
+    padding:0 15px;
+}
+.header .ddown-menu {
+    display:none;
+    float: left;
+    position: absolute;
+    left: 28px;
+    width: 181px;
+}
+#settings {
+    display: inline-block;  
 }
 .row.header {
     background-color:#0A0A5A;
