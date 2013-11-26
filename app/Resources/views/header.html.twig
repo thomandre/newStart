@@ -2,8 +2,8 @@
 			<div class="col-md-2 col-sm-3 col-xs-2">
 				<span><a href="{{ path('feed') }}" style="text-align:left"><span class="glyphicon glyphicon-home"></span>HaveFyve</a></span>
 			</div>
-			<div class="col-md-1 col-md-offset-3 col-sm-3 col-xs-2">
-				<span><a href="{{ path('feed') }}"><span class="glyphicon glyphicon-calendar"></span>News</a></span>
+			<div class="col-md-2 col-md-offset-2	 col-sm-3 col-xs-2">
+				<span><a href="{{ path('feed') }}"><span class="glyphicon glyphicon-calendar"></span>What's new ?</a></span>
 			</div>
 			<div class="col-md-2 col-sm-3 col-xs-2">
 				<span><a href="{{ path('friends') }}#/friends/"><span class="glyphicon  glyphicon-user"></span>Friends</a></span>
@@ -11,7 +11,7 @@
 			<div class="col-md-2 col-sm-3 col-xs-2">
 				<span id="profile">
 					<a href="{{ path('me') }}">
-						<span class="glyphicon"></span> {{ user.firstName }} {{ user.lastName }} 
+						<span class="glyphicon"></span>{{ user.firstName }} {{ user.lastName }} 
 						<span class="glyphicon glyphicon-play settings"></span>
 					</a>
 			        <ul class="ddown-menu">

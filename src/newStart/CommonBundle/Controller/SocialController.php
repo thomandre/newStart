@@ -52,6 +52,13 @@ class SocialController extends Controller
      */
     public function profileAction($userId)
     {
+        try {
+            $facebook = $this->container->get('fos_facebook.api');
+            $user = $this->getUser();
+            $response = $facebook->api('/me/friends?fields=name,id,email');
+        } catch (\Exception $e) {
+            return new RedirectResponse($this->container->get('router')->generate('public_home'));
+        }
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $userProfile = $em->getRepository('UserBundle:User')->findOneByFacebookId($userId);    
@@ -74,7 +81,13 @@ class SocialController extends Controller
      */
     public function feedAction()
     {
-        $user = $this->getUser();
+        try {
+            $facebook = $this->container->get('fos_facebook.api');
+            $user = $this->getUser();
+            $response = $facebook->api('/me/friends?fields=name,id,email');
+        } catch (\Exception $e) {
+            return new RedirectResponse($this->container->get('router')->generate('public_home'));
+        }       $user = $this->getUser();
 
         return array('user' => $user);
     }
