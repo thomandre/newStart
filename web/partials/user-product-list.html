@@ -1,6 +1,8 @@
 
+<div class="row">
+	<div class="col-md-6 col-sm-6 col-xs-6"><h2>Sa liste de cadeaux</h2></div>
+</div>	
 <div class="row products">
-	<h2>Sa liste de cadeaux</h2>
 	<div class="col-md-2 col-sm-3 col-xs-5 product" ng-repeat="product in products">
 		<div class="product-image" ng-controller="ProductItemCtrl">
 			<a href="#/profile/{{ product.fbUserId }}/product/{{product.id}}"><img ng-src='{{ product.thumb_url }}' /></a>

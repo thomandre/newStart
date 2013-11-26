@@ -48,7 +48,6 @@ h2 {
     font-size: 14px;
     font-weight: 300;
     margin-bottom: 20px;
-    margin-left: 16px;
 }
 p {
     font-size:30px;
@@ -175,10 +174,6 @@ a.faq {
 	margin-bottom: 10px;
 	padding:0 3px;
 }
-.product:first-of-type {
-	padding:0 3px 0 0;
-    margin-left: 15px;
-}
 .product-image {
 	background-color: #FFF;
     border-color: #000000;
@@ -197,7 +192,7 @@ a.faq {
 }
 .product-image p {
     font-size: 12px;
-    height: 32px;
+    height: 35px;
     margin-top: 7px;
     overflow: hidden;
     font-weight: 200;
@@ -364,4 +359,7 @@ h4 {
 }
 .feed .product-image {
     height: 266px;
+}
+.row .products {
+    padding:0 0 0 13px;
 }

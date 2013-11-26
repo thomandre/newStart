@@ -58,8 +58,10 @@
 		{% endraw %}
 
 		<div ng-view class="row">
+			<div class="row">
+				<div class="col-md-6 col-sm-6 col-xs-6"><h2>Ma liste de cadeaux</h2></div>
+			</div>
 			<div class="row products">
-				<h2>Ma liste de cadeaux</h2>
 				{% for gift in gifts %}
 	 				<div class="col-md-2 col-sm-3 col-xs-5 product">
 	 					<div class="product-image">

@@ -87,9 +87,27 @@ class SocialController extends Controller
             $response = $facebook->api('/me/friends?fields=name,id,email');
         } catch (\Exception $e) {
             return new RedirectResponse($this->container->get('router')->generate('public_home'));
-        }       $user = $this->getUser();
+        }
+        $user = $this->getUser();
 
-        return array('user' => $user);
+        $em = $this->getDoctrine()->getManager();
+        $products = $em->getRepository('newStartCommonBundle:Product')->getProductsFeedForUser($user);    
+        $data = array();
+        foreach($products as $p) {
+            $tmp = $p->toArray();
+            $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 177, 'height' => 165, 'image' => $p->getImageName()));
+            $tmp['user'] = $p->getUser()->toArray();
+            $data[] = $tmp;
+        }
+
+        return array('user' => $user, 'products' => $data);
     }
 
 }
+
+
+
+
+
+
+

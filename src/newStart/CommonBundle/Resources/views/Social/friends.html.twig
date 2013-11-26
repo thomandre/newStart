@@ -5,17 +5,24 @@
 		{% include '::header.html.twig' %}
 		<div class="row products">
 			<h2>Friends</h2>
-			<div class="input-group input-lg">
-				<input type="text" class="form-control" ng-model="name" ng-change="autoFriendsSearch()" name="search" id="search" />
-				<span class="input-group-btn">
-					<button class="btn btn-primary" type="button" id="go_btn" ng-click="productScrape()"><span class="glyphicon glyphicon-search"></span></button>
-				</span>
+
+			<div class="row">
+				<div class="col-md-6 col-md-offset-2 col-sm-6 col-xs-6">
+					<div class="input-group input-lg">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+						<input type="text" class="form-control" ng-model="name" ng-change="autoFriendsSearch()" name="search" id="search" />
+						<span class="input-group-btn">
+							<button class="btn btn-primary" type="button" id="go_btn" ng-click="productScrape()"><span class="glyphicon glyphicon-search"></span></button>
+						</span>
+					</div>
+				</div>
 			</div>
+			<br />
 			<div ng-view>
 				{% for friend in user.getMyFriends() %}
 					<div class="col-md-2 col-sm-3 col-xs-5 product">
 						<div class="product-image">
-							<a href="{{ path('profile', {userId:friend.myFriends.getFacebookId}) }}#/profile/{{ friend.myFriends.getFacebookId }}"><img src='https://graph.facebook.com/{{ friend.myFriends.getFacebookId() }}/picture?width=183&height=220' height="220" width="183"/></a>
+							<a href="{{ path('profile', {userId:friend.myFriends.getFacebookId}) }}#/profile/{{ friend.myFriends.getFacebookId }}"><img src='' height="220" width="176"/></a>
 							<p><span><a href="{{ path('profile', {userId:friend.myFriends.getFacebookId}) }}#/profile/{{ friend.myFriends.getFacebookId }}">{{ friend.myFriends.getFullName() }}</a></span></p>
 						</div>
 					</div>

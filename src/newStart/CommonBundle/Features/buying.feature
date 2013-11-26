@@ -37,6 +37,11 @@ Alors je devrais voir "Thomas André"
 Et je suis "Thomas André"
 Et j'attend "1" secondes
 Alors je devrais voir "Apple - MacBook Air"
+
+Alors je suis "What's new"
+Et je devrais voir "Apple - MacBook Air"
+Alors je devrais voir "Thomas André"
+
 Et je suis "Apple - MacBook Air"
 Et j'attend "0.5" secondes
 Et je devrais voir "Core i7 1,7 GHz - 512 de SSD - 8Go de RAM"

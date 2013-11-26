@@ -1,6 +1,6 @@
 <div class="col-md-2 col-sm-3 col-xs-5 product" ng-repeat="friend in friends">
 	<div class="product-image" ng-controller="FriendCtrl">
-		<a href="../profiles/{{ friend.facebookId }}#/profile/{{ friend.facebookId }}"><img ng-src='https://graph.facebook.com/{{ friend.facebookId }}/picture?width=183&height=220' height="220" width="183"/></a>
+		<a href="../profiles/{{ friend.facebookId }}#/profile/{{ friend.facebookId }}"><img ng-src='https://graph.facebook.com/{{ friend.facebookId }}/picture?width=176&height=220' height="220" width="176"/></a>
 		<p>
 			<span><a href="../profiles/{{ friend.facebookId }}#/profile/{{ friend.facebookId }}">{{ friend.fullName }}</a></span>
 			<a title="Ajouter {{ friend.fullName }} à mon réseau" class="glyphicon glyphicon-star" ng-class="{favorized:friend.favorite}" ng-click="favorize()"></a> 

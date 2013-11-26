@@ -65,7 +65,7 @@ Et j'attend "0.5" secondes
 Et je devrais voir "Levi's Levis" 
 Et je suis "supprimer"
 Et je valide la fenetre de confirmation
-Et j'attend "10" secondes
+Et j'attend "1" secondes
 
 Et je ne devrais pas voir "Levi's Levis® Commuter™ 511™ Slim Fit Pants - Performance Hunter - Jeans" 
 

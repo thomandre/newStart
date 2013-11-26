@@ -107,7 +107,7 @@ class FeatureContext extends FeatureGlobal
             new Step\When('je remplis "pass" avec "'.$arg2.'"'),
             new Step\When('je valide le formulaire'),
             new Step\Then('je reviens sur la fenêtre principale'),
-            new Step\When('j\'attend que ".products h2" soit sur la page'),
+            new Step\When('j\'attend que ".row h2" soit sur la page'),
             new Step\Then('je devrais voir "Ma liste de cadeaux"'),
         );
     }
