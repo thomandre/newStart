@@ -119,18 +119,37 @@ a.faq {
 	border-width: 1px;
 	margin: 2px;
 }
-.header a {
-    background-color: #0A0A5A;
-    color: #FFFFFF;
-    display: block;
-    padding: 5px;
-    font-weight: 200;
-    text-align: right;
-}
 
-.header .settings {
-    left:7px;
-    top:3px;
+/* ----- Header ----- */
+.header {
+    background-color: #0A0A5A;
+    display: block;
+    height: 45px;
+    margin: 0 -15px;
+    padding: 9px;
+}
+.header span, .header li {
+    background-color: #0A0A5A;
+    padding: 5px;
+}
+.header div.logo {
+    float:left;
+}
+.header div.menu {
+    float:right;
+}
+.header div {
+    display:inline-block;
+}
+.header a {
+    color: #FFFFFF;
+    font-weight: 200;
+}
+.header .menu-links {
+    margin-right: 60px;
+}
+.header .settings span {
+    top: 2px;
     transform:rotate(90deg);
     -webkit-transform:rotate(90deg);
     -moz-transform:rotate(90deg);
@@ -140,7 +159,7 @@ a.faq {
     right: 7px;
 }
 .header a:hover {
-    color:#EAEAEA;
+    color:#E0E0E0;
 }
 .header .ddown-menu li {
     list-style: none outside none;
@@ -150,22 +169,16 @@ a.faq {
     padding:0 15px;
 }
 .header .ddown-menu {
-    display:none;
-    float: left;
+    display: none;
+    float: right;
+    left: 1012px;
     position: absolute;
-    left: 39px;
-    width: 181px;
+    top: 36px;
+    width: 126px;
     z-index: 10;
 }
-#settings {
-    display: inline-block;  
-}
-.row.header {
-    background-color:#0A0A5A;
-    height: 45px;
-    line-height: 35px;
-    padding: 0 5px;
-}
+
+/* ----- Products ----- */
 .product img {
 	-ms-interpolation-mode: bicubic;
     border: 1px solid #F1F1F1 !important;
@@ -197,133 +210,6 @@ a.faq {
     overflow: hidden;
     font-weight: 200;
 }
-div.url {
-	margin:145px 0 0;
-}
-#url-block {
-    margin: 20px 0;
-}
-.url-block {
-	text-align: center;
-}
-.btn-primary {
-	background-color: #0A0A5A;
-	border-color: #0A0A5A;
-}
-.btn-primary:hover {
-    background-color: #1B1B7B;
-    border-color: #1B1B7B;
-}
-.missing-gift {
-	font-size: 58px;
-    height: 220px;
-    text-align: center;
-    border-style:dashed;
-    border-color:#1B1B7B;
-    color:#0A0A5A;
-    border-radius: 5px;
-    background-color:#FAFAFD;
-    border-width:2px;
-}
-.missing-gift span {
-    border-radius: 47px 47px 47px 47px;
-    border-style: dotted;
-    border-width: 2px;
-    display: block;
-    height: 90px;
-    left: 65px;
-    position: absolute;
-    top: 65px;
-    vertical-align: middle;
-    width: 90px;
-}
-.viewed-profile {
-	margin-top:50px;
-}
-
-.user-profile {
-	padding-left: 0px;
-	padding-right: 0px; 
-}
-
-.viewed-profile h2 {
-	margin: 12px 1px 0;
-}
-
-.form-control, .btn {
-	font-weight:200;
-}
-.url .form-control, .url button {
-    height:40px;
-}
-.row-user-profile {
-    border-bottom: 1px groove #AAAAAA;
-    border-width: 1px;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-}
-
-div#complete {
-    background-color: #FFFFFF;
-    border-color: #C0C0C0;
-    border-style: solid;
-    border-width: 1px;
-    margin-left: 55px;
-    padding: 6px;
-    position: absolute;
-    text-align: left;
-    top: -11px;
-    width: 466px;
-    z-index: 5;
-}
-span.loader {
-    display: inline-block;
-	margin-right: 5px;
-}
-
-@-webkit-keyframes rotate {
-    from{
-        -webkit-transform: rotate(0deg);
-    }
-    to{
-        -webkit-transform: rotate(360deg);
-    }
-}
-@-moz-keyframes rotate {
-    from{
-        -moz-transform: rotate(0deg);
-    }
-    to{
-        -moz-transform: rotate(360deg);
-    }
-}
-
-.loader.glyphicon {
-    -webkit-animation: rotate 1s linear infinite;
-    -moz-animation: rotate 1s linear infinite;
-}
-
-h4 {
-    font-weight: 100;
-}
-
-#complete .row {
-    margin-bottom: 5px;
-}
-#complete textarea {
-    font-weight:100;
-}
-.cadre span {
-    color: #A0A0A0;
-    font-size: 43px;
-    top: 72px;
-}
-.hide {
-    display:none;
-}
-.show {
-    display:block;
-}
 .product-image .name {
     display: block;
     overflow: hidden;
@@ -350,6 +236,138 @@ h4 {
     color:#ddd;
 }
 
+/* ----- URL Field ----- */
+div.url {
+	margin:145px 0 0;
+}
+#url-block {
+    margin: 20px 0;
+}
+.url-block {
+	text-align: center;
+}
+.btn-primary {
+	background-color: #0A0A5A;
+	border-color: #0A0A5A;
+}
+.btn-primary:hover {
+    background-color: #1B1B7B;
+    border-color: #1B1B7B;
+}
+
+
+/* ----- Missing Gift ----- */
+.missing-gift {
+	font-size: 58px;
+    height: 220px;
+    text-align: center;
+    border-style:dashed;
+    border-color:#1B1B7B;
+    color:#0A0A5A;
+    border-radius: 5px;
+    background-color:#FAFAFD;
+    border-width:2px;
+}
+.missing-gift span {
+    border-radius: 47px 47px 47px 47px;
+    border-style: dotted;
+    border-width: 2px;
+    display: block;
+    height: 90px;
+    left: 65px;
+    position: absolute;
+    top: 65px;
+    vertical-align: middle;
+    width: 90px;
+}
+
+
+/* ----- Friends Profile ----- */
+.viewed-profile {
+	margin-top:50px;
+}
+.user-profile {
+	padding-left: 0px;
+	padding-right: 0px; 
+}
+.viewed-profile h2 {
+	margin: 12px 1px 0;
+}
+.form-control, .btn {
+	font-weight:200;
+}
+.url .form-control, .url button {
+    height:40px;
+}
+.row-user-profile {
+    border-bottom: 1px groove #AAAAAA;
+    border-width: 1px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+/* ----- Product Scrape ----- */
+div#complete {
+    background-color: #FFFFFF;
+    border-color: #C0C0C0;
+    border-style: solid;
+    border-width: 1px;
+    margin-left: 55px;
+    padding: 6px;
+    position: absolute;
+    text-align: left;
+    top: -11px;
+    width: 466px;
+    z-index: 5;
+}
+#complete .row {
+    margin-bottom: 5px;
+}
+#complete textarea {
+    font-weight:100;
+}
+span.loader {
+    display: inline-block;
+	margin-right: 5px;
+}
+.loader.glyphicon {
+    -webkit-animation: rotate 1s linear infinite;
+    -moz-animation: rotate 1s linear infinite;
+}
+
+/* ----- Background ----- */
+@-webkit-keyframes rotate {
+    from{
+        -webkit-transform: rotate(0deg);
+    }
+    to{
+        -webkit-transform: rotate(360deg);
+    }
+}
+@-moz-keyframes rotate {
+    from{
+        -moz-transform: rotate(0deg);
+    }
+    to{
+        -moz-transform: rotate(360deg);
+    }
+}
+h4 {
+    font-weight: 100;
+}
+.cadre span {
+    color: #A0A0A0;
+    font-size: 43px;
+    top: 72px;
+}
+.hide {
+    display:none;
+}
+.show {
+    display:block;
+}
+
+/* ----- Feed ----- */
 .feed .product-image p {
     font-size: 13px;
     margin-top:10px;

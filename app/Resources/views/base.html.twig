@@ -33,7 +33,6 @@
                             }
                         });
                         FB.Event.subscribe('auth.logout', function(response) {
-                            console.log('logout');
                             window.location.href = "{{ path('_security_logout') }}";
                         });
 
@@ -41,14 +40,13 @@
                 }
                 $('.settings').click(function (event) {
                     event.preventDefault();
-                    $('#profile .ddown-menu').toggle();
+                    $('.header .ddown-menu').toggle();
                 });
 
                 $('#logout').click(function (event) {
                     event.preventDefault();
                     FB.getLoginStatus(function () {
                         FB.logout(function(response) {
-                            console.log('logout');
                             return;
                         });
                     });
