@@ -57,7 +57,7 @@ class SocialController extends Controller
             $user = $this->getUser();
             $response = $facebook->api('/me/friends?fields=name,id,email');
         } catch (\Exception $e) {
-            return new RedirectResponse($this->container->get('router')->generate('public_home'));
+            return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
         }
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
@@ -86,7 +86,7 @@ class SocialController extends Controller
             $user = $this->getUser();
             $response = $facebook->api('/me/friends?fields=name,id,email');
         } catch (\Exception $e) {
-            return new RedirectResponse($this->container->get('router')->generate('public_home'));
+            return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
         }
         $user = $this->getUser();
 

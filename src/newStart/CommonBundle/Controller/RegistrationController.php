@@ -58,7 +58,7 @@ class RegistrationController extends Controller
             $response = $facebook->api('/me/friends?fields=name,id,email');
             return new RedirectResponse($this->container->get('router')->generate('me'));
         } catch (\Exception $e) {
-            return new RedirectResponse($this->container->get('router')->generate('public_home'));
+            return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
         }
     }
 

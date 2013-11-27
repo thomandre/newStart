@@ -112,7 +112,15 @@ class DefaultController extends Controller
 		return new JsonResponse();
     }
 
-    
+
+    /**
+     * @Route("/fbLogout", name="fbLogout")
+     * @Template()
+     */
+    public function fbLogoutAction()
+    {
+        return array();
+    }
     
 
 }

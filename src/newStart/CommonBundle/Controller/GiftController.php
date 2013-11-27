@@ -49,7 +49,7 @@ class GiftController extends Controller
         try {
             $response = $facebook->api('/me/friends?fields=name,id,email');
         } catch (\Exception $e) {
-            return new RedirectResponse($this->container->get('router')->generate('public_home'));
+            return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
         }
         $fbFriends = $response['data'];
         $fbFriends = array_slice($fbFriends, 0, 10*5);
