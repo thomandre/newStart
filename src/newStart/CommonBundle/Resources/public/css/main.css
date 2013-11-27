@@ -168,12 +168,14 @@ a.faq {
     text-align: left;
     padding:0 15px;
 }
+div.ddown {
+    width:100%;
+    margin: 0 9px;
+}
 .header .ddown-menu {
     display: none;
     float: right;
-    left: 1012px;
-    position: absolute;
-    top: 36px;
+    position: relative;
     width: 126px;
     z-index: 10;
 }

@@ -1,4 +1,4 @@
-		<div class="header">
+			<div class="header">
 			<div class="logo">
 				<span class="logo"><a href="{{ path('feed') }}" style="text-align:left"><span class="glyphicon glyphicon-home"></span>HaveFyve</a></span>
 			</div>
@@ -16,13 +16,15 @@
 				</span>
 				<span>
 					<a href="#" class="settings"><span class="glyphicon glyphicon-play"></span></a>
-			        <ul class="ddown-menu">
-			          <li><a href="#">Settings</a></li>
-			          <li><a id="logout" href="{{ path('_security_logout') }}">Logout</a></li>
-			        </ul>
 				</span>
 			</div>
 			<div style="clear:both"></div>
+			<div class="ddown">
+		        <ul class="ddown-menu">
+					<li><a href="#">Settings</a></li>
+					<li><a id="logout" href="{{ path('_security_logout') }}">Logout</a></li>
+		        </ul>
+			</div>
 		</div>
 		<svg id="svg-effects" style="display:none">
 		    <filter id="blur-effect-1">

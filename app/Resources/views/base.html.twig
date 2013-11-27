@@ -18,6 +18,7 @@
         {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+            <script src="{{ asset('bundles/newstartcommon/js/vendor/jquery.ba-outside-events.min.js') }}"></script>
             <script>
                 function goLogIn(){
                     window.location.href = "{{ path('_security_check') }}";
@@ -41,6 +42,13 @@
                 $('.settings').click(function (event) {
                     event.preventDefault();
                     $('.header .ddown-menu').toggle();
+                    $(".header .ddown-menu").bind("clickoutside", function(event){
+                        if($(event.target).attr('class') != 'glyphicon glyphicon-play' && $(event.target).attr('class') != 'settings') {
+                            event.preventDefault();
+                            $('.header .ddown-menu').hide();
+                            $('.header .ddown-menu').unbind("clickoutside");                            
+                        }
+                    });
                 });
 
                 $('#logout').click(function (event) {
