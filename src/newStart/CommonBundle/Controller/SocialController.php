@@ -42,8 +42,16 @@ class SocialController extends Controller
      */
     public function friendsAction()
     {
+        $em = $this->getDoctrine()->getManager();
+
         $user = $this->getUser();
-        return array('user' => $user);
+        $displayPopIn = $user->getDisplayPopinFriends();
+        $user->setDisplayPopinFriends(false);
+
+        $this->em->persist($user);
+        $this->em->flush();
+
+        return array('user' => $user, 'displayPopIn' => $displayPopIn);
     }
 
     /**

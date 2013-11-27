@@ -6,6 +6,8 @@ Contexte: Je souhaite offir un cadeau
 Scénario: Je suis Thomas et je veux partager un le MacBook Air de mes reves
 Soit je suis sur "/"
 Soit je me logue en tant que "thomandr1@yahoo.fr" / "c@d153512"
+Alors je devrais voir "Havefyve est le site le plus simple pour offrir les cadeaux qui font vraiment plaisir."
+Alors je presse "Ok"
 Alors je remplis "url" avec "http://www.apple.com/fr/macbook-air/"
 Et je presse "Go !"
 Et je ne devrais pas voir "Go !"
@@ -22,7 +24,11 @@ Et je me delogue
 Scénario: Je suis AlbanThomas et je veux offrir un beau cadeau a Thomas 
 Soit je vais sur "/"
 Soit je me logue en tant que "albanthomas1@gmail.com" / "projetreecomate"
+Alors je devrais voir "Havefyve est le site le plus simple pour offrir les cadeaux qui font vraiment plaisir."
+Alors je presse "Ok"
 Et je suis "Friends"
+Alors je devrais voir "Choisissez les amis à qui vous ferez un cadeau."
+Alors je presse "Ok"
 Et j'attend "1" secondes
 Alors je devrais voir "Thomas André"
 Et je remplis "search" avec "Alb"
@@ -53,10 +59,10 @@ Et je bascule sur la popup
 Et je devrais voir "Le MacBook Air offre désormais une autonomie de 9 heures entre deux charges pour le modèle 11 pouces, et de 12 heures pour le modèle 13 pouces."
 
 Et je reviens sur la fenêtre principale
-Et je devrais voir "Avez-vous réelement acheté \"Apple - MacBook Air\" ?"
+Et je devrais voir "Vous avez décidé d’acheter ce cadeau finalement ?"
 Et je presse "Oui, j'ai acheté ce produit"
 Et j'attend "0.5" secondes
-Et je ne devrais pas voir "Avez-vous réelement acheté \"Apple - MacBook Air\" ?"
+Et je ne devrais pas voir "Vous avez décidé d’acheter ce cadeau finalement ?"
 Et je suis "Friends"
 Et j'attend "0.5" secondes
 Alors je devrais voir "Thomas André"

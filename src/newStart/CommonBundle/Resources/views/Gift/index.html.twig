@@ -50,6 +50,26 @@
 			{% endraw %}
 		</div>
 
+		{% if displayPopIn %}
+			<div class="modal fade">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			        <h4 class="modal-title">Explication du concept</h4>
+			      </div>
+			      <div class="modal-body">
+					<p class="small">Havefyve est le site le plus simple pour offrir les cadeaux qui font vraiment plaisir. Pourquoi ? Parce que vos proches enregistrent les cadeaux qu’ils souhaiteraient et pour vous, le tour est joué. Vous n’avez plus à vous poser la question « Qu’est-ce qui lui ferait plaisir ? », vous le savez déjà.</p>
+					<p class="small">Vous ne saviez pas quoi lui acheter ? Avec Havefyve, vous ne pourrez plus vous tromper !</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-primary" id="ok">Ok</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		{% endif %}
+
 		{% raw %}
 			<div class="alert alert-info" ng-show="info" style="display:none;">{{ info }}</div>
 			<div class="alert alert-danger" ng-show="danger" style="display:none;">{{ danger }}</div>
@@ -83,4 +103,14 @@
 	<script src="{{ asset('bundles/newstartcommon/js/app_ng.js') }}"></script>
 	<script src="{{ asset('bundles/newstartcommon/js/controllers.js') }}"></script>
 	<script src="{{ asset('bundles/newstartcommon/js/services.js') }}"></script>
+	{% if displayPopIn %}
+		<script>
+			$(document).ready(function () {
+				$('.modal').modal('show');
+			});
+			$('#ok').click(function () {
+				$('.modal').modal('hide');
+			});
+		</script>
+	{% endif %}
 {% endblock %}

@@ -139,7 +139,6 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 		while($rootScope.products.length && $rootScope.nbProducts < 5 && $rootScope.products[$rootScope.nbProducts]['name'] != undefined) {
 			$rootScope.nbProducts++;
 		}
-		console.log('count: ' + $rootScope.nbProducts);
 	}
 
 	$scope.updateProducts = function () {

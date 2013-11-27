@@ -12,12 +12,17 @@
 	        FB.Event.subscribe('auth.logout', function(response) {
 	            window.location.href = "{{ path('_security_logout') }}";
 	        });
-			FB.getLoginStatus(function () {
-			    FB.logout(function(response) {
-			        return;
-			    });
-			});
 
+			FB.getLoginStatus(function () {
+				if(typeof FB.logout == 'function'){
+			        if (FB.getAuthResponse()) {
+    				    FB.logout(function(response) {
+			        		return;
+			    		});
+		    		}
+	    		}
+	            window.location.href = "{{ path('_security_logout') }}";
+			});
 	    }
 	}
 </script>

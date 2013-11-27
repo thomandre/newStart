@@ -6,14 +6,20 @@
 		<div class="row row-user-profile">
 			<div class="col-md-2 col-sm-2 col-xs-4 user-profile">
 				<div class="viewed-profile">
-					<h2>{{ userProfile.firstName }} {{ userProfile.lastName }}</h2>
-					<br /><img src="https://graph.facebook.com/{{ userProfile.username }}/picture?width=150&height=150" />
+					<h2><a href="{{ path('profile', {userId:userProfile.getFacebookId}) }}#/profile/{{ userProfile.getFacebookId }}">{{ userProfile.firstName }} {{ userProfile.lastName }}</a></h2>
+					<br />
+					<a href="{{ path('profile', {userId:userProfile.getFacebookId}) }}#/profile/{{ userProfile.getFacebookId }}"><img src="https://graph.facebook.com/{{ userProfile.username }}/picture?width=150&height=150" /></a>
 				</div>
 			</div>
 		</div>
 
 		{% raw %}
-			<div class="alert alert-warning" ng-show="warning" style="display:none;">{{ warning }}</div>
+			<div class="row">
+				<div class="alert alert-warning" ng-show="warning" style="display:none;">{{ warning }}</div>
+			</div>
+			<div class="row">
+				<div class="alert alert-notice" ng-show="notice" style="display:none;">{{ notice }}</div>
+			</div>
 		{% endraw %}
 
 		<div ng-view class="row">

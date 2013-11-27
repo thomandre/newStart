@@ -44,6 +44,18 @@ class User extends BaseUser
     protected $new;
 
     /**
+     * @var boolean
+     * @ORM\Column(type="boolean", nullable=true, options={"default" = true})
+     */
+    protected $displayPopinProfile;
+
+    /**
+     * @var boolean
+     * @ORM\Column(type="boolean", nullable=true, options={"default" = true})
+     */
+    protected $displayPopinFriends;
+
+    /**
      * @ORM\OneToMany(targetEntity="\newStart\CommonBundle\Entity\Product", mappedBy="user")
      */
     protected $products;
@@ -81,6 +93,29 @@ class User extends BaseUser
                         'fullName'      => $this->getFullname(),
                     );
     }
+
+    public function setDisplayPopinProfile($displayPopinProfile)
+    {
+        $this->displayPopinProfile = $displayPopinProfile;
+        return $this;
+    }
+
+    public function getDisplayPopinProfile()
+    {
+        return $this->displayPopinProfile;
+    }
+
+    public function setDisplayPopinFriends($displayPopinFriends)
+    {
+        $this->displayPopinFriends = $displayPopinFriends;
+        return $this;
+    }
+
+    public function getDisplayPopinFriends()
+    {
+        return $this->displayPopinFriends;
+    }
+
 
     public function setBirthday(\DateTime $birthday)
     {

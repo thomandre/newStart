@@ -3,19 +3,19 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Avez-vous réelement acheté "{{ product.name }}" ?</h4>
+        <h4 class="modal-title">Vous avez décidé d’acheter ce cadeau finalement ?</h4>
       </div>
       <div class="modal-body">
-		<p class="small">Si vous cliquez sur oui, ce produit ne sera plus visible dans la liste, sauf pour {{ product.fullName }} pour que cela reste une surprise.</p>
+		<p class="small">Si vous cliquez sur oui, le produit disparaitra ne sera plus visible dans la liste, sauf pour {{ product.fullName }}, pour lui garder la surprise ;-)</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn" id="cancel">Non, je n'ai pas acheté ce produit</button>
+        <button type="button" class="btn" id="cancel">Non</button>
         <button type="button" class="btn btn-primary" id="validate">Oui, j'ai acheté ce produit</button>
       </div>
     </div>
   </div>
+  <input type="hidden" value="{{ product.fullName }}" id="fullName" />
 </div>
-
 
 <script>
 	$('.product-link').click(function (e) {
@@ -33,6 +33,8 @@
 			data: 'productId=' + $('#productId').val(),
 			success: function (data) {
 				$('.modal').modal('hide');
+				$('.alert-notice').html('Génial ! ' + $('#fullName').val() + ' sera forcément aux anges !');
+				$('.alert-notice').show();
 			}
 		});
 	});

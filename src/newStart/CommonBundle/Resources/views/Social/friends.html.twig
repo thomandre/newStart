@@ -18,6 +18,25 @@
 				</div>
 			</div>
 			<br />
+			{% if displayPopIn %}
+				<div class="modal fade">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				        <h4 class="modal-title">Choix des 5 amis</h4>
+				      </div>
+				      <div class="modal-body">
+						<p class="small">Choisissez les amis à qui vous ferez un cadeau.</p>
+						<p class="small"><span class="glyphicon glyphicon-star" style="color:#428BCA"></span> : Je lui ferai surement un cadeau</p>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-primary" id="ok">Ok</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			{% endif %}
 			<div ng-view>
 				{% for friend in user.getMyFriends() %}
 					<div class="col-md-2 col-sm-3 col-xs-5 product">
@@ -41,4 +60,14 @@
 	<script src="{{ asset('bundles/newstartcommon/js/app_ng.js') }}"></script>
 	<script src="{{ asset('bundles/newstartcommon/js/controllers.js') }}"></script>
 	<script src="{{ asset('bundles/newstartcommon/js/services.js') }}"></script>
+	{% if displayPopIn %}
+		<script>
+			$(document).ready(function () {
+				$('.modal').modal('show');
+			});
+			$('#ok').click(function () {
+				$('.modal').modal('hide');
+			});
+		</script>
+	{% endif %}
 {% endblock %}

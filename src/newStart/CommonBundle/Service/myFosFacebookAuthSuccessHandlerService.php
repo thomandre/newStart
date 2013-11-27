@@ -26,20 +26,14 @@ class myFosFacebookAuthSuccessHandlerService implements AuthenticationSuccessHan
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token)
     {
-        //$currentUser = $this->userManager->findUserBy(array('facebookId' => $token));
         $facebook = $this->container->get('fos_facebook.api');
         $em = $this->container->get('doctrine')->getEntityManager();
         $userRepository = $em->getRepository('UserBundle:User');
-        $user = $token->getUser();
-        //\Doctrine\Common\Util\Debug::dump($user);
-        
+        $user = $token->getUser();        
         $friends = $facebook->api('/me/friends?fields=name,id,email');
 
-        //($response);
-        //var_dump($friends['data']);
         foreach($friends['data'] as $friend) {
             $friendObj = $userRepository->findOneByFacebookId($friend['id']);
-//            \Doctrine\Common\Util\Debug::dump($friendObj);
             if($friendObj != null && $user->isMyFriend($friendObj) == false) {
                 $friend = new Friends();
                 $friend->setFriendsWithMe($friendObj);
@@ -59,13 +53,17 @@ class myFosFacebookAuthSuccessHandlerService implements AuthenticationSuccessHan
 
         $me = $facebook->api('/me/');
 
-        //var_dump($me['birthday']);
         $birthday = explode('/', $me['birthday']);
         $user->setBirthday(new \Datetime($birthday[2].'-'.$birthday[0].'-'.$birthday[1]));
 
+        if($user->getDisplayPopinProfile() === null) {
+            $user->setDisplayPopinProfile(true);
+            $user->setDisplayPopinFriends(true);
+        }
+
         $user->setNew(false);
+
         $em->persist($user);
-//        $em->persist($friendObj);
         $em->flush();
 
     	return new RedirectResponse($this->container->get('router')->generate('me'));
