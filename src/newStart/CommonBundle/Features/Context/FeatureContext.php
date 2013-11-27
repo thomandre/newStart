@@ -28,17 +28,9 @@ class FeatureContext extends FeatureGlobal
         $element[0]->click();
         $element = $this->getSession()->getPage()->findAll('css', '#logout');
         $element[0]->click();
-
-        return array(
-            new Step\When('je vais sur "/"'),
-//            new Step\When('je recharge la page'),
-            new Step\When('j\'attend que "#u_0_1" soit sur l\'iFrame "0"'),
-            new Step\When('je clique sur "#u_0_1" dans l\'iFrame "0"'),
+        $this->getSession()->wait(30000, 
+            "$('.landing').html() != undefined;"
         );
-
-/*        return array(
-            new Step\When('je suis "logout"'),
-        );*/
     }
 
 
@@ -132,9 +124,7 @@ class FeatureContext extends FeatureGlobal
     public function jeCliqueSurLeBoutonFacebookConnect()
     {
         return array(
-//            new Step\When('j\'attend "10" secondes'),
-            new Step\When('j\'attend que "#u_0_0" soit sur l\'iFrame "0"'),
-            new Step\When('je clique sur "#u_0_0" dans l\'iFrame "0"'),
+            new Step\When('je presse "Se connecter via Facebook"'),
             new Step\When('j\'attend "1" secondes'),
             new Step\When('je bascule sur la popup'),
             new Step\When('j\'attend "1" secondes'),

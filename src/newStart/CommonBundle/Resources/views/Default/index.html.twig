@@ -1,75 +1,42 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-	{% if not isGoogle %}
-		{{ facebook_login_button({'autologoutlink': true}) }}
-		{% verbatim %}
-			<script type="text/x-handlebars" id="register" data-template-name="index">
-				<div id="slide-home">
-					<div class="container">
-						<h1 class="form-signin-heading">HaveFyve arrive bientôt.</h2>
-						{{#if hasNotRegistered}}
-							<p>
-								{{#if message}}
-									{{message}}
-								{{else}}
-									Donnez-nous votre email et nous vous préviendrons quand nous serons prêts :
-								{{/if}}
-							</p>
-							<br />
-							<br />
-							<div class="input-group form-register">
-								<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-								{{input type="email" class="form-control" name="email" id="email" placeholder="email"}}
-								<div class="input-group-btn">
-									<button {{action 'register'}} class="btn btn-primary" type="submit">Go !</button>
-								</div>
-							</div>
-
-							<p><a {{action "scrollTo" "#faq"}} class="faq">> Qu'est-ce qu'HaveFyve ?</a></p>
-						{{/if}}
-					</div>
-				</div>
-
-
-				<div id="slide-faq">
-					<div class="container" id="faq">
-						{% endverbatim %}
-							{% include 'newStartCommonBundle:Default:faq.html.twig' %}
-						{% verbatim %}
-					</div>
-				</div>
-
-
-			</script>
-
-			<script type="text/x-handlebars" data-template-name="loading">
-				Loading...
-			</script>
-		{% endverbatim %}
-		<noscript>
-			<div class="container">
-				<p class="whiteText" style="margin-top:25%;">HaveFyve necessite l'activation de Javascript pour fonctionner correctement</p>
-			</div>
-		</noscript>
-	{% else %}
-		<div id="slide-faq">
-			<div class="container" id="questce">
-				{% include 'newStartCommonBundle:Default:faq.html.twig' %}
-			</div>
+<div class="container">
+	<h1 class="landing">HaveFyve</h1>
+	<h2 style="font-size:18px;">Vos meilleurs cadeaux</h2>
+	<noscript>
+		<div class="container">
+			<p class="whiteText" style="margin-top:25%;">HaveFyve necessite l'activation de Javascript pour fonctionner correctement</p>
 		</div>
-	{% endif %}
-		
+	</noscript>
+	
+	<br />
+	<br />
+	<p>
+		<button class="btn btn-primary" onclick="fb_login();">> Se connecter via Facebook</button>
+	</p>
+	<p>
+		<a class="faq">> Qu'est-ce qu'HaveFyve ?</a>
+	</p>
+</div>
 {% endblock %}
 
 {% block stylesheets %}
 	{{ parent() }}
-    <link rel="stylesheet" href="{{ asset('bundles/newstartcommon/css/home.css') }}">
+	<style>
+		body:before {
+			background:url('http://farm5.staticflickr.com/4038/4654423909_4b0363aaa2.jpg');
+			background-size: cover;
+			filter: url("#blur-effect");
+		}
+	</style>
 {% endblock %}
 
 {% block javascripts %}
 	{{ parent() }}
-    <script src="{{ asset('bundles/newstartcommon/js/vendor/handlebars-1.0.0.js') }}"></script>
-    <script src="{{ asset('bundles/newstartcommon/js/vendor/ember-1.0.0-rc.8.min.js') }}"></script>
-    <script src="{{ asset('bundles/newstartcommon/js/app.js') }}"></script>
+	<script>
+	function fb_login(){
+	    FB.login();
+	}
+	</script>
 {% endblock %}

@@ -3,6 +3,7 @@ body {
     top: 0; bottom: 0; left: 0; right: 0;
     height: 100%;
     background:none;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
 }
 body:before {
     position: absolute;
@@ -16,7 +17,6 @@ body:before {
     -webkit-transform-origin: top left;
     -webkit-filter: blur(30px) opacity(0.25) saturate(2.8);
 
-    filter:url(#blur-effect-2);
     -moz-transform: scale(2);
     -moz-transform-origin: top left;
     -moz-filter: blur(30px);
@@ -43,6 +43,7 @@ body:before {
 
 h1 {
 	font-size:60px;
+    font-weight: 300;
 }
 h2 {
     font-size: 14px;
@@ -57,7 +58,6 @@ p.small {
 }
 body. {
 	background-color: #fafafa;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
 }
 html,body {
     margin:0; padding:0; height:100%;
@@ -74,6 +74,7 @@ a.faq {
 	position:absolute;
 	margin-top:110px;
 	cursor:pointer;
+    font-weight: 300;
 }
 .friend p {
 	font-size:17px;

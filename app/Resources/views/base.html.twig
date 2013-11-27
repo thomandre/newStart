@@ -23,18 +23,18 @@
                 function goLogIn(){
                     window.location.href = "{{ path('_security_check') }}";
                 }
-
+                function goLogOut(){
+                    window.location.href = "{{ path('_security_logout') }}";
+                }
                 function onFbInit() {
                     if (typeof(FB) != 'undefined' && FB != null ) {
-                        FB.Event.subscribe('auth.statusChange', function(response) {
+                        FB.Event.subscribe('auth.login', function(response) {
                             if (response.session || response.authResponse) {
                                 setTimeout(goLogIn, 500);
-                            } else {
-                                window.location.href = "{{ path('_security_logout') }}";
                             }
                         });
                         FB.Event.subscribe('auth.logout', function(response) {
-                            window.location.href = "{{ path('_security_logout') }}";
+                            setTimeout(goLogOut, 500);
                         });
 
                     }
