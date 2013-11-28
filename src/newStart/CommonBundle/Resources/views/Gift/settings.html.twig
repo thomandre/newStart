@@ -18,8 +18,33 @@
 				Profil privé
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-4">
-				<input type="checkbox" name="prive" id="prive">
+				<input type="checkbox" name="prive" id="prive" {% if not user.public %}checked="checked"{% endif %}>
 			</div>
 		</div>
 	</div>
+	<input type="hidden" id="profile_prive" value="{{ path('profile_prive')}}" />
+
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+		$('#prive').change(function () {
+			if($(this).is(':checked')) {
+				var publicProfile = 0;
+			} else {
+				var publicProfile = 1;
+			}
+			$.ajax({
+				dataType: 'json',
+			  	url: $('#profile_prive').val(),
+				data: { publicProfile: publicProfile},
+				success: function (reponse) {
+					if(reponse.status == 'ko') {
+						console.log('status not updated');
+					}
+				}
+			});
+		});
+	</script>	
 {% endblock %}

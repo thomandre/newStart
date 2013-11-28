@@ -22,6 +22,30 @@ class ApiController extends Controller
     public $scrapeService;
 
     /**
+     * @Route("/api/v1/profile/private", name="profile_prive")
+     * @Template()
+     */
+    public function privateProfileAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        if(!is_object($user)) {
+            $response = new JsonResponse();
+            $response->setData(array('status' => 'ko'));
+            return $response;
+        }
+
+        $user->setPublic($request->get('publicProfile'));
+        $em->persist($user);
+
+        $em->flush();
+
+        $response = new JsonResponse();
+        $response->setData(array('status' => 'ok'));
+        return $response;
+    }
+
+    /**
      * @Route("/api/v1/product/scrape", name="scrape")
      * @Template()
      * @Cache(expires="+2hours", public="true")

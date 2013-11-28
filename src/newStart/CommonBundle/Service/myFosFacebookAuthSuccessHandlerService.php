@@ -59,6 +59,7 @@ class myFosFacebookAuthSuccessHandlerService implements AuthenticationSuccessHan
         if($user->getDisplayPopinProfile() === null) {
             $user->setDisplayPopinProfile(true);
             $user->setDisplayPopinFriends(true);
+            $user->setPublic(true);
         }
 
         $user->setNew(false);

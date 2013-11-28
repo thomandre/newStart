@@ -60,16 +60,17 @@ class SocialController extends Controller
      */
     public function profileAction($userId)
     {
+        $em = $this->getDoctrine()->getManager();
+        $userProfile = $em->getRepository('UserBundle:User')->findOneByFacebookId($userId);    
         try {
             $facebook = $this->container->get('fos_facebook.api');
             $user = $this->getUser();
             $response = $facebook->api('/me/friends?fields=name,id,email');
         } catch (\Exception $e) {
-            //return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
+            if($userProfile->getPublic() == false) {
+                return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
+            }
         }
-        $em = $this->getDoctrine()->getManager();
-        $user = $this->getUser();
-        $userProfile = $em->getRepository('UserBundle:User')->findOneByFacebookId($userId);    
         $products = $em->getRepository('newStartCommonBundle:Product')->findBy(array('user' => $userProfile, 'deleted' => false, 'beenBought' => false));
 
         $gifts = array();
