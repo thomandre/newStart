@@ -183,7 +183,29 @@ div.ddown {
     z-index: 10;
 }
 
+.profile-image {
+    background-color: #FFFFFF;
+    border-color: #000000;
+    box-shadow: 1px 1px 5px #CCCCCC;
+    color: #000000;
+    margin: 14px 0;
+    padding: 8px;
+    text-align: left;
+    width: 196px;
+}
+
 /* ----- Products ----- */
+.productDetail {
+
+}
+.productDetail img {
+    max-width:500px;
+    border-color: #000000;
+    box-shadow: 1px 1px 5px #CCCCCC;
+    color: #000000;
+    margin: 14px 0;
+    padding: 8px;
+}
 .product img {
 	-ms-interpolation-mode: bicubic;
     border: 1px solid #F1F1F1 !important;

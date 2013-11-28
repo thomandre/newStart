@@ -1,12 +1,22 @@
-<h3>{{ product.name }}</h3>
 
-<div class="col-md-5 col-sm-5 col-xs-5">
-	<a href="{{ product.url }}" target="_blank"><img ng-src="{{ product.imgUrl }}"></img></a>
+
+<div class="row">
+	<div class="col-md-5 col-sm-5 col-xs-5"><a href="#/">Retour</a></div>
 </div>
-<div class="col-md-5 col-sm-5 col-xs-5">
-	<p class="comment small">{{ product.comment }}</p>
-	<a href="#/">Retour</a>
-	<a href="{{ product.url }}" class="product-link btn btn-primary" target="_blank">Acheter</a>
+<br />
+<div class="row">
+	<div class="col-md-5 col-sm-5 col-xs-5">
+		<div class="productDetail">
+			<a href="{{ product.url }}" target="_blank">
+				<img ng-src="{{ product.imgUrl }}"></img>
+			</a>
+		</div>
+	</div>
+	<div class="col-md-5 col-sm-5 col-xs-5">
+		<p>{{ product.name }}</p>
+
+		<p class="comment small">{{ product.comment }}</p>
+	</div>
 </div>
 <input type="hidden" id="productId" value="{{ product.id }}">
 
