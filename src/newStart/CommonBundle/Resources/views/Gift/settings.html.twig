@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	<div class="container" ng-controller="MyProductListCtrl">
+		{% include '::header.html.twig' %}
+		<div class="row row-user-profile">
+			<div class="col-md-2 col-sm-2 col-xs-4 user-profile">
+				<div class="viewed-profile">
+					<h2>{{ user.firstName }} {{ user.lastName }}</h2>
+					<div class="profile-image">
+						<img src="https://graph.facebook.com/{{ user.username }}/picture?width=180&height=180" width="180px"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2 col-sm-2 col-xs-4">
+				Profil privé
+			</div>
+			<div class="col-md-2 col-sm-2 col-xs-4">
+				<input type="checkbox" name="prive" id="prive">
+			</div>
+		</div>
+	</div>
+{% endblock %}

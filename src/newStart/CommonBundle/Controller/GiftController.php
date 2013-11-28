@@ -84,4 +84,35 @@ class GiftController extends Controller
 
     }
 
+        /**
+     * @Route("/me/settings", name="settings")
+     * @Template()
+     */
+    public function settingsAction(Request $request)
+    {
+        try {
+            $facebook = $this->container->get('fos_facebook.api');
+            $user = $this->getUser();
+            if(!is_object($user)) {
+                return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
+            }
+        } catch (\Exception $e) {
+            return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
+        }
+
+        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
+            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
+        } else {
+            $error = $request->getSession()->get(SecurityContext::AUTHENTICATION_ERROR);
+        }
+
+        try {
+            $response = $facebook->api('/me/friends?fields=name,id,email');
+        } catch (\Exception $e) {
+            return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
+        }
+
+        return array('user' => $user);
+    }
+
 }

@@ -2,7 +2,11 @@
 
 {% block body %}
 	<div class="container" ng-controller="ProductListCtrl">
-		{% include '::header.html.twig' %}
+		{% if user %}
+			{% include '::header.html.twig' %}
+		{% else %}
+			{% include '::guest_header.html.twig' %}
+		{% endif %}
 		<div class="row row-user-profile">
 			<div class="col-md-2 col-sm-2 col-xs-4 user-profile">
 				<div class="viewed-profile">
@@ -28,7 +32,7 @@
 
 		<div ng-view class="row">
 			<div class="row products">
-				<h2>Ses idées de cadeaux</h2>
+				<h2>Sa liste de cadeaux</h2>
 				{% for gift in gifts %}
 	 				<div class="col-md-2 col-sm-3 col-xs-5 product">
 	 					<div class="product-image">

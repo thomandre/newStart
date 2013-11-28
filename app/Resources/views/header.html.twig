@@ -21,29 +21,9 @@
 			<div style="clear:both"></div>
 			<div class="ddown">
 		        <ul class="ddown-menu">
-					<li><a href="#">Settings</a></li>
+					<li><a href="{{ path('settings')}}">Settings</a></li>
 					<li><a id="logout" href="{{ path('_security_logout') }}">Logout</a></li>
 		        </ul>
 			</div>
 		</div>
-		<svg id="svg-effects" style="display:none">
-		    <filter id="blur-effect-1">
-		        <feGaussianBlur stdDeviation="0.9" />
-		    </filter>
-
-		    <filter id="blur-effect-2">
-		        <feGaussianBlur stdDeviation="2" />
-		    </filter>
-		</svg> 
-
-		<svg:svg>
-			<!-- Filter ID/Name -->
-			<svg:filter id="blur-effect">
-				<!-- Amount of Gaussian Blur that should be applied -->
-				<svg:feGaussianBlur stdDeviation="0.9"/>
-			</svg:filter>
-			<svg:filter id="example-two">
-				<svg:feGaussianBlur stdDeviation="2"/>
-	   		 </svg:filter>
-		</svg:svg>
 

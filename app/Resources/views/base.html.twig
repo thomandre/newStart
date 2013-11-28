@@ -72,6 +72,16 @@
                         });
                     });
                 });
+                function fb_login(){
+                    FB.login();
+                }
+                function fb_logout(){
+                    FB.getLoginStatus(function () {
+                        FB.logout(function(response) {
+                            return;
+                        });
+                    });
+                }
             </script>
             {{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}
         {% endblock %}

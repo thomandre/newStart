@@ -56,6 +56,12 @@ class User extends BaseUser
     protected $displayPopinFriends;
 
     /**
+     * @var boolean
+     * @ORM\Column(type="boolean", nullable=true, options={"default" = true})
+     */
+    protected $public;
+
+    /**
      * @ORM\OneToMany(targetEntity="\newStart\CommonBundle\Entity\Product", mappedBy="user")
      */
     protected $products;
@@ -93,6 +99,18 @@ class User extends BaseUser
                         'fullName'      => $this->getFullname(),
                     );
     }
+
+    public function setPublic($public)
+    {
+        $this->public = $public;
+        return $this;
+    }
+
+    public function getPublic()
+    {
+        return $this->public;
+    }
+
 
     public function setDisplayPopinProfile($displayPopinProfile)
     {

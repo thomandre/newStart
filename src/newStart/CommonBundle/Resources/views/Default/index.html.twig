@@ -35,18 +35,4 @@
 
 {% block javascripts %}
 	{{ parent() }}
-	<script>
-	function fb_login(){
-	    FB.login();
-	}
-	function fb_logout(){
-        FB.getLoginStatus(function () {
-            FB.logout(function(response) {
-                return;
-            });
-        });
-	}
-
-
-	</script>
 {% endblock %}
