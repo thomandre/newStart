@@ -9,11 +9,11 @@ body:before {
     position: absolute;
     z-index: -1; /* Keep the background behind the content */
     height: 100%; 
-    width: 50%;
+    width: 100%;
     content: "";
 
     /* don't forget to use the prefixes you need */
-    -webkit-transform: scale(2);
+    -webkit-transform: scale(1);
     -webkit-transform-origin: top left;
     -webkit-filter: blur(30px) opacity(0.25) saturate(2.8);
 
@@ -23,7 +23,7 @@ body:before {
     -moz-filter: opacity(0.25);
     -moz-filter: saturate(2.8);
 
-    transform: scale(2);
+    transform: scale(1);
     transform-origin: top left;
     filter: blur(30px) opacity(0.25) saturate(2.8);
     color: #fff;    
