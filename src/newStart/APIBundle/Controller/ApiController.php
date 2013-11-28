@@ -303,6 +303,9 @@ class ApiController extends Controller
         $imageService = new ImageService();
 
         $rootDir = $this->container->getParameter('kernel.root_dir');
+        if(!is_dir($rootDir.'/../web/images/thumb/')) {
+            mkdir($rootDir.'/../web/images/thumb/');
+        }
         try {
             $filePath = $rootDir.'/../web/images/'.$image;
             $fileDest = $rootDir.'/../web/images/thumb/'.$width.'_'.$height.'_'.$image;

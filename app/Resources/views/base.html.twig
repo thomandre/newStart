@@ -15,6 +15,7 @@
 
     </head>
     <body>
+        {{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}
         {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -30,13 +31,26 @@
                     if (typeof(FB) != 'undefined' && FB != null ) {
                         FB.Event.subscribe('auth.login', function(response) {
                             if (response.session || response.authResponse) {
+                                console.log('login..');
                                 setTimeout(goLogIn, 500);
                             }
                         });
                         FB.Event.subscribe('auth.logout', function(response) {
                             setTimeout(goLogOut, 500);
                         });
-
+                        FB.getLoginStatus(function(response) {
+                          if (response.status === 'connected') {
+                            var uid = response.authResponse.userID;
+                            var accessToken = response.authResponse.accessToken;
+                            $('#disconnect').show();
+                          } else if (response.status === 'not_authorized') {
+                            $('#connect').show();
+                            console.log('fb not authorized');
+                          } else {
+                            $('#connect').show();
+                            console.log('fb not connected');
+                          }
+                        });
                     }
                 }
                 $('.settings').click(function (event) {
@@ -59,8 +73,11 @@
                         });
                     });
                 });
+
+
+
+
             </script>
-            {{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}
         {% endblock %}
     </body>
 </html> 

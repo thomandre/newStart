@@ -28,7 +28,9 @@ body:before {
     filter: blur(30px) opacity(0.25) saturate(2.8);
     color: #fff;    
 }
-
+#connect, #disconnect {
+    display: none;
+}
 .form-register {
 	max-width: 450px;
 	width: 450px;

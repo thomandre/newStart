@@ -36,8 +36,12 @@ class GiftController extends Controller
         try {
             $facebook = $this->container->get('fos_facebook.api');
             $user = $this->getUser();
+            if(!is_object($user)) {
+//                var_dump($user);
+                return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
+            }
         } catch (\Exception $e) {
-            //var_dump("not logged");
+            return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
         }
 
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {

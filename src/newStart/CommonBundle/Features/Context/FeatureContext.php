@@ -124,6 +124,7 @@ class FeatureContext extends FeatureGlobal
     public function jeCliqueSurLeBoutonFacebookConnect()
     {
         return array(
+            new Step\When('j\'attend que "#connect" soit visible'),
             new Step\When('je presse "Se connecter via Facebook"'),
             new Step\When('j\'attend "1" secondes'),
             new Step\When('je bascule sur la popup'),
