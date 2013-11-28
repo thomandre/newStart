@@ -31,7 +31,7 @@
                     if (typeof(FB) != 'undefined' && FB != null ) {
                         FB.Event.subscribe('auth.login', function(response) {
                             if (response.session || response.authResponse) {
-                                console.log('login..');
+                                //console.log('login..');
                                 setTimeout(goLogIn, 500);
                             }
                         });
@@ -45,10 +45,10 @@
                             $('#disconnect').show();
                           } else if (response.status === 'not_authorized') {
                             $('#connect').show();
-                            console.log('fb not authorized');
+                            //console.log('fb not authorized');
                           } else {
                             $('#connect').show();
-                            console.log('fb not connected');
+                            //console.log('fb not connected');
                           }
                         });
                     }
