@@ -114,11 +114,12 @@ class ScrapeService
 	public function getBiggestImg($url) 
 	{
 		$dlService = $this->container->get('newstart_api_service_download');
-		$sortableImages = array();
+		$cachedImages = array();
+		$imageToPutInCache = array();
 
 		$images = $this->getAbsoluteUrlImages($url);
 		
-		foreach($images as $image) {
+		/*foreach($images as $image) {
 			try {
 				$imageEntity = $dlService->getImageViaCache($image);
 				if($imageEntity->getSurface() > 7000 && ($imageEntity->getRatio() < 3 && $imageEntity->getRatio() > 0.33)) {
@@ -126,6 +127,27 @@ class ScrapeService
 				}
 			} catch(\Exception $e) {
 			}			
+		}*/
+		//$i = 0;
+		foreach($images as $image) {
+			$imageEntity = $dlService->getImageIfInCache($image);
+			if($imageEntity == null) {
+				$imageToPutInCache[] = $image;
+			} else {
+				$cachedImages[] = $imageEntity;
+			}
+			//if($i > 20) break;
+			//$i++;
+		}
+
+		$notCachedImages = $dlService->getImagesNotInCache($imageToPutInCache);	
+
+		$allImages = array_merge($notCachedImages, $cachedImages);
+
+		foreach($allImages as $imageEntity) {
+			if($imageEntity->getSurface() > 7000 && ($imageEntity->getRatio() < 3 && $imageEntity->getRatio() > 0.33)) {
+				$sortableImages[] = $imageEntity;
+			}
 		}
 
 		usort($sortableImages, function ($a, $b) {			

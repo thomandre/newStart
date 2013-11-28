@@ -104,6 +104,7 @@ class scrapeServiceTest extends NewStartWebTestCase
 	/**
 	 * @test
 	 * @group scrape
+	 * @group improvedscrape
 	 */
 	public function sortedImgScrapeTest()
 	{
