@@ -37,19 +37,6 @@
                         FB.Event.subscribe('auth.logout', function(response) {
                             setTimeout(goLogOut, 500);
                         });
-                        FB.getLoginStatus(function(response) {
-                          if (response.status === 'connected') {
-                            var uid = response.authResponse.userID;
-                            var accessToken = response.authResponse.accessToken;
-                            $('#disconnect').show();
-                          } else if (response.status === 'not_authorized') {
-                            $('#connect').show();
-                            //console.log('fb not authorized');
-                          } else {
-                            $('#connect').show();
-                            //console.log('fb not connected');
-                          }
-                        });
                     }
                 }
                 $('.settings').click(function (event) {
