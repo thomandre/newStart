@@ -16,6 +16,8 @@
     </head>
     <body>
         {% block body %}{% endblock %}
+        <div id="fb-root"></div>
+
         <svg id="svg-image-blur">
             <filter id="blur-effect">
                 <feGaussianBlur stdDeviation="15" />
@@ -23,59 +25,32 @@
         </svg>
         {% block javascripts %}
             <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+            <script src="{{ asset('bundles/newstartcommon/js/main.js') }}"></script>
             <script src="{{ asset('bundles/newstartcommon/js/vendor/jquery.ba-outside-events.min.js') }}"></script>
             <script>
-                function goLogIn(){
-                    window.location.href = "{{ path('_security_check') }}";
-                }
-                function goLogOut(){
-                    window.location.href = "{{ path('_security_logout') }}";
-                }
-                function onFbInit() {
-                    if (typeof(FB) != 'undefined' && FB != null ) {
-                        FB.Event.subscribe('auth.login', function(response) {
-                            if (response.session || response.authResponse) {
-                                //console.log('login..');
-                                setTimeout(goLogIn, 500);
-                            }
-                        });
-                        FB.Event.subscribe('auth.logout', function(response) {
-                            setTimeout(goLogOut, 500);
-                        });
-                    }
-                }
-                $('.settings').click(function (event) {
-                    event.preventDefault();
-                    $('.header .ddown-menu').toggle();
-                    $(".header .ddown-menu").bind("clickoutside", function(event){
-                        if($(event.target).attr('class') != 'glyphicon glyphicon-play' && $(event.target).attr('class') != 'settings') {
-                            event.preventDefault();
-                            $('.header .ddown-menu').hide();
-                            $('.header .ddown-menu').unbind("clickoutside");                            
-                        }
+                  function goLogIn(){
+                      window.location.href = "{{ path('_security_check') }}";
+                  }
+                  function goLogOut(){
+                      window.location.href = "{{ path('_security_logout') }}";
+                  }
+                  window.fbAsyncInit = function() {
+                    // init the FB JS SDK
+                    FB.init({
+                      appId      : '636452619713648',                       // App ID from the app dashboard
+                      status     : false,                                   // Check Facebook Login status
+                      cookie     : true,                                    // enable cookies to allow the server to access the session
+                      xfbml      : true,                                    // Look for social plugins on the page
+                      oauth      : true,
+                      logging    : true
                     });
-                });
 
-                $('#logout').click(function (event) {
-                    event.preventDefault();
-                    FB.getLoginStatus(function () {
-                        FB.logout(function(response) {
-                            return;
-                        });
-                    });
-                });
-                function fb_login(){
-                    FB.login();
-                }
-                function fb_logout(){
-                    FB.getLoginStatus(function () {
-                        FB.logout(function(response) {
-                            return;
-                        });
-                    });
-                }
+                    onFbInit(FB);
+                  }
             </script>
-            {{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}
-        {% endblock %}
+       {% endblock %}
+
+       <!-- {{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'bla();'}) }} !-->
+
     </body>
 </html> 

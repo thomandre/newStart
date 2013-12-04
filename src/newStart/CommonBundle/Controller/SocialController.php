@@ -42,6 +42,14 @@ class SocialController extends Controller
      */
     public function friendsAction()
     {
+        try {
+            $facebook = $this->container->get('fos_facebook.api');
+            $user = $this->getUser();
+            $response = $facebook->api('/me/friends?fields=name,id,email');
+        } catch (\Exception $e) {
+            return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $user = $this->getUser();

@@ -41,7 +41,8 @@
 	</div>
 	<p>
 		<button class="btn" id="disconnect" onclick="fb_logout();">Déconnexion</button>
-		<button class="btn btn-primary" id="connect" onclick="fb_login();">> Se connecter via Facebook</button>
+		<button class="btn btn-primary" id="connect" onclick="fb_connect();">> Se connecter via Facebook</button>
+		<button class="btn btn-primary" id="login" onclick="fb_login();">> S'inscrire via Facebook</button>
 	</p>
 	<p>
 		<a class="faq">> Qu'est-ce qu'HaveFyve ?</a>
@@ -63,36 +64,4 @@
 {% block javascripts %}
 	{{ parent() }}
 	<script src="{{ asset('bundles/newstartcommon/css/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-
-	<script>
-        function onFbInit() {
-            if (typeof(FB) != 'undefined' && FB != null ) {
-                FB.Event.subscribe('auth.login', function(response) {
-                    if (response.session || response.authResponse) {
-                        //console.log('login..');
-                        setTimeout(goLogIn, 500);
-                    }
-                });
-                FB.Event.subscribe('auth.logout', function(response) {
-                    setTimeout(goLogOut, 500);
-                });
-                FB.getLoginStatus(function(response) {
-                  if (response.status === 'connected') {
-                    var uid = response.authResponse.userID;
-                    var accessToken = response.authResponse.accessToken;
-                    $('#disconnect').show();
-                    $('#connect').show();
-                    goLogIn();
-                  } else if (response.status === 'not_authorized') {
-                    $('#connect').show();
-                    //console.log('fb not authorized');
-                  } else {
-                    $('#connect').show();
-                    //console.log('fb not connected');
-                  }
-                });
-            }
-        }
-	</script>
-
 {% endblock %}
