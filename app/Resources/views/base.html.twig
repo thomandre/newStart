@@ -16,6 +16,11 @@
     </head>
     <body>
         {% block body %}{% endblock %}
+        <svg id="svg-image-blur">
+            <filter id="blur-effect">
+                <feGaussianBlur stdDeviation="15" />
+            </filter>
+        </svg>
         {% block javascripts %}
             <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
             <script src="{{ asset('bundles/newstartcommon/js/vendor/jquery.ba-outside-events.min.js') }}"></script>

@@ -22,7 +22,9 @@ function MyFriendsListCtrl($scope, $timeout, Friend, $rootScope) {
     }
 
 	$scope.updateFriends = function () {
-		$rootScope.friends = Friend.listMine({'id':$scope.name});
+		$rootScope.friends = Friend.listMine({'id':$scope.name}, function (data) {
+			$('body').append('<style>body:before{background:url(https://graph.facebook.com/' + data[0].facebookId + '/picture?width=176&height=220); background-size: cover;filter: url("#blur-effect");</style>');
+		});
     }
     $scope.updateFriends();
 }

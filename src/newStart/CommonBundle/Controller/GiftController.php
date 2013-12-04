@@ -84,7 +84,7 @@ class GiftController extends Controller
 
     }
 
-        /**
+    /**
      * @Route("/me/settings", name="settings")
      * @Template()
      */

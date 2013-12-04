@@ -1,7 +1,4 @@
 body {
-    position: absolute;
-    top: 0; bottom: 0; left: 0; right: 0;
-    height: 100%;
     background:none;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
 }
@@ -19,9 +16,8 @@ body:before {
 
     -moz-transform: scale(2);
     -moz-transform-origin: top left;
-    -moz-filter: blur(30px);
-    -moz-filter: opacity(0.25);
-    -moz-filter: saturate(2.8);
+    opacity: 0.25;
+    -moz-filter: contrast(150%);
 
     transform: scale(1);
     transform-origin: top left;
@@ -407,4 +403,11 @@ h4 {
 }
 .row .products {
     padding:0 0 0 13px;
+}
+
+.carousel-control span {
+    top:250px;
+}
+.carousel-indicators li {
+    border: 1px solid #0A0A5A;
 }

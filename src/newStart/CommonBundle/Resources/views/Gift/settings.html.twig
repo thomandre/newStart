@@ -23,7 +23,13 @@
 		</div>
 	</div>
 	<input type="hidden" id="profile_prive" value="{{ path('profile_prive')}}" />
-
+	<style>
+		body:before{
+			background:url(https://graph.facebook.com/{{ user.username }}/picture?width=180&height=180); 
+			background-size: cover;
+			filter: url("#blur-effect");
+		}
+	</style>
 {% endblock %}
 
 {% block javascripts %}
