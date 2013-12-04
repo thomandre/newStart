@@ -10,7 +10,7 @@ default:
         env: test
         debug: false
     Behat\MinkExtension\Extension:
-      base_url: 'http://192.168.0.11:8888/newstart/web/app_test.php/'
+      base_url: 'http://havefyve.local:8888/newstart/web/app_test.php/'
       show_cmd: open -a firefox %s &
       javascript_session: selenium2
       browser_name: firefox
@@ -26,5 +26,5 @@ javascript:
       show_cmd: open -a firefox %s &
       default_session: selenium2
       javascript_session: selenium2
-      base_url: 'http://192.168.0.11:8888/newstart/web/app_test.php/'
+      base_url: 'http://havefyve.local:8888/newstart/web/app_test.php/'
 
