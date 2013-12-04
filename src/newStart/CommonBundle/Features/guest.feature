@@ -27,7 +27,7 @@ Et je me delogue
 
 @javascript @guest @guest_step2
 Scénario: Je suis un mechant pirate et je veux voir le profil de Thomas
-Soit je suis sur "http://192.168.0.11:8888/newstart/web/app_test.php/profiles/678776921#/profile/678776921"
+Soit je suis sur "http://havefyve.local:8888/newstart/web/app_test.php/profiles/678776921#/profile/678776921"
 Et j'attend "2" secondes
 Alors je ne devrais pas voir "Thomas André"
 Alors je devrais voir "Vos meilleurs cadeaux"
@@ -48,7 +48,7 @@ Et je me delogue
 
 @javascript @guest @guest_step4
 Scénario: Je suis la maman de Thomas, je n'ai pas de compte et je veux offrir un beau cadeau à mon fils
-Soit je suis sur "http://192.168.0.11:8888/newstart/web/app_test.php/profiles/678776921#/profile/678776921"
+Soit je suis sur "http://havefyve.local:8888/newstart/web/app_test.php/profiles/678776921#/profile/678776921"
 Et j'attend "2" secondes
 Alors je devrais voir "Thomas André"
 Et je devrais voir "Sa liste de cadeaux"
