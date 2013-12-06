@@ -51,9 +51,9 @@ function onFbInit(FB) {
             var uid = response.authResponse.userID;
             var accessToken = response.authResponse.accessToken;
             $('#login').show();
-            if($('.landing').html() == 'HaveFyve') {
+            /*if($('.landing').html() == 'HaveFyve') {
                 goLogIn();
-            }
+            }*/
             //console.log('fb connected');
           } else if (response.status === 'not_authorized') {
             $('#connect').show();
