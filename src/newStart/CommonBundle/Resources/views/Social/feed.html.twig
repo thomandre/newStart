@@ -28,13 +28,15 @@
 			</div>
 		</div>
 	</div>
-	<style>
-		body:before{
-			background:url({{ products.0.thumb_url }}); 
-			background-size: cover;
-			filter: url("#blur-effect");
-		}
-	</style>
+	{% if products.0 is defined %}
+		<style>
+			body:before{
+				background:url({{ products.0.thumb_url }}); 
+				background-size: cover;
+				filter: url("#blur-effect");
+			}
+		</style>
+	{% endif %}
 {% endblock %}
 
 

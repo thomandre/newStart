@@ -34,7 +34,7 @@ function fb_connect(){
 }
 
 function onFbInit(FB) {
-    console.log(FB);
+    //console.log(FB);
     if (typeof(FB) != 'undefined' && FB != null ) {
         FB.Event.subscribe('auth.login', function(response) {
             if (response.session || response.authResponse) {
@@ -46,7 +46,7 @@ function onFbInit(FB) {
         });
 
         FB.getLoginStatus(function(response) {
-          console.log('3');
+          //console.log('3');
           if (response.status === 'connected') {
             var uid = response.authResponse.userID;
             var accessToken = response.authResponse.accessToken;
@@ -54,13 +54,13 @@ function onFbInit(FB) {
             if($('.landing').html() == 'HaveFyve') {
                 goLogIn();
             }
-            console.log('fb connected');
+            //console.log('fb connected');
           } else if (response.status === 'not_authorized') {
             $('#connect').show();
-            console.log('fb not authorized');
+            //console.log('fb not authorized');
           } else {
             $('#connect').show();
-            console.log('fb not connected');
+            //console.log('fb not connected');
           }
         });
     }
@@ -79,9 +79,9 @@ function onFbInit(FB) {
 // Here we run a very simple test of the Graph API after login is successful. 
 // This testAPI() function is only called in those cases. 
 function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
+    //console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
-        console.log('Good to see you, ' + response.name + '.');
+        //console.log('Good to see you, ' + response.name + '.');
         $('#disconnect').show();
         $('#connect').show();
     });

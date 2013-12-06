@@ -49,9 +49,9 @@ class ImageService
 	{
 		if(($w / $h) < ($nw / $nh)) {
 			$wOffset = 0;
-			$hOffset = (($h / ($w / $nw)) - $nh) / 2;			
+			$hOffset = (($h / ($w / $nw)) - $nh);			
 		} elseif(($w / $h) > ($nw / $nh)) {
-			$wOffset = (($w / ($h / $nh)) - $nw) / 2;
+			$wOffset = (($w / ($h / $nh)) - $nw);
 			$hOffset = 0;
 		} else {
 			$wOffset = 0;
