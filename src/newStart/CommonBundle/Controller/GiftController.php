@@ -50,15 +50,6 @@ class GiftController extends Controller
             $error = $request->getSession()->get(SecurityContext::AUTHENTICATION_ERROR);
         }
 
-        try {
-            $response = $facebook->api('/me/friends?fields=name,id,email');
-        } catch (\Exception $e) {
-            return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
-        }
-        $fbFriends = $response['data'];
-        $fbFriends = array_slice($fbFriends, 0, 10*5);
-
-
         $products = $this->em->getRepository('newStartCommonBundle:Product')->findBy(array('user' => $user, 'deleted' => false));
         $data = array();
         
@@ -76,12 +67,9 @@ class GiftController extends Controller
 
         return array('gifts'        => $data,
                     'user'          => $user,
-                    'fbFriends'     => $fbFriends,
                     'img_size'      => 75,
                     'displayPopIn'  => $displayPopIn
-
         );
-
     }
 
     /**

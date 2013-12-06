@@ -12,7 +12,7 @@ body:before {
     /* don't forget to use the prefixes you need */
     -webkit-transform: scale(1);
     -webkit-transform-origin: top left;
-    -webkit-filter: blur(30px) opacity(0.25) saturate(2.8);
+    -webkit-filter: blur(7px) opacity(0.25) saturate(2.8);
 
     -moz-transform: scale(2);
     -moz-transform-origin: top left;
@@ -21,7 +21,7 @@ body:before {
 
     transform: scale(1);
     transform-origin: top left;
-    filter: blur(30px) opacity(0.25) saturate(2.8);
+    /*filter: blur(3px) opacity(0.25) saturate(2.8);*/
     color: #fff;    
 }
 #connect, #disconnect, #login {
@@ -413,7 +413,7 @@ h4 {
 }
 
 .carousel-control span {
-    top:250px;
+    top:300px;
 }
 .carousel-indicators li {
     border: 1px solid #0A0A5A;
