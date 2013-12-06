@@ -62,16 +62,16 @@ class scrapeServiceTest extends NewStartWebTestCase
 
 	/**
 	 * @test
-	 * @group scrapeKO
+	 * @group scrape
 	 */
 	public function realImgScrapeTest()
 	{
 		$scrapeService = new ScrapeService();
-		$html = file_get_contents('http://us.levi.com/product/index.jsp?productId=21467686&');
+		$html = file_get_contents('http://www.levi.com/FR/fr_FR/men-jeans/p/191110003');
 
 		$images = $scrapeService->getImages($html);
 		//var_dump($images);
-		$this->assertContains('/cms_widgets/21/78/2178907_assets/GWP-CMS-banner.jpg', $images);
+		$this->assertContains('/_ui/levis/img/product/hanger.jpg?$75x75$', $images);
 	}
 
 	/**
@@ -89,10 +89,10 @@ class scrapeServiceTest extends NewStartWebTestCase
 		$this->assertContains('http://www.wornby.co.uk/media/catalog/product/cache/1/image/483x/17f82f742ffe127f42dca9de82fb58b1/W/o/Worn_By_Graffiti_Alley_Sweat_1_2.jpg', $images);
 
 		$scrapeService = new ScrapeService();
-		$images = $scrapeService->getAbsoluteUrlImages('http://us.levi.com/product/index.jsp?productId=21467686&');
-		$this->assertContains('http://LEVI.imageg.net/graphics/product_images/pLEVI1-16002776t330x400.jpg', $images);
-
+		$images = $scrapeService->getAbsoluteUrlImages('http://www.levi.com/FR/fr_FR/men-jeans/p/191110003');
 //		var_dump($images);
+		$this->assertContains('http://lsco.scene7.com/is/image/lsco/clothing/191110003-2012-fall-front-pdp.jpg?$1366x768$', $images);
+
 //		$this->assertContains('', $images);
 
 //		$scrapeService = new ScrapeService();
@@ -104,7 +104,7 @@ class scrapeServiceTest extends NewStartWebTestCase
 
 	/**
 	 * @test
-	 * @group scrape
+	 * @group scrapeKO
 	 * @group improvedscrape
 	 */
 	public function sortedImgScrapeTest()
@@ -120,8 +120,9 @@ class scrapeServiceTest extends NewStartWebTestCase
 
 		$scrapeService = new ScrapeService();
 		$scrapeService->container = $this->container;
-		$images = $scrapeService->getBiggestImg('http://us.levi.com/product/index.jsp?productId=21467686&');
-		$this->assertEquals('http://LEVI.imageg.net/graphics/product_images/pLEVI1-16002776t330x400.jpg', $images[0]->getOriginalUrl());
+		$images = $scrapeService->getBiggestImg('http://www.levi.com/FR/fr_FR/men-jeans/p/191110003');
+//		var_dump($images);
+		$this->assertEquals('http://lsco.scene7.com/is/image/lsco/clothing/191110003-2012-fall-detail1-pdp.jpg?$1366x768$', $images[0]->getOriginalUrl());
 
 	}
 

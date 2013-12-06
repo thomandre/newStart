@@ -7,14 +7,14 @@ Contexte: Je souhaite me loguer et partager un produit
 Scénario: Je me logue et je partage un produit
 Soit je suis sur "/"
 Soit je me logue en tant que "albanthomas1@gmail.com" / "projetreecomate"
-Alors je remplis "url" avec "http://us.levi.com/product/index.jsp?productId=21467686&"
+Alors je remplis "url" avec "http://www.levi.com/FR/fr_FR/men-jeans/p/191110003"
 Et je presse "Go !"
 Et j'attend que "#completeContainer" soit visible 
 
-Alors je devrais voir "Levi's Levis® Commuter™ 511™ Slim Fit Pants - Performance Hunter - Jeans"
+Alors je devrais voir "511 Slim Fit Commuter | Indigo Rigid | Jeans | Hommes | Levi's | France"
 Et je presse "Enregistrer"
 Et j'attend que "#completeContainer" ne soit plus visible 
-Et je devrais voir "Levi's Levis"
+Et je devrais voir "Levi's"
 
 Alors je remplis "url" avec "http://www.amazon.fr/gp/product/B00DOQ3DGU/ref=amb_link_177745767_2/278-7656610-6981916"
 Et je presse "Go !"
@@ -62,12 +62,12 @@ Et je recharge la page
 Alors je ne devrais pas voir "Yves Saint Laurent"
 
 Et j'attend "0.5" secondes
-Et je devrais voir "Levi's Levis" 
+Et je devrais voir "Levi's" 
 Et je suis "supprimer"
 Et je valide la fenetre de confirmation
 Et j'attend "1" secondes
 
-Et je ne devrais pas voir "Levi's Levis® Commuter™ 511™ Slim Fit Pants - Performance Hunter - Jeans" 
+Et je ne devrais pas voir "511 Slim Fit Commuter | Indigo Rigid | Jeans | Hommes | Levi's | France" 
 
 Alors je remplis "url" avec "http://www.edel-optics.fr/CLASSIC-3-NE2-EJ-de-Yves-Saint-Laurent,2,1,33,131632,VTFZ6ABZXB13C,,.html"
 Et je presse "Go !"
