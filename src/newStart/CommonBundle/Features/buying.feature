@@ -57,12 +57,13 @@ Et je suis "Acheter"
 Et j'attend "0.5" secondes
 Et je bascule sur la popup
 Et je devrais voir "Le MacBook Air offre désormais une autonomie de 9 heures entre deux charges pour le modèle 11 pouces, et de 12 heures pour le modèle 13 pouces."
-
 Et je reviens sur la fenêtre principale
 Et je devrais voir "Vous avez décidé d’acheter ce cadeau finalement ?"
-Et je presse "Oui, j'ai acheté ce produit"
+Et je presse "Oui, j'ai acheté ce cadeau"
 Et j'attend "0.5" secondes
 Et je ne devrais pas voir "Vous avez décidé d’acheter ce cadeau finalement ?"
+Et j'attend "0.5" secondes
+Et je devrais voir "Génial"
 Et je suis "Friends"
 Et j'attend "0.5" secondes
 Alors je devrais voir "Thomas André"
@@ -77,6 +78,37 @@ Soit je vais sur "/"
 Soit je me logue en tant que "thomandr1@yahoo.fr" / "c@d153512"
 Et j'attend "0.5" secondes
 Alors je devrais voir "Apple - MacBook Air"
+Et je me delogue
+
+@javascript @buying @buying_step4
+Scénario: Je suis Thomas et je veux m'offrir un iPad Mini Retina
+Soit je suis sur "/"
+Soit je me logue en tant que "thomandr1@yahoo.fr" / "c@d153512"
+Alors je remplis "url" avec "http://www.apple.com/fr/ipad-mini/?cid=wwa-fr-kwg-ipad-com"
+Et je presse "Go !"
+Et je ne devrais pas voir "Go !"
+Et j'attend que "#completeContainer" soit visible 
+Alors je devrais voir "iPad mini"
+Et je presse "Enregistrer"
+Et j'attend que "#completeContainer" ne soit plus visible 
+Et le champ "url" devrait contenir ""
+Et je devrais voir "Apple - iPad mini avec écran Retina"
+Et j'attend "0.5" secondes
+Alors je suis "Apple - iPad"
+Et j'attend "0.5" secondes
+Et je devrais voir "Apple - iPad mini"
+Alors je suis "Acheter"
+Et je bascule sur la popup
+Et je devrais voir "L’iPad mini avec écran Retina est une petite merveille."
+Et je reviens sur la fenêtre principale
+Et je devrais voir "Vous avez décidé de vous offrir ce cadeau finalement ?"
+Et je presse "Oui, j'ai acheté ce cadeau"
+Et j'attend "0.5" secondes
+Et je ne devrais pas voir "Vous avez décidé de vous offrir ce cadeau finalement ?"
+Et j'attend "0.5" secondes
+Et je devrais voir "Génial"
+Et je suis "Retour"
+Et je ne devrais pas voir "iPad mini"
 Et je me delogue
 
 @javascript @logout

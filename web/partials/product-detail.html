@@ -14,11 +14,49 @@
 	</div>
 	<div class="col-md-5 col-sm-5 col-xs-5">
 		<p>{{ product.name }}</p>
-
 		<p class="comment small">{{ product.comment }}</p>
+		<a href="{{ product.url }}" class="product-link btn btn-primary" target="_blank">Acheter</a>
 	</div>
 </div>
 <input type="hidden" id="productId" value="{{ product.id }}">
 
-<div ng-include="modal-handle.html"></div>
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Vous avez décidé de vous offrir ce cadeau finalement ?</h4>
+      </div>
+      <div class="modal-body">
+		<p class="small">Si vous cliquez sur oui, votre produit disparaitra de votre liste.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" id="cancel">Non</button>
+        <button type="button" class="btn btn-primary" id="validate">Oui, j'ai acheté ce cadeau</button>
+      </div>
+    </div>
+  </div>
+  <input type="hidden" value="{{ product.fullName }}" id="fullName" />
+</div>
 
+<script>
+	$('.product-link').click(function (e) {
+		//e.preventDefault();
+		$('.modal').modal('show');
+	});
+
+	$('#cancel').click(function () {
+		$('.modal').modal('hide');
+	});
+
+	$('#validate').click(function () {
+		$.ajax({
+			url: $('#path_product_remove').val() + "/" + $('#productId').val() ,
+			success: function (data) {
+				$('.modal').modal('hide');
+				$('.alert-notice').html('Génial !');
+				$('.alert-notice').show();
+			}
+		});
+	});
+</script>

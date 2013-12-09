@@ -151,7 +151,7 @@ class ApiController extends Controller
      * @Route("/api/v1/product/remove/{productId}", name="product_remove")
      * @Template()
      */
-    public function removeProductAction(Request $request, $productId)
+    public function removeProductAction(Request $request, $productId = null)
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();

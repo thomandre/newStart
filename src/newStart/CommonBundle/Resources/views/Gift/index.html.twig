@@ -72,10 +72,13 @@
 		{% endif %}
 
 		{% raw %}
-			<div class="alert alert-info" ng-show="info" style="display:none;">{{ info }}</div>
-			<div class="alert alert-danger" ng-show="danger" style="display:none;">{{ danger }}</div>
-			<div class="alert alert-warning" ng-show="warning" style="display:none;">{{ warning }}</div>
-			<div class="alert alert-success" ng-show="success" style="display:none;">{{ success }}</div>
+			<div class="row">
+				<div class="alert alert-info" ng-show="info" style="display:none;">{{ info }}</div>
+				<div class="alert alert-danger" ng-show="danger" style="display:none;">{{ danger }}</div>
+				<div class="alert alert-warning" ng-show="warning" style="display:none;">{{ warning }}</div>
+				<div class="alert alert-success" ng-show="success" style="display:none;">{{ success }}</div>
+				<div class="alert alert-notice" ng-show="notice" style="display:none;">{{ notice }}</div>
+			</div>
 		{% endraw %}
 
 		<div ng-view class="row">
@@ -92,7 +95,8 @@
 	 			{% endfor %}
 			</div>
 		</div>
-		<input type="hidden" id="path_have_bought" value="{{ path('have_bought')}}" />
+		<input type="hidden" id="path_have_bought" value="{{ path('have_bought') }}" />
+		<input type="hidden" id="path_product_remove" value="{{ path('product_remove') }}" />
 	</div>
 {% endblock %}
 
