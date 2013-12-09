@@ -6,7 +6,7 @@ Contexte: Je souhaite me loguer et partager un produit
 @javascript @fiveLimit
 Scénario: Je me logue et je partage un produit
 Soit je suis sur "/"
-Soit je me logue en tant que "albanthomas1@gmail.com" / "projetreecomate"
+Soit je me logue en tant que "albanthomas1@gmail.com"
 Alors je remplis "url" avec "http://www.levi.com/FR/fr_FR/men-jeans/p/191110003"
 Et je presse "Go !"
 Et j'attend que "#completeContainer" soit visible 

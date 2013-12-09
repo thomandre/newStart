@@ -5,7 +5,7 @@ Contexte: Je souhaite offir un cadeau
 @javascript @guest @guest_step1
 Scénario: Je suis Thomas et je veux partager un l'iPod dont je reve en secret depuis des annees
 Soit je suis sur "/"
-Soit je me logue en tant que "thomandr1@yahoo.fr" / "c@d153512"
+Soit je me logue en tant que "thomandr1@yahoo.fr"
 Alors je remplis "url" avec "http://www.apple.com/fr/ipodclassic/"
 Et je presse "Go !"
 Et je ne devrais pas voir "Go !"
@@ -37,7 +37,7 @@ Alors je devrais voir "Se connecter via Facebook"
 @javascript @guest @guest_step3
 Scénario: Je suis Thomas et je veux partager passer mon profil en public
 Soit je suis sur "/"
-Soit je me logue en tant que "thomandr1@yahoo.fr" / "c@d153512"
+Soit je me logue en tant que "thomandr1@yahoo.fr"
 Et je vais sur "/me/settings"
 Alors je devrais voir "Profil privé"
 Et la case à cocher "prive" devrait être cochée

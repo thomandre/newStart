@@ -89,10 +89,15 @@ class FeatureContext extends FeatureGlobal
     }
 
     /**
-     * @Given /^je me logue en tant que "([^"]*)" \/ "([^"]*)"$/
+     * @Given /^je me logue en tant que "([^"]*)"$/
      */
-    public function jeMeLogueEnTantQue($arg1, $arg2)
+    public function jeMeLogueEnTantQue($arg1)
     {
+        if($arg1 == 'albanthomas1@gmail.com') {
+            $arg2 = 'projetreecomate';
+        } else {
+            $arg2 = 'c@d153512';
+        }
         return array(
             new Step\When('je clique sur le bouton Facebook Connect'),
             new Step\When('je remplis "email" avec "'.$arg1.'"'),
@@ -154,6 +159,19 @@ class FeatureContext extends FeatureGlobal
         
         $this->getSession()->switchToIFrame($name);
         
+        $element = $this->getSession()->getPage()->findAll('css', $arg1);
+        if($element != false) {
+            $element[0]->click();
+        } else {
+            throw new \Exception('L\'élément "'.$arg1.'" n\'a pas été trouvé dans la page.');
+        }
+    }
+
+    /**
+     * @Given /^je clique sur "([^"]*)"$/
+     */
+    public function jeCliqueSur($arg1)
+    {
         $element = $this->getSession()->getPage()->findAll('css', $arg1);
         if($element != false) {
             $element[0]->click();

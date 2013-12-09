@@ -5,7 +5,7 @@ Contexte: Je souhaite offir un cadeau
 @javascript @buying @buying_step1
 Scénario: Je suis Thomas et je veux partager un le MacBook Air de mes reves
 Soit je suis sur "/"
-Soit je me logue en tant que "thomandr1@yahoo.fr" / "c@d153512"
+Soit je me logue en tant que "thomandr1@yahoo.fr"
 Alors je devrais voir "Havefyve est le site le plus simple pour offrir les cadeaux qui font vraiment plaisir."
 Alors je presse "Ok"
 Alors je remplis "url" avec "http://www.apple.com/fr/macbook-air/"
@@ -23,9 +23,7 @@ Et je me delogue
 @javascript @buying @buying_step2
 Scénario: Je suis AlbanThomas et je veux offrir un beau cadeau a Thomas 
 Soit je vais sur "/"
-Soit je me logue en tant que "albanthomas1@gmail.com" / "projetreecomate"
-Alors je devrais voir "Havefyve est le site le plus simple pour offrir les cadeaux qui font vraiment plaisir."
-Alors je presse "Ok"
+Soit je me logue en tant que "albanthomas1@gmail.com"
 Et je suis "Friends"
 Alors je devrais voir "Choisissez les amis à qui vous ferez un cadeau."
 Alors je presse "Ok"
@@ -75,7 +73,7 @@ Et je me delogue
 @javascript @buying @buying_step3
 Scénario: Je suis Thomas et je ne dois pas voir qu'Alban m'a fait un cadeau
 Soit je vais sur "/"
-Soit je me logue en tant que "thomandr1@yahoo.fr" / "c@d153512"
+Soit je me logue en tant que "thomandr1@yahoo.fr"
 Et j'attend "0.5" secondes
 Alors je devrais voir "Apple - MacBook Air"
 Et je me delogue
@@ -83,7 +81,7 @@ Et je me delogue
 @javascript @buying @buying_step4
 Scénario: Je suis Thomas et je veux m'offrir un iPad Mini Retina
 Soit je suis sur "/"
-Soit je me logue en tant que "thomandr1@yahoo.fr" / "c@d153512"
+Soit je me logue en tant que "thomandr1@yahoo.fr"
 Alors je remplis "url" avec "http://www.apple.com/fr/ipad-mini/?cid=wwa-fr-kwg-ipad-com"
 Et je presse "Go !"
 Et je ne devrais pas voir "Go !"
@@ -114,10 +112,10 @@ Et je me delogue
 @javascript @logout
 Scénario: Je veux pouvoir me deloguer
 Soit je vais sur "/"
-Soit je me logue en tant que "thomandr1@yahoo.fr" / "c@d153512"
+Soit je me logue en tant que "thomandr1@yahoo.fr"
 Et j'attend "0.5" secondes
 Et je me delogue
 Soit je vais sur "/"
-Soit je me logue en tant que "albanthomas1@gmail.com" / "projetreecomate"
+Soit je me logue en tant que "albanthomas1@gmail.com"
 Et j'attend "0.5" secondes
 Et je me delogue
