@@ -41,7 +41,7 @@ class ApiController extends Controller
         $em->flush();
 
         $response = new JsonResponse();
-        $response->setData(array('status' => 'ok'));
+        $response->setData(array('status' => 'ok', 'isPublic' => $user->getPublic()));
         return $response;
     }
 

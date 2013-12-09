@@ -1,5 +1,5 @@
 # language: fr
-Fonctionnalité: Offrir un cadeau a un ami
+Fonctionnalité: Offrir un cadeau a un ami en tant que guest
 Contexte: Je souhaite offir un cadeau
 
 @javascript @guest @guest_step1
@@ -19,6 +19,7 @@ Et je devrais voir "Apple - iPod Classic"
 Et je vais sur "/me/settings"
 Alors je devrais voir "Profil privé"
 Et la case à cocher "prive" ne devrait pas être cochée
+Et le champ "profileUrl" devrait contenir "http://havefyve.local:8888/newStart/web/app_test.php/profiles/678776921#/profile/678776921"
 Alors je coche "prive"
 Et j'attend "0.5" secondes
 Et je recharge la page
@@ -28,7 +29,7 @@ Et je me delogue
 @javascript @guest @guest_step2
 Scénario: Je suis un mechant pirate et je veux voir le profil de Thomas
 Soit je suis sur "http://havefyve.local:8888/newstart/web/app_test.php/profiles/678776921#/profile/678776921"
-Et j'attend "2" secondes
+Et j'attend "4" secondes
 Alors je ne devrais pas voir "Thomas André"
 Alors je devrais voir "Vos meilleurs cadeaux"
 Alors je devrais voir "Se connecter via Facebook"

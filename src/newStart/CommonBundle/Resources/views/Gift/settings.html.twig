@@ -14,11 +14,11 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-2 col-sm-2 col-xs-4">
-				Profil privé
-			</div>
-			<div class="col-md-2 col-sm-2 col-xs-4">
-				<input type="checkbox" name="prive" id="prive" {% if not user.public %}checked="checked"{% endif %}>
+			Profil privé 
+ 			<input type="checkbox" name="prive" id="prive" {% if not user.public %}checked="checked"{% endif %}>
+			<div class="profileUrl" {% if not user.public %}style="display:none"{% endif %}>
+				Vous pouvez partager cette URL via mail ou via les réseaux sociaux :
+				<br /><input type="text" size="100" value="{{ app.request.getSchemeAndHttpHost() ~ path('profile', {userId: user.facebookId}) }}#/profile/{{ user.facebookId }}" id="profileUrl">
 			</div>
 		</div>
 	</div>
@@ -35,6 +35,15 @@
 {% block javascripts %}
 	{{ parent() }}
 	<script>
+		$('#profileUrl').focus(function () {
+			var save_this = $(this);
+		    window.setTimeout (function(){ 
+		       save_this.select(); 
+		    },100);
+		});
+		$('#profileUrl').click(function () {
+		    $(this).select(); 
+		});
 		$('#prive').change(function () {
 			if($(this).is(':checked')) {
 				var publicProfile = 0;
@@ -46,8 +55,13 @@
 			  	url: $('#profile_prive').val(),
 				data: { publicProfile: publicProfile},
 				success: function (reponse) {
-					if(reponse.status == 'ko') {
-						//console.log('status not updated');
+					if(reponse.status == 'ok') {
+						if(reponse.isPublic == 1) {
+							$('.profileUrl').show();
+							$('#profileUrl').focus();
+						} else {
+							$('.profileUrl').hide();
+						}
 					}
 				}
 			});

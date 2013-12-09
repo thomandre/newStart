@@ -3,6 +3,7 @@ var havefyveControllers = angular.module('havefyveControllers', []);
 
 
 function FriendCtrl($scope, Friend, $rootScope) {
+	$('#search').focus();
 	$scope.favorize = function () {
 		Friend.favorize({id: $scope.friend.facebookId}, function (data) {
 			$scope.friend.favorite = data.favorized;
@@ -63,6 +64,7 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 
 	$scope.warning = false;
 	$scope.imageIndex = 0;
+	$('#url').focus();
 
 	$scope.nextImg = function () {
 		if($scope.imageIndex < $scope.scrappedProduct.images.length-1) {

@@ -169,6 +169,7 @@ a.faq {
 }
 .header .ddown-menu li {
     list-style: none outside none;
+    padding-bottom: 10px;
 }
 .header .ddown-menu li a {
     text-align: left;
@@ -182,8 +183,9 @@ div.ddown {
     display: none;
     float: right;
     position: relative;
-    width: 126px;
+    width: 130px;
     z-index: 10;
+    top: 13px;
 }
 
 .profile-image {
@@ -417,4 +419,7 @@ h4 {
 }
 .carousel-indicators li {
     border: 1px solid #0A0A5A;
+}
+.profileUrl {
+    margin-top:10px;
 }
