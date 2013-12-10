@@ -52,7 +52,7 @@
 		</div>
 
 		{% if displayPopIn %}
-			<div class="modal fade">
+			<div id="modalExplainMain" class="modal fade">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			      <div class="modal-header">
@@ -111,10 +111,10 @@
 	{% if displayPopIn %}
 		<script>
 			$(document).ready(function () {
-				$('.modal').modal('show');
+				$('#modalExplainMain').modal('show');
 			});
 			$('#ok').click(function () {
-				$('.modal').modal('hide');
+				$('#modalExplainMain').modal('hide');
 			});
 		</script>
 	{% endif %}

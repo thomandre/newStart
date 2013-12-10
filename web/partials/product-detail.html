@@ -20,7 +20,7 @@
 </div>
 <input type="hidden" id="productId" value="{{ product.id }}">
 
-<div class="modal fade">
+<div id="boughtModal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -42,18 +42,18 @@
 <script>
 	$('.product-link').click(function (e) {
 		//e.preventDefault();
-		$('.modal').modal('show');
+		$('#boughtModal').modal('show');
 	});
 
 	$('#cancel').click(function () {
-		$('.modal').modal('hide');
+		$('#boughtModal').modal('hide');
 	});
 
 	$('#validate').click(function () {
 		$.ajax({
 			url: $('#path_product_remove').val() + "/" + $('#productId').val() ,
 			success: function (data) {
-				$('.modal').modal('hide');
+				$('#boughtModal').modal('hide');
 				$('.alert-notice').html('Génial !');
 				$('.alert-notice').show();
 			}

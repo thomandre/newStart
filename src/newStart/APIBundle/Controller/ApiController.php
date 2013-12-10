@@ -14,6 +14,7 @@ use newStart\CommonBundle\Entity\Product;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use \Doctrine\Common\Util\Debug;
 use newStart\APIBundle\Service\ImageService;
+use newStart\CommonBundle\Entity\Bug;
 
 class ApiController extends Controller
 {
@@ -303,7 +304,7 @@ class ApiController extends Controller
                     $friend->setFavorite(true);                    
                 }
                 $em->persist($friend);
-                $em->flush();                
+                $em->flush();
         
                 $response = new JsonResponse();
                 $response->setData(array('success' => true, 'favorized' => $friend->isFavorite()));
@@ -345,4 +346,30 @@ class ApiController extends Controller
         return $response;
     }
 
+
+    /**
+     * @Route("/api/v1/bug-report", name="bug_report")
+     * @Template()
+     */
+    public function bugReportAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        $bug = new Bug();
+        $bug->setConditions($request->get('conditions'));
+        $bug->setCauses($request->get('causes'));
+        $bug->setType($request->get('type'));
+        $bug->setPriority($request->get('priority'));
+        $bug->setUserName($user->getFullName());
+        $bug->setUserAgent($request->headers->get('user-agent'));
+
+        $em->persist($bug);
+        $em->flush();
+
+        $response = new JsonResponse();
+        $response->setData(array('success' => true));
+
+        return $response;
+    }
 }

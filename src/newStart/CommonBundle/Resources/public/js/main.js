@@ -15,6 +15,24 @@ $('#logout').click(function (event) {
     fb_logout();
 });
 
+$('#bugReport').click(function (event) {
+    event.preventDefault();
+    $('#bugReportModal').modal('show');
+});
+
+$('#bugReportSend').click(function () {
+    $.ajax({
+        url: $('#path_bug_report').val(),
+        data: 'conditions=' + $('#conditions').val() + '&causes=' + $('#causes').val() + 
+            '&type=' + $('#type').val() + '&priority=' + $('#priority').val(),
+        success: function (data) {
+            $('#bugReportModal').modal('hide');
+            $('.alert-notice').html('Merci pour votre aide !');
+            $('.alert-notice').show();
+        }
+    });
+});
+
 function fb_logout(){
     FB.getLoginStatus(function () {
         FB.logout(function(response) {
@@ -46,21 +64,14 @@ function onFbInit(FB) {
         });
 
         FB.getLoginStatus(function(response) {
-          //console.log('3');
           if (response.status === 'connected') {
             var uid = response.authResponse.userID;
             var accessToken = response.authResponse.accessToken;
             $('#login').show();
-            /*if($('.landing').html() == 'HaveFyve') {
-                goLogIn();
-            }*/
-            //console.log('fb connected');
           } else if (response.status === 'not_authorized') {
             $('#connect').show();
-            //console.log('fb not authorized');
           } else {
             $('#connect').show();
-            //console.log('fb not connected');
           }
         });
     }

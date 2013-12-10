@@ -4,6 +4,7 @@ Fonctionnalité: Tester tous les cas de figure du login Facebook
 @javascript @login @login_step1
 Scénario: Je ne suis pas logué sur FB et je n'ai pas authorisé l'app
 Soit je suis sur "/"
+Et je devrais voir "HaveFyve"
 Soit je vais sur "https://www.facebook.com"
 Et je devrais voir "Adresse électronique ou téléphone" 
 Et je remplis "email" avec "albanthomas1@gmail.com"

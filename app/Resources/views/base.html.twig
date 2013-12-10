@@ -16,6 +16,46 @@
     </head>
     <body>
         {% block body %}{% endblock %}
+        <input type="hidden" id="path_bug_report" value="{{ path('bug_report') }}" />
+        <div id="bugReportModal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Pouvez-vous nous dire ce qui s'est passé ?</h4>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <p>Pour nous aider à reproduire le bug, pouvez-vous nous décrire dans quelles conditions celui-ci est arrivé : </p>
+                  <textarea id="conditions"></textarea>
+                  <p>Pouvez-vous nous préciser ce que ce bug a causé : </p>
+                  <textarea id="causes"></textarea>
+                  <p>Pouvez-vous qualifier le type de bug : 
+                    <select id="type">
+                      <option>Sélectionnez</option>
+                      <option>Bug graphique</option>
+                      <option>Lenteur</option>
+                      <option>Problème de login</option>
+                      <option>Pas de détection d'image</option>
+                      <option>Autre</option>
+                    </select>
+                  </p>
+                  <p>Pouvez-vous qualifier la gravité du bug : 
+                    <select id="priority">
+                      <option>Sélectionnez</option>
+                      <option>Peu importante</option>
+                      <option>Moyennement importante</option>
+                      <option>Très importante</option>
+                    </select>
+                  </p>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="bugReportSend">Envoyer</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div id="fb-root"></div>
 
         <svg id="svg-image-blur">
@@ -49,8 +89,5 @@
                   }
             </script>
        {% endblock %}
-
-       <!-- {{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'bla();'}) }} !-->
-
     </body>
 </html> 
