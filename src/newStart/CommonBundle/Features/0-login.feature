@@ -7,7 +7,9 @@ Soit je suis sur "/"
 Et je devrais voir "HaveFyve"
 Soit je vais sur "https://www.facebook.com"
 Et je devrais voir "Adresse électronique ou téléphone" 
+Et j'attend "3" secondes
 Et je remplis "email" avec "albanthomas1@gmail.com"
+Et j'attend "3" secondes
 Et je remplis "pass" avec "projetreecomate"
 Et je presse "u_0_c"
 Alors je devrais voir "Thomas Alban"

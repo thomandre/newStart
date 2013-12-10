@@ -2,8 +2,19 @@
 
 {% block body %}
 <div class="container">
-	<h1 class="landing">HaveFyve</h1>
-	<h2 style="font-size:18px;">Vos meilleurs cadeaux</h2>
+	<div class="row">
+		<div class="col-md-8 col-sm-2 col-xs-4">
+			<h1 class="landing">HaveFyve</h1>
+			<h2 style="font-size:18px;">Vos meilleurs cadeaux</h2>
+		</div>
+		<div class="col-md-2 col-sm-2 col-xs-4">
+			<p class='login'>
+				<button class="btn" id="disconnect" onclick="fb_logout();">Déconnexion</button>
+				<button class="btn btn-primary" id="connect" onclick="fb_connect();">> Se connecter via Facebook</button>
+				<button class="btn btn-primary" id="login" onclick="fb_login();">> S'inscrire via Facebook</button>
+			</p>
+		</div>
+	</div>
 	<noscript>
 		<div class="container">
 			<p class="whiteText" style="margin-top:25%;">HaveFyve necessite l'activation de Javascript pour fonctionner correctement</p>
@@ -43,11 +54,6 @@
 	    <span class="glyphicon glyphicon-chevron-right"></span>
 	  </a>
 	</div>
-	<p class='login'>
-		<button class="btn" id="disconnect" onclick="fb_logout();">Déconnexion</button>
-		<button class="btn btn-primary" id="connect" onclick="fb_connect();">> Se connecter via Facebook</button>
-		<button class="btn btn-primary" id="login" onclick="fb_login();">> S'inscrire via Facebook</button>
-	</p>
 </div>
 {% endblock %}
 
@@ -64,5 +70,4 @@
 
 {% block javascripts %}
 	{{ parent() }}
-	<script src="{{ asset('bundles/newstartcommon/css/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 {% endblock %}

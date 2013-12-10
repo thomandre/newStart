@@ -25,9 +25,8 @@ body:before {
     color: #fff;    
 }
 p.login {
-    width: 100%;
     text-align: center;
-    margin:10px 0;
+    margin:56px 0 0 -20px;
 }
 #connect, #disconnect, #login {
     display: none;
@@ -38,7 +37,23 @@ p.login {
 	padding: 15px;
 	margin: 0 auto;
 }
-
+.product-desc {
+    padding:8px;
+}
+.right-link {
+    display: block;
+    position: fixed;
+    right: 0;
+    top: 200px;
+}
+.right-link a {
+    background-color: #CA2D56;
+    padding: 7px 10px;
+    color: #FFFFFF;    
+}
+.right-link a span.glyphicon {
+    margin-left:10px;
+}
 #slide-home h1, #slide-home h2, #slide-home h3, #slide-home p, #slide-home a, .whiteText {
 	color: #fff;
 	text-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
@@ -48,7 +63,7 @@ p.login {
     height: 133px;
 }
 h1 {
-	font-size:60px;
+	font-size:43px;
     font-weight: 300;
     margin: 0.2em 0;
 }
@@ -418,12 +433,15 @@ h4 {
 .row .products {
     padding:0 0 0 13px;
 }
-
+.carousel-indicators {
+    bottom: 0;
+}
 .carousel-control span {
     top:300px;
 }
 .carousel-indicators li {
-    border: 1px solid #0A0A5A;
+    border: none;
+    background-color: #c0C0C0;
 }
 .profileUrl {
     margin-top:10px;

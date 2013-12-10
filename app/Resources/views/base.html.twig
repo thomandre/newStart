@@ -15,6 +15,9 @@
 
     </head>
     <body>
+        <span class="right-link">
+          <a href="#" id="bugReport">Un bug ?<span class="glyphicon glyphicon-pencil"></span></a>
+        </span>
         {% block body %}{% endblock %}
         <input type="hidden" id="path_bug_report" value="{{ path('bug_report') }}" />
         <div id="bugReportModal" class="modal fade">
@@ -67,6 +70,7 @@
             <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
             <script src="{{ asset('bundles/newstartcommon/js/main.js') }}"></script>
             <script src="{{ asset('bundles/newstartcommon/js/vendor/jquery.ba-outside-events.min.js') }}"></script>
+            <script src="{{ asset('bundles/newstartcommon/css/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
             <script>
                   function goLogIn(){
                       window.location.href = "{{ path('_security_check') }}";

@@ -13,9 +13,11 @@
 		</div>
 	</div>
 	<div class="col-md-5 col-sm-5 col-xs-5">
-		<p>{{ product.name }}</p>
-		<p class="comment small">{{ product.comment }}</p>
-		<a href="{{ product.url }}" class="product-link btn btn-primary" target="_blank">Acheter</a>
+		<div class="product-desc">
+			<p>{{ product.name }}</p>
+			<p class="comment small">{{ product.comment }}</p>
+			<a href="{{ product.url }}" class="product-link btn btn-primary" target="_blank">Acheter</a>
+		</div>
 	</div>
 </div>
 <input type="hidden" id="productId" value="{{ product.id }}">
