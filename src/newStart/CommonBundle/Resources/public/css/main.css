@@ -45,6 +45,7 @@ p.login {
     position: fixed;
     right: 0;
     top: 200px;
+    z-index: 10;
 }
 .right-link a {
     background-color: #CA2D56;
