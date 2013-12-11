@@ -33,6 +33,35 @@ class FeatureContext extends FeatureGlobal
         );
     }
 
+    /**
+     * @Given /^je remplis le login avec "([^"]*)"$/
+     */
+    public function jeReplisLeLogin($arg1) {
+        $this->getSession()->wait(30000,
+            "document.getElementById('email').value = '".$arg1."';"
+        );
+    }
+
+    /**
+     * @Given /^je remplis le password avec "([^"]*)"$/
+     */
+    public function jeReplisLePassword($arg1) {
+        $this->getSession()->wait(30000,
+            "document.getElementById('pass').value = '".$arg1."';"
+        );
+    }
+
+     /**
+     * @Given /^je presse Connexion$/
+     */
+    public function jePresseConnexion() {
+        $element = $this->getSession()->getPage()->findAll('css', '#u_0_d');
+        if($element != false) {
+            $element[0]->click();
+        } else {
+            throw new \Exception('Le bouton connexion n\'a pas été trouvé dans la page.');
+        }
+    }
 
     /**
      * @Given /^je ne devrais plus voir l\'element "([^"]*)"$/
@@ -104,7 +133,7 @@ class FeatureContext extends FeatureGlobal
             new Step\When('je remplis "pass" avec "'.$arg2.'"'),
             new Step\When('je valide le formulaire'),
             new Step\Then('je reviens sur la fenêtre principale'),
-            new Step\When('j\'attend que ".row h2" soit sur la page'),
+            new Step\When('j\'attend que ".profile-image" soit sur la page'),
             new Step\Then('je devrais voir "Ma liste de cadeaux"'),
         );
     }
