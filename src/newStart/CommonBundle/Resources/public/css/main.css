@@ -24,6 +24,9 @@ body:before {
     /*filter: blur(3px) opacity(0.25) saturate(2.8);*/
     color: #fff;    
 }
+p.comment {
+    color:#CA2D56;
+}
 p.login {
     text-align: center;
     margin:56px 0 0 -20px;

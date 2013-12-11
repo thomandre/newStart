@@ -82,6 +82,7 @@ class Product
                         'userId'    => $this->user->getId(),
                         'fbUserId'  => $this->user->getFacebookId(),
                         'fullName'  => $this->user->getFullname(),
+                        'firstName' => $this->user->getFirstname(),
 
                     );
     }
