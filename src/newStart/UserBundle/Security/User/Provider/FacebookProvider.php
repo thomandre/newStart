@@ -6,6 +6,7 @@ use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use JMS\DiExtraBundle\Annotation as DI;
 use \BaseFacebook;
 use \FacebookApiException;
 use Facebook;
@@ -18,15 +19,17 @@ class FacebookProvider implements UserProviderInterface
     protected $facebook;
     protected $userManager;
     protected $validator;
+    protected $service_container;
 
-    public function __construct(BaseFacebook $facebook, $userManager, $validator)
+    public function __construct(BaseFacebook $facebook, $userManager, $validator, $service_container)
     {
         Facebook::$CURL_OPTS[CURLOPT_SSL_VERIFYPEER] = false;
         Facebook::$CURL_OPTS[CURLOPT_SSL_VERIFYHOST] = 2;
         
-        $this->facebook = $facebook;        
-        $this->userManager = $userManager;
-        $this->validator = $validator;    
+        $this->facebook          = $facebook;
+        $this->userManager       = $userManager;
+        $this->validator         = $validator;
+        $this->service_container = $service_container;
     }
 
     public function supportsClass($class)
@@ -49,7 +52,12 @@ class FacebookProvider implements UserProviderInterface
             $fbdata = null;
         }
 
-        if (!empty($fbdata)) {            
+        if (!empty($fbdata)) {
+            if(!isset($fbdata['email'])) {
+                $this->service_container->get('session')->getFlashBag()->add('error', 'Merci de confirmer votre email sur Facebook avant de vous inscrire sur HaveFyve.');
+                throw new UsernameNotFoundException('Merci de confirmer votre email sur Facebook avant de vous inscrire sur HaveFyve.');
+            }
+
             $user_by_mail=$this->userManager->findUserBy(array('email'=>$fbdata['email']));
             
             if(!empty($user_by_mail))   //on se connecte avec fb, mais l'email est déjà présent dans la base (cas d'une personne déjà enregistrée auparavant)
@@ -70,13 +78,15 @@ class FacebookProvider implements UserProviderInterface
             
             if (count($this->validator->validate($user, 'Facebook'))) {
                 // TODO: the user was found obviously, but doesnt match our expectations, do something smart                
-                throw new UsernameNotFoundException('The facebook user could not be stored');
+                $this->service_container->get('session')->getFlashBag()->add('error', 'L\'utilisateur n\'a pas pu etre enregistré.');
+                throw new UsernameNotFoundException('L\'utilisateur n\'a pas pu etre enregistré.');
             }
             $this->userManager->updateUser($user);            
         }
 
         if (empty($user)) {
-            throw new UsernameNotFoundException('The user is not authenticated on facebook');
+            $this->service_container->get('session')->getFlashBag()->add('error', 'Cet utilisateur n\'est pas authentifié sur Facebook.');
+            throw new UsernameNotFoundException('Cet utilisateur n\'est pas authentifié sur Facebook.');
         }
 
         return $user;
@@ -85,6 +95,7 @@ class FacebookProvider implements UserProviderInterface
     public function refreshUser(UserInterface $user)
     {        
         if (!$this->supportsClass(get_class($user)) || !$user->getFacebookId()) {
+            $this->service_container->get('session')->getFlashBag()->add('error', 'Instances of "%s" are not supported.');
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_class($user)));
         }
 

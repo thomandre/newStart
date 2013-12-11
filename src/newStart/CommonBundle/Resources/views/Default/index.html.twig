@@ -20,7 +20,23 @@
 			<p class="whiteText" style="margin-top:25%;">HaveFyve necessite l'activation de Javascript pour fonctionner correctement</p>
 		</div>
 	</noscript>
-	
+	{% for message in app.session.flashbag.get('error') %}
+		<div class="alert alert-error">
+		    <!--button type="button" class="close" data-dismiss="alert">×</button!-->
+		    {{ message }}
+		</div>
+	{% endfor %}
+
+	{% raw %}
+		<div class="row">
+			<div class="alert alert-info" ng-show="info" style="display:none;">{{ info }}</div>
+			<div class="alert alert-danger" ng-show="danger" style="display:none;">{{ danger }}</div>
+			<div class="alert alert-warning" ng-show="warning" style="display:none;">{{ warning }}</div>
+			<div class="alert alert-success" ng-show="success" style="display:none;">{{ success }}</div>
+			<div class="alert alert-notice" ng-show="notice" style="display:none;">{{ notice }}</div>
+		</div>
+	{% endraw %}
+
 	<div id="carousel-example-generic" data-interval="5000" data-wrap="false" class="carousel slide" data-ride="carousel">
 	  <!-- Indicators -->
 	  <ol class="carousel-indicators">

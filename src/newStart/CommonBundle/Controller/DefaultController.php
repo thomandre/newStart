@@ -44,7 +44,7 @@ class DefaultController extends Controller
     {
         if($this->kernel->getEnvironment() == 'test') {
             try {
-                session_start();
+                //session_start();
             } catch(\Exception $e) {
                 
             }

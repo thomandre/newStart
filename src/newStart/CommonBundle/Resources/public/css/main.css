@@ -438,7 +438,10 @@ h4 {
     bottom: 0;
 }
 .carousel-control span {
-    top:300px;
+    background: none repeat scroll 0 0 #CCCCCC;
+    border-radius: 30px;
+    padding: 10px 13px 12px 11px;
+    top: 300px;
 }
 .carousel-indicators li {
     border: none;
