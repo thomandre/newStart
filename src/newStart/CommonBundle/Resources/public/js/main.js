@@ -67,10 +67,13 @@ function onFbInit(FB) {
           if (response.status === 'connected') {
             var uid = response.authResponse.userID;
             var accessToken = response.authResponse.accessToken;
+            $('#loading').hide();
             $('#login').show();
           } else if (response.status === 'not_authorized') {
+            $('#loading').hide();
             $('#connect').show();
           } else {
+            $('#loading').hide();
             $('#connect').show();
           }
         });

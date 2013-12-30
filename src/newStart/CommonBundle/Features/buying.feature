@@ -25,6 +25,7 @@ Scénario: Je suis AlbanThomas et je veux offrir un beau cadeau a Thomas
 Soit je vais sur "/"
 Soit je me logue en tant que "albanthomas1@gmail.com"
 Et je suis "Friends"
+Et j'attend "0.5" secondes
 Alors je devrais voir "Choisissez les amis à qui vous ferez un cadeau."
 Alors je presse "Ok"
 Et j'attend "1" secondes
@@ -36,6 +37,9 @@ Et je remplis "search" avec "Tho"
 Et j'attend "0.5" secondes
 Alors je devrais voir "Thomas André"
 Et je remplis "search" avec "André"
+Et j'attend "0.5" secondes
+Alors je devrais voir "Thomas André"
+Et je remplis "search" avec "thomas andré"
 Et j'attend "0.5" secondes
 Alors je devrais voir "Thomas André"
 Et je suis "Thomas André"
@@ -101,9 +105,8 @@ Et je devrais voir "L’iPad mini avec écran Retina est une petite merveille."
 Et je reviens sur la fenêtre principale
 Et je devrais voir "Vous avez décidé de vous offrir ce cadeau finalement ?"
 Et je presse "Oui, j'ai acheté ce cadeau"
-Et j'attend "0.5" secondes
+Et j'attend "1" secondes
 Et je ne devrais pas voir "Vous avez décidé de vous offrir ce cadeau finalement ?"
-Et j'attend "0.5" secondes
 Et je devrais voir "Génial"
 Et je suis "Retour"
 Et je ne devrais pas voir "iPad mini"

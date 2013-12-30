@@ -275,7 +275,7 @@ class ApiController extends Controller
         $data = array();
         foreach($user->getMyFriends() as $friend) {
             $patern = '/^'.$friendName.'/i';
-            if(preg_match($patern, $friend->getMyFriends()->getFirstName()) || preg_match($patern, $friend->getMyFriends()->getLastName())) {
+            if(preg_match($patern, $friend->getMyFriends()->getFirstName()) || preg_match($patern, $friend->getMyFriends()->getLastName()) || preg_match($patern, $friend->getMyFriends()->getFullName())) {
                 $tmp = $friend->getMyFriends()->toArray();
                 $tmp['favorite'] = $friend->isFavorite();
                 $data[] = $tmp;                
