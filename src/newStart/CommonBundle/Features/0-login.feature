@@ -10,7 +10,7 @@ Et je presse Connexion
 Alors je devrais voir "Thomas Alban"
 Et je vais sur "https://www.facebook.com/settings/?tab=privacy&ref=mb&privacy_source=settings_menu"
 Soit je suis "Applications"
-Et j'attend "0.5" secondes
+Et j'attend "1" secondes
 Alors je devrais voir "HaveFyve Test"
 Et je suis "Supprimer"
 Et j'attend "0.5" secondes
@@ -26,9 +26,14 @@ Et je remplis "email" avec "albanthomas1@gmail.com"
 Et je remplis "pass" avec "projetreecomate"
 Et je valide le formulaire
 Et j'attend "1" secondes
-Et je devrais voir "HaveFyve Test recevra les informations suivantes : vos profil public, liste d’amis, adresse électronique, anniversaire et mentions J’aime."
+Et je devrais voir "HaveFyve Test"
+Et je devrais voir "recevra"
+Et je devrais voir "profil public"
+Et je devrais voir "liste d’amis"
+Et je devrais voir "adresse électronique"
+Et je devrais voir "anniversaire"
+Et je devrais voir "mentions J’aime"
 Soit je presse "__CONFIRM__"
-Et je reviens sur la fenêtre principale
 Et j'attend que ".profile-image" soit sur la page
 Et je devrais voir "Ma liste de cadeaux"
 Et je me delogue
