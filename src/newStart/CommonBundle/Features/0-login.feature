@@ -2,7 +2,7 @@
 Fonctionnalité: Tester tous les cas de figure du login Facebook
 
 @javascript @login @login_step1
-Scénario: Je ne suis pas logué sur FB et je n'ai pas authorisé l'app
+Scénario: Je ne suis pas logué sur FB et j'ai déjà authorisé l'app dans le passé
 Soit je vais sur "https://www.facebook.com"
 Et je remplis le login avec "albanthomas1@gmail.com"
 Et je remplis le password avec "projetreecomate"
@@ -11,13 +11,13 @@ Alors je devrais voir "Thomas Alban"
 Et je vais sur "https://www.facebook.com/settings/?tab=privacy&ref=mb&privacy_source=settings_menu"
 Soit je suis "Applications"
 Et j'attend "0.5" secondes
-Alors je devrais voir "HaveFyve Dev"
+Alors je devrais voir "HaveFyve Test"
 Et je suis "Supprimer"
 Et j'attend "0.5" secondes
-Alors je devrais voir "Retirer HaveFyve Dev ?"
+Alors je devrais voir "Retirer HaveFyve Test ?"
 Alors je clique sur ".uiButtonConfirm"
 Et j'attend "1" secondes
-Alors je ne devrais pas voir "HaveFyve Dev"
+Alors je ne devrais pas voir "HaveFyve Test"
 Et je clique sur "#userNavigationLabel"
 Et je presse "Déconnexion"
 Soit je suis sur "/"
@@ -26,9 +26,7 @@ Et je remplis "email" avec "albanthomas1@gmail.com"
 Et je remplis "pass" avec "projetreecomate"
 Et je valide le formulaire
 Et j'attend "1" secondes
-Et je bascule sur la popup
-Alors je devrais voir "Se connecter avec Facebook"
-Et je devrais voir "HaveFyve Dev recevra les informations suivantes : vos profil public, liste d’amis, adresse électronique, anniversaire et mentions J’aime."
+Et je devrais voir "HaveFyve Test recevra les informations suivantes : vos profil public, liste d’amis, adresse électronique, anniversaire et mentions J’aime."
 Soit je presse "__CONFIRM__"
 Et je reviens sur la fenêtre principale
 Et j'attend que ".profile-image" soit sur la page
@@ -56,16 +54,16 @@ Alors je devrais voir "Thomas Alban"
 Et je vais sur "https://www.facebook.com/settings/?tab=privacy&ref=mb&privacy_source=settings_menu"
 Soit je suis "Applications"
 Et j'attend "0.5" secondes
-Alors je devrais voir "HaveFyve Dev"
+Alors je devrais voir "HaveFyve Test"
 Et je suis "Supprimer"
 Et j'attend "0.5" secondes
-Alors je devrais voir "Retirer HaveFyve Dev ?"
+Alors je devrais voir "Retirer HaveFyve Test ?"
 Alors je clique sur ".uiButtonConfirm"
 Et j'attend "1" secondes
-Alors je ne devrais pas voir "HaveFyve Dev"
+Alors je ne devrais pas voir "HaveFyve Test"
 Soit je suis sur "/"
 Soit je clique sur le bouton Facebook Connect
-Et je devrais voir "HaveFyve Dev recevra les informations suivantes : vos profil public, liste d’amis, adresse électronique, anniversaire et mentions J’aime."
+Et je devrais voir "HaveFyve Test recevra les informations suivantes : vos profil public, liste d’amis, adresse électronique, anniversaire et mentions J’aime."
 Soit je presse "__CONFIRM__"
 Et je reviens sur la fenêtre principale
 Et j'attend que ".profile-image" soit sur la page

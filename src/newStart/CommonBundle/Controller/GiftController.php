@@ -34,20 +34,14 @@ class GiftController extends Controller
     {   
 
         try {
-            $facebook = $this->container->get('fos_facebook.api');
+//            $facebook = $this->container->get('fos_facebook.api');
             $user = $this->getUser();
             if(!is_object($user)) {
 //                var_dump($user);
-                return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
+                return new RedirectResponse($this->container->get('router')->generate('logout'));
             }
         } catch (\Exception $e) {
-            return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
-        }
-
-        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
-            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
-        } else {
-            $error = $request->getSession()->get(SecurityContext::AUTHENTICATION_ERROR);
+            return new RedirectResponse($this->container->get('router')->generate('logout'));
         }
 
         $products = $this->em->getRepository('newStartCommonBundle:Product')->findBy(array('user' => $user, 'deleted' => false));
@@ -82,10 +76,10 @@ class GiftController extends Controller
             $facebook = $this->container->get('fos_facebook.api');
             $user = $this->getUser();
             if(!is_object($user)) {
-                return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
+                return new RedirectResponse($this->container->get('router')->generate('logout'));
             }
         } catch (\Exception $e) {
-            return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
+            return new RedirectResponse($this->container->get('router')->generate('logout'));
         }
 
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
@@ -97,7 +91,7 @@ class GiftController extends Controller
         try {
             $response = $facebook->api('/me/friends?fields=name,id,email');
         } catch (\Exception $e) {
-            return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
+            return new RedirectResponse($this->container->get('router')->generate('logout'));
         }
 
         return array('user' => $user);

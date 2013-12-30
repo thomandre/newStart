@@ -71,27 +71,6 @@
             <script src="{{ asset('bundles/newstartcommon/js/main.js') }}"></script>
             <script src="{{ asset('bundles/newstartcommon/js/vendor/jquery.ba-outside-events.min.js') }}"></script>
             <script src="{{ asset('bundles/newstartcommon/css/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-            <script>
-                  function goLogIn(){
-                      window.location.href = "{{ path('_security_check') }}";
-                  }
-                  function goLogOut(){
-                      window.location.href = "{{ path('_security_logout') }}";
-                  }
-                  window.fbAsyncInit = function() {
-                    // init the FB JS SDK
-                    FB.init({
-                      appId      : '{{ facebookAppID }}',                       // App ID from the app dashboard
-                      status     : false,                                   // Check Facebook Login status
-                      cookie     : true,                                    // enable cookies to allow the server to access the session
-                      xfbml      : true,                                    // Look for social plugins on the page
-                      oauth      : true,
-                      logging    : true
-                    });
-
-                    onFbInit(FB);
-                  }
-            </script>
        {% endblock %}
     </body>
 </html> 

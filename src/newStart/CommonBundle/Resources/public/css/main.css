@@ -31,9 +31,6 @@ p.login {
     text-align: center;
     margin:56px 0 0 -20px;
 }
-#connect, #disconnect, #login {
-    display: none;
-}
 .form-register {
 	max-width: 450px;
 	width: 450px;

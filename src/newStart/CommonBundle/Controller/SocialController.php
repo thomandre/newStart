@@ -47,7 +47,7 @@ class SocialController extends Controller
             $user = $this->getUser();
             $response = $facebook->api('/me/friends?fields=name,id,email');
         } catch (\Exception $e) {
-            return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
+            return new RedirectResponse($this->container->get('router')->generate('logout'));
         }
 
         $em = $this->getDoctrine()->getManager();
@@ -76,7 +76,7 @@ class SocialController extends Controller
             $response = $facebook->api('/me/friends?fields=name,id,email');
         } catch (\Exception $e) {
             if($userProfile->getPublic() == false) {
-                return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
+                return new RedirectResponse($this->container->get('router')->generate('logout'));
             }
         }
         $products = $em->getRepository('newStartCommonBundle:Product')->findBy(array('user' => $userProfile, 'deleted' => false, 'beenBought' => false));
@@ -103,7 +103,7 @@ class SocialController extends Controller
             $user = $this->getUser();
             $response = $facebook->api('/me/friends?fields=name,id,email');
         } catch (\Exception $e) {
-            return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
+            return new RedirectResponse($this->container->get('router')->generate('logout'));
         }
         $user = $this->getUser();
 
