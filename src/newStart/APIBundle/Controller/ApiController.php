@@ -112,16 +112,22 @@ class ApiController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        $content = $this->get("request")->getContent();
+
+        if (!empty($content)) {
+            $params = json_decode($content, true); // 2nd param to get as array
+        }
+
         $user = $this->getUser();
         
         $product = new Product();
-        $product->setName($request->get('title'));
-        $product->setUrl($request->get('url'));
+        $product->setName($params['title']);
+        $product->setUrl($params['url']);
 
-        if($request->get('img') == null || $request->get('img') == 'null') {
+        if($params['img'] == null || $params['img'] == 'null') {
             try{
-                if($request->get('url') && $request->get('url') != '') {
-                    $images = $this->scrapeService->getBiggestImg($request->get('url'));
+                if($params['url'] && $params['url'] != '') {
+                    $images = $this->scrapeService->getBiggestImg($params['url']);
                     //var_dump($images[0]->getCurrentUrl($request));
                     $product->setImgUrl($images[0]->getCurrentUrl($request));
                 } else {
@@ -131,10 +137,13 @@ class ApiController extends Controller
                 $product->setImgUrl('error.png');
             }
         } else {
-            $product->setImgUrl($request->get('img'));
+            $product->setImgUrl($params['img']);
         }
 
-        $product->setComment($request->get('comment'));
+        if(!isset($params['comment'])) {
+            $params['comment'] = '';
+        }
+        $product->setComment($params['comment']);
         $product->setBeenBought(false);
         $product->setDeleted(false);
 
