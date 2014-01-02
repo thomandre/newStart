@@ -88,6 +88,7 @@ class fbUserService {
 
 	    }
 
+	    $this->em->flush();
 
     }
 

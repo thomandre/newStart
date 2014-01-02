@@ -25,6 +25,9 @@ Et j'attend "0.5" secondes
 Et je recharge la page
 Et la case à cocher "prive" devrait être cochée
 Et je me delogue
+Soit je vais sur "https://www.facebook.com"
+Et je clique sur "#userNavigationLabel"
+Et je presse "Déconnexion"
 
 @javascript @guest @guest_step2
 Scénario: Je suis un mechant pirate et je veux voir le profil de Thomas
@@ -46,6 +49,9 @@ Et j'attend "0.5" secondes
 Et je recharge la page
 Et la case à cocher "prive" ne devrait pas être cochée
 Et je me delogue
+Soit je vais sur "https://www.facebook.com"
+Et je clique sur "#userNavigationLabel"
+Et je presse "Déconnexion"
 
 @javascript @guest @guest_step4
 Scénario: Je suis la maman de Thomas, je n'ai pas de compte et je veux offrir un beau cadeau à mon fils
@@ -58,3 +64,4 @@ Soit je suis "Apple - iPod classic"
 Et j'attend "0.5" secondes
 Alors je devrais voir "Retour"
 Et je devrais voir "Back in black !"
+

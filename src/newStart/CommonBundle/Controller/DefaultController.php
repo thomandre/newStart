@@ -74,6 +74,7 @@ class DefaultController extends Controller
 
         return $this->redirect($facebook->getLoginUrl(array('redirect_uri' => 'public_home')));
     }
+
     /**
      * @Route("/fblogin", name="fblogin")
      */
@@ -92,11 +93,10 @@ class DefaultController extends Controller
             // When does this happens ?
             // not authenticated.
             // redirect to home
-            return $this->redirect($facebook->getLoginUrl(array('redirect_uri' => 'public_home')));
+            return $this->redirect($this->facebook->getLoginUrl(array('redirect_uri' => 'http://havefyve.local:8888/newStart/web/app_dev.php/')));
         }
 
     }
-
 
     /**
      * @Route("/register_beta")

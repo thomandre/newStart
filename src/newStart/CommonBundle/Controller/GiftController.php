@@ -34,10 +34,8 @@ class GiftController extends Controller
     {   
 
         try {
-//            $facebook = $this->container->get('fos_facebook.api');
             $user = $this->getUser();
             if(!is_object($user)) {
-//                var_dump($user);
                 return new RedirectResponse($this->container->get('router')->generate('logout'));
             }
         } catch (\Exception $e) {
@@ -73,7 +71,6 @@ class GiftController extends Controller
     public function settingsAction(Request $request)
     {
         try {
-            $facebook = $this->container->get('fos_facebook.api');
             $user = $this->getUser();
             if(!is_object($user)) {
                 return new RedirectResponse($this->container->get('router')->generate('logout'));
@@ -82,11 +79,7 @@ class GiftController extends Controller
             return new RedirectResponse($this->container->get('router')->generate('logout'));
         }
 
-        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
-            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
-        } else {
-            $error = $request->getSession()->get(SecurityContext::AUTHENTICATION_ERROR);
-        }
+        $facebook = $this->container->get('facebook');
 
         try {
             $response = $facebook->api('/me/friends?fields=name,id,email');

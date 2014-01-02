@@ -20,6 +20,20 @@ class FeatureContext extends FeatureGlobal
     public $originalWindowName = '';
 
     /**
+     * @Given /^je suis le lien aria-label "([^"]*)"$/
+     */
+    public function jeSuisLeLienAriaLabel($arg1)
+    {
+        $element = $this->getSession()->getPage()->findAll('css', 'a[aria-label="'.$arg1.'"]');
+        if($element != false) {
+            $element[0]->click();
+        } else {
+            throw new \Exception('Le lien '.$arg1.' n\'a pas été trouvé dans la page.');
+        }
+    }
+
+
+    /**
      * @Given /^je me delogue$/
      */
     public function jeMeDelogue()
@@ -123,7 +137,7 @@ class FeatureContext extends FeatureGlobal
     public function jeMeLogueEnTantQue($arg1)
     {
         if($arg1 == 'albanthomas1@gmail.com') {
-            $arg2 = 'projetreecomate';
+            $arg2 = 'projetreecomate1';
         } else {
             $arg2 = 'c@d153512';
         }
