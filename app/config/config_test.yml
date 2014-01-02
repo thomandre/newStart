@@ -17,3 +17,5 @@ swiftmailer:
 
 parameters:
     database_name: newStartTest
+    facebook.appId: 244784629014433
+    facebook.secret: b02f506dfdda631656091e06a06cfcfc

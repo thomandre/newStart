@@ -20,6 +20,20 @@ class FeatureContext extends FeatureGlobal
     public $originalWindowName = '';
 
     /**
+     * @Given /^je suis le lien aria-label "([^"]*)"$/
+     */
+    public function jeSuisLeLienAriaLabel($arg1)
+    {
+        $element = $this->getSession()->getPage()->findAll('css', 'a[aria-label="'.$arg1.'"]');
+        if($element != false) {
+            $element[0]->click();
+        } else {
+            throw new \Exception('Le lien '.$arg1.' n\'a pas été trouvé dans la page.');
+        }
+    }
+
+
+    /**
      * @Given /^je me delogue$/
      */
     public function jeMeDelogue()
@@ -36,7 +50,7 @@ class FeatureContext extends FeatureGlobal
     /**
      * @Given /^je remplis le login avec "([^"]*)"$/
      */
-    public function jeReplisLeLogin($arg1) {
+    public function jeRemplisLeLogin($arg1) {
         $this->getSession()->wait(30000,
             "document.getElementById('email').value = '".$arg1."';"
         );
@@ -45,7 +59,7 @@ class FeatureContext extends FeatureGlobal
     /**
      * @Given /^je remplis le password avec "([^"]*)"$/
      */
-    public function jeReplisLePassword($arg1) {
+    public function jeRemplisLePassword($arg1) {
         $this->getSession()->wait(30000,
             "document.getElementById('pass').value = '".$arg1."';"
         );
@@ -123,7 +137,7 @@ class FeatureContext extends FeatureGlobal
     public function jeMeLogueEnTantQue($arg1)
     {
         if($arg1 == 'albanthomas1@gmail.com') {
-            $arg2 = 'projetreecomate';
+            $arg2 = 'projetreecomate1';
         } else {
             $arg2 = 'c@d153512';
         }
@@ -132,7 +146,6 @@ class FeatureContext extends FeatureGlobal
             new Step\When('je remplis "email" avec "'.$arg1.'"'),
             new Step\When('je remplis "pass" avec "'.$arg2.'"'),
             new Step\When('je valide le formulaire'),
-            new Step\Then('je reviens sur la fenêtre principale'),
             new Step\When('j\'attend que ".profile-image" soit sur la page'),
             new Step\Then('je devrais voir "Ma liste de cadeaux"'),
         );
@@ -158,13 +171,9 @@ class FeatureContext extends FeatureGlobal
     public function jeCliqueSurLeBoutonFacebookConnect()
     {
         return array(
-            new Step\When('j\'attend que "#connect" soit visible'),
             new Step\When('je presse "Se connecter via Facebook"'),
             new Step\When('j\'attend "1" secondes'),
-            new Step\When('je bascule sur la popup'),
-            new Step\When('j\'attend "1" secondes'),
-            new Step\Then('je devrais voir "Facebook"'),
-            new Step\Then('je devrais voir "HaveFyve"')
+            new Step\Then('je devrais voir "Facebook"')
         );
     }
 
@@ -217,12 +226,6 @@ class FeatureContext extends FeatureGlobal
     {
         $submit = $this->getSession()->getPage()->findAll('css', '#u_0_1');
         $submit[0]->click();
-
-        try {
-            $this->getSession()->wait(1000*10);
-          
-            $this->getSession()->switchToWindow($this->originalWindowName);           
-        } catch(\Exception $e) {}
     }
 
 

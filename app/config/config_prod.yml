@@ -1,16 +1,6 @@
 imports:
     - { resource: config.yml }
 
-#framework:
-#    validation:
-#        cache: apc
-
-#doctrine:
-#    orm:
-#        metadata_cache_driver: apc
-#        result_cache_driver: apc
-#        query_cache_driver: apc
-
 monolog:
     handlers:
         main:
@@ -28,6 +18,3 @@ parameters:
     database_name: havefivprod
     database_user: root
     database_password: jAZgHBwkhavefyve
-    facebookAppID: 514467415283257
-    facebookAppSecret: 51fb549f13b96b2c931edeb69399f14c
-    facebookLocale: en_US

@@ -12,3 +12,5 @@ parameters:
     mailer_host: smtp.gmail.com
     locale: en
     secret: 80d26422005ed266ad66e88c6f2d521682037949
+
+

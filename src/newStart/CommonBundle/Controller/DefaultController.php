@@ -33,7 +33,10 @@ class DefaultController extends Controller
     private $sc;
 
     /** @DI\Inject("kernel") */
-    public $kernel;
+    public $kernel;    
+
+    /** @DI\Inject("facebook") */
+    public $facebook;
 
 
     /**
@@ -41,24 +44,59 @@ class DefaultController extends Controller
      * @Template()
      */
     public function indexAction()
-    {
+    {   
         if($this->kernel->getEnvironment() == 'test') {
             try {
                 //session_start();
             } catch(\Exception $e) {
-                
+
             }
         }
-        
+
         if(strpos($_SERVER['HTTP_USER_AGENT'], 'Googlebot') === false) {
             $isGoogle = false;
         } else {
             $isGoogle = true;
         }
-
-        return array('isGoogle' => $isGoogle);
+        
+        return array('isGoogle' => $isGoogle, 'facebook' => $this->facebook);
     }
 
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout(Request $request) {
+        $session = $this->getRequest()->getSession();
+        $token = $session->get('token');
+        $this->get("request")->getSession()->invalidate();
+        $this->get("security.context")->setToken(null);
+        $this->getRequest()->getSession()->remove('token');
+
+        return $this->redirect($facebook->getLoginUrl(array('redirect_uri' => 'public_home')));
+    }
+
+    /**
+     * @Route("/fblogin", name="fblogin")
+     */
+    public function login(Request $request) {
+        $fbUserService  = $this->get('fbUserService');
+
+        if($facebookId = $this->facebook->getUser()){
+            $me = $this->facebook->api('/me/');
+            // you can do whatever you want, so nobody told me what to do 
+            // and there was no preconception of what to do
+
+            $fbUserService->update($me);
+
+            return new RedirectResponse($this->container->get('router')->generate('me'));
+        } else {
+            // When does this happens ?
+            // not authenticated.
+            // redirect to home
+            return $this->redirect($this->facebook->getLoginUrl(array('redirect_uri' => 'http://havefyve.local:8888/newStart/web/app_dev.php/')));
+        }
+
+    }
 
     /**
      * @Route("/register_beta")
@@ -112,15 +150,6 @@ class DefaultController extends Controller
 		return new JsonResponse();
     }
 
-
-    /**
-     * @Route("/fbLogout", name="fbLogout")
-     * @Template()
-     */
-    public function fbLogoutAction()
-    {
-        return array();
-    }
     
 
 

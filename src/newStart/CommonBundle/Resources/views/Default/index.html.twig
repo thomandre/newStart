@@ -9,10 +9,8 @@
 		</div>
 		<div class="col-md-2 col-sm-2 col-xs-4">
 			<p class='login'>
-				<button class="btn" id="disconnect" onclick="fb_logout();">Déconnexion</button>
-				<button class="btn btn-primary" id="connect" onclick="fb_connect();">> Se connecter via Facebook</button>
-				<button class="btn btn-primary" id="login" onclick="fb_login();">> S'inscrire via Facebook</button>
-				<button class="btn" id="loading">Connexion à Facebook...</button>
+				<!--button class="btn" id="disconnect" onclick="fb_logout();">Déconnexion</button!-->
+				<button class="btn btn-primary" id="login" data-url="{{ facebook.loginUrl({ redirect_uri: url('fblogin'), scope: 'email, user_birthday, user_likes, user_interests' }) }}">> Se connecter via Facebook</button>
 			</p>
 		</div>
 	</div>
@@ -21,12 +19,6 @@
 			<p class="whiteText" style="margin-top:25%;">HaveFyve necessite l'activation de Javascript pour fonctionner correctement</p>
 		</div>
 	</noscript>
-	{% for message in app.session.flashbag.get('error') %}
-		<div class="alert alert-error">
-		    <!--button type="button" class="close" data-dismiss="alert">×</button!-->
-		    {{ message }}
-		</div>
-	{% endfor %}
 
 	{% raw %}
 		<div class="row">

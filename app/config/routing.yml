@@ -13,8 +13,5 @@ new_start_user:
     type:     annotation
     prefix:   /
 
-_security_check:
-  pattern:  /login_fb_check
-_security_logout:
-  pattern:  /logout
+
 

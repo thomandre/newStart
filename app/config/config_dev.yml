@@ -29,3 +29,7 @@ assetic:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+parameters:
+    facebook.appId: 636452619713648
+    facebook.secret: 0e3d267ff33acdf1fb685a2ad16813d0

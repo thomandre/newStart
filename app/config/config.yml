@@ -1,7 +1,6 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: facebookParameters.ini }
 
 framework:
     #esi:             ~
@@ -25,8 +24,7 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
-    globals:
-        facebookAppID: %facebookAppID%
+
 
 # Assetic Configuration
 assetic:
@@ -78,27 +76,18 @@ fos_user:
     firewall_name: main
     user_class: newStart\UserBundle\Entity\User
 
-fos_facebook:
-  alias:  facebook
-  app_id: %facebookAppId%
-  secret: %facebookAppSecret%
-  cookie: true
-  permissions: [email, user_birthday, user_likes, user_interests]
-
-services:
-    my.facebook.user:
-        class: newStart\UserBundle\Security\User\Provider\FacebookProvider
-        arguments:
-            facebook: "@fos_facebook.api"
-            userManager: "@fos_user.user_manager"
-            validator: "@validator"
-            container: "@service_container"
-    my_fos_facebook_auth_success_handler:
-        class: newStart\CommonBundle\Service\myFosFacebookAuthSuccessHandlerService
-        arguments:
-            container: "@service_container"
-
 jms_di_extra:
     locations:
         all_bundles: false
         bundles: [newStartAPIBundle, UserBundle]
+
+services:
+  facebook:
+    class: newStart\UserBundle\Service\Facebook
+    arguments: [{ appId: %facebook.appId%, secret: %facebook.secret% }]
+
+  security.authentication.success_handler:
+    class: newStart\CommonBundle\Service\myFacebookAuthSuccessHandlerService
+    public: false
+    arguments:  ['@router', '@security.user.entity_manager']
+

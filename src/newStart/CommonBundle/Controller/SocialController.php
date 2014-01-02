@@ -43,11 +43,11 @@ class SocialController extends Controller
     public function friendsAction()
     {
         try {
-            $facebook = $this->container->get('fos_facebook.api');
+            $facebook = $this->container->get('facebook');
             $user = $this->getUser();
             $response = $facebook->api('/me/friends?fields=name,id,email');
         } catch (\Exception $e) {
-            return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
+            return new RedirectResponse($this->container->get('router')->generate('logout'));
         }
 
         $em = $this->getDoctrine()->getManager();
@@ -71,12 +71,14 @@ class SocialController extends Controller
         $em = $this->getDoctrine()->getManager();
         $userProfile = $em->getRepository('UserBundle:User')->findOneByFacebookId($userId);    
         try {
-            $facebook = $this->container->get('fos_facebook.api');
+            $facebook = $this->container->get('facebook');
             $user = $this->getUser();
             $response = $facebook->api('/me/friends?fields=name,id,email');
         } catch (\Exception $e) {
             if($userProfile->getPublic() == false) {
-                return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
+                return new RedirectResponse($this->container->get('router')->generate('logout'));
+            } else {
+                $user = null;
             }
         }
         $products = $em->getRepository('newStartCommonBundle:Product')->findBy(array('user' => $userProfile, 'deleted' => false, 'beenBought' => false));
@@ -99,11 +101,11 @@ class SocialController extends Controller
     public function feedAction()
     {
         try {
-            $facebook = $this->container->get('fos_facebook.api');
+            $facebook = $this->container->get('facebook');
             $user = $this->getUser();
             $response = $facebook->api('/me/friends?fields=name,id,email');
         } catch (\Exception $e) {
-            return new RedirectResponse($this->container->get('router')->generate('fbLogout'));
+            return new RedirectResponse($this->container->get('router')->generate('logout'));
         }
         $user = $this->getUser();
 

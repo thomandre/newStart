@@ -19,13 +19,16 @@ Et j'attend que "#completeContainer" ne soit plus visible
 Et le champ "url" devrait contenir ""
 Et je devrais voir "Apple - MacBook Air"
 Et je me delogue
+Soit je vais sur "https://www.facebook.com"
+Et je clique sur "#userNavigationLabel"
+Et je presse "Déconnexion"
 
 @javascript @buying @buying_step2
 Scénario: Je suis AlbanThomas et je veux offrir un beau cadeau a Thomas 
 Soit je vais sur "/"
 Soit je me logue en tant que "albanthomas1@gmail.com"
 Et je suis "Friends"
-Et j'attend "0.5" secondes
+Et j'attend "1" secondes
 Alors je devrais voir "Choisissez les amis à qui vous ferez un cadeau."
 Alors je presse "Ok"
 Et j'attend "1" secondes
@@ -73,6 +76,9 @@ Et je suis "Thomas André"
 Et j'attend "0.5" secondes
 Alors je ne devrais pas voir "Apple - MacBook Air"
 Et je me delogue
+Soit je vais sur "https://www.facebook.com"
+Et je clique sur "#userNavigationLabel"
+Et je presse "Déconnexion"
 
 @javascript @buying @buying_step3
 Scénario: Je suis Thomas et je ne dois pas voir qu'Alban m'a fait un cadeau
@@ -81,6 +87,9 @@ Soit je me logue en tant que "thomandr1@yahoo.fr"
 Et j'attend "0.5" secondes
 Alors je devrais voir "Apple - MacBook Air"
 Et je me delogue
+Soit je vais sur "https://www.facebook.com"
+Et je clique sur "#userNavigationLabel"
+Et je presse "Déconnexion"
 
 @javascript @buying @buying_step4
 Scénario: Je suis Thomas et je veux m'offrir un iPad Mini Retina
@@ -111,6 +120,9 @@ Et je devrais voir "Génial"
 Et je suis "Retour"
 Et je ne devrais pas voir "iPad mini"
 Et je me delogue
+Soit je vais sur "https://www.facebook.com"
+Et je clique sur "#userNavigationLabel"
+Et je presse "Déconnexion"
 
 @javascript @logout
 Scénario: Je veux pouvoir me deloguer
@@ -118,7 +130,13 @@ Soit je vais sur "/"
 Soit je me logue en tant que "thomandr1@yahoo.fr"
 Et j'attend "0.5" secondes
 Et je me delogue
+Soit je vais sur "https://www.facebook.com"
+Et je clique sur "#userNavigationLabel"
+Et je presse "Déconnexion"
 Soit je vais sur "/"
 Soit je me logue en tant que "albanthomas1@gmail.com"
 Et j'attend "0.5" secondes
 Et je me delogue
+Soit je vais sur "https://www.facebook.com"
+Et je clique sur "#userNavigationLabel"
+Et je presse "Déconnexion"
