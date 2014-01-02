@@ -79,14 +79,6 @@ class GiftController extends Controller
             return new RedirectResponse($this->container->get('router')->generate('logout'));
         }
 
-        $facebook = $this->container->get('facebook');
-
-        try {
-            $response = $facebook->api('/me/friends?fields=name,id,email');
-        } catch (\Exception $e) {
-            return new RedirectResponse($this->container->get('router')->generate('logout'));
-        }
-
         return array('user' => $user);
     }
 

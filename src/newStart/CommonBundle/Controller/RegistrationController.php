@@ -27,7 +27,7 @@ class RegistrationController extends Controller
      * @Route("/friends-select/", name="friends-select")
      * @Template()
      */
-    public function indexAction()
+    /*public function indexAction()
     {   
         $facebook = $this->container->get('fos_facebook.api');
 
@@ -38,13 +38,13 @@ class RegistrationController extends Controller
         //print_r($friends);
 
         return array('friends' => $friends, 'bestFriendsLimit' => 5, 'img_size' => 75);
-    }
+    }*/
 
     /**
      * @Route("/login", name="login")
      * @Template()
      */
-    public function loginAction()
+    /*public function loginAction()
     {
         try {
             $facebook = $this->container->get('fos_facebook.api');
@@ -60,7 +60,7 @@ class RegistrationController extends Controller
         } catch (\Exception $e) {
             return new RedirectResponse($this->container->get('router')->generate('logout'));
         }
-    }
+    }*/
 
 
 

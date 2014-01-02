@@ -4,7 +4,7 @@
 			</div>
 			<div class="menu">
 				<span id="profile">
-					<a href="#" onclick="fb_login();">
+					<a href="{{ facebook.loginUrl({ redirect_uri: url('fblogin'), scope: 'email, user_birthday, user_likes, user_interests' }) }}">
 						Se connecter via Facebook
 					</a>
 				</span>

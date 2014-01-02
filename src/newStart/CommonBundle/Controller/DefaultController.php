@@ -101,7 +101,7 @@ class DefaultController extends Controller
     /**
      * @Route("/register_beta")
      */
-    public function registerBetaAction(Request $request)
+    /*public function registerBetaAction(Request $request)
     {
     	$email = $request->get('email');
     	if(preg_match("/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i", $email)) {
@@ -137,18 +137,18 @@ class DefaultController extends Controller
 	        return new JsonResponse(array('status' => 'ok', 'email' => $email));
     	}
         return new JsonResponse(array('status' => 'ko', 'message' => 'Cet email ne semble pas valide.'));
-    }
+    }*/
 
     /**
      * @Route("/register_beta/show")
      */
-    public function registerBetaSHowAction(Request $request)
+    /*public function registerBetaSHowAction(Request $request)
     {
         $betaUsers = $this->getDoctrine()->getEntityManager()->getRepository('newStartCommonBundle:BetaUser')->findAll();
 
         var_dump($betaUsers);
 		return new JsonResponse();
-    }
+    }*/
 
     
 

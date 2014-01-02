@@ -35,6 +35,8 @@ class SocialController extends Controller
     /** @DI\Inject("kernel") */
     public $kernel;
 
+    /** @DI\Inject("facebook") */
+    public $facebook;
 
     /**
      * @Route("/friends/", name="friends")
@@ -43,9 +45,7 @@ class SocialController extends Controller
     public function friendsAction()
     {
         try {
-            $facebook = $this->container->get('facebook');
             $user = $this->getUser();
-            $response = $facebook->api('/me/friends?fields=name,id,email');
         } catch (\Exception $e) {
             return new RedirectResponse($this->container->get('router')->generate('logout'));
         }
@@ -70,11 +70,8 @@ class SocialController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $userProfile = $em->getRepository('UserBundle:User')->findOneByFacebookId($userId);    
-        try {
-            $facebook = $this->container->get('facebook');
-            $user = $this->getUser();
-            $response = $facebook->api('/me/friends?fields=name,id,email');
-        } catch (\Exception $e) {
+        $user = $this->getUser();
+        if($user == null) {
             if($userProfile->getPublic() == false) {
                 return new RedirectResponse($this->container->get('router')->generate('logout'));
             } else {
@@ -91,7 +88,7 @@ class SocialController extends Controller
             $gifts[] = $tmp;
         }
 
-        return array('user' => $user, 'userProfile' => $userProfile, 'gifts' => $gifts);
+        return array('user' => $user, 'userProfile' => $userProfile, 'gifts' => $gifts, 'facebook' => $this->facebook);
     }
 
     /**
@@ -101,9 +98,7 @@ class SocialController extends Controller
     public function feedAction()
     {
         try {
-            $facebook = $this->container->get('facebook');
             $user = $this->getUser();
-            $response = $facebook->api('/me/friends?fields=name,id,email');
         } catch (\Exception $e) {
             return new RedirectResponse($this->container->get('router')->generate('logout'));
         }
