@@ -18,3 +18,7 @@ parameters:
     database_name: havefivprod
     database_user: root
     database_password: jAZgHBwkhavefyve
+
+parameters:
+    facebook.appId: 514467415283257
+    facebook.secret: 51fb549f13b96b2c931edeb69399f14c
