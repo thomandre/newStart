@@ -56,7 +56,6 @@ class ImageServiceTest extends NewStartWebTestCase
 	/**
 	 * @test
 	 * @group image
-	 * @group wip
 	 */
 	public function dimentionBeforeResizeIsOK()
 	{
@@ -73,7 +72,6 @@ class ImageServiceTest extends NewStartWebTestCase
 	/**
 	 * @test
 	 * @group image
-	 * @group wip2
 	 */
 	public function imageResizeIsOk() 
 	{
