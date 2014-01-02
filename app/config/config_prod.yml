@@ -12,13 +12,12 @@ monolog:
             path:  %kernel.logs_dir%/%kernel.environment%.log
             level: debug
 
-parameters: 
-    database_driver: pdo_mysql
-    database_host: localhost
-    database_name: havefivprod
-    database_user: root
-    database_password: jAZgHBwkhavefyve
-
 parameters:
+    database_driver: pdo_mysql
+    database_host: havefyvebeta.ctd1aa4og4yv.us-west-2.rds.amazonaws.com
+    database_name: HaveFyveBeta
+    database_user: HaveFyveBeta
+    database_password: jAZgHBwkhavefyve
+    database_port: 3306
     facebook.appId: 514467415283257
     facebook.secret: 51fb549f13b96b2c931edeb69399f14c
