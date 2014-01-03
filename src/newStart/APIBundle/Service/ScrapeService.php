@@ -22,16 +22,57 @@ class ScrapeService
 
 	public function getPrice($html)
 	{
-		$dom = new \DOMDocument();
-		$dom->loadHTML($html);
-		$xpath = new \DOMXPath($dom);
-		$xpath->registerNamespace("html", "http://www.w3.org/1999/xhtml"); 
-		 
-		//Put your XPath Query here
-		$my_xpath_query = "//b[@class='price']";
+		$result = array();
+		$html = str_replace('€', 'EUR', $html);
+		$html = preg_replace('@<script[^>]*?>.*?</script>@si', '', $html);
 
-		$results = $xpath->query($my_xpath_query);
-		return $results->item(0)->firstChild->nodeValue;
+		//var_dump($html);
+		
+		$finding = htmlqp($html, '.priceLarge, .PriceLarge, *[itemprop=price]');
+
+		if($finding->first()->text() != '') {
+			var_dump('case 0');
+			$result = $finding->first()->text();
+		} else {
+			$finding = htmlqp($html, '.price, .Price');
+			if($finding->text() != '') {
+				var_dump('case 1');
+				//var_dump($finding);
+				//$result = $finding->first()->text();
+				if(count($finding) == 1) {
+					$result = $finding->first()->text();
+				} else {
+					foreach($finding as $f) {
+						$result[] = $f->text();
+					}					
+				}
+			} else {
+				var_dump('case 2');
+				$finding = htmlqp($html, 'body')->text();
+				var_dump($finding);
+				$c = 'USD|EUR|\$|€';
+				$matches = array();
+				$pattern = '/((?:(?:USD|EUR|\$|€){1}(?:\ ?)(?:[0-9]+[\.|\,]?[0-9]*){1}(?:\ ?)){1}|(?:(?:[0-9]+[\.|\,]?[0-9]*){1}(?:\ ?)(?:USD|EUR|\$|€){1}){1})/mi';
+				$res = preg_match_all($pattern, $finding, $matches);
+				//var_dump('---> '.$res);
+				//var_dump($matches);
+				if($res == 1) {
+					$result = $matches[1][0];
+				} elseif($res > 1) {
+					$result = $matches[1];
+				} else {
+					$result = '';
+				}
+			}
+		}
+
+		if(is_array($result)) {
+			foreach($result as $k => $r) {
+				$result[$k] = trim(preg_replace('/[\ \t\n\r]+/', ' ', $result[$k]));
+			}
+		}
+
+		return $result;
 	}
 
 	public function getImages($html) 
