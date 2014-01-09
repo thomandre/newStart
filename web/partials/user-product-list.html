@@ -7,7 +7,7 @@
 		<div class="product-image" ng-controller="ProductItemCtrl">
 			<a href="#/profile/{{ product.fbUserId }}/product/{{product.id}}"><img ng-src='{{ product.thumb_url }}' /></a>
 			<p>
-				<span class="name"><a href="#/profile/{{ product.fbUserId }}/product/{{product.id}}">{{ product.name }}</a></span>
+				<span class="name"><span class="price">{{ product.price }}</span><a href="#/profile/{{ product.fbUserId }}/product/{{product.id}}">{{ product.name }}</a></span>
 			</p>
 		</div>
 	</div>

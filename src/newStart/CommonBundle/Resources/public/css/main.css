@@ -459,3 +459,6 @@ h4 {
 .profileUrl {
     margin-top:10px;
 }
+.product-image span.price {
+    display:block;
+}

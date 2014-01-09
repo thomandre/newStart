@@ -14,6 +14,13 @@
   page.onConsoleMessage = function(msg) {
     return console.log(msg);
   };
+  
+  page.onError = function (msg, trace) {
+      /*console.log(msg);
+      trace.forEach(function(item) {
+          console.log('  ', item.file, ':', item.line);
+      })*/
+  }
 
   page.onResourceReceived = function(response) {
     //console.log('Receive ' + JSON.stringify(response, undefined, 4));
@@ -31,6 +38,7 @@
           url: location,
           retrieved_at: new Date,
           elements: [],
+          pagetitle: '',
           imgs: []
         };
         
@@ -43,6 +51,8 @@
            tmp.innerHTML = html;
            return tmp.textContent || tmp.innerText || "";
         };
+
+        output.pagetitle = document.getElementsByTagName('title')[0].innerHTML.trim();
 
         var elements = mergeNodes(
                         mergeNodes(
@@ -175,7 +185,20 @@
 
         //console.log(JSON.stringify(output.elements, null, 4));
         //return console.log(JSON.stringify(output, null, 5));
-        return console.log('price:' + output.elements[0].price + ', img:' + output.imgs[0].src);
+        var imgs_array = ''; 
+        for(i=0; i < output.imgs.length; i++) {
+          imgs_array+='{"src": "' + output.imgs[i].src + '", "height":"' + output.imgs[i].offsetHeight + '", "width":"' + output.imgs[i].offsetWidth + '"}, ';
+        }
+
+        var result = {
+          price: output.elements[0].price.replace('€', 'EUR'),
+          images: output.imgs,
+          title: output.pagetitle
+        }
+
+        return console.log('@@@' + JSON.stringify(result) + '@@@');
+
+        //return console.log('@@@{"price":"' + output.elements[0].price.replace('€', 'EUR') + '", "images": [' + imgs_array.substr(0, imgs_array.length-2) + '], "title":"' + output.pagetitle + '"}@@@');
       });
 
       return window.setTimeout((function() {

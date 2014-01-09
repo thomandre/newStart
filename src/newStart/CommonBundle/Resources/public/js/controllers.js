@@ -98,6 +98,7 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 					$scope.scrappedProduct.imagesThumb = data.imagesThumb;
 					$scope.scrappedProduct.imgNumber = data.imgNumber;
 					$scope.scrappedProduct.images = data.images;
+					$scope.scrappedProduct.price = data.price;
 				});
 				$scope.scrappedProduct.imgNumber = 1;
 		  		$scope.scrappedProduct.imgThumb = '../../bundles/newstartcommon/images/loader.gif';

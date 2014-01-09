@@ -45,6 +45,13 @@ class Product
     /**
      * @var string
      *
+     * @ORM\Column(type="text", nullable=false)
+     */
+    protected $price;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="text", nullable=true)
      */
     protected $imgUrl;
@@ -77,6 +84,7 @@ class Product
                         'name'      => $this->name,
                         'comment'   => $this->comment,
                         'url'       => $this->url,
+                        'price'     => $this->price,
                         'imgUrl'    => $this->imgUrl,
                         'beenBought'=> $this->beenBought, 
                         'userId'    => $this->user->getId(),
