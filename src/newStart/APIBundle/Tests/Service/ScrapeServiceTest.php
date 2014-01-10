@@ -13,59 +13,6 @@ class scrapeServiceTest extends NewStartWebTestCase
 
 	/**
 	 * @test
-	 * @group price
-	 * @group wip1
-	 */
-	public function priceScrapeTest()
-	{
-		$scrapeService = new ScrapeService();
-
-		$this->assertEquals('13.64$', 						$scrapeService->getPrice('<html><body><b class="price">13.64$</b></body></html>'));
-		$this->assertEquals('13.64EUR', 					$scrapeService->getPrice('<html><body><b class="price">13.64€</b></body></html>'));
-		$this->assertEquals('13.64$', 						$scrapeService->getPrice('<html><body><span class="price">13.64$</span></body></html>'));
-	 	$this->assertEquals('13.64 Eur', 					$scrapeService->getPrice('<b class="Price">13.64 Eur</b>'));
-		$this->assertEquals('13.64 usd', 					$scrapeService->getPrice('<b class="Price">13.64 usd</b>'));
-		$this->assertEquals(array('34$', '13.64$'),  		$scrapeService->getPrice('<span class="price">34$</span><b class="price">13.64$</b>'));
-		$this->assertEquals('13.64$', 						$scrapeService->getPrice('<p>13.64$</p>'));
-		$this->assertEquals('13.64 USD', 					$scrapeService->getPrice('<p>13.64 USD</p>'));
-		$this->assertEquals('13.64USD',						$scrapeService->getPrice('<p>13.64USD</p>'));
-		$this->assertEquals('13.64EUR',						$scrapeService->getPrice('<p>13.64EUR</p>'));
-		$this->assertEquals('13.32 EUR',					$scrapeService->getPrice('<b class="price">13.32 EUR</b>'));
-		$this->assertEquals('$8.24', 						$scrapeService->getPrice('<p><b class="priceLarge">$8.24</b></p>'));
-		$this->assertEquals('$8.24',						$scrapeService->getPrice('<p><b>$8.24</b></p>'));
-		$this->assertEquals('$8.24',						$scrapeService->getPrice('<p><b>$8.24</b><span>bla bla bla</span></p>'));
-		$this->assertEquals('$8.24',						$scrapeService->getPrice('<p><span>bla bla bla</span><b>$8.24</b><span>bla bla bla</span></p>'));
-		$this->assertEquals('$ 8.24',						$scrapeService->getPrice('<p><span>bla bla bla</span><b>$ 8.24</b><span>bla bla bla</span></p>'));
-		$this->assertEquals('$ 8,24',						$scrapeService->getPrice('<p><span>bla bla bla</span><b>$ 8,24</b><span>bla bla bla</span></p>'));
-		$this->assertEquals('$ 8,24',						$scrapeService->getPrice('<p><span>13.24</span>bla<b class="price">$ 8,24</b><span>bla bla bla</span></p>'));
-		$this->assertEquals('100,00 EUR TTC',				$scrapeService->getPrice('<p class="price"><!-- --><span class="our_price_display"><span id="our_price_display">100,00 €</span> TTC</span></p>'));
-		$this->assertEquals('$379.00',						$scrapeService->getPrice('<table class="product"><tbody><tr><td colspan="2" id="buyingPriceContent"><span id="buyingPriceValue"><b class="priceLarge kitsunePrice">$379.00</b></span></td><td id="kindle-price-prime-badge"><div>&nbsp;</div><div>FREE Shipping<a target="AmazonHelp" href="/gp/help/customer/display.html/ref=mk_sss_dp_1?ie=UTF8&amp;nodeId=527692&amp;pop-up=1">Details</a></div></td></tr></tbody></table>'));
-		$this->assertEquals(array('$ 8,24', '8.22 EUR'),	$scrapeService->getPrice('<p><span>$ 8,24</span>pl<b>8.22 EUR</b><span>bla bla bla</span></p>'));
-		$this->assertEquals('',								$scrapeService->getPrice('<p><span>8,24</span></p>'));
-	}
-	
-	/**
-	 * @test
-	 * @group price
-	 * @group wip2
-	 */
-	public function realPriceScrape()
-	{
-		$scrapeService = new ScrapeService();
-
-		$html = file_get_contents('http://shop.swatch.com/FR/FR/Montres/Originals/Lady/LADY_PAPAYA-LJ107.aspx');
-//		$this->assertEquals('40,00 EUR', $scrapeService->getPrice($html));
-
-		$html = file_get_contents('http://www.castorama.fr/store/Rangement-modulable-Mixxit-pin-2-cases-prod10450017.html?navCount=2');
-		$this->assertEquals(array('24,95 EUR'), $scrapeService->getPrice($html));
-/*
-		$html = file_get_contents('');
-		$this->assertEquals('', $scrapeService->getPrice($html));
-*/
-	}
-
-	/**
-	 * @test
 	 * @group scrape
 	 */
 	public function imgScrapeTest()

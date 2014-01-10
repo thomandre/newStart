@@ -126,6 +126,7 @@ class ApiController extends Controller
     public function addProductAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        $dlService = $this->dlService;
 
         $content = $this->get("request")->getContent();
 
@@ -138,22 +139,30 @@ class ApiController extends Controller
         $product = new Product();
         $product->setName($params['title']);
         $product->setUrl($params['url']);
-        $product->setPrice($params['price']);
 
         if($params['img'] == null || $params['img'] == 'null') {
-            try{
-                if($params['url'] && $params['url'] != '') {
-                    $images = $this->scrapeService->getBiggestImg($params['url']);
-                    //var_dump($images[0]->getCurrentUrl($request));
-                    $product->setImgUrl($images[0]->getCurrentUrl($request));
-                } else {
+            $command = 'unset DYLD_LIBRARY_PATH ; /usr/local/bin/phantomjs --load-images=false ../getComputedStyle.js '.$params['url'].' 1024 768 2> /dev/null';
+            $process = new Process($command);
+            $process->run();
+            
+            $buffer = $process->getOutput();
+
+            $match = array();
+            $res = preg_match('/@@@([^@]*)@@@/', $buffer, $match);
+            if($res) {
+                $phantomResponse = json_decode($match[1]);
+                if($phantomResponse == null) {
+                    //echo 'Error : "'.$match[1].'" is not a valid JSON.';
                     $product->setImgUrl('error.png');
+                } else {
+                    $imageEntity = $dlService->getImageViaCache($phantomResponse->images[0]->src);
+                    $product->setImgUrl($imageEntity->getCurrentUrl($request));
+                    $product->setPrice($phantomResponse->price);
                 }
-            } catch(\Exception $e) {
-                $product->setImgUrl('error.png');
             }
         } else {
             $product->setImgUrl($params['img']);
+            $product->setPrice($params['price']);
         }
 
         if(!isset($params['comment'])) {

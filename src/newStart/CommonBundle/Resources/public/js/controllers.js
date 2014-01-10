@@ -120,7 +120,8 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 	  	  if($scope.scrappedProduct.images != undefined) {
 	  		  $scope.scrappedProduct.img = $scope.scrappedProduct.images[$scope.imageIndex];
 	  	  } else {
-	  		  $scope.scrappedProduct.img = null;
+	  		  $scope.scrappedProduct.img   = null;
+	  		  $scope.scrappedProduct.price = null;
 	  	  }
 
 		  Product.add(scrappedProduct, function(data) {
