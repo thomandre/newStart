@@ -15,12 +15,16 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use \Doctrine\Common\Util\Debug;
 use newStart\APIBundle\Service\ImageService;
 use newStart\CommonBundle\Entity\Bug;
+use Symfony\Component\Process\Process;
 
 class ApiController extends Controller
 {
 
     /** @DI\Inject("newstart_api_service_scrape") */
     public $scrapeService;
+
+    /** @DI\Inject("newstart_api_service_download") */
+    public $dlService;
 
     /**
      * @Route("/api/v1/profile/private", name="profile_prive")
@@ -73,33 +77,44 @@ class ApiController extends Controller
 
     /**
      * @Route("/api/v1/image/scrape", name="image_scrape")
-     * @Template()
      * @Cache(expires="+2hours", public="true")
      */
     public function scrapeImagesAction(Request $request) 
     {
-        $images = array();
-
-        try {
-            if($request->get('url') && $request->get('url') != '') {
-                $images = $this->scrapeService->getBiggestImg($request->get('url'));
-            }
-        } catch(\Exception $e) {
-            if($e->getMessage() == '404') {
-                throw $this->createNotFoundException('Le produit n\'existe pas');
-            }
-        }
-        
         $response = new JsonResponse();
-        $imagesArray = array();
-        $imagesThumbArray = array();
-        
-        foreach($images as $image) {
-            $imagesThumbArray[] = $this->container->get('router')->generate('image_resize', array('width' => 200, 'height' => 200, 'image' => $image->getName()));
-            $imagesArray[] = $image->getCurrentUrl($request);
+        $dlService = $this->dlService;
+        $router = $this->container->get('router');
+
+        if($request->get('url') && $request->get('url') != '') {
+            //var_dump($response);
+            $command = 'unset DYLD_LIBRARY_PATH ; /usr/local/bin/phantomjs --load-images=false ../getComputedStyle.js '.$request->get('url').' 1024 768 2> /dev/null';
+            
+            $process = new Process($command);
+            $process->run(function ($type, $buffer) use($router, $dlService, $request, $response) {
+                if ($type !== 'err') {
+                    $match = array();
+                    $res = preg_match('/@@@([^@]*)@@@/', $buffer, $match);
+                    if($res) {
+                        $phantomResponse = json_decode($match[1]);
+                        if($phantomResponse == null) {
+                            echo 'Error : "'.$match[1].'" is not a valid JSON.';
+                        } else {
+                        $srcs = array();
+                            foreach($phantomResponse->images as $i) {
+                                $imageEntity = $dlService->getImageViaCache($i->src);
+                                $imagesArray[] = $imageEntity->getCurrentUrl($request);
+
+                                $imagesThumbArray[] = $router->generate('image_resize', array('width' => 200, 'height' => 200, 'image' => $imageEntity->getName()));
+                            }
+
+                            $response->setData(array('title' => $phantomResponse->title, 'price' => $phantomResponse->price, 'images' => $imagesArray, 'imagesThumb' => $imagesThumbArray, 'imgNumber' => count($phantomResponse->images)));
+                        }
+                    }
+                }
+            });
         }
 
-        $response->setData(array('images' => $imagesArray, 'imagesThumb' => $imagesThumbArray, 'imgNumber' => count($imagesArray)));
+        //var_dump($response);
 
         return $response;
     }
@@ -111,6 +126,7 @@ class ApiController extends Controller
     public function addProductAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        $dlService = $this->dlService;
 
         $content = $this->get("request")->getContent();
 
@@ -125,19 +141,28 @@ class ApiController extends Controller
         $product->setUrl($params['url']);
 
         if($params['img'] == null || $params['img'] == 'null') {
-            try{
-                if($params['url'] && $params['url'] != '') {
-                    $images = $this->scrapeService->getBiggestImg($params['url']);
-                    //var_dump($images[0]->getCurrentUrl($request));
-                    $product->setImgUrl($images[0]->getCurrentUrl($request));
-                } else {
+            $command = 'unset DYLD_LIBRARY_PATH ; /usr/local/bin/phantomjs --load-images=false ../getComputedStyle.js '.$params['url'].' 1024 768 2> /dev/null';
+            $process = new Process($command);
+            $process->run();
+            
+            $buffer = $process->getOutput();
+
+            $match = array();
+            $res = preg_match('/@@@([^@]*)@@@/', $buffer, $match);
+            if($res) {
+                $phantomResponse = json_decode($match[1]);
+                if($phantomResponse == null) {
+                    //echo 'Error : "'.$match[1].'" is not a valid JSON.';
                     $product->setImgUrl('error.png');
+                } else {
+                    $imageEntity = $dlService->getImageViaCache($phantomResponse->images[0]->src);
+                    $product->setImgUrl($imageEntity->getCurrentUrl($request));
+                    $product->setPrice($phantomResponse->price);
                 }
-            } catch(\Exception $e) {
-                $product->setImgUrl('error.png');
             }
         } else {
             $product->setImgUrl($params['img']);
+            $product->setPrice($params['price']);
         }
 
         if(!isset($params['comment'])) {
