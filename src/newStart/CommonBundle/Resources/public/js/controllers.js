@@ -24,7 +24,6 @@ function MyFriendsListCtrl($scope, $timeout, Friend, $rootScope) {
 
 	$scope.updateFriends = function () {
 		$rootScope.friends = Friend.listMine({'id':$scope.name}, function (data) {
-			$('body').append('<style>body:before{background:url(https://graph.facebook.com/' + data[0].facebookId + '/picture?width=176&height=220); background-size: cover;filter: url("#blur-effect");</style>');
 		});
     }
     $scope.updateFriends();
@@ -33,7 +32,6 @@ function MyFriendsListCtrl($scope, $timeout, Friend, $rootScope) {
 
 function ProductDetailCtrl($scope, $routeParams, Product, $rootScope) {
 	$scope.product = Product.show({id: $routeParams.productId}, function () {
-		$('body').append('<style>body:before{background:url(' + $scope.product.imgUrl + '); background-size: cover;filter: url("#blur-effect");</style>');
 	});
 	$scope.productId = $routeParams.productId;
 }
@@ -52,7 +50,6 @@ function ProductItemCtrl($scope, Product, $rootScope) {
 function ProductListCtrl($scope, Product, $timeout, $location, $rootScope, $routeParams) {
 	$scope.updateProducts = function () {
       $rootScope.products = Product.list({id: $routeParams.userId});
-	  $('body').append('<style>body:before{background:url(' + $('.viewed-profile img').attr('src') + '); background-size: cover;filter: url("#blur-effect");</style>');
 	}
 	if($routeParams.userId != undefined) {
 	    $scope.updateProducts();
@@ -152,7 +149,6 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 		$scope.countProducts();
       });
 
-	  $('body').append('<style>body:before{background:url(' + $('.viewed-profile img').attr('src') + '); background-size: cover;filter: url("#blur-effect");</style>');
 	  //console.log( $('.viewed-profile img').attr('src'));
 	}
     $scope.updateProducts();
