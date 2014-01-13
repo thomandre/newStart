@@ -87,32 +87,34 @@ class ApiController extends Controller
 
         if($request->get('url') && $request->get('url') != '') {
             //var_dump($response);
-            $command = 'unset DYLD_LIBRARY_PATH ; /usr/local/bin/phantomjs --load-images=false ../getComputedStyle.js '.$request->get('url').' 1024 768 2> /dev/null';
-		var_dump($command); exit;
+            $command = 'unset DYLD_LIBRARY_PATH; phantomjs --load-images=false ../getComputedStyle.js '.$request->get('url').' 1024 768 ';
             
             $process = new Process($command);
-            $process->run(function ($type, $buffer) use($router, $dlService, $request, $response) {
-                if ($type !== 'err') {
-                    $match = array();
-                    $res = preg_match('/@@@([^@]*)@@@/', $buffer, $match);
-                    if($res) {
-                        $phantomResponse = json_decode($match[1]);
-                        if($phantomResponse == null) {
-                            echo 'Error : "'.$match[1].'" is not a valid JSON.';
-                        } else {
-                        $srcs = array();
-                            foreach($phantomResponse->images as $i) {
-                                $imageEntity = $dlService->getImageViaCache($i->src);
-                                $imagesArray[] = $imageEntity->getCurrentUrl($request);
+            $process->run();
 
-                                $imagesThumbArray[] = $router->generate('image_resize', array('width' => 200, 'height' => 200, 'image' => $imageEntity->getName()));
-                            }
+            $buffer = $process->getOutput();
 
-                            $response->setData(array('title' => $phantomResponse->title, 'price' => $phantomResponse->price, 'images' => $imagesArray, 'imagesThumb' => $imagesThumbArray, 'imgNumber' => count($phantomResponse->images)));
-                        }
+            $match = array();
+            $res = preg_match('/@@@([^@]*)@@@/', $buffer, $match);
+
+            if($res) {
+                $phantomResponse = json_decode($match[1]);
+                if($phantomResponse == null) {
+                    echo 'Error : "'.$match[1].'" is not a valid JSON.';
+                } else {
+                $srcs = array();
+                    foreach($phantomResponse->images as $i) {
+                        $imageEntity = $dlService->getImageViaCache($i->src);
+                        $imagesArray[] = $imageEntity->getCurrentUrl($request);
+
+                        $imagesThumbArray[] = $router->generate('image_resize', array('width' => 200, 'height' => 200, 'image' => $imageEntity->getName()));
                     }
+
+                    $response->setData(array('title' => $phantomResponse->title, 'price' => $phantomResponse->price, 'images' => $imagesArray, 'imagesThumb' => $imagesThumbArray, 'imgNumber' => count($phantomResponse->images)));
                 }
-            });
+            } else {
+                var_dump($res);
+            }
         }
 
         //var_dump($response);
@@ -142,7 +144,7 @@ class ApiController extends Controller
         $product->setUrl($params['url']);
 
         if($params['img'] == null || $params['img'] == 'null') {
-            $command = 'unset DYLD_LIBRARY_PATH ; /usr/local/bin/phantomjs --load-images=false ../getComputedStyle.js '.$params['url'].' 1024 768 2> /dev/null';
+            $command = 'unset DYLD_LIBRARY_PATH; phantomjs --load-images=false ../getComputedStyle.js '.$params['url'].' 1024 768 2> /dev/null';
             $process = new Process($command);
             $process->run();
             
