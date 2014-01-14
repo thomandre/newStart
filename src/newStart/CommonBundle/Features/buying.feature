@@ -34,16 +34,16 @@ Alors je presse "Ok"
 Et j'attend "1" secondes
 Alors je devrais voir "Thomas André"
 Et je remplis "search" avec "Alb"
-Et j'attend "0.5" secondes
+Et j'attend "1" secondes
 Alors je ne devrais pas voir "Thomas André"
 Et je remplis "search" avec "Tho"
-Et j'attend "0.5" secondes
+Et j'attend "1" secondes
 Alors je devrais voir "Thomas André"
 Et je remplis "search" avec "André"
-Et j'attend "0.5" secondes
+Et j'attend "1" secondes
 Alors je devrais voir "Thomas André"
 Et je remplis "search" avec "thomas andré"
-Et j'attend "0.5" secondes
+Et j'attend "1" secondes
 Alors je devrais voir "Thomas André"
 Et je suis "Thomas André"
 Et j'attend "1" secondes
