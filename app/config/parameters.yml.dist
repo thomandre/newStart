@@ -13,3 +13,7 @@ parameters:
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    router.request_context.host: beta.havefyve.com
+    router.request_context.scheme: http
+    router.request_context.base_url: ''

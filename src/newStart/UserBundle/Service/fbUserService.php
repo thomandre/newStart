@@ -7,6 +7,7 @@ use JMS\DiExtraBundle\Annotation as DI;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use newStart\UserBundle\Entity\User;
 use newStart\UserBundle\Entity\Friends;
+use newStart\CommonBundle\Service\Mail;
 
 
 /**
@@ -23,14 +24,19 @@ class fbUserService {
     /** @DI\Inject("security.context") */
 	public $sc;
 
+    /** @DI\Inject("newstart_common_service_mail") */
+	public $mail;
+
 	/** @DI\Inject("facebook") */
 	public $facebook;
 
-
+	/** @DI\Inject("router") */
+	public $router;
 
 	public function update($me) {
 	    $userRepository = $this->em->getRepository('UserBundle:User');
 	    $user = $userRepository->findOneByFacebookId($me['id']);
+		$settingsUrl = $this->router->generate('settings', array(), true);
 
 	    if(is_null($user)) {
 	    	$user = new User();
@@ -38,14 +44,16 @@ class fbUserService {
 	    	$user->setUsername($me['id']);
 	    	$user->setEnabled(true);
 	    	$user->setLocked(false);
-	    	//$user->setExpire(false);
 	    	$user->addRole('ROLE_FACEBOOK');
 	    	$user->setCredentialsExpired(false);
 	    	$user->setFacebookId($me['id']);
-
 	        $user->setDisplayPopinProfile(true);
 	        $user->setDisplayPopinFriends(true);
 	        $user->setPublic(true);
+
+			$this->mail->load('newStartCommonBundle:Mails:welcome.html.twig');
+			$body = $this->mail->renderBody(array('settingsUrl' => $settingsUrl));
+		    $this->mail->sendMessage($me['email'], 'Bienvenue sur HaveFyve, le reseau social des idées de cadeau', $body);
 	    }
 
     	$user->setLastLogin(new \Datetime());
@@ -55,7 +63,8 @@ class fbUserService {
     	$user->setFirstname($me['first_name']);
     	$user->setLastname($me['last_name']);
     	$user->setPassword(' ');
-    	// because some user enter fake and then change bqck to the real one
+
+    	// because some user enter fake and then change back to the real one
 	    $birthday = explode('/', $me['birthday']);
 	    $user->setBirthday(new \Datetime($birthday[2].'-'.$birthday[0].'-'.$birthday[1]));
 
@@ -65,7 +74,6 @@ class fbUserService {
 	    $user->setNew(false);
 	    $this->em->persist($user);
 	    $this->em->flush();
-
 
 	    // managing friendship 
 	    $friends = $this->facebook->api('/me/friends?fields=name,id,email');
@@ -84,12 +92,16 @@ class fbUserService {
 	            $friend->setMyFriends($friendObj);
 
 	            $this->em->persist($friend);
+
+				$this->mail->load('newStartCommonBundle:Mails:newfriend.html.twig');
+				$profileUrl = $this->router->generate('profile', array('userId' => $user->getFacebookId()), true);
+				$body = $this->mail->renderBody(array('username' =>$user->getFullname(), 'profileUrl' => $profileUrl, 'settingsUrl' => $settingsUrl));
+			    $this->mail->sendMessage($friendObj->getEmail(), $user->getFullname().' est maintenant sur Havefyve', $body);
 	        }
 
 	    }
 
 	    $this->em->flush();
-
     }
 
 }

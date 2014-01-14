@@ -59,6 +59,9 @@ doctrine:
         entity_managers:
             default:
                 connection: default
+                dql:
+                    datetime_functions:
+                        DAYOFYEAR: Luxifer\DQL\Datetime\DayOfYear
                 mappings:
                    newStartCommonBundle: { type: annotation, dir: Entity/ }
                    UserBundle: { type: annotation, dir: Entity/ }
@@ -78,8 +81,9 @@ fos_user:
 
 jms_di_extra:
     locations:
-        all_bundles: false
-        bundles: [newStartAPIBundle, UserBundle]
+        all_bundles: true
+        bundles: [newStartBundle]
+        directories: ["%kernel.root_dir%/../src"]
 
 services:
   facebook:

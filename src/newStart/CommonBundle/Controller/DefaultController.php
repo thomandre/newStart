@@ -98,59 +98,6 @@ class DefaultController extends Controller
 
     }
 
-    /**
-     * @Route("/register_beta")
-     */
-    /*public function registerBetaAction(Request $request)
-    {
-    	$email = $request->get('email');
-    	if(preg_match("/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i", $email)) {
-    		$betaUser = new BetaUser();
-    		$betaUser->setEmail($email);
-
-            try {
-                $this->getDoctrine()->getManager()->persist($betaUser);
-                $this->getDoctrine()->getManager()->flush();
-            } catch (\Exception $e) {
-                return new JsonResponse(array('status' => 'ko', 'message' => 'Cet email est déjà utilisé.'));
-            }
-
-
-            $mail = \Swift_Message::newInstance();
-
-            $mail
-                    ->setFrom('admin@havefyve.com')
-                    ->setTo($email)
-                    ->setSubject('test')
-                    ->setBody('this is a test')
-                    ->setContentType('text/html');
-
-            //$result = $this->mailer->send($mail, $failures);
-            
-            //SPOOL
-            //$spool = $this->mailer->getTransport()->getSpool();
-            //$spool->flushQueue($this->transport);
-
-
-
-
-	        return new JsonResponse(array('status' => 'ok', 'email' => $email));
-    	}
-        return new JsonResponse(array('status' => 'ko', 'message' => 'Cet email ne semble pas valide.'));
-    }*/
-
-    /**
-     * @Route("/register_beta/show")
-     */
-    /*public function registerBetaSHowAction(Request $request)
-    {
-        $betaUsers = $this->getDoctrine()->getEntityManager()->getRepository('newStartCommonBundle:BetaUser')->findAll();
-
-        var_dump($betaUsers);
-		return new JsonResponse();
-    }*/
-
-    
 
 
 }
