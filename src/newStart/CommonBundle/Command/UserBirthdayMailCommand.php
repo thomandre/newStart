@@ -33,6 +33,7 @@ class UserBirthdayMailCommand extends ContainerAwareCommand
         $em   = $this->getContainer()->get('doctrine.orm.entity_manager');
         $mail = $this->getContainer()->get('newstart_common_service_mail');
         $router = $this->getContainer()->get('router');
+        $output->writeln("newStart:birthday:user:send started: ".gmdate('Y-m-d H:i:s'));
 
         $debug = $input->getArgument('debug');
         $days  = $input->getArgument('days');
@@ -55,7 +56,7 @@ class UserBirthdayMailCommand extends ContainerAwareCommand
         }
 
         $output->writeln('Email sent: '.$mailSent);
-        $output->writeln("Fin");
+        $output->writeln("------------------------------------------------");
     }
 
 }

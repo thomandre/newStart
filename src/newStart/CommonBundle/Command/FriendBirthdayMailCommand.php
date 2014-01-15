@@ -37,6 +37,8 @@ class FriendBirthdayMailCommand extends ContainerAwareCommand
         $debug = $input->getArgument('debug');
         $days  = $input->getArgument('days');
 
+        $output->writeln("newStart:birthday:friend:send started: ".gmdate('Y-m-d H:i:s'));
+
         $settingsUrl = $router->generate('settings', array(), true);
 
         $dayOfYear = gmdate('z') + 1;
@@ -66,7 +68,7 @@ class FriendBirthdayMailCommand extends ContainerAwareCommand
 
         $output->writeln('User birthdays: '.$userBirtdays);
         $output->writeln('Email sent: '.$mailSent);
-        $output->writeln('Fin');
+        $output->writeln("------------------------------------------------");
     }
 
 }
