@@ -17,7 +17,7 @@ class FriendBirthdayMailCommand extends ContainerAwareCommand
         $this
             ->setName('newStart:birthday:friend:send')
             ->setDescription('Lance l\'envoi de mails de notification aux amis des gens dont c\'est l\'anniv dans [DAYS] jours')
-            ->addArgument('days', InputArgument::REQUIRED, 'Debug mode activé')
+            ->addArgument('days', InputArgument::REQUIRED, 'Nombre de jours')
             ->addArgument('debug', InputArgument::OPTIONAL, 'Debug mode activé')
         ;
     }

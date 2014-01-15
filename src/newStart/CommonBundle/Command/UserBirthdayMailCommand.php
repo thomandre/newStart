@@ -12,13 +12,12 @@ use Symfony\Component\Console\Input\InputArgument;
 class UserBirthdayMailCommand extends ContainerAwareCommand
 {
     
-    const DAYS = 13;
-
     protected function configure()
     {
         $this
             ->setName('newStart:birthday:user:send')
-            ->setDescription('Lance l\'envoi de mails de notification aux gens dont l\'anniversaire est dans '.self::DAYS.' jours')
+            ->setDescription('Lance l\'envoi de mails de notification aux gens dont l\'anniversaire est dans [DAYS] jours')
+            ->addArgument('days', InputArgument::REQUIRED, 'Nombre de jours')
             ->addArgument('debug', InputArgument::OPTIONAL, 'Debug mode activé')
         ;
     }
@@ -36,9 +35,10 @@ class UserBirthdayMailCommand extends ContainerAwareCommand
         $router = $this->getContainer()->get('router');
 
         $debug = $input->getArgument('debug');
+        $days  = $input->getArgument('days');
 
         $dayOfYear = gmdate('z') + 1;
-        $users = $em->getRepository('UserBundle:User')->getNextBirthdays($dayOfYear + self::DAYS);
+        $users = $em->getRepository('UserBundle:User')->getNextBirthdays($dayOfYear + $days);
         $settingsUrl = $router->generate('settings', array(), true);
 
         $mailSent = 0;
