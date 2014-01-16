@@ -6,11 +6,11 @@ parameters:
     database_name: newStart
     database_user: root
     database_password: root
-    mailer_transport: gmail
-    mailer_user: thomandre
-    mailer_password: kdyaypfetadehpdd
-    mailer_host: smtp.gmail.com
-    mailer_sender_address: thomandre@gmail.com
+    mailer_transport: smtp
+    mailer_user: notification@havefyve.com
+    mailer_password: nothavefyve
+    mailer_host: smtp.havefyve.com
+    mailer_sender_address: notification@havefyve.com
     mailer_sender_name: Havefyve
     locale: fr
     secret: 80d26422005ed266ad66e88c6f2d521682037949

@@ -6,11 +6,11 @@ parameters:
     database_user:     root
     database_password: ~
 
-    mailer_transport:  smtp
-    mailer_host:       127.0.0.1
-    mailer_user:       ~
-    mailer_password:   ~
-    mailer_sender_address: thomandre@gmail.com
+    mailer_transport: smtp
+    mailer_user: notification@havefyve.com
+    mailer_password: nothavefyve
+    mailer_host: smtp.havefyve.com
+    mailer_sender_address: notification@havefyve.com
     mailer_sender_name: Havefyve
     
     locale:            en
