@@ -97,12 +97,15 @@ class ApiController extends Controller
             $match = array();
             $res = preg_match('/@@@([^@]*)@@@/', $buffer, $match);
 
+            $imagesArray      = array();
+            $imagesThumbArray = array();
+
             if($res) {
                 $phantomResponse = json_decode($match[1]);
                 if($phantomResponse == null) {
                     echo 'Error : "'.$match[1].'" is not a valid JSON.';
                 } else {
-                $srcs = array();
+                    $srcs = array();
                     foreach($phantomResponse->images as $i) {
                         $imageEntity = $dlService->getImageViaCache($i->src);
                         $imagesArray[] = $imageEntity->getCurrentUrl($request);
@@ -154,9 +157,12 @@ class ApiController extends Controller
             $res = preg_match('/@@@([^@]*)@@@/', $buffer, $match);
             if($res) {
                 $phantomResponse = json_decode($match[1]);
-                if($phantomResponse == null) {
+                if($phantomResponse == null || $phantomResponse->images == null) {
                     //echo 'Error : "'.$match[1].'" is not a valid JSON.';
-                    $product->setImgUrl('error.png');
+                    $router = $this->container->get('router');
+                    $siteUrl = $router->generate('public_home', array(), true);
+                    $imageEntity = $dlService->getImageViaCache($siteUrl.'../bundles/newstartcommon/images/imageNotFoundStd.jpg');
+                    $product->setImgUrl($imageEntity->getCurrentUrl($request));
                 } else {
                     $imageEntity = $dlService->getImageViaCache($phantomResponse->images[0]->src);
                     $product->setImgUrl($imageEntity->getCurrentUrl($request));

@@ -10,3 +10,5 @@ nbproject/*
 app/tmp/*
 .DS_Store
 web/images/*
+ns.sublime-project
+ns.sublime-workspace
