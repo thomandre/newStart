@@ -65,15 +65,15 @@ Et je devrais voir "Le MacBook Air offre désormais une autonomie de 9 heures en
 Et je reviens sur la fenêtre principale
 Et je devrais voir "Vous avez décidé d’acheter ce cadeau finalement ?"
 Et je presse "Oui, j'ai acheté ce cadeau"
-Et j'attend "0.5" secondes
+Et j'attend "1" secondes
 Et je ne devrais pas voir "Vous avez décidé d’acheter ce cadeau finalement ?"
-Et j'attend "0.5" secondes
+Et j'attend "1" secondes
 Et je devrais voir "Génial"
 Et je suis "Friends"
-Et j'attend "0.5" secondes
+Et j'attend "1" secondes
 Alors je devrais voir "Thomas André"
 Et je suis "Thomas André"
-Et j'attend "0.5" secondes
+Et j'attend "1" secondes
 Alors je ne devrais pas voir "Apple - MacBook Air"
 Et je me delogue
 Soit je vais sur "https://www.facebook.com"
