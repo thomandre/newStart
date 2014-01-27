@@ -95,4 +95,5 @@ Et je me delogue
 Soit je vais sur "https://www.facebook.com"
 Et je devrais voir "Thomas Alban"
 Et je clique sur "#userNavigationLabel"
+Et j'attend "0.5" secondes
 Et je presse "Déconnexion"

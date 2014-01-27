@@ -27,6 +27,7 @@ Et la case à cocher "prive" devrait être cochée
 Et je me delogue
 Soit je vais sur "https://www.facebook.com"
 Et je clique sur "#userNavigationLabel"
+Et j'attend "0.5" secondes
 Et je presse "Déconnexion"
 
 @javascript @guest @guest_step2
@@ -51,6 +52,7 @@ Et la case à cocher "prive" ne devrait pas être cochée
 Et je me delogue
 Soit je vais sur "https://www.facebook.com"
 Et je clique sur "#userNavigationLabel"
+Et j'attend "0.5" secondes
 Et je presse "Déconnexion"
 
 @javascript @guest @guest_step4

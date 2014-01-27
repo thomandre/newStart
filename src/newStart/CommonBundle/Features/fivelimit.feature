@@ -86,4 +86,5 @@ Alors je devrais voir "Yves Saint Laurent"
 Et je me delogue
 Soit je vais sur "https://www.facebook.com"
 Et je clique sur "#userNavigationLabel"
+Et j'attend "0.5" secondes
 Et je presse "Déconnexion"

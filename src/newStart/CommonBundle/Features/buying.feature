@@ -21,6 +21,7 @@ Et je devrais voir "Apple - MacBook Air"
 Et je me delogue
 Soit je vais sur "https://www.facebook.com"
 Et je clique sur "#userNavigationLabel"
+Et j'attend "0.5" secondes
 Et je presse "Déconnexion"
 
 @javascript @buying @buying_step2
@@ -78,6 +79,7 @@ Alors je ne devrais pas voir "Apple - MacBook Air"
 Et je me delogue
 Soit je vais sur "https://www.facebook.com"
 Et je clique sur "#userNavigationLabel"
+Et j'attend "0.5" secondes
 Et je presse "Déconnexion"
 
 @javascript @buying @buying_step3
@@ -89,6 +91,7 @@ Alors je devrais voir "Apple - MacBook Air"
 Et je me delogue
 Soit je vais sur "https://www.facebook.com"
 Et je clique sur "#userNavigationLabel"
+Et j'attend "0.5" secondes
 Et je presse "Déconnexion"
 
 @javascript @buying @buying_step4
@@ -122,6 +125,7 @@ Et je ne devrais pas voir "iPad mini"
 Et je me delogue
 Soit je vais sur "https://www.facebook.com"
 Et je clique sur "#userNavigationLabel"
+Et j'attend "0.5" secondes
 Et je presse "Déconnexion"
 
 @javascript @logout
@@ -132,6 +136,7 @@ Et j'attend "0.5" secondes
 Et je me delogue
 Soit je vais sur "https://www.facebook.com"
 Et je clique sur "#userNavigationLabel"
+Et j'attend "0.5" secondes
 Et je presse "Déconnexion"
 Soit je vais sur "/"
 Soit je me logue en tant que "albanthomas1@gmail.com"
@@ -139,4 +144,5 @@ Et j'attend "0.5" secondes
 Et je me delogue
 Soit je vais sur "https://www.facebook.com"
 Et je clique sur "#userNavigationLabel"
+Et j'attend "0.5" secondes
 Et je presse "Déconnexion"
