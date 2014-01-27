@@ -127,8 +127,9 @@
           el = images[_i];
           var surface = el.offsetHeight * el.offsetWidth;
           var ratio   = el.offsetHeight / el.offsetWidth;
-
+          console.log(el.src + ' - h:' + el.offsetHeight + ' - w: ' + el.offsetWidth + ' - id: ' + el.id);
           if(surface > 7000 && ratio < 4 && ratio > 0.25) {
+            console.log(' --> enter');
             style = window.getComputedStyle(el);
             attributes = {};
             for (i = _j = 0, _ref1 = style.length; 0 <= _ref1 ? _j < _ref1 : _j > _ref1; i = 0 <= _ref1 ? ++_j : --_j) {

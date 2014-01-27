@@ -49,7 +49,7 @@ class FriendBirthdayMailCommand extends ContainerAwareCommand
         foreach($users as $user) {
             $userBirtdays++;
             foreach($user->getFriendsWithMe() as $friend) {
-                if($friend->isFavorite() && $friend->getFriendsWithMe()->getEmail()) {
+                if($friend->isFavorite() && $friend->getFriendsWithMe()->getEmailStop()) {
                     $mail->load('newStartCommonBundle:Mails:friendBirthdaySoon.html.twig');
                     $profileUrl = $router->generate('profile', array('userId' => $user->getFacebookId()), true);
                     $body = $mail->renderBody(array('friend' => $friend->getFriendsWithMe(), 'user' => $user, 

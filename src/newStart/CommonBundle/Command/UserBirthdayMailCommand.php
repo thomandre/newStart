@@ -44,7 +44,7 @@ class UserBirthdayMailCommand extends ContainerAwareCommand
 
         $mailSent = 0;
         foreach($users as $user) {
-            if($user->getStopEmail() == false) {
+            if($user->getEmailStop() == false) {
                 $mail->load('newStartCommonBundle:Mails:userBirthdaySoon.html.twig');
                 $body = $mail->renderBody(array('settingsUrl' => $settingsUrl));
 
