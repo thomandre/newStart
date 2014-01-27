@@ -96,7 +96,7 @@ class fbUserService {
 
 				$this->mail->load('newStartCommonBundle:Mails:newfriend.html.twig');
 				$profileUrl = $this->router->generate('profile', array('userId' => $user->getFacebookId()), true);
-				$body = $this->mail->renderBody(array('username' =>$user->getFullname(), 'profileUrl' => $profileUrl, 'settingsUrl' => $settingsUrl));
+				$body = $this->mail->renderBody(array('username' =>$user->getFullname(), 'profileUrl' => $profileUrl, 'settingsUrl' => $settingsUrl, 'user' => $user));
 			    $this->mail->sendMessage($friendObj->getEmail(), $user->getFullname().' est maintenant sur Havefyve', $body);
 	        }
 
