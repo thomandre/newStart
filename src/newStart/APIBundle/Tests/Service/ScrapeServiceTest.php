@@ -44,11 +44,11 @@ class scrapeServiceTest extends NewStartWebTestCase
 	public function realImgScrapeTest()
 	{
 		$scrapeService = new ScrapeService();
-		$html = file_get_contents('http://www.levi.com/FR/fr_FR/men-jeans/p/191110003');
+		$html = file_get_contents('http://www.balibaris.com/chemises/962-tribeca-chambray.html');
 
 		$images = $scrapeService->getImages($html);
 		//var_dump($images);
-		$this->assertContains('/_ui/levis/img/product/hanger.jpg?$75x75$', $images);
+		$this->assertContains('/962-5407-large/tribeca-chambray.jpg', $images);
 	}
 
 	/**
@@ -65,10 +65,10 @@ class scrapeServiceTest extends NewStartWebTestCase
 		$images = $scrapeService->getAbsoluteUrlImages('http://www.wornby.co.uk/mens/sweats/graffiti-alley-sweat-grey-marl.html');
 		$this->assertContains('http://www.wornby.co.uk/media/catalog/product/cache/1/image/483x/17f82f742ffe127f42dca9de82fb58b1/W/o/Worn_By_Graffiti_Alley_Sweat_1_2.jpg', $images);
 
-		$scrapeService = new ScrapeService();
-		$images = $scrapeService->getAbsoluteUrlImages('http://www.levi.com/FR/fr_FR/men-jeans/p/191110003');
+//		$scrapeService = new ScrapeService();
+//		$images = $scrapeService->getAbsoluteUrlImages('http://www.levi.com/FR/fr_FR/men-jeans/p/191110003');
 //		var_dump($images);
-		$this->assertContains('http://lsco.scene7.com/is/image/lsco/clothing/191110003-2012-fall-front-pdp.jpg?$1366x768$', $images);
+//		$this->assertContains('http://lsco.scene7.com/is/image/lsco/clothing/191110003-2012-fall-front-pdp.jpg?$1366x768$', $images);
 
 //		$this->assertContains('', $images);
 
@@ -95,11 +95,11 @@ class scrapeServiceTest extends NewStartWebTestCase
 		$this->assertEquals('http://www.wornby.co.uk/media/catalog/product/cache/1/thumbnail/155x/17f82f742ffe127f42dca9de82fb58b1/W/o/Worn_By_Graffiti_Alley_Sweat_1_2.jpg', $images[2]->getOriginalUrl());
 		
 
-		$scrapeService = new ScrapeService();
-		$scrapeService->container = $this->container;
-		$images = $scrapeService->getBiggestImg('http://www.levi.com/FR/fr_FR/men-jeans/p/191110003');
+//		$scrapeService = new ScrapeService();
+//		$scrapeService->container = $this->container;
+//		$images = $scrapeService->getBiggestImg('http://www.levi.com/FR/fr_FR/men-jeans/p/191110003');
 //		var_dump($images);
-		$this->assertEquals('http://lsco.scene7.com/is/image/lsco/clothing/191110003-2012-fall-detail1-pdp.jpg?$1366x768$', $images[0]->getOriginalUrl());
+//		$this->assertEquals('http://lsco.scene7.com/is/image/lsco/clothing/191110003-2012-fall-detail1-pdp.jpg?$1366x768$', $images[0]->getOriginalUrl());
 
 	}
 

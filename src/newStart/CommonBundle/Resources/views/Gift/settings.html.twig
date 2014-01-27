@@ -66,14 +66,14 @@
 		});
 		$('#email').change(function () {
 			if($(this).is(':checked')) {
-				var stopEmail = 0;
+				var emailStop = 0;
 			} else {
-				var stopEmail = 1;
+				var emailStop = 1;
 			}
 			$.ajax({
 				dataType: 'json',
 			  	url: $('#profile_mail').val(),
-				data: { stopEmail: stopEmail},
+				data: { emailStop: emailStop},
 				success: function (reponse) {
 					if(reponse.status == 'ok') {
 

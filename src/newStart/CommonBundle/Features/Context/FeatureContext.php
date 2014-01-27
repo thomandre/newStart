@@ -85,7 +85,7 @@ class FeatureContext extends FeatureGlobal
      * @Given /^je presse Connexion$/
      */
     public function jePresseConnexion() {
-        $element = $this->getSession()->getPage()->findAll('css', '#u_0_d');
+        $element = $this->getSession()->getPage()->findAll('css', '#u_0_m');
         if($element != false) {
             $element[0]->click();
         } else {
