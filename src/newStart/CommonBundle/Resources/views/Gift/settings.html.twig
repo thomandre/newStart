@@ -13,7 +13,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row setting">
 			Profil privé 
  			<input type="checkbox" name="prive" id="prive" {% if not user.public %}checked="checked"{% endif %}>
 			<div class="profileUrl" {% if not user.public %}style="display:none"{% endif %}>
@@ -21,15 +21,13 @@
 				<br /><input type="text" size="100" value="{{ app.request.getSchemeAndHttpHost() ~ path('profile', {userId: user.facebookId}) }}#/profile/{{ user.facebookId }}" id="profileUrl">
 			</div>
 		</div>
+		<div class="row setting">
+			Recevoir les notifications 
+ 			<input type="checkbox" name="email" id="email" {% if not user.emailStop %}checked="checked"{% endif %}>
+ 		</div>
 	</div>
 	<input type="hidden" id="profile_prive" value="{{ path('profile_prive')}}" />
-	<style>
-		body:before{
-			background:url(https://graph.facebook.com/{{ user.username }}/picture?width=180&height=180); 
-			background-size: cover;
-			filter: url("#blur-effect");
-		}
-	</style>
+	<input type="hidden" id="profile_mail" value="{{ path('profile_mail')}}" />
 {% endblock %}
 
 {% block javascripts %}
@@ -62,6 +60,23 @@
 						} else {
 							$('.profileUrl').hide();
 						}
+					}
+				}
+			});
+		});
+		$('#email').change(function () {
+			if($(this).is(':checked')) {
+				var stopEmail = 0;
+			} else {
+				var stopEmail = 1;
+			}
+			$.ajax({
+				dataType: 'json',
+			  	url: $('#profile_mail').val(),
+				data: { stopEmail: stopEmail},
+				success: function (reponse) {
+					if(reponse.status == 'ok') {
+
 					}
 				}
 			});

@@ -44,6 +44,7 @@ class fbUserService {
 	    	$user->setUsername($me['id']);
 	    	$user->setEnabled(true);
 	    	$user->setLocked(false);
+	    	$user->setEmailStop(false);
 	    	$user->addRole('ROLE_FACEBOOK');
 	    	$user->setCredentialsExpired(false);
 	    	$user->setFacebookId($me['id']);

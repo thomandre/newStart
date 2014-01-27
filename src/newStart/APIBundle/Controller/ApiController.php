@@ -50,6 +50,30 @@ class ApiController extends Controller
         return $response;
     }
 
+     /**
+     * @Route("/api/v1/profile/mail", name="profile_mail")
+     * @Template()
+     */
+    public function emailStopAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        if(!is_object($user)) {
+            $response = new JsonResponse();
+            $response->setData(array('status' => 'ko'));
+            return $response;
+        }
+
+        $user->setEmailStop($request->get('emailStop'));
+        $em->persist($user);
+
+        $em->flush();
+
+        $response = new JsonResponse();
+        $response->setData(array('status' => 'ok', 'emailStop' => $user->getEmailStop()));
+        return $response;
+    }
+
     /**
      * @Route("/api/v1/product/scrape", name="scrape")
      * @Template()

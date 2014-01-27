@@ -44,14 +44,16 @@ class UserBirthdayMailCommand extends ContainerAwareCommand
 
         $mailSent = 0;
         foreach($users as $user) {
-            $mail->load('newStartCommonBundle:Mails:userBirthdaySoon.html.twig');
-            $body = $mail->renderBody(array('settingsUrl' => $settingsUrl));
+            if($user->getStopEmail() == false) {
+                $mail->load('newStartCommonBundle:Mails:userBirthdaySoon.html.twig');
+                $body = $mail->renderBody(array('settingsUrl' => $settingsUrl));
 
-            if($debug == 'true') {
-                var_dump($body);            
-            } else {
-                $mail->sendMessage($user->getEmail(), 'Bientôt ton anniv’', $body, true);
-                $mailSent++;
+                if($debug == 'true') {
+                    var_dump($body);            
+                } else {
+                    $mail->sendMessage($user->getEmail(), 'Bientôt ton anniv’', $body, true);
+                    $mailSent++;
+                }
             }
         }
 

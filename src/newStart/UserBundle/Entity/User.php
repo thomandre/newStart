@@ -78,10 +78,27 @@ class User extends BaseUser
 
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="birthday", type="datetime", nullable=true)
      */
     protected $birthday;
+
+    /**
+     * @var boolean
+     * @ORM\Column(type="boolean", nullable=true, options={"default" = false})
+     */
+    protected $emailStop;
+
+
+    public function getEmailStop()
+    {
+        return $this->emailStop;
+    }
+
+    public function setEmailStop($emailStop)
+    {
+        $this->emailStop = $emailStop;
+        return $this;
+    }
 
     public function __construct()
     {
