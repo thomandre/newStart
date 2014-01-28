@@ -46,10 +46,10 @@ class ImageServiceTest extends NewStartWebTestCase
 		$imageService = new ImageService();
 
 		$result = $imageService->getOffset(300, 120, 60, 12);
-		$this->assertEquals(array(0, 12), $result);
+		$this->assertEquals(array(0, 6), $result);
 
 		$result = $imageService->getOffset(300, 120, 40, 60);
-		$this->assertEquals(array(110, 0), $result);
+		$this->assertEquals(array(55, 0), $result);
 
 	}
 

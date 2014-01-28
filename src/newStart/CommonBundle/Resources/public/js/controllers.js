@@ -166,3 +166,4 @@ ProductDetailCtrl.$inject = ['$scope', '$routeParams', 'Product', '$rootScope'];
 ProductItemCtrl.$inject = ['$scope', 'Product', '$rootScope'];
 MyFriendsListCtrl.$inject = ['$scope', '$timeout', 'Friend', '$rootScope'];
 FriendCtrl.$inject = ['$scope', 'Friend', '$rootScope'];
+
