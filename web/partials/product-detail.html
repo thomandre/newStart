@@ -17,14 +17,14 @@
 			<p>
 				<span ng-hide="editModeName">{{ product.name }}</span> 
 				<a ng-click="editName()" ng-hide="editModeName" class="glyphicon glyphicon-pencil" title="modifier"></a>
-				<input type="text" class="title" ng-show="editModeName" ng-model="product.name" data-ng-required />
+				<input type="text" class="title" ui-keydown="{13:'saveName()', 27:'cancelEditName()'}" ng-show="editModeName" ng-model="product.name" data-ng-required />
 				<a ng-click="cancelEditName()" ng-show="editModeName" class="glyphicon glyphicon-remove-sign" title="annuler"></a>
 				<a ng-click="saveName()" ng-show="editModeName" class="glyphicon glyphicon-ok-sign" title="ok"></a>
 			</p>
 			<p>
 				<span ng-hide="editModePrice">{{ product.price }}</span>
 				<a ng-click="editPrice()" ng-hide="editModePrice" class="glyphicon glyphicon-pencil" title="modifier"></a>
-				<input type="text" class="price" ng-show="editModePrice" ng-model="product.price" data-ng-required />
+				<input type="text" class="price" ui-keydown="{13:'savePrice()', 27:'cancelEditPrice()'}" ng-show="editModePrice" ng-model="product.price" data-ng-required />
 				<a ng-click="cancelEditPrice()" ng-show="editModePrice" class="glyphicon glyphicon-remove-sign" title="annuler"></a>
 				<a ng-click="savePrice()" ng-show="editModePrice" class="glyphicon glyphicon-ok-sign" title="ok"></a>
 			</p>
@@ -32,7 +32,7 @@
 				Commentaire laissé par {{ product.firstName }} : 
 				<span ng-hide="editModeComment">{{ product.comment }}</span>
 				<a ng-click="editComment()" ng-hide="editModeComment" class="glyphicon glyphicon-pencil" title="modifier"></a>
-				<input type="text" class="title" ng-show="editModeComment" ng-model="product.comment" data-ng-required />
+				<input type="text" class="title" ui-keydown="{13:'saveComment()', 27:'cancelEditComment()'}" ng-show="editModeComment" ng-model="product.comment" data-ng-required />
 				<a ng-click="cancelEditComment()" ng-show="editModeComment" class="glyphicon glyphicon-remove-sign" title="annuler"></a>
 				<a ng-click="saveComment()" ng-show="editModeComment" class="glyphicon glyphicon-ok-sign" title="ok"></a>
 			</p>

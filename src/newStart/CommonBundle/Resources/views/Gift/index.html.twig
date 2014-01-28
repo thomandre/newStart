@@ -40,7 +40,7 @@
 								</h4>
 								<p class="price">
 									<span ng-hide="editModePrice">{{ scrappedProduct.price }}</span> 
-									<input type="text" class="title" ng-show="editModePrice" ng-model="scrappedProduct.price" data-ng-required />
+									<input type="text" class="title" ui-keydown="{13:'savePrice()', 27:'cancelEditPrice()'}" ng-show="editModePrice" ng-model="scrappedProduct.price" data-ng-required />
 									<a ng-click="editPrice()" ng-hide="editModePrice" class="glyphicon glyphicon-pencil" title="modifier"></a>
 									<a ng-click="cancelEditPrice()" ng-show="editModePrice" class="glyphicon glyphicon-remove-sign" title="annuler"></a>
 									<a ng-click="savePrice()" ng-show="editModePrice" class="glyphicon glyphicon-ok-sign" title="ok"></a>
@@ -116,11 +116,14 @@
 {% block javascripts %}
 	{{ parent() }}
     <script src="{{ asset('bundles/newstartcommon/js/vendor/angular.min.js') }}"></script>
+    <script src="{{ asset('bundles/newstartcommon/js/vendor/keypress.js') }}"></script>
 	<script src="{{ asset('bundles/newstartcommon/js/vendor/angular-resource.js') }}"></script>
 	<script src="{{ asset('bundles/newstartcommon/css/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('bundles/newstartcommon/js/app_ng.js') }}"></script>
 	<script src="{{ asset('bundles/newstartcommon/js/controllers.js') }}"></script>
 	<script src="{{ asset('bundles/newstartcommon/js/services.js') }}"></script>
+
+
 	{% if displayPopIn %}
 		<script>
 			$(document).ready(function () {

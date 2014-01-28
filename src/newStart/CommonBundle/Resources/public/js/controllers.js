@@ -47,6 +47,11 @@ function ProductDetailCtrl($scope, $routeParams, Product, $rootScope) {
 	 	Product.edit({'id':$scope.product.id, 'name':$scope.product.name, 'price':$scope.product.price, 'comment':$scope.product.comment}, function(data) {});
 		$scope.editModeName = false;
 	};
+	$scope.keyPressName = function (ev) {
+		console.log('plop');
+		if (ev.which==13) $scope.saveName();
+		if (ev.which==27) $scope.cancelEditName();
+	};
 
 	$scope.editPrice = function () {
 		$scope.editModePrice = true;

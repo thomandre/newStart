@@ -1,4 +1,4 @@
-var havefyveApp = angular.module('havefyveApp', ['havefyveServices']);
+var havefyveApp = angular.module('havefyveApp', ['havefyveServices', 'ui.keypress']);
 
 
 havefyveApp.config(['$routeProvider',
