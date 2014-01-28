@@ -310,6 +310,31 @@ class ApiController extends Controller
     }
 
     /**
+     * @Route("/api/v1/product/edit/{productId}", name="product_edit")
+     * @Template()
+     */
+    public function editProductAction(Request $request, $productId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $product = $em->getRepository('newStartCommonBundle:Product')->find($productId);
+        $response = new JsonResponse();
+        if($product->getUser() == $user) {
+            $product->setName($request->get('name'));
+            $product->setPrice($request->get('price'));
+            $product->setComment($request->get('comment'));
+
+            $em->persist($product);
+            $em->flush();
+            $response->setData(array('success' => true));
+        } else {
+            $response->setData(array('success' => false));
+        }
+
+        return $response;
+    }    
+
+    /**
      * @Route("/api/v1/product/bought", name="have_bought")
      * @Template()
      */

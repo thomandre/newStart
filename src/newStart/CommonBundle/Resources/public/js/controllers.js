@@ -31,9 +31,44 @@ function MyFriendsListCtrl($scope, $timeout, Friend, $rootScope) {
 
 
 function ProductDetailCtrl($scope, $routeParams, Product, $rootScope) {
+	$scope.editModeName = false;
 	$scope.product = Product.show({id: $routeParams.productId}, function () {
 	});
 	$scope.productId = $routeParams.productId;
+
+
+	$scope.editName = function () {
+		$scope.editModeName = true;
+	};
+	$scope.cancelEditName = function () {
+		$scope.editModeName = false;
+	};	
+	$scope.saveName = function () {
+	 	Product.edit({'id':$scope.product.id, 'name':$scope.product.name, 'price':$scope.product.price, 'comment':$scope.product.comment}, function(data) {});
+		$scope.editModeName = false;
+	};
+
+	$scope.editPrice = function () {
+		$scope.editModePrice = true;
+	};
+	$scope.cancelEditPrice = function () {
+		$scope.editModePrice = false;
+	};	
+	$scope.savePrice = function () {
+	 	Product.edit({'id':$scope.product.id, 'name':$scope.product.name, 'price':$scope.product.price, 'comment':$scope.product.comment}, function(data) {});
+		$scope.editModePrice = false;
+	};
+
+	$scope.editComment = function () {
+		$scope.editModeComment = true;
+	};
+	$scope.cancelEditComment = function () {
+		$scope.editModeComment = false;
+	};	
+	$scope.saveComment = function () {
+	 	Product.edit({'id':$scope.product.id, 'name':$scope.product.name, 'price':$scope.product.price, 'comment':$scope.product.comment}, function(data) {});
+		$scope.editModeComment = false;
+	};
 }
 
 function ProductItemCtrl($scope, Product, $rootScope) {

@@ -365,21 +365,32 @@ span.loader {
     -webkit-animation: rotate 1s linear infinite;
     -moz-animation: rotate 1s linear infinite;
 }
-#complete h4 a.glyphicon-pencil, #complete p.price a.glyphicon-pencil {
+#complete a.glyphicon-pencil, .product-desc a.glyphicon-pencil {
     display:none;
 }
-#complete h4:hover a.glyphicon-pencil, #complete p.price:hover a.glyphicon-pencil {
+#complete h4:hover a.glyphicon-pencil, #complete p.price:hover a.glyphicon-pencil, .product-desc p:hover a.glyphicon-pencil {
     display:inline-block;
 }
-#complete a {
+#complete a, .product-desc a {
     font-size: 12px;
     text-decoration: none;
     cursor: pointer;
+}
+.product-desc input.title {
+    width: 90%;
+}
+.product-desc input.price {
+    width: 20%;
 }
 #complete textarea.title {
     width: 210px; 
     height: 67px;
 }
+
+.product-desc {
+
+}
+
 /* ----- Background ----- */
 @-webkit-keyframes rotate {
     from{
