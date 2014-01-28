@@ -6,7 +6,7 @@
 
   page = require('webpage').create();
 
-  page.settings.resourceTimeout = 5000;
+  //page.settings.resourceTimeout = 5000;
   
   page.viewportSize = {
     width: width,
@@ -34,6 +34,7 @@
     } else {
 
       page.evaluate(function() {
+        var debug = false;
         var pattern = /((?:(?:USD|EUR|\$|€){1}(?:\ ?)(?:[0-9]+[\.|\,]?[0-9]*){1}(?:\ ?)){1}|(?:(?:[0-9]+[\.|\,]?[0-9]*){1}(?:\ ?)(?:USD|EUR|\$|€){1}){1})/;
         var attributes, el, elements, i, output, propertyName, rule, ruleList, rules, style, _i, _j, _k, _len, _ref1, _ref2;
         output = {
@@ -68,15 +69,16 @@
         for (_i = 0, _len = elements.length; _i < _len; _i++) {
           el = elements[_i];
           
-          //console.log(el.nodeName + '.' + el.className);
-          var debug = false;
+          var html = el.innerHTML.replace('&nbsp;', ' ');
+
+          if(debug) console.log(el.nodeName + '.' + el.className + ' --- ' + html);
           //if(el.className == 'price priceXL') debug = true; 
 
-          if(strip(el.innerHTML).length < 200) {
-            var matches = strip(el.innerHTML).match(pattern);
+          if(strip(html).length < 200) {
+            var matches = strip(html).match(pattern);
 
             if(matches != null) {
-              //console.log(' >> MATCH');
+              if(debug) console.log(' >> MATCH');
               style = window.getComputedStyle(el);
               attributes = {};
               for (i = _j = 0, _ref1 = style.length; 0 <= _ref1 ? _j < _ref1 : _j > _ref1; i = 0 <= _ref1 ? ++_j : --_j) {
@@ -91,10 +93,10 @@
               attributes['font-size'] = parseInt(attributes['font-size'].replace('px', ''));
 
               var price = parseFloat(matches[0].replace(',', '.').replace('EUR', '').replace('€', '').replace('$', '').replace('USD', ''));
-              if(debug) console.log('### debug - price: ' + price);
+              if(debug) console.log('### debug ' + el.nodeName + '.' + el.className + ' - price: ' + price);
               if(price > 0) {
                 if(el.offsetWidth > 0 && el.offsetHeight > 0) {
-                  if(debug) console.log('### debug - font-size: ' + attributes['font-size']);
+                  if(debug) console.log('### debug - font-size: ' + attributes['font-size'] + " - height: " + el.offsetHeight);
 
                   ruleList = el.ownerDocument.defaultView.getMatchedCSSRules(el, '') || [];
                   rules = [];

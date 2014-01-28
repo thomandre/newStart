@@ -112,7 +112,7 @@ class ApiController extends Controller
         if($request->get('url') && $request->get('url') != '') {
             //var_dump($response);
             $command = 'unset DYLD_LIBRARY_PATH; phantomjs ../getComputedStyle.js '.$request->get('url').' 1024 768 ';
-            
+            //var_dump($command);
             $process = new Process($command);
             $process->run();
 

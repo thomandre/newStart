@@ -27,12 +27,24 @@
 				<div id="completeContainer" ng-show="scrappedProduct != null" class="col-md-6 col-sm-6 col-xs-6" style="display:none;">
 					<div id="complete">
 						<div id="product" class="row">
-							<div class="col-md-5 col-sm-5 col-xs-5">
+							<div class="col-md-5 col-sm-5 col-xs-5" style="height:200px">
 								<img ng-src="{{ scrappedProduct.imgThumb }}" class="preview" />
 							</div>
 							<div class="col-md-5 col-sm-5 col-xs-5">
-								<h4>{{ scrappedProduct.title }}</h4>
-								<p class="price">{{ scrappedProduct.price }}</p>
+								<h4>
+									<span ng-hide="editModeTitle">{{ scrappedProduct.title }}</span>
+									<textarea class="title" ng-show="editModeTitle" ng-model="scrappedProduct.title" data-ng-required></textarea>
+									<a ng-click="editTitle()" ng-hide="editModeTitle" class="glyphicon glyphicon-pencil" title="modifier"></a>
+									<a ng-click="cancelEditTitle()" ng-show="editModeTitle" class="glyphicon glyphicon-remove-sign" title="annuler"></a>
+									<a ng-click="saveTitle()" ng-show="editModeTitle" class="glyphicon glyphicon-ok-sign" title="ok"></a>
+								</h4>
+								<p class="price">
+									<span ng-hide="editModePrice">{{ scrappedProduct.price }}</span> 
+									<input type="text" class="title" ng-show="editModePrice" ng-model="scrappedProduct.price" data-ng-required />
+									<a ng-click="editPrice()" ng-hide="editModePrice" class="glyphicon glyphicon-pencil" title="modifier"></a>
+									<a ng-click="cancelEditPrice()" ng-show="editModePrice" class="glyphicon glyphicon-remove-sign" title="annuler"></a>
+									<a ng-click="savePrice()" ng-show="editModePrice" class="glyphicon glyphicon-ok-sign" title="ok"></a>
+								</p>
 								<textarea ng:model="scrappedProduct.comment" id="comment" style="width: 205px; height: 75px;" placeholder="Vous pouvez préciser la couleur, la taille..."></textarea>
 							</div>
 						</div>

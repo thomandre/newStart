@@ -88,6 +88,7 @@ class ScrapeService
 			return '';
 		} else {
 			$title = (string) $results->item(0)->nodeValue;
+			$title = str_replace(array("\n", "\t", "\r"), '', $title);
 
 			if(strpos($title, 'Ã©') !== false) {
 				return utf8_decode($title);

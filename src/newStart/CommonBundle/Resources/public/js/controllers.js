@@ -61,6 +61,8 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 
 	$scope.warning = false;
 	$scope.imageIndex = 0;
+	$scope.editModeTitle = false;
+	$scope.editModePrice = false;
 	$('#url').focus();
 
 	$scope.nextImg = function () {
@@ -81,8 +83,38 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 		$scope.scrappedProduct.imgThumb = $scope.scrappedProduct.imagesThumb[$scope.imageIndex];
 	}
 
+	$scope.editTitle = function () {
+		$scope.editModeTitle = true;
+		$scope.oldTitle = $scope.scrappedProduct.title;
+	};
+
+	$scope.cancelEditTitle = function () {
+		$scope.scrappedProduct.title = $scope.oldTitle;
+		$scope.editModeTitle = false;
+	};
+
+	$scope.saveTitle = function () {
+		$scope.editModeTitle = false;
+	};
+
+	$scope.editPrice = function () {
+		$scope.editModePrice = true;
+		$scope.oldPrice = $scope.scrappedProduct.price;
+	};
+
+	$scope.cancelEditPrice = function () {
+		$scope.scrappedProduct.price = $scope.oldPrice;
+		$scope.editModePrice = false;
+	};
+
+	$scope.savePrice = function () {
+		$scope.editModePrice = false;
+	};
+
   	$scope.productScrape = function(name) {
   		$scope.scrappedProduct = null;
+  		$scope.editModeTitle = false;
+		$scope.editModePrice = false;
   		$scope.imageIndex = 0;
 
   		if($scope.url != undefined) {

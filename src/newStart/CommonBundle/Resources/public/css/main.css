@@ -1,5 +1,4 @@
 body {
-    background:none;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
 }
 p.comment {
@@ -56,9 +55,6 @@ p {
 }
 body. {
 	background-color: #fafafa;
-}
-html,body {
-    margin:0; padding:0; height:100%;
 }
 #slide-home, #slide-faq {
 	min-height:750px;
@@ -349,7 +345,11 @@ div#complete {
     text-align: left;
     top: -11px;
     width: 466px;
+    height: 254px;
     z-index: 5;
+}
+#complete h4 {
+    height: 72px;
 }
 #complete .row {
     margin-bottom: 5px;
@@ -365,7 +365,21 @@ span.loader {
     -webkit-animation: rotate 1s linear infinite;
     -moz-animation: rotate 1s linear infinite;
 }
-
+#complete h4 a.glyphicon-pencil, #complete p.price a.glyphicon-pencil {
+    display:none;
+}
+#complete h4:hover a.glyphicon-pencil, #complete p.price:hover a.glyphicon-pencil {
+    display:inline-block;
+}
+#complete a {
+    font-size: 12px;
+    text-decoration: none;
+    cursor: pointer;
+}
+#complete textarea.title {
+    width: 210px; 
+    height: 67px;
+}
 /* ----- Background ----- */
 @-webkit-keyframes rotate {
     from{
