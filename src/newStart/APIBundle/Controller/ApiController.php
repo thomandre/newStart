@@ -111,7 +111,7 @@ class ApiController extends Controller
 
         if($request->get('url') && $request->get('url') != '') {
             //var_dump($response);
-            $command = 'unset DYLD_LIBRARY_PATH; phantomjs ../getComputedStyle.js '.$request->get('url').' 1024 768 ';
+            $command = 'unset DYLD_LIBRARY_PATH; phantomjs --disk-cache=yes ../getComputedStyle.js '.$request->get('url').' 1024 768 ';
             //var_dump($command);
             $process = new Process($command);
             $process->run();
@@ -171,7 +171,7 @@ class ApiController extends Controller
         $product->setUrl($params['url']);
 
         if($params['img'] == null || $params['img'] == 'null') {
-            $command = 'unset DYLD_LIBRARY_PATH; phantomjs ../getComputedStyle.js '.$params['url'].' 1024 768 2> /dev/null';
+            $command = 'unset DYLD_LIBRARY_PATH; phantomjs --disk-cache=yes ../getComputedStyle.js '.$params['url'].' 1024 768 2> /dev/null';
             $process = new Process($command);
             $process->run();
             

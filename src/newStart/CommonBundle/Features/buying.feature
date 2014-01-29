@@ -115,10 +115,10 @@ Alors je suis "Acheter"
 Et je bascule sur la popup
 Et je devrais voir "L’iPad mini avec écran Retina est une petite merveille."
 Et je reviens sur la fenêtre principale
-Et je devrais voir "Vous avez décidé de vous offrir ce cadeau finalement ?"
+Et je devrais voir "Vous avez décidé de vous offrir ce cadeau ?"
 Et je presse "Oui, j'ai acheté ce cadeau"
 Et j'attend "1" secondes
-Et je ne devrais pas voir "Vous avez décidé de vous offrir ce cadeau finalement ?"
+Et je ne devrais pas voir "Vous avez décidé de vous offrir ce cadeau ?"
 Et je devrais voir "Génial"
 Et je suis "Retour"
 Et je ne devrais pas voir "iPad mini"
