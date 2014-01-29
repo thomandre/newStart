@@ -28,7 +28,7 @@
 				<a ng-click="cancelEditPrice()" ng-show="editModePrice" class="glyphicon glyphicon-remove-sign" title="annuler"></a>
 				<a ng-click="savePrice()" ng-show="editModePrice" class="glyphicon glyphicon-ok-sign" title="ok"></a>
 			</p>
-			<p class="comment" ng-show="product.comment != ''">
+			<p class="comment" ng-show="product.comment != '' || editModeComment">
 				Commentaire laissé par {{ product.firstName }} : 
 				<span ng-hide="editModeComment">{{ product.comment }}</span>
 				<a ng-click="editComment()" ng-hide="editModeComment" class="glyphicon glyphicon-pencil" title="modifier"></a>
@@ -36,6 +36,7 @@
 				<a ng-click="cancelEditComment()" ng-show="editModeComment" class="glyphicon glyphicon-remove-sign" title="annuler"></a>
 				<a ng-click="saveComment()" ng-show="editModeComment" class="glyphicon glyphicon-ok-sign" title="ok"></a>
 			</p>
+			<p><a ng-click="editComment()" ng-show="product.comment == ''" title="modifier">Ajouter des précisions <span class="glyphicon glyphicon-pencil"></span></a></p>
 			<a href="{{ product.url }}" class="product-link btn btn-primary" target="_blank">Acheter</a>
 		</div>
 	</div>
@@ -47,7 +48,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Vous avez décidé de vous offrir ce cadeau finalement ?</h4>
+        <h4 class="modal-title">Vous avez décidé de vous offrir ce cadeau ?</h4>
       </div>
       <div class="modal-body">
 		<p class="small">Si vous cliquez sur oui, votre produit disparaitra de votre liste.</p>

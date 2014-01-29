@@ -32,43 +32,63 @@ function MyFriendsListCtrl($scope, $timeout, Friend, $rootScope) {
 
 function ProductDetailCtrl($scope, $routeParams, Product, $rootScope) {
 	$scope.editModeName = false;
-	$scope.product = Product.show({id: $routeParams.productId}, function () {
-	});
+	$scope.product = Product.show({id: $routeParams.productId}, function () {});
 	$scope.productId = $routeParams.productId;
 
 
 	$scope.editName = function () {
+		$scope.oldName = $scope.product.name;
 		$scope.editModeName = true;
 	};
 	$scope.cancelEditName = function () {
-		$scope.editModeName = false;
+		setTimeout(function(){ 
+			$scope.$apply(function(){
+				$scope.product.name = $scope.oldName;
+				$scope.editModeName = false;
+			});
+		});
 	};	
 	$scope.saveName = function () {
-	 	Product.edit({'id':$scope.product.id, 'name':$scope.product.name, 'price':$scope.product.price, 'comment':$scope.product.comment}, function(data) {});
+		if($scope.product.name != '') {
+		 	Product.edit({'id':$scope.product.id, 'name':$scope.product.name, 'price':$scope.product.price, 'comment':$scope.product.comment}, function(data) {});			
+		} else {
+			$scope.product.name = $scope.oldName;
+		}
 		$scope.editModeName = false;
-	};
-	$scope.keyPressName = function (ev) {
-		console.log('plop');
-		if (ev.which==13) $scope.saveName();
-		if (ev.which==27) $scope.cancelEditName();
 	};
 
 	$scope.editPrice = function () {
+		$scope.oldPrice = $scope.product.price;
 		$scope.editModePrice = true;
 	};
 	$scope.cancelEditPrice = function () {
-		$scope.editModePrice = false;
+		setTimeout(function(){ 
+			$scope.$apply(function(){
+				$scope.product.price = $scope.oldPrice;
+				$scope.editModePrice = false;
+			});
+		});
 	};	
 	$scope.savePrice = function () {
-	 	Product.edit({'id':$scope.product.id, 'name':$scope.product.name, 'price':$scope.product.price, 'comment':$scope.product.comment}, function(data) {});
+		if($scope.product.price != '') {
+		 	Product.edit({'id':$scope.product.id, 'name':$scope.product.name, 'price':$scope.product.price, 'comment':$scope.product.comment}, function(data) {});
+		} else {
+			$scope.product.price = $scope.oldPrice;
+		}
 		$scope.editModePrice = false;
 	};
 
 	$scope.editComment = function () {
+		$scope.oldComment = $scope.product.comment;
 		$scope.editModeComment = true;
 	};
 	$scope.cancelEditComment = function () {
-		$scope.editModeComment = false;
+		setTimeout(function(){ 
+			$scope.$apply(function(){
+				$scope.product.comment = $scope.oldComment;
+				$scope.editModeComment = false;
+			});
+		});
 	};	
 	$scope.saveComment = function () {
 	 	Product.edit({'id':$scope.product.id, 'name':$scope.product.name, 'price':$scope.product.price, 'comment':$scope.product.comment}, function(data) {});
@@ -134,6 +154,9 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 	};
 
 	$scope.saveTitle = function () {
+		if($scope.scrappedProduct.title == '') {
+			$scope.scrappedProduct.title = $scope.oldTitle;
+		}
 		$scope.editModeTitle = false;
 	};
 
@@ -143,11 +166,18 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 	};
 
 	$scope.cancelEditPrice = function () {
-		$scope.scrappedProduct.price = $scope.oldPrice;
-		$scope.editModePrice = false;
+		setTimeout(function(){ 
+			$scope.$apply(function(){
+				$scope.scrappedProduct.price = $scope.oldPrice;
+				$scope.editModePrice = false;
+			});
+		});
 	};
 
 	$scope.savePrice = function () {
+		if($scope.scrappedProduct.price == '') {
+			$scope.scrappedProduct.price = $scope.oldPrice;
+		}
 		$scope.editModePrice = false;
 	};
 

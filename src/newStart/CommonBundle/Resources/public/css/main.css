@@ -365,7 +365,7 @@ span.loader {
     -webkit-animation: rotate 1s linear infinite;
     -moz-animation: rotate 1s linear infinite;
 }
-#complete a.glyphicon-pencil, .product-desc a.glyphicon-pencil {
+#complete a.glyphicon-pencil, .product-desc p a.glyphicon-pencil {
     display:none;
 }
 #complete h4:hover a.glyphicon-pencil, #complete p.price:hover a.glyphicon-pencil, .product-desc p:hover a.glyphicon-pencil {
@@ -387,8 +387,8 @@ span.loader {
     height: 67px;
 }
 
-.product-desc {
-
+.product-desc p {
+    min-height: 14px;
 }
 
 /* ----- Background ----- */
