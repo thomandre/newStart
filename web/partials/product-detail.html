@@ -37,49 +37,26 @@
 				<a ng-click="saveComment()" ng-show="editModeComment" class="glyphicon glyphicon-ok-sign" title="ok"></a>
 			</p>
 			<p><a ng-click="editComment()" ng-show="product.comment == ''" title="modifier">Ajouter des précisions <span class="glyphicon glyphicon-pencil"></span></a></p>
-			<a href="{{ product.url }}" class="product-link btn btn-primary" target="_blank">Acheter</a>
+			<a href="{{ product.url }}" class="product-link btn btn-primary" ng-click="open()" target="_blank">Acheter</a>
 		</div>
 	</div>
 </div>
-<input type="hidden" id="productId" value="{{ product.id }}">
+<input type="hidden" id="productId" value="{{ product.id }}" />
 
-<div id="boughtModal" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Vous avez décidé de vous offrir ce cadeau ?</h4>
-      </div>
-      <div class="modal-body">
-		<p class="small">Si vous cliquez sur oui, votre produit disparaitra de votre liste.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn" id="cancel">Non</button>
-        <button type="button" class="btn btn-primary" id="validate">Oui, j'ai acheté ce cadeau</button>
-      </div>
-    </div>
+
+<script type="text/ng-template" id="myModalContent.html">
+  <div class="modal-content">
+	<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	<h4 class="modal-title">Vous avez décidé de vous offrir ce cadeau ?</h4>
+	</div>
+	<div class="modal-body">
+	<p class="small">Si vous cliquez sur oui, votre produit disparaitra de votre liste.</p>
+	</div>
+	<div class="modal-footer">
+	<button type="button" class="btn" id="cancel" ng-click="cancel()">Non</button>
+	<button type="button" class="btn btn-primary" id="validate" ng-click="ok()">Oui, j'ai acheté ce cadeau</button>
   </div>
   <input type="hidden" value="{{ product.fullName }}" id="fullName" />
-</div>
-
-<script>
-	$('.product-link').click(function (e) {
-		//e.preventDefault();
-		$('#boughtModal').modal('show');
-	});
-
-	$('#cancel').click(function () {
-		$('#boughtModal').modal('hide');
-	});
-
-	$('#validate').click(function () {
-		$.ajax({
-			url: $('#path_product_remove').val() + "/" + $('#productId').val() ,
-			success: function (data) {
-				$('#boughtModal').modal('hide');
-				$('.alert-notice').html('Génial !');
-				$('.alert-notice').show();
-			}
-		});
-	});
 </script>
+

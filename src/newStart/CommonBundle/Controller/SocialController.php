@@ -53,6 +53,9 @@ class SocialController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $user = $this->getUser();
+        if($user == null) {
+            return new RedirectResponse($this->container->get('router')->generate('logout'));
+        }
         $displayPopIn = $user->getDisplayPopinFriends();
         $user->setDisplayPopinFriends(false);
 
@@ -103,7 +106,9 @@ class SocialController extends Controller
             return new RedirectResponse($this->container->get('router')->generate('logout'));
         }
         $user = $this->getUser();
-
+        if($user == null) {
+            return new RedirectResponse($this->container->get('router')->generate('logout'));
+        }
         $em = $this->getDoctrine()->getManager();
         $products = $em->getRepository('newStartCommonBundle:Product')->getProductsFeedForUser($user);    
         $data = array();

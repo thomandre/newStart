@@ -30,7 +30,20 @@ function MyFriendsListCtrl($scope, $timeout, Friend, $rootScope) {
 }
 
 
-function ProductDetailCtrl($scope, $routeParams, Product, $rootScope) {
+var ModalInstanceCtrl = function ($scope, $modalInstance, items) {
+
+  $scope.ok = function () {
+    $modalInstance.close();
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+}
+
+
+
+function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal) {
 	$scope.editModeName = false;
 	$scope.product = Product.show({id: $routeParams.productId}, function () {});
 	$scope.productId = $routeParams.productId;
@@ -78,6 +91,31 @@ function ProductDetailCtrl($scope, $routeParams, Product, $rootScope) {
 		$scope.editModePrice = false;
 	};
 
+	$scope.open = function () {
+		var modalInstance = $modal.open({
+	      templateUrl: 'myModalContent.html',
+	      controller: ModalInstanceCtrl,
+	      resolve: {
+	        items: function () {
+	          return $scope.product.fullName;
+	        }
+	      }
+	    });
+
+	    modalInstance.result.then(function (selectedItem) {
+	      Product.remove({id: $scope.product.id}, function (data) {
+		    $rootScope.products = data;
+			$scope.countProducts();
+
+			$('#boughtModal').modal('hide');
+			$('.alert-notice').html('Génial !');
+			$('.alert-notice').show();
+		  });
+	    }, function () {
+
+	    });
+	};
+
 	$scope.editComment = function () {
 		$scope.oldComment = $scope.product.comment;
 		$scope.editModeComment = true;
@@ -102,7 +140,7 @@ function ProductItemCtrl($scope, Product, $rootScope) {
 			Product.remove({id: $scope.product.id}, function (data) {
 		      $rootScope.products = data;
 	    	  $scope.countProducts();
-			});	
+			});
 		}
 	}
 }
@@ -257,7 +295,7 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 
 ProductListCtrl.$inject = ['$scope', 'Product', '$timeout', '$location', '$rootScope', '$routeParams'];
 MyProductListCtrl.$inject = ['$scope', '$http','Product', '$timeout', '$location', '$rootScope'];
-ProductDetailCtrl.$inject = ['$scope', '$routeParams', 'Product', '$rootScope'];
+ProductDetailCtrl.$inject = ['$scope', '$routeParams', 'Product', '$rootScope', '$modal'];
 ProductItemCtrl.$inject = ['$scope', 'Product', '$rootScope'];
 MyFriendsListCtrl.$inject = ['$scope', '$timeout', 'Friend', '$rootScope'];
 FriendCtrl.$inject = ['$scope', 'Friend', '$rootScope'];
