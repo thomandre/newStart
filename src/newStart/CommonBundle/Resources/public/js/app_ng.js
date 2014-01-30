@@ -5,8 +5,7 @@ havefyveApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/', {
-        templateUrl: '../../partials/product-list.html',
-        controller: 'MyProductListCtrl'
+        templateUrl: '../../partials/product-list.html'
       }).
       when('/product/:productId', {
         templateUrl: '../../partials/product-detail.html',
@@ -22,7 +21,6 @@ havefyveApp.config(['$routeProvider',
       }).
       when('/friends/', {
         templateUrl: '../../partials/friends-list.html',
-        controller: 'MyFriendsListCtrl'
       }).
       otherwise({
         redirectTo: '/'
