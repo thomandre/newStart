@@ -256,7 +256,7 @@ class ApiController extends Controller
         $data = array();
         foreach($products as $p) {
             $tmp = $p->toArray();
-            $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 180, 'height' => 222, 'image' => $p->getImageName()));
+            $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 176, 'height' => 222, 'image' => $p->getImageName()));
         
             $data[] = $tmp;
         }
@@ -286,7 +286,7 @@ class ApiController extends Controller
         $data = array();
         foreach($products as $key => $p) {
             $tmp = $p->toArray();
-            $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 180, 'height' => 222, 'image' => $p->getImageName()));
+            $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 176, 'height' => 222, 'image' => $p->getImageName()));
             $data[] = $tmp;
         }
 

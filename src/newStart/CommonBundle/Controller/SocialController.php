@@ -84,7 +84,7 @@ class SocialController extends Controller
 
         foreach($products as $key => $p) {
             $tmp = $p->toArray();
-            $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 189, 'height' => 222, 'image' => $p->getImageName()));
+            $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 176, 'height' => 222, 'image' => $p->getImageName()));
             $gifts[] = $tmp;
         }
 
@@ -109,7 +109,7 @@ class SocialController extends Controller
         $data = array();
         foreach($products as $p) {
             $tmp = $p->toArray();
-            $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 177, 'height' => 165, 'image' => $p->getImageName()));
+            $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 176, 'height' => 165, 'image' => $p->getImageName()));
             $tmp['user'] = $p->getUser()->toArray();
             $data[] = $tmp;
         }
