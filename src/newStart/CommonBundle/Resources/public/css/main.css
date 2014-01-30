@@ -386,7 +386,26 @@ span.loader {
     width: 210px; 
     height: 67px;
 }
-
+#complete .btns button {
+    float:right;
+    margin-right: 5px;
+}
+#complete .imageBtns .prev {
+    float: left;
+    margin-left: 0;    
+}
+#complete .imageBtns .next {
+    float: right;
+    margin-right: 10px;
+}
+#complete .imageBtns {
+    text-align: center;
+}
+#complete .productTitle {
+    display: block;
+    max-height: 59px;
+    overflow: hidden;
+}
 .product-desc p {
     min-height: 14px;
 }

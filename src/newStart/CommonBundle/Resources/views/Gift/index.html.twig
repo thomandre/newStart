@@ -15,7 +15,7 @@
 			<div class="col-md-6 col-sm-6 col-xs-6 url-block">
 				<div class="input-group url input-lg">
 					<span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
-					<input type="url" name="url" id="url" class="form-control" ng-model="url" placeholder="Copiez-collez l'URL des cadeaux que vous souhaitez recevoir !" />
+					<input type="url" name="url" id="url" class="form-control" ng-model="url" placeholder="Copiez-collez l'URL des cadeaux que vous souhaitez recevoir !" ui-keydown="{13:'productScrape()', 27:'productScrapeCancel()'}" />
 					<span class="input-group-btn">
 						<button class="btn btn-primary" type="button" id="go_btn" ng-click="productScrape()"><span ng-show="scrapeLoading" class="loader glyphicon glyphicon-refresh" style="display:none;"></span><span class="lbl">Go !</span></button>
 					</span>
@@ -28,11 +28,12 @@
 					<div id="complete">
 						<div id="product" class="row">
 							<div class="col-md-5 col-sm-5 col-xs-5" style="height:200px">
-								<img ng-src="{{ scrappedProduct.imgThumb }}" class="preview" />
+								<img ng-show="imageLoading" src="../../bundles/newstartcommon/images/loader.gif" />
+								<img ng-hide="imageLoading" ng-src="{{ scrappedProduct.imgThumb }}" class="preview" />
 							</div>
 							<div class="col-md-5 col-sm-5 col-xs-5">
 								<h4>
-									<span ng-hide="editModeTitle">{{ scrappedProduct.title }}</span>
+									<span class="productTitle" ng-hide="editModeTitle">{{ scrappedProduct.title }}</span>
 									<textarea class="title" ng-show="editModeTitle" ng-model="scrappedProduct.title" data-ng-required></textarea>
 									<a ng-click="editTitle()" ng-hide="editModeTitle" class="glyphicon glyphicon-pencil" title="modifier"></a>
 									<a ng-click="cancelEditTitle()" ng-show="editModeTitle" class="glyphicon glyphicon-remove-sign" title="annuler"></a>
@@ -49,14 +50,14 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-5">
-								<button class="btn" type="button" ng-click="prevImg()"><span class="glyphicon glyphicon-arrow-left"></span></button>
-								<span>{{ imageIndex + 1 }} / {{ scrappedProduct.imgNumber }}</span>
-								<button class="btn" type="button" ng-click="nextImg()"><span class="glyphicon glyphicon-arrow-right"></span></button>
+							<div class="col-md-5 imageBtns">
+								<button class="btn prev" type="button" ng-click="prevImg()"><span class="glyphicon glyphicon-arrow-left"></span></button>
+								<span class="index">{{ imageIndex + 1 }} / {{ scrappedProduct.imgNumber }}</span>
+								<button class="btn next" type="button" ng-click="nextImg()"><span class="glyphicon glyphicon-arrow-right"></span></button>
 							</div>
-							<div class="col-md-5">
-								<button class="btn" type="button" ng-click="productScrapeCancel()">Annuler</button>
+							<div class="col-md-5 btns">
 								<button class="btn btn-primary" type="button" id="save_btn" ng-click="productSave(scrappedProduct)"><span ng-show="productLoading" class="loader glyphicon glyphicon-refresh"></span>Enregistrer</button>
+								<button class="btn" type="button" ng-click="productScrapeCancel()">Annuler</button>
 							</div>
 						</div>
 					</div>

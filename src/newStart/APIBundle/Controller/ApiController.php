@@ -137,7 +137,7 @@ class ApiController extends Controller
                         $imagesThumbArray[] = $router->generate('image_resize', array('width' => 200, 'height' => 200, 'image' => $imageEntity->getName()));
                     }
 
-                    $response->setData(array('title' => $phantomResponse->title, 'price' => $phantomResponse->price, 'images' => $imagesArray, 'imagesThumb' => $imagesThumbArray, 'imgNumber' => count($phantomResponse->images)));
+                    $response->setData(array('title' => $phantomResponse->title, 'price' => $phantomResponse->price, 'images' => $imagesArray, 'imagesThumb' => $imagesThumbArray, 'imgNumber' => count($phantomResponse->images), 'url' => $request->get('url')));
                 }
             } else {
                 var_dump($res);

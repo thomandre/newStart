@@ -24,19 +24,12 @@
 							</p>
 						</div>
 					</div>
+				{% else %}
+					<div style="margin-top:100px">Votre feed se remplira avec les cadeaux que vos amis auront enregistrés.</div>
 				{% endfor %}
 			</div>
 		</div>
 	</div>
-	{% if products.0 is defined %}
-		<style>
-			body:before{
-				background:url({{ products.0.thumb_url }}); 
-				background-size: cover;
-				filter: url("#blur-effect");
-			}
-		</style>
-	{% endif %}
 {% endblock %}
 
 

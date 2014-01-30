@@ -5,6 +5,7 @@
 			<span><a href="../profiles/{{ friend.facebookId }}#/profile/{{ friend.facebookId }}">{{ friend.fullName }}</a></span>
 			<a title="Ajouter {{ friend.fullName }} à mon réseau" class="glyphicon glyphicon-star" ng-class="{favorized:friend.favorite}" ng-click="favorize()"></a> 
 		</p>
-
 	</div>
 </div>
+
+<div ng-hide="friends.length">Aucun de vos amis Facebook n'est pour l'instant sur HaveFyve, souhaitez-vous partager ce site avec eux ?</div>

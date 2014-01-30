@@ -185,28 +185,21 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
   		$scope.scrappedProduct = null;
   		$scope.editModeTitle = false;
 		$scope.editModePrice = false;
+		$scope.imageLoading = true;
   		$scope.imageIndex = 0;
 
   		if($scope.url != undefined) {
 	  		$scope.scrapeLoading = true;
 	  		$('#go_btn .lbl').html('');
-			$http.get('../api/v1/product/scrape?url=' + $scope.url).success(function (data) {
+			$http.get('../api/v1/image/scrape?url=' + $scope.url).success(function (data) {
 				$scope.scrappedProduct = data;
-				$http.get('../api/v1/image/scrape?url=' + $scope.url).success(function (data) {
-					if(data.imgNumber > 0) {
-						$scope.scrappedProduct.imgThumb = data.imagesThumb[$scope.imageIndex];
-						$scope.scrappedProduct.imagesThumb = data.imagesThumb;
-						$scope.scrappedProduct.imgNumber = data.imgNumber;
-						$scope.scrappedProduct.images = data.images;
-					} else {
-						$scope.scrappedProduct.imgThumb = '../../bundles/newstartcommon/images/imageNotFound.jpg';
-					}
-					$scope.scrappedProduct.price = data.price;
-				});
-				$scope.scrappedProduct.imgNumber = 1;
-		  		$scope.scrappedProduct.imgThumb = '../../bundles/newstartcommon/images/loader.gif';
+				if(data.imgNumber > 0) {
+					$scope.scrappedProduct.imgThumb = data.imagesThumb[$scope.imageIndex];
+				} else {
+					$scope.scrappedProduct.imgThumb = '../../bundles/newstartcommon/images/imageNotFound.jpg';
+				}
 				$scope.scrapeLoading = false;
-				$scope.scrappedProduct.images = null;
+				$scope.imageLoading = false;
 		  		$('#go_btn .lbl').html('Go !');
 			});
   		}
