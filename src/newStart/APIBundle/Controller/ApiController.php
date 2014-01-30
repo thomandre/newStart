@@ -124,6 +124,7 @@ class ApiController extends Controller
             $imagesArray      = array();
             $imagesThumbArray = array();
 
+
             if($res) {
                 $phantomResponse = json_decode($match[1]);
                 if($phantomResponse == null) {
@@ -137,7 +138,10 @@ class ApiController extends Controller
                         $imagesThumbArray[] = $router->generate('image_resize', array('width' => 200, 'height' => 200, 'image' => $imageEntity->getName()));
                     }
 
-                    $response->setData(array('title' => $phantomResponse->title, 'price' => $phantomResponse->price, 'images' => $imagesArray, 'imagesThumb' => $imagesThumbArray, 'imgNumber' => count($phantomResponse->images), 'url' => $request->get('url')));
+                    $title = str_replace(array("\n", "\t", "\r"), '', $phantomResponse->title);
+                    $title = str_replace(array("&nbsp;"), ' ', $title);
+
+                    $response->setData(array('title' => $title, 'price' => $phantomResponse->price, 'images' => $imagesArray, 'imagesThumb' => $imagesThumbArray, 'imgNumber' => count($phantomResponse->images), 'url' => $request->get('url')));
                 }
             } else {
                 var_dump($res);
