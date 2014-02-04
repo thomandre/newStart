@@ -7,7 +7,7 @@
 			<a href="#/product/{{product.id}}" ng-show="product.thumb_url != null"><img ng-src='{{ product.thumb_url }}' /></a>
 			<p ng-show="product.thumb_url != null">
 				<span class="name"><span class="price">{{ product.price }}</span> <a href="#/product/{{product.id}}">{{ product.name }}</a></span>
-				<a href="#" title="supprimer" class="glyphicon glyphicon-trash" ng-click="delete()"></a> 
+				<a href="#" title="supprimer" class="glyphicon glyphicon-trash" ng-click="remove()"></a> 
 			</p>
 			<span class="glyphicon glyphicon-camera" ng-show="product.thumb_url == null"></span>
 		</div>

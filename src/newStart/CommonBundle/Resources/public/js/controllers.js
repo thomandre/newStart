@@ -43,7 +43,7 @@ var ModalInstanceCtrl = function ($scope, $modalInstance, items) {
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
   };
-}
+};
 
 
 
@@ -151,7 +151,9 @@ function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal) {
 }
 
 function ProductItemCtrl($scope, Product, $rootScope) {
-	$scope.delete = function () {
+
+
+	$scope.remove = function () {
 		if(confirm('Voulez-vous supprimer ' + $scope.product.name + ' ?')) {
 			Product.remove({id: $scope.product.id}, function (data) {
 		      $rootScope.products = data;
@@ -186,7 +188,7 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 			$scope.imageIndex = 0;
 		}
 		$scope.scrappedProduct.imgThumb = $scope.scrappedProduct.imagesThumb[$scope.imageIndex];  	
-	}
+	};
 
 	$scope.prevImg = function () {
 		if($scope.imageIndex > 0) {
@@ -195,7 +197,7 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 			$scope.imageIndex = $scope.scrappedProduct.images.length-1;
 		}
 		$scope.scrappedProduct.imgThumb = $scope.scrappedProduct.imagesThumb[$scope.imageIndex];
-	}
+	};
 
 	$scope.editTitle = function () {
 		$scope.editModeTitle = true;
@@ -257,13 +259,13 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 		  		$('#go_btn .lbl').html('Go !');
 			});
   		}
-	}
+	};
 
   	$scope.productScrapeCancel = function(name) {
   		$scope.scrappedProduct = null;
 		$scope.url = null;
   		$scope.scrapeLoading = false;
-	}
+	};
 
   	$scope.productSave = function(scrappedProduct) {
   	  if($rootScope.nbProducts < 5) {
@@ -289,14 +291,14 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
  			$scope.warning = null;
 		  }, 10000);
   	  }
-	}
+	};
 
 	$scope.countProducts = function () {
 		$rootScope.nbProducts = 0;
 		while($rootScope.products.length && $rootScope.nbProducts < 5 && $rootScope.products[$rootScope.nbProducts]['name'] != undefined) {
 			$rootScope.nbProducts++;
 		}
-	}
+	};
 
 	$scope.updateProducts = function () {
       $rootScope.products = Product.listMine(function (response) {
@@ -304,7 +306,7 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
       });
 
 	  //console.log( $('.viewed-profile img').attr('src'));
-	}
+	};
     $scope.updateProducts();
 }
 
