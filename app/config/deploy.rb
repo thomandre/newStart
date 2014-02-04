@@ -12,17 +12,20 @@ set :model_manager, "doctrine"
 
 set :clear_controllers, false
 
-set :use_sudo,      false
+set :use_sudo,      true
 set :keep_releases,  3
 set :shared_files,      ["app/config/parameters.yml"]
-set :shared_children,     [app_path + "/logs", web_path + "/uploads", "vendor"]
+set :shared_children,     [app_path + "/logs", web_path + "/uploads", web_path + "/images", "vendor"]
 set :use_composer, true
 
 set :user,                "ubuntu"
 set :writable_dirs,       ["app/cache", "app/logs"]
 set :writable_dirs,       ["app/cache"]
 set :webserver_user,      "www-data"
+set :permission_method,   :chown
 set :use_set_permissions, true
+
+set :copy_vendors, true
 
 ssh_options[:keys] = ["/Users/thomasandre/.ssh/havefyve-beta.pem"]
 
