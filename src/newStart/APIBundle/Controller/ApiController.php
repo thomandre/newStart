@@ -339,13 +339,13 @@ class ApiController extends Controller
     }    
 
     /**
-     * @Route("/api/v1/product/bought", name="have_bought")
+     * @Route("/api/v1/product/bought/{productId}", name="have_bought")
      * @Template()
      */
-    public function haveBoughtProductAction(Request $request)
+    public function haveBoughtProductAction(Request $request, $productId)
     {
         $em = $this->getDoctrine()->getManager();
-        $productId = $request->get('productId');
+        //$productId = $request->get('productId');
         $user = $this->getUser();
         $product = $em->getRepository('newStartCommonBundle:Product')->find($productId);
         if($product->getUser() == $user) {

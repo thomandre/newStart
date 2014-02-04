@@ -18,50 +18,24 @@
 			<p class="comment small">{{ product.comment }}</p>
 			<a href="http://www.leetchi.com/fr/fundraising/CheckUserStatus?FormDto.AcceptContributionsInformation=true&FormDto.AcceptContributionsInformation=false&FormDto.AmountCollectedHidden=false&FormDto.Beneficiary={{ product.fullName }}&FormDto.BeneficiaryFacebookId={{ product.fbUserId }}&FormDto.ContributionsPrivate=false&FormDto.Event=Birthday&FormDto.Expiration=20%2F02%2F2014&FormDto.HasPromotionCode=false&FormDto.HasSuggestedAmountEuroCents=false&FormDto.IsPublic=false&FormDto.Name=Anniversaire%20{{ product.firstName }}&FormDto.PromotionCode=&FormDto.RaisingGoalEuroCents={{ product.price }}&FormDto.SuggestedAmountEuroCents=&FormDto.Utmccn=not%20present&FormDto.Utmcmd=not%20present&FormDto.Utmcsr=not%20present&FormDto.Utmctr=not%20present&FundraisingId=" class="btn btn-default" target="_blank">Créer une cagnotte</a> 
 
-			<a href="{{ product.url }}" class="product-link btn btn-primary" target="_blank">Acheter</a>
+			<a href="{{ product.url }}" class="product-link btn btn-primary" target="_blank" ng-click="open()">Acheter</a>
 		</div>
 	</div>
 </div>
 <input type="hidden" id="productId" value="{{ product.id }}">
 
-<div id="boughtModal" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Vous avez décidé d’acheter ce cadeau finalement ?</h4>
-      </div>
-      <div class="modal-body">
+<script type="text/ng-template" id="myModalContent.html">
+	<div class="modal-content">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	    <h4 class="modal-title">Vous avez décidé d’acheter ce cadeau finalement ?</h4>
+	  </div>
+	  <div class="modal-body">
 		<p class="small">Si vous cliquez sur oui, le cadeau disparaitra ne sera plus visible dans la liste, sauf pour {{ product.fullName }}, pour lui garder la surprise ;-)</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn" id="cancel">Non</button>
-        <button type="button" class="btn btn-primary" id="validate">Oui, j'ai acheté ce cadeau</button>
-      </div>
-    </div>
-  </div>
-  <input type="hidden" value="{{ product.fullName }}" id="fullName" />
-</div>
-
-<script>
-	$('.product-link').click(function (e) {
-		//e.preventDefault();
-		$('#boughtModal').modal('show');
-	});
-
-	$('#cancel').click(function () {
-		$('#boughtModal').modal('hide');
-	});
-
-	$('#validate').click(function () {
-		$.ajax({
-			url: $('#path_have_bought').val(),
-			data: 'productId=' + $('#productId').val(),
-			success: function (data) {
-				$('#boughtModal').modal('hide');
-				$('.alert-notice').html('Génial ! ' + $('#fullName').val() + ' sera forcément aux anges !');
-				$('.alert-notice').show();
-			}
-		});
-	});
+	  </div>
+	  <div class="modal-footer">
+	    <button type="button" class="btn" id="cancel" ng-click="cancel()">Non</button>
+	    <button type="button" class="btn btn-primary" id="validate" ng-click="buy()">Oui, j'ai acheté ce cadeau</button>
+	  </div>
+	</div>
 </script>

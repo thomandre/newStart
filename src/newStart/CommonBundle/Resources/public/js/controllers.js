@@ -33,7 +33,11 @@ function MyFriendsListCtrl($scope, $timeout, Friend, $rootScope) {
 var ModalInstanceCtrl = function ($scope, $modalInstance, items) {
 
   $scope.ok = function () {
-    $modalInstance.close();
+    $modalInstance.close('ok');
+  };
+
+  $scope.buy = function () {
+    $modalInstance.close('buy');
   };
 
   $scope.cancel = function () {
@@ -102,15 +106,27 @@ function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal) {
 	      }
 	    });
 
-	    modalInstance.result.then(function (selectedItem) {
-	      Product.remove({id: $scope.product.id}, function (data) {
-		    $rootScope.products = data;
-			$scope.countProducts();
+	    modalInstance.result.then(function (clickedBtn) {
+		  if(clickedBtn == 'ok') {
+			Product.remove({id: $scope.product.id}, function (data) {
+			  $rootScope.products = data;
+	  	      $scope.countProducts();
 
-			$('#boughtModal').modal('hide');
-			$('.alert-notice').html('Génial !');
-			$('.alert-notice').show();
-		  });
+			  $('#boughtModal').modal('hide');
+			  $('.alert-notice').html('Génial !');
+			  $('.alert-notice').show();
+  		    });
+		  } else {
+			Product.buy({id: $scope.product.id}, function (data) {
+			  $rootScope.products = data;
+	  	      //$scope.countProducts();
+
+			  $('#boughtModal').modal('hide');
+			  $('.alert-notice').html('Génial ! ' + $scope.product.fullName + ' sera forcément aux anges !');
+			  $('.alert-notice').show();
+  		    });
+		  }
+	      
 	    }, function () {
 
 	    });

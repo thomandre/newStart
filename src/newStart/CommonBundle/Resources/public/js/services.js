@@ -6,7 +6,8 @@ angular.module('havefyveServices', ['ngResource']).
 	    add: {method:'POST', params:{method:'add'}, isArray:true},
 	    show: {method:'GET', params:{method:'show'}},
 	    edit: {method:'GET', params:{method:'edit'}},
-	    remove: {method:'GET', params:{method:'remove'}, isArray:true}
+	    remove: {method:'GET', params:{method:'remove'}, isArray:true},
+	    buy: {method:'GET', params:{method:'bought'}, isArray:true}
 	  });
 	}).factory('Friend', function($resource){
 	  return $resource('../api/v1/friends/:method/:id', {}, {
