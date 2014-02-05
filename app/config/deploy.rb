@@ -22,7 +22,8 @@ set :user,                "ubuntu"
 set :writable_dirs,       ["app/cache", "app/logs"]
 set :writable_dirs,       ["app/cache"]
 set :webserver_user,      "www-data"
-set :permission_method,   :chown
+set :dump_assetic_assets, true
+set :permission_method,   :acl
 set :use_set_permissions, true
 
 set :copy_vendors, true
