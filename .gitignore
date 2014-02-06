@@ -12,3 +12,5 @@ app/tmp/*
 web/images/*
 ns.sublime-project
 ns.sublime-workspace
+web/css/*
+web/js/*
