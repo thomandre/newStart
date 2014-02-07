@@ -17,3 +17,8 @@ parameters:
     router.request_context.host: 'havefyve.local:8888'
     router.request_context.scheme: http
     router.request_context.base_url: /newStart/web/app_dev.php
+    pdo.db_options:
+        db_table:    session
+        db_id_col:   session_id
+        db_data_col: session_value
+        db_time_col: session_time

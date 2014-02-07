@@ -17,7 +17,8 @@ framework:
         #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trusted_proxies: ~
-    session:         ~
+    session:
+        handler_id: session.handler.pdo
     fragments:       ~
 
 # Twig Configuration
@@ -70,6 +71,7 @@ swiftmailer:
     password:  %mailer_password%
     spool:     { type: memory }
     port: 587
+
 fos_user:
     db_driver: orm
     firewall_name: main
@@ -91,3 +93,17 @@ services:
     public: false
     arguments:  ['@router', '@security.user.entity_manager']
 
+  pdo:
+    class: PDO
+    arguments:
+        - "mysql:host=%database_host%;port=%database_port%;dbname=%database_name%"
+        - '%database_user%'
+        - '%database_password%'
+    calls:
+        - [setAttribute, [3, 2]]
+
+  session.handler.pdo:
+    class:     Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
+    arguments: [@pdo, %pdo.db_options%]
+
+    
