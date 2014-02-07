@@ -30,7 +30,8 @@ set :copy_vendors, true
 
 ssh_options[:keys] = ["/Users/thomasandre/.ssh/havefyve-beta.pem"]
 
+before "symfony:cache:warmup", "symfony:doctrine:schema:update"
 
-logger.level = Logger::MAX_LEVEL
+logger.level = Logger::INFO
 
 server 'ubuntu@54.201.14.115', :app, :web, :primary => true

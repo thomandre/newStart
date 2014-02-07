@@ -131,11 +131,14 @@ class ApiController extends Controller
                     echo 'Error : "'.$match[1].'" is not a valid JSON.';
                 } else {
                     $srcs = array();
-                    foreach($phantomResponse->images as $i) {
-                        $imageEntity = $dlService->getImageViaCache($i->src);
-                        $imagesArray[] = $imageEntity->getCurrentUrl($request);
 
-                        $imagesThumbArray[] = $router->generate('image_resize', array('width' => 200, 'height' => 200, 'image' => $imageEntity->getName()));
+                    if(is_array($phantomResponse->images)) {
+                        foreach($phantomResponse->images as $i) {
+                            $imageEntity = $dlService->getImageViaCache($i->src);
+                            $imagesArray[] = $imageEntity->getCurrentUrl($request);
+
+                            $imagesThumbArray[] = $router->generate('image_resize', array('width' => 200, 'height' => 200, 'image' => $imageEntity->getName()));
+                        }
                     }
 
                     $title = str_replace(array("\n", "\t", "\r"), '', $phantomResponse->title);
