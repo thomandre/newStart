@@ -1,19 +1,21 @@
-# This file is auto-generated during the composer install
 parameters:
-    database_driver: pdo_mysql
-    database_host: localhost
-    database_port: 8889
-    database_name: newStart
-    database_user: root
+    database_driver:   pdo_mysql
+    database_host:     localhost
+    database_port:     8889
+    database_name:     newStart
+    database_user:     root
     database_password: root
+
     mailer_transport: smtp
     mailer_user: notification@havefyve.com
     mailer_password: nothavefyve
     mailer_host: smtp.havefyve.com
     mailer_sender_address: notification@havefyve.com
     mailer_sender_name: Havefyve
+
     locale: fr
     secret: 80d26422005ed266ad66e88c6f2d521682037949
+
     router.request_context.host: 'havefyve.local:8888'
     router.request_context.scheme: http
     router.request_context.base_url: /newStart/web/app_dev.php
