@@ -6,6 +6,7 @@ Contexte: Je souhaite offir un cadeau
 Scénario: Je suis Thomas et je veux partager un le MacBook Air de mes reves
 Soit je suis sur "/"
 Soit je me logue en tant que "thomandr1@yahoo.fr"
+Et j'attend "0.5" secondes
 Alors je devrais voir "Havefyve est le site le plus simple pour offrir les cadeaux qui font vraiment plaisir."
 Alors je presse "Ok"
 Alors je remplis "url" avec "http://www.apple.com/fr/macbook-air/"

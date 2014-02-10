@@ -243,11 +243,16 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 		$scope.editModePrice = false;
 		$scope.imageLoading = true;
   		$scope.imageIndex = 0;
+  			
+  			console.log($scope.url.substr(0, 3));
+  			if($scope.url.substr(0, 3) == 'www') {
+  				$scope.url = 'http://' + $scope.url;
+  			}
 
   		if($scope.url != undefined) {
 	  		$scope.scrapeLoading = true;
 	  		$('#go_btn .lbl').html('');
-			$http.get('../api/v1/image/scrape?url=' + $scope.url).success(function (data) {
+			$http.get('../api/v1/product/scrape?url=' + $scope.url).success(function (data) {
 				$scope.scrappedProduct = data;
 				if(data.imgNumber > 0) {
 					$scope.scrappedProduct.imgThumb = data.imagesThumb[$scope.imageIndex];

@@ -76,79 +76,38 @@ class ApiController extends Controller
 
     /**
      * @Route("/api/v1/product/scrape", name="scrape")
-     * @Template()
      * @Cache(expires="+2hours", public="true")
      */
-    public function scrapeProductAction(Request $request)
-    {
-        $title = '';
-
-        try {
-            if($request->get('url') && $request->get('url') != '') {
-                $title  = $this->scrapeService->getTitle($request->get('url'));
-            }
-        } catch(\Exception $e) {
-            if($e->getMessage() == '404') {
-                throw $this->createNotFoundException('Le produit n\'existe pas');
-            }
-        }
-
-        $response = new JsonResponse();
-        $response->setData(array('title' => $title, 'url' => $request->get('url')));
-
-        return $response;
-    }
-
-    /**
-     * @Route("/api/v1/image/scrape", name="image_scrape")
-     * @Cache(expires="+2hours", public="true")
-     */
-    public function scrapeImagesAction(Request $request) 
+    public function scrapeAction(Request $request) 
     {
         $response = new JsonResponse();
         $dlService = $this->dlService;
         $router = $this->container->get('router');
 
         if($request->get('url') && $request->get('url') != '') {
-            //var_dump($response);
-            $command = 'unset DYLD_LIBRARY_PATH; phantomjs --disk-cache=yes ../getComputedStyle.js '.$request->get('url').' 1024 768 ';
-            //var_dump($command);
-            $process = new Process($command);
-            $process->run();
-
-            $buffer = $process->getOutput();
-
-            $match = array();
-            $res = preg_match('/@@@([^@]*)@@@/', $buffer, $match);
+            try {
+                $product = $this->scrapeService->getInfos($request->get('url'));
+            } catch (\Exception $e) {
+                $response->setData(array('status' => 'ko', 'message' => $e->getMessage()));
+                return $response;
+            }
 
             $imagesArray      = array();
             $imagesThumbArray = array();
 
+            if(is_array($product->images)) {
+                foreach($product->images as $i) {
+                    $imageEntity = $dlService->getImageViaCache($i->src);
+                    $imagesArray[] = $imageEntity->getCurrentUrl($request);
 
-            if($res) {
-                $phantomResponse = json_decode($match[1]);
-                if($phantomResponse == null) {
-                    echo 'Error : "'.$match[1].'" is not a valid JSON.';
-                } else {
-                    $srcs = array();
-
-                    if(is_array($phantomResponse->images)) {
-                        foreach($phantomResponse->images as $i) {
-                            $imageEntity = $dlService->getImageViaCache($i->src);
-                            $imagesArray[] = $imageEntity->getCurrentUrl($request);
-
-                            $imagesThumbArray[] = $router->generate('image_resize', array('width' => 200, 'height' => 200, 'image' => $imageEntity->getName()));
-                        }
-                    }
-
-                    $title = str_replace(array("\n", "\t", "\r"), '', $phantomResponse->title);
-                    $title = str_replace(array("&nbsp;"), ' ', $title);
-
-                    $response->setData(array('title' => $title, 'price' => $phantomResponse->price, 'images' => $imagesArray, 'imagesThumb' => $imagesThumbArray, 'imgNumber' => count($phantomResponse->images), 'url' => $request->get('url')));
+                    $imagesThumbArray[] = $router->generate('image_resize', array('width' => 200, 'height' => 200, 'image' => $imageEntity->getName()));
                 }
-            } else {
-                var_dump($res);
             }
+
+            $title = str_replace(array("\n", "\t", "\r"), '', $product->title);
+            $title = str_replace(array("&nbsp;"), ' ', $title);
+
+            $response->setData(array('title' => $title, 'price' => $product->price, 'images' => $imagesArray, 'imagesThumb' => $imagesThumbArray, 'imgNumber' => count($product->images), 'url' => $request->get('url')));
         }
 
         //var_dump($response);
@@ -178,27 +137,22 @@ class ApiController extends Controller
         $product->setUrl($params['url']);
 
         if($params['img'] == null || $params['img'] == 'null') {
-            $command = 'unset DYLD_LIBRARY_PATH; phantomjs --disk-cache=yes ../getComputedStyle.js '.$params['url'].' 1024 768 2> /dev/null';
-            $process = new Process($command);
-            $process->run();
-            
-            $buffer = $process->getOutput();
+            try {
+                $productScrapped = $this->scrapeService->getInfos($request->get('url'));
+            } catch (\Exception $e) {
+                $response->setData(array('status' => 'ko', 'message' => $e->getMessage()));
+            }
 
-            $match = array();
-            $res = preg_match('/@@@([^@]*)@@@/', $buffer, $match);
-            if($res) {
-                $phantomResponse = json_decode($match[1]);
-                if($phantomResponse == null || $phantomResponse->images == null) {
-                    //echo 'Error : "'.$match[1].'" is not a valid JSON.';
-                    $router = $this->container->get('router');
-                    $siteUrl = $router->generate('public_home', array(), true);
-                    $imageEntity = $dlService->getImageViaCache($siteUrl.'../bundles/newstartcommon/images/imageNotFoundStd.jpg');
-                    $product->setImgUrl($imageEntity->getCurrentUrl($request));
-                } else {
-                    $imageEntity = $dlService->getImageViaCache($phantomResponse->images[0]->src);
-                    $product->setImgUrl($imageEntity->getCurrentUrl($request));
-                    $product->setPrice($phantomResponse->price);
-                }
+            if($productScrapped == null || $productScrapped->images == null) {
+                //echo 'Error : "'.$match[1].'" is not a valid JSON.';
+                $router = $this->container->get('router');
+                $siteUrl = $router->generate('public_home', array(), true);
+                $imageEntity = $dlService->getImageViaCache($siteUrl.'../bundles/newstartcommon/images/imageNotFoundStd.jpg');
+                $product->setImgUrl($imageEntity->getCurrentUrl($request));
+            } else {
+                $imageEntity = $dlService->getImageViaCache($productScrapped->images[0]->src);
+                $product->setImgUrl($imageEntity->getCurrentUrl($request));
+                $product->setPrice($productScrapped->price);
             }
         } else {
             $product->setImgUrl($params['img']);

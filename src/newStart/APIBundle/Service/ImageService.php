@@ -49,9 +49,9 @@ class ImageService
 	{
 		if(($w / $h) < ($nw / $nh)) {
 			$wOffset = 0;
-			$hOffset = (($h / ($w / $nw)) - $nh) /2;			
+			$hOffset = (($h / ($w / $nw)) - $nh);			
 		} elseif(($w / $h) > ($nw / $nh)) {
-			$wOffset = (($w / ($h / $nh)) - $nw) / 2;
+			$wOffset = (($w / ($h / $nh)) - $nw);
 			$hOffset = 0;
 		} else {
 			$wOffset = 0;
@@ -78,6 +78,10 @@ class ImageService
 
 		$image = imagecreatefromstring($imgData);
 		$nimage = imagecreatetruecolor($nw, $nh);
+		imagesavealpha($nimage, true);
+
+		$trans_colour = imagecolorallocatealpha($nimage, 0, 0, 0, 127);
+		imagefill($nimage, 0, 0, $trans_colour);
 
 		if($nw == null || $nh == null) {
 			list($nw, $nh) = $this->dimentionCalculate($w, $h, $nw, $nh);
@@ -92,7 +96,7 @@ class ImageService
 			throw new \Exception();
 		}
 
- 	    $result = imagejpeg($nimage, $fileDest);
+ 	    $result = imagepng($nimage, $fileDest);
 
 		if($result == false) {
 			throw new \Exception();

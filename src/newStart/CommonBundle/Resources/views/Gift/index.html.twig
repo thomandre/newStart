@@ -15,7 +15,7 @@
 			<div class="col-md-6 col-sm-6 col-xs-6 url-block">
 				<div class="input-group url input-lg">
 					<span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
-					<input type="url" name="url" id="url" class="form-control" ng-model="url" placeholder="Copiez-collez l'URL des cadeaux que vous souhaitez recevoir !" ui-keydown="{13:'productScrape()', 27:'productScrapeCancel()'}" />
+					<input type="text" name="url" id="url" class="form-control" ng-model="url" placeholder="Copiez-collez l'URL des cadeaux que vous souhaitez recevoir !" ui-keydown="{13:'productScrape()', 27:'productScrapeCancel()'}" />
 					<span class="input-group-btn">
 						<button class="btn btn-primary" type="button" id="go_btn" ng-click="productScrape()"><span ng-show="scrapeLoading" class="loader glyphicon glyphicon-refresh" style="display:none;"></span><span class="lbl">Go !</span></button>
 					</span>

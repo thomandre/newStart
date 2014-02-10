@@ -32,10 +32,10 @@
     if (status !== "success") {
       return console.log("Unable to open " + url);
     } else {
-
+      //page.render('capture.png');
       var result = page.evaluate(function() {
         var debug = false;
-        var pattern = /((?:(?:USD|EUR|\$|€){1}(?:\ ?)(?:[0-9]+[\.|\,]?[0-9]*){1}(?:\ ?)){1}|(?:(?:[0-9]+[\.|\,]?[0-9]*){1}(?:\ ?)(?:USD|EUR|\$|€){1}){1})/;
+        var pattern = /((?:(?:USD|EUR|GBP|\$|€|£){1}(?:\ ?)(?:[0-9]+[\.|\,]?[0-9]*){1}(?:\ ?)){1}|(?:(?:[0-9]+[\.|\,]?[0-9]*){1}(?:\ ?)(?:USD|EUR|GBP|\$|€|£){1}){1})/;
         var attributes, el, elements, i, output, propertyName, rule, ruleList, rules, style, _i, _j, _k, _len, _ref1, _ref2;
         output = {
           url: location,
@@ -55,6 +55,20 @@
            return tmp.textContent || tmp.innerText || "";
         };
 
+        var offset = function(elem) {
+          if(!elem) elem = this;
+
+          var x = elem.offsetLeft;
+          var y = elem.offsetTop;
+
+          while (elem = elem.offsetParent) {
+            x += elem.offsetLeft;
+            y += elem.offsetTop;
+          }
+
+          return { left: x, top: y };
+        };
+
         output.pagetitle = document.getElementsByTagName('title')[0].innerHTML.trim();
 
         var elements = mergeNodes(
@@ -62,7 +76,10 @@
                           mergeNodes(document.getElementsByTagName('div'), document.getElementsByTagName('span')), 
                           mergeNodes(document.getElementsByTagName('p'), document.getElementsByTagName('a'))
                         ), 
-                        mergeNodes(document.getElementsByTagName('b'), document.getElementsByTagName('strong'))
+                        mergeNodes(
+                          mergeNodes(document.getElementsByTagName('b'), document.getElementsByTagName('strong')),
+                          document.getElementsByTagName('li')
+                        )
                       );
 
 
@@ -78,24 +95,27 @@
             var matches = strip(html).match(pattern);
 
             if(matches != null) {
-              if(debug) console.log(' >> MATCH');
+              //if(debug) console.log(' >> MATCH');
               style = window.getComputedStyle(el);
               attributes = {};
               for (i = _j = 0, _ref1 = style.length; 0 <= _ref1 ? _j < _ref1 : _j > _ref1; i = 0 <= _ref1 ? ++_j : --_j) {
                 propertyName = style.item(i);
 
-                if(propertyName == 'font-size' || propertyName == 'font-weight' || propertyName == 'visibility' || propertyName == 'color' || propertyName == 'display') {
+                //console.log(propertyName + ': ' + style.getPropertyValue(propertyName));
+
+                if(propertyName == 'font-size' || propertyName == 'font-weight' || propertyName == 'visibility' || propertyName == 'color' || propertyName == 'display' || propertyName == 'text-decoration') {
                   attributes[propertyName] = style.getPropertyValue(propertyName);
+                  //console.log(propertyName);
                 }
               }
 
               attributes['font-weight'] = attributes['font-weight'].replace('normal', '400').replace('bold', '700');
               attributes['font-size'] = parseInt(attributes['font-size'].replace('px', ''));
-
-              var price = parseFloat(matches[0].replace(',', '.').replace('EUR', '').replace('€', '').replace('$', '').replace('USD', ''));
-              if(debug) console.log('### debug ' + el.nodeName + '.' + el.className + ' - price: ' + price);
-              if(price > 0) {
-                if(el.offsetWidth > 0 && el.offsetHeight > 0) {
+              debug = true;
+              var price = parseFloat(matches[0].replace(',', '.').replace('EUR', '').replace('€', '').replace('$', '').replace('USD', '').replace('GBP', '').replace('£', ''));
+              if(debug) console.log('### debug ' + el.nodeName + '.' + el.className + ' - price: ' + price + ' - top: ' + offset(el).top + ' - text-decoration: ' + attributes['text-decoration']);
+              if(price > 0 && attributes['text-decoration'] != 'line-through') {
+                if(el.offsetWidth > 0 && el.offsetHeight > 0 && offset(el).top < 800) {
                   if(debug) console.log('### debug - font-size: ' + attributes['font-size'] + " - height: " + el.offsetHeight);
 
                   ruleList = el.ownerDocument.defaultView.getMatchedCSSRules(el, '') || [];
@@ -107,12 +127,15 @@
                       parentStyleSheet: rule.parentStyleSheet.href
                     });
                   }
+
                   output.elements.push({
                     id: el.id,
                     className: el.className,
                     nodeName: el.nodeName,
                     offsetHeight: el.offsetHeight,
                     offsetWidth: el.offsetWidth,
+                    offsetTop: el.offsetTop,
+                    offsetLeft: el.offsetLeft,
                     computedStyle: attributes,
                     price: matches[0]
                   });
@@ -152,7 +175,6 @@
                 parentStyleSheet: rule.parentStyleSheet.href
               });
             }
-
             output.imgs.push({
               id: el.id,
               className: el.className,
@@ -195,8 +217,14 @@
           imgs_array+='{"src": "' + output.imgs[i].src + '", "height":"' + output.imgs[i].offsetHeight + '", "width":"' + output.imgs[i].offsetWidth + '"}, ';
         }*/
 
+        if(output.elements[0] != undefined && output.elements[0].price != undefined) {
+          var price = output.elements[0].price.replace('€', 'EUR');
+        } else {
+          var price = null;
+        }
+
         var result = {
-          price: output.elements[0].price.replace('€', 'EUR'),
+          price: price,
           images: output.imgs,
           title: output.pagetitle
         }
