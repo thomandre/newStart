@@ -14,6 +14,7 @@ class scrapeServiceTest extends NewStartWebTestCase
 	/**
 	 * @test
 	 * @group scrape
+	 * @group Zalando
 	 */
 	public function getInfosZalandoTest()
 	{
@@ -22,8 +23,8 @@ class scrapeServiceTest extends NewStartWebTestCase
 
 		$infos = $scrapeService->getInfos('http://www.zalando.fr/khujo-thered-veste-d-hiver-marron-kh122g02a-710.html?size=M');
 		$this->assertEquals('khujo THERED - Veste d\'hiver - marron - ZALANDO.FR', $infos->title);
-		$this->assertEquals('http://i2.ztat.net/detail/KH/12/2G/02/A7/10/KH122G02A-710@14.jpg', $infos->images[0]->src);
-		$this->assertEquals('64,00 EUR', $infos->price);
+		$this->assertNotEquals(false, strpos($infos->images[0]->src, 'detail/KH/12/2G/02/A7/10/KH122G02A-710@14.jpg'));
+		$this->assertEquals('80,00 EUR', $infos->price);
 	}
 
 	/**
@@ -51,15 +52,16 @@ class scrapeServiceTest extends NewStartWebTestCase
 		$scrapeService = new ScrapeService();
 		$scrapeService->container = $this->container;
 
-		$infos = $scrapeService->getInfos('http://www.ralphlauren.fr/product/index.jsp?productId=14996361');
-		$this->assertEquals('Caban New Academy - &lt;b&gt;Vestes &amp; Manteaux&lt;/b&gt;  Prêt-à-Porter  - Ralph Lauren France', $infos->title);
-		$this->assertEquals('http://s7d2.scene7.com/is/image/PoloGSI/s7-1027913_standard?$flyout_main$&cropN=0.12,0,0.75,1&iv=qG2d30&wid=1080&hei=1440&fit=fit,1', $infos->images[0]->src);
-		$this->assertEquals('345,00 EUR', $infos->price);
+		$infos = $scrapeService->getInfos('http://www.ralphlauren.fr/product/index.jsp?productId=27596401&cp=4663481.4663341.5235531&ab=ln_hommes_pr%EAt-%E0-porter_vestesmanteaux');
+		$this->assertEquals('Doudoune Ether - Doudounes &amp; Gilets Vestes &amp; Manteaux - Ralph Lauren France', $infos->title);
+		$this->assertEquals('http://s7d2.scene7.com/is/image/PoloGSI/s7-1069246_standard?$flyout_main$&cropN=0.12,0,0.75,1&iv=uzUcV2&wid=1080&hei=1440&fit=fit,1', $infos->images[0]->src);
+		$this->assertEquals('245,00 EUR', $infos->price);
 	}
 	 
 	/**
 	 * @test
 	 * @group scrape
+	 * @group Balibaris
 	 */
 	public function getInfosBalibarisTest()
 	{
@@ -140,7 +142,7 @@ class scrapeServiceTest extends NewStartWebTestCase
 	 * @group scrape
 	 * @group asos
 	 */
-	public function getInfosAsos2Test()
+	/*public function getInfosAsos2Test()
 	{
 		$scrapeService = new ScrapeService();
 		$scrapeService->container = $this->container;
@@ -149,7 +151,7 @@ class scrapeServiceTest extends NewStartWebTestCase
 		$this->assertEquals('', $infos->title);
 		$this->assertEquals('', $infos->images[0]->src);
 		$this->assertEquals('', $infos->price);
-	}
+	}*/
 
 	
 

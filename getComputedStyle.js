@@ -32,7 +32,7 @@
     if (status !== "success") {
       return console.log("Unable to open " + url + ' - status: ' + status);
     } else {
-      page.render('capture.png');
+      //page.render('capture.png');
       var result = page.evaluate(function() {
         var debug = false;
         var pattern = /((?:(?:USD|EUR|GBP|\$|€|£){1}(?:\ {0,3})(?:[0-9]+[\.|\,]?[0-9]*){1}(?:\ {0,3})){1}|(?:(?:[0-9]+[\.|\,]?[0-9]*){1}(?:\ {0,3})(?:USD|EUR|GBP|\$|€|£){1}){1})/;
@@ -117,7 +117,7 @@
               var price = parseFloat(matches[0].replace(',', '.').replace('EUR', '').replace('€', '').replace('$', '').replace('USD', '').replace('GBP', '').replace('£', ''));
               if(debug) console.log('### debug ' + el.nodeName + '.' + el.className + ' - price: ' + price + ' - top: ' + offset(el).top + ' - text-decoration: ' + attributes['text-decoration']);
               if(price > 0 && attributes['text-decoration'] != 'line-through') {
-                if(el.offsetWidth > 0 && el.offsetHeight > 0 && offset(el).top < 800) {
+                if(el.offsetWidth > 0 && el.offsetHeight > 0 && offset(el).top < 800 && offset(el).top > 50) {
                   if(debug) console.log('### debug - font-size: ' + attributes['font-size'] + " - height: " + el.offsetHeight);
 
                   ruleList = el.ownerDocument.defaultView.getMatchedCSSRules(el, '') || [];

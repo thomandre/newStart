@@ -23,7 +23,7 @@ class ScrapeService
 		$path = $this->container->getParameter('kernel.root_dir').'/../getComputedStyle.js';
 
         $command = 'unset DYLD_LIBRARY_PATH; phantomjs --disk-cache=yes '.$path.' '.$url.' 1024 768 ';
-        var_dump($command);
+        //var_dump($command);
         $process = new Process($command);
         $process->run();
 
