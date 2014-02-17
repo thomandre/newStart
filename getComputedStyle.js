@@ -30,12 +30,12 @@
   
   page.open(url, function(status) {
     if (status !== "success") {
-      return console.log("Unable to open " + url);
+      return console.log("Unable to open " + url + ' - status: ' + status);
     } else {
-      //page.render('capture.png');
+      page.render('capture.png');
       var result = page.evaluate(function() {
         var debug = false;
-        var pattern = /((?:(?:USD|EUR|GBP|\$|€|£){1}(?:\ ?)(?:[0-9]+[\.|\,]?[0-9]*){1}(?:\ ?)){1}|(?:(?:[0-9]+[\.|\,]?[0-9]*){1}(?:\ ?)(?:USD|EUR|GBP|\$|€|£){1}){1})/;
+        var pattern = /((?:(?:USD|EUR|GBP|\$|€|£){1}(?:\ {0,3})(?:[0-9]+[\.|\,]?[0-9]*){1}(?:\ {0,3})){1}|(?:(?:[0-9]+[\.|\,]?[0-9]*){1}(?:\ {0,3})(?:USD|EUR|GBP|\$|€|£){1}){1})/;
         var attributes, el, elements, i, output, propertyName, rule, ruleList, rules, style, _i, _j, _k, _len, _ref1, _ref2;
         output = {
           url: location,
@@ -88,14 +88,16 @@
           
           var html = el.innerHTML.replace('&nbsp;', ' ');
 
-          if(debug) console.log(el.nodeName + '.' + el.className + ' --- ' + html);
-          //if(el.className == 'price priceXL') debug = true; 
+          if(el.className == 'product_price') debug = true; 
+          else debug = false;
+          if(debug) console.log('### debug ' + el.nodeName + '.' + el.className + ' --- ' + html);
 
           if(strip(html).length < 200) {
+            if(debug) console.log('### debug Length OK');            
             var matches = strip(html).match(pattern);
 
             if(matches != null) {
-              //if(debug) console.log(' >> MATCH');
+              if(debug) console.log(' >> MATCH');
               style = window.getComputedStyle(el);
               attributes = {};
               for (i = _j = 0, _ref1 = style.length; 0 <= _ref1 ? _j < _ref1 : _j > _ref1; i = 0 <= _ref1 ? ++_j : --_j) {
@@ -111,7 +113,7 @@
 
               attributes['font-weight'] = attributes['font-weight'].replace('normal', '400').replace('bold', '700');
               attributes['font-size'] = parseInt(attributes['font-size'].replace('px', ''));
-              debug = true;
+              //debug = true;
               var price = parseFloat(matches[0].replace(',', '.').replace('EUR', '').replace('€', '').replace('$', '').replace('USD', '').replace('GBP', '').replace('£', ''));
               if(debug) console.log('### debug ' + el.nodeName + '.' + el.className + ' - price: ' + price + ' - top: ' + offset(el).top + ' - text-decoration: ' + attributes['text-decoration']);
               if(price > 0 && attributes['text-decoration'] != 'line-through') {

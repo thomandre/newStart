@@ -244,10 +244,10 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 		$scope.imageLoading = true;
   		$scope.imageIndex = 0;
   			
-  			console.log($scope.url.substr(0, 3));
-  			if($scope.url.substr(0, 3) == 'www') {
-  				$scope.url = 'http://' + $scope.url;
-  			}
+		//console.log($scope.url.substr(0, 3));
+		if($scope.url.substr(0, 3) == 'www') {
+			$scope.url = 'http://' + $scope.url;
+		}
 
   		if($scope.url != undefined) {
 	  		$scope.scrapeLoading = true;

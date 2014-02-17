@@ -107,6 +107,55 @@ class scrapeServiceTest extends NewStartWebTestCase
 	/**
 	 * @test
 	 * @group scrape
+	 * @group asos
+	 */
+	public function getInfosAsosTest()
+	{
+		$scrapeService = new ScrapeService();
+		$scrapeService->container = $this->container;
+
+		$infos = $scrapeService->getInfos('http://www.asos.fr/Superdry-Brad-Veste-en-cuir/11zo6n/?iid=3685064&cid=11760&sh=0&pge=1&pgesize=36&sort=-1&clr=Brown&r=2&mporgp=L1N1cGVyZHJ5L1N1cGVyZHJ5LUJyYWQtTGVhdGhlci1KYWNrZXQvUHJvZC8.');
+		$this->assertEquals('Superdry | Superdry - Brad - Veste en cuir chez ASOS', $infos->title);
+		//$this->assertEquals('', $infos->images[0]->src);
+		$this->assertEquals('309,75  EUR', $infos->price);
+	}
+	/**
+	 * @test
+	 * @group scrape
+	 * @group asos
+	 */
+	public function getInfosAsos2Test()
+	{
+		$scrapeService = new ScrapeService();
+		$scrapeService->container = $this->container;
+
+		$infos = $scrapeService->getInfos('http://www.asos.fr/ASOS-Caban-style-militaire-Bleu-marine/11e74l/?iid=2966682&cid=14368&sh=0&pge=0&pgesize=36&sort=-1&clr=Navy&mporgp=L0FTT1MvQVNPUy1QZWFjb2F0LVdpdGgtTWlsaXRhcnktRGV0YWlsLUluLU5hdnkvUHJvZC8.');
+		$this->assertEquals('ASOS | ASOS - Caban style militaire - Bleu marine chez ASOS', $infos->title);
+		//$this->assertEquals('', $infos->images[0]->src);
+		$this->assertEquals('59,73  EUR', $infos->price);
+	}
+
+	/**
+	 * @test
+	 * @group scrape
+	 * @group asos
+	 */
+	public function getInfosAsos2Test()
+	{
+		$scrapeService = new ScrapeService();
+		$scrapeService->container = $this->container;
+
+		$infos = $scrapeService->getInfos('');
+		$this->assertEquals('', $infos->title);
+		$this->assertEquals('', $infos->images[0]->src);
+		$this->assertEquals('', $infos->price);
+	}
+
+	
+
+	/**
+	 * @test
+	 * @group scrape
 	 */
 /*	public function twoImgScrapeTest()
 	{
