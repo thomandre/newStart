@@ -1,0 +1,647 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+<title>BOUTIQUE SAINT JAMES Site Officiel Vêtements marin St James Vente en ligne</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Description" content="Site Officiel. Vente en ligne vêtements Saint James, vêtements authentiques et de qualité, de style marin. Pour homme, femme, enfant et bébé." />
+<meta name="keywords" content="site officiel, saint james, st james, boutique saint james, boutique st james" />
+
+
+
+<!-- Stylesheets Modules ICEO Boutique -->
+<link rel="stylesheet" href="templates/bsjv3/iceo-css/ICEO_contenu.css" type="text/css">
+<link rel="stylesheet" href="templates/bsjv3/iceo-css/ICEO_diaporama.css" type="text/css">
+<link rel="stylesheet" href="templates/bsjv3/iceo-css/ICEO_listeproduits.css" type="text/css">
+<link rel="stylesheet" href="templates/bsjv3/iceo-css/ICEO_listeproduitsdetail.css" type="text/css">
+<link rel="stylesheet" href="templates/bsjv3/iceo-css/ICEO_lotspdtsauto.css" type="text/css">
+<link rel="stylesheet" href="templates/bsjv3/iceo-css/ICEO_meilleuresventes.css" type="text/css">
+<link rel="stylesheet" href="templates/bsjv3/iceo-css/ICEO_menu.css" type="text/css">
+<link rel="stylesheet" href="templates/bsjv3/iceo-css/ICEO_retourhautdepage.css" type="text/css">
+
+<link rel="stylesheet" href="templates/bsjv3/index.css" type="text/css">
+<link rel="stylesheet" href="templates/bsjv3/error.css" type="text/css"><link rel="icon" type="image/png" href="templates/bsjv3/i/favicon.png" />
+<script type="text/javascript" src="ICEO_scripts/AC_RunActiveContent.js"></script>
+<script src="templates/bsjv3/js/cufon-yui.js" type="text/javascript"></script>
+<script src="templates/bsjv3/js/cufon-replace.js" type="text/javascript"></script>
+<script src="templates/bsjv3/js/myriad-pro.cufonfonts.js" type="text/javascript"></script>
+
+<script src="templates/bsjv3/js/jquery-ui-1.8.14.custom/js/jquery-1.5.1.min.js" type="text/javascript"></script>
+<script src="templates/bsjv3/js/jquery-ui-1.8.14.custom/js/jquery-ui-1.8.14.custom.min.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="templates/bsjv3/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="templates/bsjv3/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="templates/bsjv3/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancyswf").fancybox({
+			'titlePosition'		: 'outside',
+			'overlayColor'		: '#000',
+			'overlayOpacity'	: 0.9
+		});
+
+	});
+</script>
+
+<!-- Bouton retour en haut de la page -->
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			var button_toTop = '<div id="toTop" style="display: none;" onClick="$(\'html, body\').animate({scrollTop:0}, \'slow\');return false;"><span>^ Retour en haut</span></div>';
+			$('body').append(button_toTop);
+
+			$(window).scroll(function() {
+				if($(this).scrollTop() != 0) {
+					$('#toTop').show();
+				} else {
+					$('#toTop').hide();
+				}
+			});
+
+			$('#toTop').click(function() {
+				$('body,html').animate({scrollTop:0},800);
+			});
+
+		});
+	</script>
+
+<!-- Script "Est visible à l'écran" -->
+<script src="templates/bsjv3/js/jquery.appear-1.1.1.min.js" type="text/javascript"></script>
+
+<script src="templates/bsjv3/js/jquery.cookie.js" type="text/javascript"></script>
+
+<script src="templates/bsjv3/js/jquery.jqzoom.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" href="templates/bsjv3/js/nivo-slider/themes/default/default.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="templates/bsjv3/js/nivo-slider/themes/pascal/pascal.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="templates/bsjv3/js/nivo-slider/themes/orman/orman.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="templates/bsjv3/js/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
+
+  <script src="templates/bsjv3/js/slides/slides.min.jquery.js"></script>
+
+<link rel="stylesheet" href="templates/bsjv3/js/jquery.bubblepopup/jquery.bubblepopup.v2.3.1.css" type="text/css" media="all" />
+<script src="templates/bsjv3/js/jquery.bubblepopup/jquery.bubblepopup.v2.3.1.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+
+	//save new settings for the selectable bubble popup...
+	$('#button_popup1').CreateBubblePopup({
+		selectable: true,
+		position : 'top',
+		align	 : 'center',
+		innerHtml: '<table cellpadding=0 cellspacing=0 width=190 border=0 style="border : 0; margin-left : 1px">\
+		<tr><td class="titre-popup" height=25 align=center valign=middle>LIVRAISON</td></tr>\
+		<tr><td class="contenu-popup" align=center valign=middle >\
+		Pour toute commande en France<br/>m&eacute;tropolitaine sup&eacute;rieure <br/>ou &eacute;gale &agrave; 30 &euro;<br/>les frais d&apos;exp&eacute;dition<br/>sont offerts.<br/><a href="ICEO_services.php">En savoir plus</a>\
+		</td></tr>\
+		<tr><td class="bottom-popup" align=center valign=middle><img src="templates/bsjv3/i/popup-bottom.png" alt="" border=0 /></td></tr>\
+		</table>',
+		innerHtmlStyle: {
+			color:'#FFFFFF',
+			'text-align':'center'
+		},
+		themeMargins: {
+			total: '1px',
+			difference: '1px'
+		},
+		themeName: 	'none',
+		themePath: 	'templates/bsjv3/js/jquery.bubblepopup/jquerybubblepopup-theme'
+	});
+
+	//save new settings for the selectable bubble popup...
+	$('#button_popup2').CreateBubblePopup({
+		selectable: true,
+		position : 'top',
+		align	 : 'center',
+		innerHtml: '<table cellpadding=0 cellspacing=0 width=190 border=0 style="border : 0; margin-left : 1px">\
+		<tr><td class="titre-popup" height=25 align=center valign=middle>ECHANGE OU AVOIR</td></tr>\
+		<tr><td class="contenu-popup" align=center valign=middle >\
+		Vous pouvez nous<br/>retourner tout article<br/>dans un d&eacute;lai<br/>de 7 jours<br/><a href="ICEO_services.php">En savoir plus</a>\
+		</td></tr>\
+		<tr><td class="bottom-popup" align=center valign=middle><img src="templates/bsjv3/i/popup-bottom.png" alt="" border=0 /></td></tr>\
+		</table>',
+		innerHtmlStyle: {
+			color:'#FFFFFF',
+			'text-align':'center'
+		},
+		themeMargins: {
+			total: '1px',
+			difference: '1px'
+		},
+		themeName: 	'none',
+		themePath: 	'templates/bsjv3/js/jquery.bubblepopup/jquerybubblepopup-theme'
+	});
+
+	//save new settings for the selectable bubble popup...
+	$('#button_popup3').CreateBubblePopup({
+		selectable: true,
+		position : 'top',
+		align	 : 'center',
+		innerHtml: '<table cellpadding=0 cellspacing=0 width=190 border=0 style="border : 0; margin-left : 1px">\
+		<tr><td class="titre-popup" height=25 align=center valign=middle>PAIEMENT SECURISE</td></tr>\
+		<tr><td class="contenu-popup" align=center valign=middle >\
+		Pour les paiements par carte,<br/>nous sommes reliés au syst&egrave;me<br/>de paiement s&eacute;curis&eacute;<br/>le plus connu et le plus utilis&eacute;,<br/>la norme SSL<br/><a href="ICEO_services.php">En savoir plus</a>\
+		</td></tr>\
+		<tr><td class="bottom-popup" align=center valign=middle><img src="templates/bsjv3/i/popup-bottom.png" alt="" border=0 /></td></tr>\
+		</table>',
+		innerHtmlStyle: {
+			color:'#FFFFFF',
+			'text-align':'center'
+		},
+		themeMargins: {
+			total: '1px',
+			difference: '1px'
+		},
+		themeName: 	'none',
+		themePath: 	'templates/bsjv3/js/jquery.bubblepopup/jquerybubblepopup-theme'
+	});
+
+});
+//-->
+
+</script>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-2995980-16', 'boutique-saint-james.fr');
+        ga('send', 'pageview');
+
+    </script>
+</head>
+<body>
+
+<div id="wrapper"> <!-- Début de Wrapper -->
+
+<h1 style="display : none;"></h1>
+
+<div id="ruban-top">&nbsp;</div>
+
+<div id="panel-top">
+<table border=0 cellpadding=0 cellspacing=0 width='100%' class="margin-0">
+	<tr>
+		<td width=100 align=left valign=middle id="currentflag" style="cursor : pointer">
+			<table width=120 border=0 cellpadding=0 cellspacing=0><tr>
+			<td width=50 align=right valign=middle >
+				<img src="templates/bsjv3/i/france.gif" alt="FR" border=0 height=16 />
+				
+			</td>
+			<td width=65 align=left valign=middle class="blanc" style="white-space: nowrap;">
+				&nbsp;FRANÇAIS |
+				
+			</td>
+			</tr></table>
+			<div id="changeflag" style="display : none; position : absolute; top : 35px; width : 120px; height : 20px; z-index : 200; background-color : #000; -moz-box-shadow: 0 5px 5px #b2b2b2;-webkit-box-shadow: 0 5px 5px #ccc;box-shadow: 0 5px 5px #b2b2b2;">
+				<table width=120 border=0 cellpadding=0 cellspacing=0><tr>
+				<td width=50 align=right valign=middle >
+					<img src="templates/bsjv3/i/uk.png" alt="ENG" border=0 width=16 style="position : relative; left : -7px"/>
+					
+				</td>
+				<td width=65 align=left valign=middle class="blanc" style="white-space: nowrap;">
+					&nbsp;<a style="position : relative; left : -7px; color: #FFFFFF;font: 12px Verdana,sans-serif; text-decoration : none;" href="http://www.boutique-saint-james.com">ENGLISH</a>
+					
+				</td>
+				</tr></table>
+			</div>
+			<script>
+			$("#currentflag").click(function () {
+				$("#changeflag").toggle("fast");
+			});
+			</script>
+		</td>
+		<td align=left valign=middle height=30 style="min-width : 200px">
+			<div  nom="addthis" id="addthis"><div class="addthis_toolbox addthis_default_style" addthis:url="http://www.boutique-saint-james.fr"><a class="addthis_button_facebook"></a><a class="addthis_button_twitter"></a><a class="addthis_button_google_plusone" g:plusone:count="false"></a><a class="addthis_button_pinterest_share"></a><a class="addthis_button_evernote"></a><a class="addthis_button_email"></a><a class="addthis_button_print"></a><a class="addthis_button_favorites"></a><a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a></div>
+			<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e2fe9e5503e2e51"></script></div>
+		</td>
+		<td align=right valign=middle class="blanc padding-r10">
+
+			
+				<span style="position : relative; top : 1px; left : 20px; font-size : 13px;"><a href="ICEO_moncompte.php" style="color : #fff; text-decoration : none;">Mon compte</a> | <a href="ICEO_moncompte.php" style="color : #fff; text-decoration : none;">Suivi de commande</a> |<!-- Articles préférés |--> <a href="ICEO_contact.php" style="color : #fff; text-decoration : none;">Contact</a> | <a href="ICEO_services.php" style="color : #fff; text-decoration : none;">F.A.Q</a></span>
+				<form action="#" id="formrech" name="formrech" method="post" _lpchecked="1" style="display : inline;">
+					<input id="wrechercher" type="text" name="wr" maxlength="150" value="Recherche" onfocus="if(this.value == 'Recherche') {this.value='';}">
+					<div id="btrechercher" style="left : 0px; top : 0px">
+					<a href="javascript:formrech.submit();">
+						<img src="templates/bsjv3/i/bt-loupe.gif" alt="Go" border="0" width="12" />
+					</a>
+					</div>
+					<input type="hidden" name="wform" value="recherche">
+				</form>
+			
+
+			
+
+		</td>
+	</tr>
+</table>
+</div>
+
+<div id="haut-de-page">
+	<table border=0 cellpadding=0 cellspacing=0 width='1000' height='145' class="margin-0-auto">
+		<tr>
+			<td rowspan=2 width='160' align=left valign='top'>
+				<a href="index.php"><img src="templates/bsjv3/i/logo.png" alt="Logo BSJ" border=0  class="margin-t10" /></a>
+			</td>
+			<td>
+
+				<table cellpadding=0 cellspacing=0 border=0 width='820' height=105 id="zone1">
+				<tr>
+				<td width='25%' align='center' valign=middle>
+					<p style="margin : 3px 0 0 0; line-height : 17px; margin-top : 17px;">
+						
+							<span class="myriad_pro_semibold" style="color : #808080; font : 16px/1.231 arial,helvetica,clean,sans-serif; display:block; padding-top : 0px">SITE OFFICIEL</span>
+							<span class="myriad_pro_regular" style="color : #707070; font : 18px/1.231 arial,helvetica,clean,sans-serif; display:block; padding-top : 2px; padding-bottom : 3px">SAINT JAMES</span>
+						
+						
+					</p>
+				</td>
+
+				<td width='25%' align='left' valign=middle style="padding-top : 10px"><img src="templates/bsjv3/i/event-f.png" alt="LIVRAISON GRATUITE" border=0 /></td>
+				<td align='center' valign=middle style="padding-top : 10px">
+				<img src="templates/bsjv3/i/so-colissimo-nb.png" alt="So Colissimo" border=0 width='140' style="position : relative; left : -19px;" />
+				
+					<span class="myriad_pro_regular" style="color : #707070; font : 12px/1.231 arial,helvetica,clean,sans-serif; display:block; position : relative; top : -10px; left : 19px;">Delai de livraison 24h/48h</span>
+				
+				
+				</td>
+				<td width='25%' align='center' valign=middle>
+					<p style="margin : 3px 0 0 0; line-height : 17px; margin-top : 20px;">
+
+						
+							<span class="myriad_pro_regular" style="color : #7a7a7a; font : 12px/1.231 arial,helvetica,clean,sans-serif; display:block; position : relative; top : -3px;">7 JOURS SUR 7</span>
+							<img src="templates/bsjv3/i/bt-iphone.png" alt="T&eacute;l&eacute;phone" border="0" align="absmiddle" width="16" style="position : relative; top : -3px;"/>
+							<span class="myriad_pro_regular" style="color : #7a7a7a; font : 18px/1.231 arial,helvetica,clean,sans-serif; display:inline; position : relative; top : 1px; padding-bottom : 0px">02 33 60 59 45</span>
+						
+						
+						<hr style="width : 140px; height : 1px; border : 0; border-bottom : 1px solid #ccc; padding : 0; margin : 3px 0 0 0" />
+						
+							<span class="myriad_pro_regular" style="color : #707070; font : 12px/1.231 arial,helvetica,clean,sans-serif; display:block; padding-top : 5px">10h - 13h et 14h30 - 19h</span>
+						
+						
+					</p>
+				</td>
+				</tr>
+				</table>
+
+			</td>
+		</tr>
+		<tr>
+		<td align=right valign=bottom height=50 class="dashed-top">
+
+		<table border=0 cellpadding=0 cellspacing=0 width='980' height='67' style='margin-top : -3px'  nom="menu" id="menu">
+			<tbody>
+			<tr>
+			<td width='180' style="cursor : pointer;"><a href="index.php" style="display : block; border : 0px; text-decoration : none; height : 65px">&nbsp;</a></td>
+			<td id="menu-home" align=center valign=middle class="padding-0-10">
+			<a href="index.php" title="Accueil">
+			<img src="templates/bsjv3/i/btn-accueil.png" alt="Accueil" border=0 style="position : relative; top : -2px; left : 0px" onMouseOver="javascript:$(this).attr('src','templates/bsjv3/i/btn-accueil-hover.png');" onMouseOut="javascript:$(this).attr('src','templates/bsjv3/i/btn-accueil.png');"/>
+			</a></td><td id="categories-00000001" align="center" valign="middle">
+						<div class="h1-00000001  h1" id="h1-out-00000001"><a href="vetement-homme-saint-james-c1.html" title="Homme">HOMME</a>
+						<div class="sous-categories" id="sous-categories-00000001">
+
+						<table id="sous-categories-table-00000001" border=0 cellpadding=0 cellspacing=0 class="border-white"><tr><td style="padding : 10px;">
+
+						<table border=0 cellpadding=0 cellspacing=0 style="width : 1000px; margin : 0 auto;">
+						<tr>
+
+						<td align=left valign=top  class="last" style="width:20%"><h4 style="border-bottom : 1px solid #BFBFBF; padding : 5px 0;">Collection</h4>
+							<div>
+							<h4 style="font: 13px/1.231 'Lucida Grande','Lucida Sans Unicode',Helvetica,Arial,Verdana,sans-serif;color: #4c4c4c; ">PRINTEMPS-ÉTÉ 2014</h4>
+							
+							</div><div><a href="saint-james-nautique-l48.html">Saint James Nautique</a></div>
+									<div><a href="vetements-marins-l50.html">Vêtements Marins</a></div></td>
+
+						<td align=left valign=top><a href="vetement-homme-saint-james-c1.html" title="Homme"><h4 style="border-bottom : 1px solid #BFBFBF; padding : 5px 0;">Vetements Homme</h4></a>
+							<div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="pulls-homme-l6.html" title="Pulls">Pulls</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="pulls-marins-l36.html" title="Pulls marins">Pulls marins</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="vestes-homme-l7.html" title="Blousons     Vestes">Blousons     Vestes</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="cabans-parkas-duffle-coats-homme-l35.html" title="Cabans Parkas Duffle-coats">Cabans Parkas Duffle-coats</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="t-shirts-marins-marinieres-homme-l26.html" title="T-shirts marins et marinières">T-shirts marins et marinières</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="polos-homme-l22.html" title="T-shirts et Polos">T-shirts et Polos</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="chemises-homme-l8.html" title="Chemises">Chemises</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="pantalons-jeans-homme-l9.html" title="Pantalons & Jeans">Pantalons & Jeans</a></div></td><td align=left valign=top width="20%" >
+						<h4 style="border-bottom : 1px solid #BFBFBF; padding : 5px 0;">Accessoires</h4>
+
+						<div style="width : 100%; position : relative; top : -1px;"><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="bonnets-marins-casquettes-l18.html" title="Bonnets marins Casquettes">Bonnets marins Casquettes</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="echarpes-saint-james-l17.html" title="Echarpes   Foulards">Echarpes   Foulards</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="autres-accessoires-saint-james-l29.html" title="Autres accessoires">Autres accessoires</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="enfants-accessoires-l37.html" title="Enfants">Enfants</a></div></div></td><td align=left valign=bottom  style="width : 270px; padding : 0; background : url('ICEO_catalogue/pkc00000001.jpg') no-repeat right center"><img id="degrad-00000001" src="templates/bsjv3/i/degrad-f6f6f6-left.png" width="50" height="1" border=0 style="margin-left : 10px"/>	<script>
+							$(document).ready(function() {
+									var imgWidth = $("#sous-categories-00000001").height() - 20;
+									$("#degrad-00000001").height(imgWidth);
+							});
+							</script></td></tr>
+						</table>
+
+						</div>
+
+					</td>
+					</tr>
+					</table></div>
+					</td><td id="categories-00000002" align="center" valign="middle">
+						<div class="h1-00000002  h1" id="h1-out-00000002"><a href="vetement-femme-saint-james-c2.html" title="Femme">FEMME</a>
+						<div class="sous-categories" id="sous-categories-00000002">
+
+						<table id="sous-categories-table-00000002" border=0 cellpadding=0 cellspacing=0 class="border-white"><tr><td style="padding : 10px;">
+
+						<table border=0 cellpadding=0 cellspacing=0 style="width : 1000px; margin : 0 auto;">
+						<tr>
+
+						<td align=left valign=top  class="last" style="width:20%"><h4 style="border-bottom : 1px solid #BFBFBF; padding : 5px 0;">Collection</h4>
+							<div>
+							<h4 style="font: 13px/1.231 'Lucida Grande','Lucida Sans Unicode',Helvetica,Arial,Verdana,sans-serif;color: #4c4c4c; ">PRINTEMPS-ÉTÉ 2014</h4>
+							
+							</div><div><a href="mademoiselle-saint-james-l49.html">Mademoiselle Saint James</a></div></td>
+
+						<td align=left valign=top><a href="vetement-femme-saint-james-c2.html" title="Femme"><h4 style="border-bottom : 1px solid #BFBFBF; padding : 5px 0;">Vetements Femme</h4></a>
+							<div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="pulls-femme-l10.html" title="Pulls">Pulls</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="vestes-femme-l11.html" title="Vestes">Vestes</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="duffle-coat-caban-parka-femme-l23.html" title="Cabans Parkas Manteaux">Cabans Parkas Manteaux</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="marinieres-t-shirts-rayes-l27.html" title="T-shirts rayés et marinières">T-shirts rayés et marinières</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="t-shirts-polos-femme-l12.html" title="T-shirts & Polos">T-shirts & Polos</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="jupes-robes-l24.html" title="Jupes Robes">Jupes Robes</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="chemisiers-l14.html" title="Chemisiers">Chemisiers</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="pantalons-jeans-femme-l13.html" title="Pantalons & Jeans">Pantalons & Jeans</a></div></td><td align=left valign=top width="20%" >
+						<h4 style="border-bottom : 1px solid #BFBFBF; padding : 5px 0;">Accessoires</h4>
+
+						<div style="width : 100%; position : relative; top : -1px;"><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="bonnets-marins-casquettes-l18.html" title="Bonnets marins Casquettes">Bonnets marins Casquettes</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="echarpes-saint-james-l17.html" title="Echarpes   Foulards">Echarpes   Foulards</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="autres-accessoires-saint-james-l29.html" title="Autres accessoires">Autres accessoires</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="enfants-accessoires-l37.html" title="Enfants">Enfants</a></div></div></td><td align=left valign=bottom  style="width : 270px; padding : 0; background : url('ICEO_catalogue/pkc00000002.jpg') no-repeat right center"><img id="degrad-00000002" src="templates/bsjv3/i/degrad-f6f6f6-left.png" width="50" height="1" border=0 style="margin-left : 10px"/>	<script>
+							$(document).ready(function() {
+									var imgWidth = $("#sous-categories-00000002").height() - 20;
+									$("#degrad-00000002").height(imgWidth);
+							});
+							</script></td></tr>
+						</table>
+
+						</div>
+
+					</td>
+					</tr>
+					</table></div>
+					</td><td id="categories-00000003" align="center" valign="middle">
+						<div class="h1-00000003  h1" id="h1-out-00000003"><a href="vetement-enfant-saint-james-c3.html" title="Enfant">ENFANT</a>
+						<div class="sous-categories" id="sous-categories-00000003">
+
+						<table id="sous-categories-table-00000003" border=0 cellpadding=0 cellspacing=0 class="border-white"><tr><td style="padding : 10px;">
+
+						<table border=0 cellpadding=0 cellspacing=0 style="width : 1000px; margin : 0 auto;">
+						<tr>
+
+						<td align=left valign=top  class="last" style="width:20%"><h4 style="border-bottom : 1px solid #BFBFBF; padding : 5px 0;">Collection</h4>
+							<div>
+							<h4 style="font: 13px/1.231 'Lucida Grande','Lucida Sans Unicode',Helvetica,Arial,Verdana,sans-serif;color: #4c4c4c; ">PRINTEMPS-ÉTÉ 2014</h4>
+							
+							</div></td>
+
+						<td align=left valign=top><a href="vetement-enfant-saint-james-c3.html" title="Enfant"><h4 style="border-bottom : 1px solid #BFBFBF; padding : 5px 0;">Vetements Enfant</h4></a>
+							<div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="vetement-enfant-garcon-l15.html" title="Garçon">Garçon</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="vetement-enfant-fille-l16.html" title="Fille">Fille</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="vetement-bebe-layette-l28.html" title="Layette">Layette</a></div></td><td align=left valign=top width="20%" >
+						<h4 style="border-bottom : 1px solid #BFBFBF; padding : 5px 0;">Accessoires</h4>
+
+						<div style="width : 100%; position : relative; top : -1px;"><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="bonnets-marins-casquettes-l18.html" title="Bonnets marins Casquettes">Bonnets marins Casquettes</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="echarpes-saint-james-l17.html" title="Echarpes   Foulards">Echarpes   Foulards</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="autres-accessoires-saint-james-l29.html" title="Autres accessoires">Autres accessoires</a></div><div style="width : 100%; "><a style="margin-bottom : 2px; line-height : 13px;" href="enfants-accessoires-l37.html" title="Enfants">Enfants</a></div></div></td><td align=left valign=bottom  style="width : 270px; padding : 0; background : url('ICEO_catalogue/pkc00000003.jpg') no-repeat right center"><img id="degrad-00000003" src="templates/bsjv3/i/degrad-f6f6f6-left.png" width="50" height="1" border=0 style="margin-left : 10px"/>	<script>
+							$(document).ready(function() {
+									var imgWidth = $("#sous-categories-00000003").height() - 20;
+									$("#degrad-00000003").height(imgWidth);
+							});
+							</script></td></tr>
+						</table>
+
+						</div>
+
+					</td>
+					</tr>
+					</table></div>
+					</td>
+				<td align=center valign=middle ><div id="h1-out-lamarque" class="h1-lamarque h1" style="display: block;"><a title="SAINT JAMES" href="#">LA MARQUE</a><table cellspacing="0" cellpadding="0" border="0" class="sous-categories" id="sous-categories-lamarque" style="display: none;">
+					<tbody><tr>
+					<td style="padding:0px;">
+
+						<table cellspacing="0" cellpadding="0" border="0" class="border-white"  id="sous-categories-table-lamarque" style="display: block;">
+						<tbody>
+
+						<tr><td style="padding : 10px;">
+
+						<table cellspacing="0" cellpadding="0" border="0" style="width : 1000px; margin : 0 auto;">
+						<tbody>
+
+						<tr>
+
+						<td align="left" valign="top" style="width:20%" class="last">
+						<h4 style="border-bottom : 1px solid #BFBFBF; padding-bottom : 5px;">Collection</h4>
+						<div>
+						<h4 style="font: 13px/1.231 'Lucida Grande','Lucida Sans Unicode',Helvetica,Arial,Verdana,sans-serif;color: #4c4c4c;">PRINTEMPS-ÉTÉ 2014</h4>
+						
+						</div>
+						<!--<div><a href="#">Mademoiselle Saint James</a></div>
+						<div><a href="#">Saint James Nautique</a></div>
+						<div><a href="#">Saint James Classic</a></div>-->
+						</td>
+
+						<td align="left" valign="top"><h4 style="border-bottom : 1px solid #BFBFBF; padding-bottom : 5px;">La Marque - SAINT JAMES</h4><div style="width : 100%; "><a href="ICEO_fabrication-vetement.php" style="margin-bottom : 2px; line-height : 13px;">Fabrication Saint-James</a></div><div style="width : 100%; "><a href="ICEO_histoire-chandail-marin.php" style="margin-bottom : 2px; line-height : 13px;">Histoire du chandail marin</a></div><div style="width : 100%; "><a href="ICEO_conseils-entretien.php" style="margin-bottom : 2px; line-height : 13px;">Conseils d'entretien</a></div><div style="width : 100%; "><a href="ICEO_catalogue-st-james.php" style="margin-bottom : 2px; line-height : 13px;">Catalogue Saint-James</a></div>
+
+						</td>
+						<td align="left" valign="top">
+						&nbsp;
+						</td>
+
+						<td align="left" width="230" valign="bottom" style="padding : 0; background : url('templates/bsjv3/i/st-james-mt-st-michel.jpg') no-repeat right center">
+
+				<img id="degrad-lamarque" border="0" width="50" height="1" style="margin-left : 10px" src="templates/bsjv3/i/degrad-f6f6f6-left.png">
+				<script>
+				$(document).ready(function() {
+						var imgWidth = $("#sous-categories-lamarque").height() - 20;
+						$("#degrad-lamarque").height(imgWidth);
+				});
+				</script>
+
+						</td>
+						</tr>
+
+						</tbody></table>
+
+						</td></tr></tbody></table>
+
+					</td>
+					</tr>
+					</tbody></table>
+				</div></td>
+				<td align=center valign=middle ><div class="h1link"><a href="ICEO_cheque-cadeau.php">CHEQUES-CADEAUX</div></td>
+				<td align=center valign=middle width="1" id="menu-separator"><div class="h1 padding-0-10" style="padding : 0"><span class="gris">|</span></div></td>
+				<td align=right valign=middle style="padding-0" id="icone-panier" width="235"><div class="h1cart" id="texte-panier">
+					<img src="templates/bsjv3/i/btn-panier.png" alt="panier" border=0 align="absmiddle" style="margin-right : 10px;"/>
+					<span>MON PANIER <span id="countpanier">(0)</span></span>
+				</div><script>
+			$('#texte-panier').click(function () {
+				$(location).attr('href','ICEO_panier.php');
+			});
+			</script><div id="toggler-panier" style="display : block; width : 265px; height : 1px; z-index : 200; position : absolute; top : 53px; padding : 5px 0 0 10px;">
+				<div id="popup-panier" style="display : none; width : 270px; position : relative; border : 1px solid #ccc; margin : 0; background: #f6f6f6; color: #333; text-align : center; padding : 8px 5px;">
+				<em id="vide-panier"><br/><br/>Votre panier est vide<br/><br/><br/></em></div>
+			</div><script>
+				$('#icone-panier').click(function () {
+					$('#popup-panier').clearQueue();
+					$('#popup-panier').stop();
+					$('#popup-panier').toggle('blind', {}, 'fast' );
+				});
+
+				$('#icone-panier').mouseenter(function () {
+					if ($('#popup-panier').is(':visible')) {
+					} else {
+						$('#popup-panier').clearQueue();
+						$('#popup-panier').stop();
+						$('#popup-panier').show('blind', {}, 'fast' );
+					}
+				});
+
+				$('#icone-panier').mouseleave(function () {
+					if ($('#popup-panier').is(':visible')) {
+						$('#popup-panier').clearQueue();
+						$('#popup-panier').stop();
+						$('#popup-panier').hide('blind', {}, 'fast' );
+					}
+				});
+				</script></td>
+			</tr>
+			</tbody>
+			</table>
+					<script>
+
+					 if ( $.browser.msie && $.browser.version == '8.0'){
+
+						 $('.h1').hover(
+							function () {
+								$(this).addClass('h1-hover');
+								$(this).find('.sous-categories').show();
+							},
+							function () {
+								$(this).removeClass('h1-hover');
+								$(this).find('.sous-categories').hide();
+							}
+						);
+
+					 } else {
+
+						 $('.h1').mouseover(function(event) {
+								$(this).addClass('h1-hover');
+								$(this).find('.sous-categories').show();}).mouseout(function(){
+   								$(this).removeClass('h1-hover');
+								$(this).find('.sous-categories').hide();
+						  });
+
+					}
+
+					</script>
+				
+
+		</td>
+		</tr>
+	</table>
+
+</div><!--
+$templates : Nom du template en cours d'utilisation
+-->
+
+<div id="base">
+	<div id="main">
+
+		<div id="contenu" style="padding : 0px">
+
+		<!-- ZONE PRINCIPALE -->
+			<div style="display : block; width : 1000px; text-align : center; padding : 225px 0 230px 0; font: 13px/1.231 'Lucida Grande','Lucida Sans Unicode',Helvetica,Arial,Verdana,sans-serif;color: #004489;" id="no-produit">
+
+			
+				Désolé, la page que vous avez demandée a changé d'adresse ou bien n'existe plus...<br/><br/>
+				Vous pouvez rechercher le produit désiré grâce &agrave; notre moteur de recherche en haut de la page.<br/><br/>
+				Sinon, veuillez cliquer <a href="index.php" style="color : #004489">ici</a> pour retourner &agrave; l'accueil.
+			
+
+			
+
+			</div>
+
+		</div>
+
+	</div>
+</div><div id="pied-de-page">
+
+	<div id="zone1">
+		<table border=0 cellpadding=0 cellspacing=0 width='1000' height='140' class="margin-0-auto">
+			<tr>
+				<td width='33%' align=left valign=top class="bloc1">
+					<table width="100%" border=0>
+					<tr>
+					<td align=left valign=bottom>
+					
+						<h3>
+						<a href="index.php" style="color: #333333;font: 16px Arial,Helvetica,sans-serif;font-weight: normal; text-decoration : none;">
+						Boutique SAINT JAMES
+						</a>
+						</h3>
+						<p>Notre boutique se trouve au
+						pied du Mont Saint Michel,
+						à quelques kilomètres
+						des ateliers <strong><a class="fancyswf" href="templates/bsjv3/i/AnimBoutique.swf" style="color: #003B7E;font-weight: normal; text-decoration : none;">SAINT JAMES</a></strong>.</p>
+					
+					
+					</td>
+					<td align=right valign=bottom><a class="fancyswf" href="templates/bsjv3/i/AnimBoutique.swf"><img src="templates/bsjv3/i/BEAUVOIR1.JPG" alt="Logo BSJ" border=0 width="100" style="position : relative; top : -10px; left : 10px;" /></a></td>
+					</tr>
+					</table>
+				</td>
+				<td width='35%' align=left valign=top class="bloc2">
+					<img src="templates/bsjv3/i/accueil-zoom-sur.png" alt="Logo BSJ" border=0 />
+					
+						<h3>
+						Livraison Garantie
+						</h3>
+						<p>Situ&eacute; &agrave; proximité des ateliers <strong>SAINT JAMES</strong>, nous pouvons
+						vous proposer des délais de livraison
+						très courts.
+						</p>
+					
+					
+				</td>
+				<td align=left valign=top class="bloc3">
+					
+						<h3><a href="ICEO_newsletter.php" style="color: #333333;font: 16px Arial,Helvetica,sans-serif;font-weight: normal; text-decoration : none;">Inscription &agrave; la Newsletter</a></h3>
+						<p style="padding-right : 150px;"><strong><a href="ICEO_newsletter.php" style="color: #003B7E;font-weight: normal; text-decoration : none;">Inscrivez-vous</a></strong> &agrave; notre lettre d'actualit&eacute;s et bénéficiez d'offres exclusives !</p>
+					
+					
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="zone2">
+		<table border=0 cellpadding=0 cellspacing=0 width='1000' height='45' class="margin-0-auto">
+			<tr>
+				<td align=left valign=top class="padding-0-20"><p class="url"><strong>
+				<a class="url" href="http://www.boutique-saint-james.fr">www.boutique-saint-james.fr</a>
+				
+				</strong></p></td>
+				<td align=left valign=top class="padding-5-20 triangle-top">
+					<p><strong><b id="button_popup1">
+						LIVRAISON
+						
+					</b></strong></p>
+				</td>
+				<td align=left valign=top class="padding-5-20 triangle-top"><p><strong><b id="button_popup2" style="cursor : pointer">
+					&Eacute;CHANGE
+					
+				</b></strong></p></td>
+				<td align=left valign=top class="padding-5-20 triangle-top"><p><strong><b id="button_popup3" style="cursor : pointer">
+					R&Egrave;GLEMENT
+					
+				</b></strong></p></td>
+				<td align=left valign=top class="padding-15-0" width=175><img src="templates/bsjv3/i/carte.png" alt="CB, Visa, MasterCard" border=0 /></td>
+				<td align=left valign=top class="padding-15-0" width=50 ><img src="templates/bsjv3/i/paypal.png" alt="Paypal" border=0 /></td>
+				<td align=left valign=top class="padding-15-0" width=50><img src="templates/bsjv3/i/cheque.jpg" alt="Ch&egrave;que" border=0 /></td>
+				<td align=left valign=top class="padding-5-20 triangle-top"><p><strong><b>
+					<a href="ICEO_contact.php" style="text-decoration : none; font-weight: bold;">CONTACT</a>
+					
+				</b></strong></p></td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="zone3">
+
+		
+		<p class="bloc1"><a href="index.php" style="text-decoration : none; color: #999999;">ACCUEIL</a> <span class="separateur">|</span> <a href="ICEO_moncompte.php" style="text-decoration : none; color: #999999;">SUIVI DE COMMANDE</a> <span class="separateur">|</span> <a href="ICEO_newsletter.php" style="text-decoration : none; color: #999999;">NEWSLETTER</a> <span class="separateur">|</span> <a href="ICEO_cheque-cadeau.php" style="text-decoration : none; color: #999999;">CHEQUES-CADEAUX</a> <span class="separateur">|</span> <a href="ICEO_services.php#pmtsec" style="text-decoration : none; color: #999999;">PAIEMENT SECURISE</a> <span class="separateur">|</span> <a href="ICEO_services.php#livrF" style="text-decoration : none; color: #999999;">LIVRAISON</a> <span class="separateur">|</span> <a href="ICEO_cgv.php" style="text-decoration : none; color: #999999;">C.G.V</a> <span class="separateur">|</span> <a href="ICEO_mentions-legales.php" style="text-decoration : none; color: #999999;">MENTIONS LEGALES</a> <span class="separateur">|</span> <a href="ICEO_contact.php" style="text-decoration : none; color: #999999;">CONTACT</a></p>
+		<p class="bloc2">Boutique Saint James Pulls marins St James Marinières Saint-James Vestes Polos T-shirts Pour Homme, Femme et enfant.</p>
+		
+
+		
+
+	</div>
+
+</div>
+
+</div> <!-- Fin de Wrapper -->
+
+</body>
+</html>

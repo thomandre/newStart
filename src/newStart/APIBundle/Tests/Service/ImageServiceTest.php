@@ -86,5 +86,22 @@ class ImageServiceTest extends NewStartWebTestCase
 
 	}
 
+	/**
+	 * @test
+	 * @group image2
+	 */
+	/*public function imageResizeIsOk2() 
+	{
+		$imageService = new ImageService();
+
+		$name = 'levis';
+		$nw = 330;
+		$nh = 400;
+ 	    $imageService->imageResize('web/test/'.$name.'.jpg', 'web/test/'.$name.'-test.jpg', $nw, $nh);
+ 	    list($w, $h) = getimagesize('web/test/'.$name.'-test.jpg');
+ 	    $this->assertEquals(array($nw, $nh), array($w, $h));
+
+	}*/
+
 }
 

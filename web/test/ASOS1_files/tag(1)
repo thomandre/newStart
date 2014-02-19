@@ -1,0 +1,10 @@
+BrightTag.instance.errors({enabled:false});
+BrightTag.instance.dbe('premier user', 'Navigation.PremierUser', {pageId:20374});
+BrightTag.instance.appendContent('\x3c!-- VisualDNA Audience Analytics Tag --\x3e\n\x3cscript type\x3d\x22text/javascript\x22\x3e\n(function() {\n   var s, e;\n   s \x3d document.createElement(\x22script\x22);\n   s.src \x3d \x22//a1.vdna-assets.com/analytics.js\x22;\n   s.async \x3d true;\n   e \x3d document.getElementsByTagName(\x22head\x22)[0];\n   e.insertBefore(s, e.firstChild);\n   this.VDNA \x3d this.VDNA || {};\n   this.VDNA.queue \x3d this.VDNA.queue || [ ];\n})();\n \nVDNA.queue.push({ \n   apiKey : \x22asos1384168317062\x22, \n   method : \x22reportPageView\x22 \n});\n\x3c/script\x3e\n\x3c!-- End of VisualDNA Audience Analytics Tag --\x3e',{tagId:275160});
+BrightTag.instance.secondary(function(serverURL) {
+try { if (eval('(bt_data(\x27is premier\x27) \x3d\x3d \x22is premier\x22 || bt_data(\x27premier user\x27) \x3d\x3d 1)')) {
+serverURL.cf(231546);
+}
+} catch(e) { bt_handle_exception(e); }
+serverURL.appendJs('bt_cookie(\x27cvo_sid1\x27)');
+});

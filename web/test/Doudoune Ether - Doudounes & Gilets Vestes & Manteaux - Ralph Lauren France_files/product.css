@@ -1,0 +1,387 @@
+/* form styles from main - for reference
+input,
+select,
+th,
+td { font-size: 1em }
+select,
+input {  border: 1px solid #e5e5e5;  line-height: 18px;}
+input { width: 225px; padding: 3px 2px; height: 13px; }
+select { padding: 3px 2px; height: 22px; }
+
+label { padding: 0px 0 5px; float: left; width: 132px; color: #666; }
+*/
+/* small orderrides for form fields */
+.product select { padding: 0; height: auto; }
+select#narrow-by-select, select#color { float: left }
+select#size, select#color, select#narrow-by-select { visibility: hidden; /* redisplayed w/ javascript */ }
+h4 { font-size: 14px; color: #666; font-weight: normal; }
+#size,
+#size option,
+#size-span,
+#size-utils,
+#color,
+#color-label,
+#enlarge-container img#thumb-left,
+.cyo #image-detail-left,
+.cyo #image-detail-right,
+#product-content,
+#product-left,
+#product-right { float: left }
+.cart-continue { display: none; }
+.cart-continue p { margin: 1.5em 0 }
+/* Product */
+#product-content { line-height: 16px }
+#product-left { width: 360px; padding-bottom: 20px; margin-top: 8px; }
+#product-right { nowhitespace: afterproperty; padding: 5px 0 0 20px; width: 340px; }
+#product-right, .cyo #product-left { color: #666; font-size: 11px; }
+p.product-number, .money { line-height: 13px }
+/* price */
+.money { color: #999 }
+/* sale price */
+.money span.red,
+div.red { font-weight: bold }
+money span.red { display: block; }
+/* style */
+p.product-number { font-size: 10px; color: #9b9ead; }
+#product-right h3 { height: 19px; width: 255px; position: relative; font-size: 14px; padding-bottom: 10px; }
+#product-right h3 span { background: url(/images/polo-ralph-lauren-text.gif) no-repeat; position: absolute; width: 255px; height: 19px; }
+#product-right h3.black-label { height: 50px; width: 340px; position: relative; font-size: 14px; padding-bottom: 10px; }
+#product-right h3.black-label span { background: url(/images/black-label.gif) no-repeat; position: absolute; width: 340px; height: 50px; }
+img#mainProductImage { height: 480px; width: 360px; display: block; cursor: pointer; }
+#size-utils { padding: 1px 0 0 12px; float: right; }
+/* Enlarge Image */
+#enlarge-container { overflow: hidden; margin: 10px 0 0; }
+#enlarge-container img { border: 1px solid #d0d0d0; float: left; }
+#enlarge-right, ul.like-suggest { margin-top: 10px; }
+#enlarge-right { float: right; }
+a#enlarge-image { color: #7e7e7e; display: block; font-size: 7pt; background: transparent url(/images/magnify.gif) 103% 48% no-repeat; padding-right: 20px; text-transform: uppercase; text-align: right; }
+/* You May Also Like / Recently Viewed */
+ul.like-suggest { list-style: none; overflow: hidden; float: left; }
+ul.like-suggest li { float: left; padding-right: 9px; cursor: pointer; }
+ul.like-suggest li.last { padding-right: 0; }
+ul.like-suggest li img { border: 1px solid #DFDFDF }
+#enlarge-container ul.like-suggest { width: 200px; padding: 0; overflow: visible; display: inline; }
+#enlarge-container ul.like-suggest li { padding-right: 5px }
+/* Alternate Images */
+ul#alternate-images, ul#alternate-images li { margin: 0; padding: 0; list-style: none; }
+ul#alternate-images { margin: 12px 0 35px 0; width: 360px; }
+ul#alternate-images li { display: inline-block; height: 56px; width: 56px; float: left; }
+ul#alternate-images img { border: none; height: 50px; width: 50px; display: block; border: 1px solid #fff; }
+ul#alternate-images li.active img { border: 1px solid #a7a7a7; }
+/* Style Guide Tab */
+div#style-guide { width: 320px; overflow: hidden; }
+div#style-guide img#thumbnail { float: left; width: 140px; height: 152px; }
+div#style-guide div#style-guide-content { float: left; padding-left: 5px; }
+div#style-guide div#style-guide-content h5 { width: 160px; height: 20px; padding-bottom: 25px; }
+div#style-guide div#style-guide-content h5 span { background: url(/images/style-guide-header.gif) no-repeat; position: absolute; width: 160px; height: 20px; }
+div#style-guide div#style-guide-content p { width: 160px; font-size: 10px; color: #1A1A1B; padding-top: 10px; }
+div#style-guide div#style-guide-content a#find-out-now { width: 82px; height: 8px; text-indent: -9999px; background: url(/images/find-out-now.gif) no-repeat; display: block; }
+div#style-guide div#style-guide-content a#find-out-now:hover { text-decoration: none }
+div#style-guide div#style-guide-content a#find-out-now span { background: url(/images/find-out-now.gif) no-repeat; position: absolute; width: 82px; height: 8px; }
+/* More Details Drop Down */
+a.more-details-open,
+a.more-details-closed { font-size: 10px; padding-left: 13px; color: #7e7e7e; }
+a.more-details-closed { background: url(/images/spindown-closed.gif) no-repeat 0 50% }
+a.more-details-open { background: url(/images/spindown-open-up.gif) no-repeat 0 50% }
+.more-details-hidden { display: none }
+ul#details { padding-bottom: 7px }
+ul#details li { list-style-type: disc; margin-left: 25px; }
+div#tab-details { padding: 10px 12px 10px 10px; font-family: Arial; font-size: 11px; }
+div#tab-details p,
+div#no-tabs p { padding-bottom: 8px; }
+/* Add to Cart */
+div#add-to-cart-container { padding-top: 25px; text-align: center; color: #666; font-size: 10px; }
+div#add-to-cart-container a#add { position: relative; width: 137px; height: 22px; font-size: 14px; display: inline-block; }
+#wishlist { margin: 25px auto 5px auto; text-align: center; }
+#wishlist a#wishlistButton,
+#wishlist a#wishlistButtonCYO,
+.wishlistButton { color: #8e8e8e; display: inline-block; font-size: 10px; line-height: 12px; background: transparent url(/images/plus.gif) no-repeat 0 50%; padding-left: 16px; text-transform: uppercase; text-align: left; }
+a#email-us { color: #8e8e8e; text-decoration: underline; }
+#need-help { padding-bottom: 0px }
+#need-help p { line-height: 14px; margin-bottom: 5px; }
+ul#links { list-style-position:inside;  }
+ul#links li { line-height: 22px }
+ul#links a { color: #666 }
+ul#links li span { background: url(/images/spindown-closed-left.gif) no-repeat; background-position: left; padding-left: 10px; }
+/* Color Selection Form */
+#product .label { line-height: 15px; }
+#product fieldset#colorContainer #color-label { line-height: 20px;}
+fieldset#colorContainer,
+fieldset#sizeContainer,
+fieldset#quantityContainer { display: block; border-bottom: 1px solid #ccc; padding: 16px 0 13px 0; overflow: hidden; }
+form#addToCartForm label { display: inline-block;font-weight: bold; width: 65px; font-size: 10px; color: #b2b2b2; margin: -5px 0 3px 0; }
+form#addToCartForm label#sizeLabel { float: left; margin-top: -5px;}
+form#addToCartForm label#sizeSingleLabel { float: left; margin: 0; }
+form#addToCartForm label span { display: none }
+/* Promos */
+ul.promotions { margin: 18px 0 -5px 0 }
+ul.promotions-bottom { margin: 20px 0 2px 0 }
+ul.promotions-bottom li { text-align: center }
+ul.promotions-bottom span.promo-title { /* display: none; */ text-decoration: underline; color: #01004C; display: block; margin-bottom: 25px;  }
+p.promo { border: 1px solid #dbdbdb; padding: 10px 20px 15px 20px; margin-top: 20px; }
+p.promo-2 { border: 1px solid #dbdbdb; padding: 10px 20px 15px 20px; margin-top: 10px; }
+.add-to-cart-promo { padding-bottom: 25px }
+.promo-bottom { clear: both; padding-top: 45px; }
+/* Swatches */
+ul.swatches, ul.country-swatches { /*width: 320px;*/ clear: both; overflow: hidden; padding-top: 4px; }
+@media screen and (-webkit-min-device-pixel-ratio:0) {	/* Chrome specific CSS - Issue 90165 */	ul.swatches, ul.country-swatches { padding-top: 7px }}
+ul.swatches li.swatch, ul.country-swatches li.swatch { height: 50px; nowhitespace: afterproperty; width: 50px; margin: 0 1px 1px 0; padding: 0; line-height: 0; float: left; cursor: pointer; display: none; /* Hide on page load */ }
+ul.country-swatches li.swatch { display: block; }
+ul.swatches li.swatch img, ul.country-swatches li.swatch img { display: block; float: left; width: 50px; height: 50px; }
+/*ul#swatches-enlarge { width: 300px }*/
+#swatches { display: none }
+/* CMS SLOTS */
+#productCMS-1 { padding: 20px 0 10px 0 }
+#productCMS-3 { padding-bottom: 25px }
+/* COLOR / NARROW BY DROPDOWNS */
+#narrow-by-group,
+#color-group { clear: both }
+#narrow-by-group { margin-bottom: 10px; height: 15px; }
+/* PROMO FOOTER */
+#product-banner-footer { clear: both; width: 740px; position: relative; left: -10px; }
+#product-banner-footer img { display: block; border: none; }
+/* BOTTOM HTML FIELDS */
+#bottom-fields { overflow: hidden; padding: 25px 0 14px 0; }
+#bottom-field-left { float: left; width: 360px; }
+#bottom-field-right { float: left; width: 340px; padding-left: 20px; }
+h5#product-title { color: #666; font-size: 16px; font-weight: bold; padding-bottom: 10px; padding-right: 15px; overflow: hidden; }
+#zoom-alternate-images { padding: 0 0 10px; margin-top: 0; }
+#zoom-alternate-images li { margin-top: 10px; cursor: pointer;}
+/* Contact Us Form (product page) */
+#contact-form { padding: 20px 20px 20px 0 }
+/* Hidden Size/Color Select */
+#sizeHidden { display: none }
+#colorName { margin: -5px 0 0 3px; float: left; }
+span.single { float: left; margin: -4px 0 0 5px; line-height: 25px; }
+select.single { display: none !important }
+#quantity-error { color: #C00; display: none; font-size: 11px; padding-top: 10px; font-weight: bold; }
+#colorFilterMessage { padding-top: 25px; nowhitespace: afterproperty; line-height: 14px; color: #666; font-size: 11px; display: none; /* Don't show by default */ }
+#colorFilterMessage a { color: #00004C; text-decoration: underline; }
+
+/* ------------------------------------------------------ VGC STYLES */
+#giftCertPage #main-container.Top1col #content2 { background-color: white; width: 900px; }
+#gift-cert { color: #666; margin: 0 55px; }
+#gift-cert p { line-height: 1.5em }
+#gift-cert #orderForm { display: block }
+#gift-cert hr { clear: both; border: none; border-top: 1px solid #b1b3c3; font-size: 1px; line-height: 0; margin: 30px 0 0 0; padding: 0; }
+#gift-cert .description { margin: 0 auto }
+#gift-cert h3.description { margin: 30px 0 12px 0 }
+#gift-cert h4 { color: #b2b2b2; font-size: 9px; font-weight: bold; margin: 32px 0 5px; text-transform: uppercase; }
+#gift-cert #gift-cert-bullet-list-container h4 { margin: 19px 0 18px 0 }
+
+#gift-cert .notice,
+#gift-cert .instructions { margin: 10px auto 20px auto;}
+
+div#gift-cert-bullet-list-container { margin: 0 auto 24px auto;  }
+ul.gift-cert-bullet-list { float: left; list-style: disc outside!important; margin-right: 12px; padding-left: 18px; width: 165px; }
+ul.gift-cert-bullet-list li { margin-bottom: 18px }
+
+#gift-cert h4#certificate_title  { margin-top: 18px }
+
+#certificate-image-select { margin: 20px auto 0px auto; }
+#certificate-image-select img { margin: 0 0 5px 0 }
+#certificate-image-select li { float: left; margin: 0 21px 20px; width: 160px; overflow: hidden;}
+#certificate-image-select label { width: auto; line-height: 14px; float: left; }
+#certificate-image-select input { float: left; margin-right: 3px; border: none; }
+
+#gift-cert fieldset.message-info p.notice { margin-bottom: 0 }
+#gift-cert fieldset.currency #gift-amount { margin-top: 25px }
+#gift-cert #message { font-family: Helvetica,Arial,sans-serif; font-size: 1em; height: 140px; width: 200px; }
+#gift-cert #add-certificate-to-cart,
+#gift-cert #preview-gift-certificate-button { margin: 20px auto 30px;}
+#gift-cert #need-help { text-align: center; margin-bottom: 78px; }
+#gift-cert .message-info input,
+#gift-cert .currency input { width: 200px }
+#gift-cert .message-info label,
+#gift-cert .currency label { clear: both; display: block; float: left; font-size: 10px; width: 110px; }
+#gift-cert #gift-message-container { position: relative }
+#gift-cert #messageCharacterCount { color: #000; font-size: 10px; position: absolute; right: 0; top: 0; }
+
+#gift-cert-preview-container { color: #333; font-size: 10px; margin: 30px auto 0; width: 500px; font-family: Arial; }
+#gift-cert-preview-container p a { text-decoration: underline }
+#gift-cert-preview-lightbox #gift-cert-preview { border: 4px solid #dfdfdf; float: left; margin: 32px 0 27px; width: 492px; }
+#gift-cert-preview-lightbox #preview-image { border-right: 4px solid #dfdfdf; float: left; }
+#gift-cert-preview #gift-cert-preview-table-wrapper { border-left: 1px solid #d0d0d0; border-top: 1px solid #d0d0d0; float: left; height: 244px; width: 215px; }
+#gift-cert-preview table td { padding: 10px 0 9px 10px }
+#gift-cert-preview #preview-recipient-name,
+#gift-cert-preview #preview-sender-name,
+#gift-cert-preview #preview-amount,
+#gift-cert-preview #preview-gift-message { display: block; overflow: hidden; vertical-align: top; width: 130px; }
+#gift-cert-preview .force-word-wrap { height: 12px; overflow: hidden; width: 130px; word-wrap: break-word; }
+#gift-cert-preview #preview-gift-message .force-word-wrap { height: 80px }
+#gift-cert-preview .field-name { font-weight: bold; vertical-align: top; }
+
+#gift-cert-preview-lightbox h1 { font-size: 10px }
+#gift-cert-preview-lightbox p { clear: both; margin: 0 0 13px; }
+#gift-cert-preview-lightbox #gift-cert-close-window { display: block; margin: 37px auto 20px; text-align: center; }
+
+#gift-cert div.error { float: right; margin: 1px 30px 0 0; width: 200px; padding-top: 2px; }
+#gift-cert #gift-amount div.error { margin-right: 21px; }
+#gift-cert #cart-error, .cart-continue { text-align: center; padding: 0 0 30px }
+
+/* ------------------------------------------------------ CYO STYLES */
+.cyo #cyo-image-detail { clear: both; float: left; margin: 10px 0 26px 16px; }
+.cyo #image-detail-left { margin-right: 2px }
+.cyo #image-detail-left,
+.cyo #image-detail-right { float: left; width: 163px; }
+.cyo #image-detail-left { margin-right: 2px }
+.cyo .image-detail-caption { color: #868686; font-weight: bold; margin-top: 4px; text-align: center; text-transform: uppercase; }
+.cyo .cyo-steps { border: 1px solid #E2E2E2 }
+.cyo #brand-wrap { margin: 0 0 15px; padding-top: 15px; width: 340px; height: 50px; text-align: center; }
+.cyo #brand-wrap img { float: left }
+.cyo fieldset#colorContainer,
+.cyo fieldset#sizeContainer,
+.cyo fieldset#quantityContainer,
+.cyo fieldset#embroideryColorContainer,
+.cyo fieldset#initialsAndFontContainer,
+.cyo fieldset#nameAndFontContainer,
+.cyo fieldset#countryContainer,
+.cyo fieldset#quantityContainer { border-bottom: none; padding: 0 0 30px; margin: 0 16px; }
+.cyo fieldset#nameAndFontContainer { text-align: center; }
+.cyo fieldset#quantityContainer { margin-top: -15px; padding-top: 9px; padding-bottom: 20px; }
+.cyo div#add-to-cart-container { padding-top: 0; padding-bottom: 22px; }
+.cyo fieldset#sizeContainer #size-utils { height: 15px; *height: 17px; }
+.cyo fieldset#colorContainer { line-height: normal }
+.cyo fieldset#colorContainer ul.swatches, .cyo fieldset#countryContainer ul.country-swatches { padding-top: 15px }
+.cyo form#addToCartForm label.initial { height: 16px; text-transform: uppercase; font-size: 9px; }
+.cyo .cyo-steps h4 { height: 20px; margin-bottom: 15px; }
+.cyo .cyo-step-mode { text-align: center }
+.cyo .mode-button-container { margin: 0 auto; width: 288px; height: 184px; }
+.cyo .mode-button,
+.cyo .mode-separator { float: left; display: block; }
+.cyo .mode-button.inactive { cursor: pointer }
+.cyo #fontSwatches,
+.cyo #embroiderySwatches { clear: both }
+.cyo #fontSwatches { border-top: 1px solid #ccc; padding-top: 10px; width: 100%; }
+.cyo #embroideryColorContainer ul.e-swatches li.swatch { display: list-item; float: left; }
+.cyo #embroideryColorContainer ul.e-swatches li.swatch img { display: block; float: left; height: 86px; width: 59px; }
+.cyo .crest #embroideryColorContainer ul.e-swatches li.swatch img { height: 100px; width: 96px; }
+.cyo select#embroideryColor { float: left }
+.cyo ul.f-swatches li { float: left; width: 72px; height: 76px; position: relative; text-align: center; margin-right: 4px; }
+.cyo ul.f-swatches li input { position: absolute; left: 29px; top: 40px; }
+.cyo #monogram-tradition { text-align: right; padding: 5px 0; }
+.cyo #monogram-preview-container { clear: both; text-align: center; padding: 10px 0 20px; }
+.cyo fieldset a { margin: auto; }
+.cyo #monogram-error { color: #c00; text-align: center; position: relative; top: -5px; }
+.cyo .embroidery-note { color: #4979bb; font-size: 11px; line-height: 11px; text-align: center; text-transform: uppercase; clear: both; }
+.cyo .initial-container, .cyo .initial { width: 85px }
+.cyo .initial-container { float: left; margin-right: 25px; padding-bottom: 10px; }
+.cyo .last { margin-right: 0 }
+.cyo .note { font-size: 9px }
+#monogram-tradition { position: relative }
+/*
+ .cyo .tip { background: #fff; color: #818181; font-size: 10px; line-height: 13px; padding-top: 10px; margin-top: -11px; }
+.cyo .holder { }
+.cyo .tip h3,
+.cyo .tip p,
+.cyo .tip ul,
+.cyo .tip li { margin: 0; padding: 0; }
+.cyo .tip h3 { font-size: 10px; line-height: 13px; margin-bottom: 3px; }
+.cyo .tip p { margin: 10px 0 }
+.cyo .tip ul { }*/
+.cyo .tip li { margin: 0 0 1em 15px; list-style: disc; }
+.cyo #size-utils { padding-left: 10px; /*width: 150px; */ /* Fix for defect 100095 removed temporarily to resolve defect 101468 */ ; }
+.cyo h4.product-title { font-weight: bold }
+
+.poloCustomFlagOutfit .cyo-steps h4 { background-position: 0 -210px; }
+.poloCustomFlagOutfit #cyo-step-color h4 { background-position: 0 -240px; height: 30px; }
+.poloCustomFlagOutfit #cyo-step-name-font h4 { background-position: 0 -270px; height: 30px; }
+.poloCustomFlagOutfit .hasNoName #cyo-step-quantity h4 { background-position: 0 -300px; }
+.poloCustomFlagOutfit ul.f-swatches li { display: inline-block; float: none; }
+.poloCustomFlagOutfit #fontSwatches { border: none; }
+.poloCustomFlagOutfit #characterCount { width: 10px; height: 10px; color: #8a8a8a; font-weight: bold; top: 21px; left: 254px; position: absolute; }
+#monogram-error-dialog.wrapper { background: #fff; width: 300px; border: 1px solid #c9c9c9; /*temp*/ box-shadow: 0 0 18px #777; position: absolute; top: 48px; left: 0; z-index:2001;}
+#monogram-error-dialog .content { margin: 2px; border: 1px solid #c4c4c4; width: 294px; padding-bottom: 20px; }
+#monogram-error-dialog .title { border: 1px solid #e1e1e1; background: #d8d8d8; width: 282px; height: 15px; text-align: right; padding: 5px; color: #7a7a86; }
+#monogram-error-dialog .title div { float: right; }
+#monogram-error-dialog .ui-dialog-titlebar-close { margin: 0 0 0 5px; }
+#monogram-error-dialog p { text-align: left; color: #333; padding: 18px 15px; font-weight: bold; }
+#monogram-error-dialog .ok { margin: 0 auto; }
+.cyo fieldset#nameAndFontContainer { position: relative; }
+.cyo-steps h6 { color: #656565; }
+#flagName { text-transform: uppercase; height: 20px; width: 180px; background-image: url("/images/input-back-shadowed.gif"); color: #b2b2b2; }
+#flashPopup-content #zoom-lightbox { display: block }
+#tab-zoom-2 img { width: 800px !important }
+.promotions a.details { color: #01004C; text-decoration: underline; }
+.promotions a.details img { display: block }
+.promotions-bottom a.details img { padding-bottom: 16px; display: block; }
+.table { display: table; margin: 0 auto; }
+/* ------------------------------------------------------ BED COLLECTION AND SOLID HOME STYLES */
+#product-collection-table h3 { color: #666; font-size: 16px; padding-bottom: 10px; }
+#product-collection-table { float: left; clear: both; width: 100%; overflow: hidden; }
+#product-collection-table table.collection { width: 720px; font-size: 10px; font-family: Arial; color: #666; }
+#product-collection-table table.collection { margin-bottom: 45px }
+#product-collection-table table.collectionTotal { margin-bottom: 20px }
+#product-collection-table table.collection .title { background: url(/images/cyo-table-title-background_top.gif) top left repeat-x, url("/images/cyo-table-title-background_bottom.gif") bottom left repeat-x; padding: 5px 0; height: 17px; line-height: 17px; vertical-align: middle; text-transform: uppercase; border: none; }
+#product-collection-table table.collection td { padding: 5px 0; height: 15px; line-height: 15px; border-bottom: 1px solid #f5f5f5; vertical-align: middle; }
+#product-collection-table table.collection .itemCol { width: 90px; padding-left: 20px; }
+#product-collection-table table.collection .sizeCol { width: 90px; /* 130 - 40 */ }
+#product-collection-table table.collection .patternCol { width: 188px }
+#product-collection-table table.collection .qtyCol { width: 168px }
+#product-collection-table table.collection .priceCol { width: 111px }
+#product-collection-table table.collection .totalCol { width: 123px }
+#product-collection-table.sale table.collection .sizeCol { width: 110px }
+#product-collection-table.sale table.collection .qtyCol { width: 157px }
+#product-collection-table.sale table.collection .patternCol { width: 188px }
+#product-collection-table.sale table.collection .priceCol { width: 64px }
+#product-collection-table.sale table.collection .salePriceCol { width: 70px; color: #a72223; text-align: right; }
+#product-collection-table.sale table.collection .totalCol { width: 115px; text-align: right; padding-right: 16px; }
+#product-collection-table table.collection .lastrow { border: none }
+#product-collection-table table.collection .sizeCol select { width: 110px; /* 130 - 20 */ }
+#product-collection-table table.collection .patternCol select { width: 130px }
+#product-collection-table table.collection .qtyCol select { width: 85px }
+#product-collection-table table.collection td.salePriceCol,
+#product-collection-table table.collectionTotal th.totalCol,
+#product-collection-table td.totalCol .notzero { font-weight: bold }
+#product-collection-table td.totalCol .sale { color: #a72223 }
+.poloSolidHome #product-collection-table table.collection .sizeCol { padding-left: 40px }
+.poloSolidHome #product-collection-table.sale table.collection .sizeCol { padding-left: 20px }
+.poloBedCollection #product-collection-table table.collection .sizeCol { width: 168px }
+.poloBedCollection #product-collection-table table.collection .patternCol { width: 164px }
+.poloBedCollection #product-collection-table table.collection .qtyCol { width: 128px }
+.poloBedCollection #product-collection-table table.collection .priceCol { width: 71px }
+.poloBedCollection #product-collection-table table.collection .totalCol { width: 80px }
+.poloBedCollection #product-collection-table table.collection .sizeCol select { width: 130px }
+.poloBedCollection #product-collection-table.sale table.collection .patternCol { width: 166px }
+.poloBedCollection #product-collection-table.sale table.collection .qtyCol { width: 82px }
+.poloBedCollection #product-collection-table.sale table.collection .priceCol { width: 45px }
+.poloBedCollection #product-collection-table.sale table.collection .salePriceCol { width: 60px }
+.poloBedCollection #product-collection-table.sale table.collection .qtyCol select { width: 51px }
+#product-bottom,
+#bottom-fields { clear: both }
+#product-bottom-left { color: #666; font-size: 11px; line-height: 16px; float: left; margin-top: 10px; padding-bottom: 20px; width: 360px; }
+#product-bottom-right { color: #666; font-size: 11px; line-height: 16px; float: left; padding: 5px 0 0 20px; width: 340px; }
+
+#collection-patterns { padding-top: 20px; font-family: Arial; font-size: 11px; color: #666; }
+#collection-patterns dt { text-transform: uppercase; font-weight: bold; margin-bottom: 5px; color: #b2b2b2; }
+#collection-patterns dt.label-color { height: 20px; width: 60px; text-indent: -9999px; }
+#collection-patterns dd { clear: both; font-style: italic; margin-bottom: 5px; }
+#collection-patterns ul { list-style: none }
+#collection-patterns li { float: left; margin: 0 1px 1px 0; width: 50px; height: 50px; }
+#collection-patterns li a { border: none; text-decoration: none; }
+
+.cyo #htmlField1,
+.collection #htmlField1 { margin: 20px 0 0; }
+
+/* Enhanced Zoom */
+#enlarge-image {
+	height: 15px;
+	width: 120px;
+	margin: 10px 0 0;
+	text-align: left;
+	width: 360px;
+}
+a#enhanced-zoom {
+	float: left;
+	height: 15px;
+	line-height: 15px;
+	text-transform: uppercase;
+	background: url(/images/enlarge-image.png) no-repeat 0 0;
+	color: #666;
+	font-size: 10px;
+	text-indent: 29px;
+	cursor: pointer;
+}
+a#enhanced-zoom.disabled {
+	visibility: hidden;
+}

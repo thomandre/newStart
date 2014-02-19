@@ -14,31 +14,32 @@ class scrapeServiceTest extends NewStartWebTestCase
 	/**
 	 * @test
 	 * @group scrape
-	 * @group Zalando
+	 * @group zalando
 	 */
 	public function getInfosZalandoTest()
 	{
 		$scrapeService = new ScrapeService();
 		$scrapeService->container = $this->container;
 
-		$infos = $scrapeService->getInfos('http://www.zalando.fr/khujo-thered-veste-d-hiver-marron-kh122g02a-710.html?size=M');
+		$infos = $scrapeService->getInfos('http://havefyve.local:8888/newStart/web/test/khujo%20THERED%20-%20Veste%20d%27hiver%20-%20marron%20-%20ZALANDO.FR.html');
 		$this->assertEquals('khujo THERED - Veste d\'hiver - marron - ZALANDO.FR', $infos->title);
-		$this->assertNotEquals(false, strpos($infos->images[0]->src, 'detail/KH/12/2G/02/A7/10/KH122G02A-710@14.jpg'));
+		$this->assertEquals('http://havefyve.local:8888/newStart/web/test/khujo%20THERED%20-%20Veste%20d\'hiver%20-%20marron%20-%20ZALANDO.FR_files/KH122G02A-710@14(1).jpg', $infos->images[0]->src);
 		$this->assertEquals('80,00 EUR', $infos->price);
 	}
 
 	/**
 	 * @test
 	 * @group scrape
+	 * @group harrods
 	 */
 	public function getInfosHarrodsTest()
 	{
 		$scrapeService = new ScrapeService();
 		$scrapeService->container = $this->container;
 
-		$infos = $scrapeService->getInfos('http://www.harrods.com/product/bottle-and-bib-set/chloe/000000000003633043?cat1=bc-chloe');
+		$infos = $scrapeService->getInfos('http://havefyve.local:8888/newStart/web/test/Chloe%CC%81%20Bottle%20and%20Bib%20Set%20%20%20Harrods.html');
 		$this->assertEquals('Chloé Bottle and Bib Set | Harrods', $infos->title);
-		$this->assertEquals('http://s7v1.scene7.com/is/image/Harrods/3633043?$productMain$', $infos->images[0]->src);
+		$this->assertEquals('http://havefyve.local:8888/newStart/web/test/Chlo%C3%A9%20Bottle%20and%20Bib%20Set%20%20%20Harrods_files/3633043(1)', $infos->images[0]->src);
 		$this->assertEquals('£89.95', $infos->price);
 	}
 	 
@@ -52,7 +53,7 @@ class scrapeServiceTest extends NewStartWebTestCase
 		$scrapeService = new ScrapeService();
 		$scrapeService->container = $this->container;
 
-		$infos = $scrapeService->getInfos('http://www.ralphlauren.fr/product/index.jsp?productId=27596401&cp=4663481.4663341.5235531&ab=ln_hommes_pr%EAt-%E0-porter_vestesmanteaux');
+		$infos = $scrapeService->getInfos('http://havefyve.local:8888/newStart/web/test/Doudoune%20Ether%20-%20Doudounes%20&%20Gilets%20Vestes%20&%20Manteaux%20-%20Ralph%20Lauren%20France.html');
 		$this->assertEquals('Doudoune Ether - Doudounes &amp; Gilets Vestes &amp; Manteaux - Ralph Lauren France', $infos->title);
 		$this->assertEquals('http://s7d2.scene7.com/is/image/PoloGSI/s7-1069246_standard?$flyout_main$&cropN=0.12,0,0.75,1&iv=uzUcV2&wid=1080&hei=1440&fit=fit,1', $infos->images[0]->src);
 		$this->assertEquals('245,00 EUR', $infos->price);
@@ -61,14 +62,14 @@ class scrapeServiceTest extends NewStartWebTestCase
 	/**
 	 * @test
 	 * @group scrape
-	 * @group Balibaris
+	 * @group balibaris
 	 */
 	public function getInfosBalibarisTest()
 	{
 		$scrapeService = new ScrapeService();
 		$scrapeService->container = $this->container;
 
-		$infos = $scrapeService->getInfos('http://www.balibaris.com/chemises/962-tribeca-chambray.html');
+		$infos = $scrapeService->getInfos('http://havefyve.local:8888/newStart/web/test/E-shop%20-%20Chemises%20casual%20-%20Tribeca%20%20%20%20Chambray%20-%20Balibaris.html');
 		$this->assertEquals('E-shop -  Chemises casual -  Tribeca // Chambray - Balibaris', $infos->title);
 		$this->assertEquals('http://www.balibaris.com/962-5408-large/tribeca-chambray.jpg', $infos->images[0]->src);
 		$this->assertEquals('100,00 EUR', $infos->price);
@@ -77,30 +78,32 @@ class scrapeServiceTest extends NewStartWebTestCase
 	/**
 	 * @test
 	 * @group scrape
+	 * @group stjames
 	 */
 	public function getInfosSaintJamesTest()
 	{
 		$scrapeService = new ScrapeService();
 		$scrapeService->container = $this->container;
 
-		$infos = $scrapeService->getInfos('http://www.boutique-saint-james.fr/pull-raye-homme-rochefort-p654-z6680.html');
+		$infos = $scrapeService->getInfos('http://havefyve.local:8888/newStart/web/test/SAINT%20JAMES%20Pull%20raye%CC%81%20homme%20ROCHEFORT.html');
 		$this->assertEquals('SAINT JAMES Pull rayé homme ROCHEFORT', $infos->title);
-		$this->assertEquals('http://www.boutique-saint-james.fr/ICEO_catalogue/pki21100006680.jpg', $infos->images[0]->src);
+		$this->assertEquals('http://havefyve.local:8888/newStart/web/test/SAINT%20JAMES%20Pull%20ray%C3%A9%20homme%20ROCHEFORT_files/pki21100006680.jpg', $infos->images[0]->src);
 		$this->assertEquals('167,00 EUR', $infos->price);
 	}
 	 
 	/**
 	 * @test
 	 * @group scrape
+	 * @group levis
 	 */
 	public function getInfosLevisTest()
 	{
 		$scrapeService = new ScrapeService();
 		$scrapeService->container = $this->container;
 
-		$infos = $scrapeService->getInfos('http://www.levi.com/FR/fr_FR/men-jeans/p/191110003');
+		$infos = $scrapeService->getInfos('http://havefyve.local:8888/newStart/web/test/511%20Slim%20Fit%20Commuter%20%20%20Indigo%20Rigid%20%20%20Jeans%20%20%20Hommes%20%20%20Levi%27s%20%20%20France.html');
 		$this->assertEquals('511 Slim Fit Commuter | Indigo Rigid | Jeans | Hommes | Levi\'s | France', $infos->title);
-		$this->assertEquals('http://lsco.scene7.com/is/image/lsco//clothing/191110003-2012-fall-detail3-pdp.jpg?$1366x768$', $infos->images[0]->src);
+		$this->assertEquals('http://havefyve.local:8888/newStart/web/test/511%20Slim%20Fit%20Commuter%20%20%20Indigo%20Rigid%20%20%20Jeans%20%20%20Hommes%20%20%20Levi\'s%20%20%20France_files/191110003-2012-fall-front-pdp.jpg', $infos->images[0]->src);
 		$this->assertEquals('95,00 EUR', $infos->price);
 		
 	}
@@ -117,9 +120,9 @@ class scrapeServiceTest extends NewStartWebTestCase
 		$scrapeService = new ScrapeService();
 		$scrapeService->container = $this->container;
 
-		$infos = $scrapeService->getInfos('http://www.asos.fr/Superdry-Brad-Veste-en-cuir/11zo6n/?iid=3685064&cid=11760&sh=0&pge=1&pgesize=36&sort=-1&clr=Brown&r=2&mporgp=L1N1cGVyZHJ5L1N1cGVyZHJ5LUJyYWQtTGVhdGhlci1KYWNrZXQvUHJvZC8.');
+		$infos = $scrapeService->getInfos('http://havefyve.local:8888/newStart/web/test/Superdry%20|%20Superdry%20-%20Brad%20-%20Veste%20en%20cuir%20chez%20ASOS.html');
 		$this->assertEquals('Superdry | Superdry - Brad - Veste en cuir chez ASOS', $infos->title);
-		//$this->assertEquals('', $infos->images[0]->src);
+		$this->assertEquals('http://havefyve.local:8888/newStart/web/test/Superdry%20%7C%20Superdry%20-%20Brad%20-%20Veste%20en%20cuir%20chez%20ASOS_fichiers/image1xl.jpg', $infos->images[0]->src);
 		$this->assertEquals('223,00 £', $infos->price);
 	}
 	/**
@@ -133,9 +136,9 @@ class scrapeServiceTest extends NewStartWebTestCase
 		$scrapeService = new ScrapeService();
 		$scrapeService->container = $this->container;
 
-		$infos = $scrapeService->getInfos('http://www.asos.fr/ASOS-Caban-style-militaire-Bleu-marine/11e74l/?iid=2966682&cid=14368&sh=0&pge=0&pgesize=36&sort=-1&clr=Navy&mporgp=L0FTT1MvQVNPUy1QZWFjb2F0LVdpdGgtTWlsaXRhcnktRGV0YWlsLUluLU5hdnkvUHJvZC8.');
+		$infos = $scrapeService->getInfos('http://havefyve.local:8888/newStart/web/test/ASOS%20|%20ASOS%20-%20Caban%20style%20militaire%20-%20Bleu%20marine%20chez%20ASOS.html');
 		$this->assertEquals('ASOS | ASOS - Caban style militaire - Bleu marine chez ASOS', $infos->title);
-		//$this->assertEquals('', $infos->images[0]->src);
+		$this->assertEquals('http://havefyve.local:8888/newStart/web/test/ASOS%20%7C%20ASOS%20-%20Caban%20style%20militaire%20-%20Bleu%20marine%20chez%20ASOS_fichiers/image1xl.jpg', $infos->images[0]->src);
 		$this->assertEquals('59,73  EUR', $infos->price);
 	}
 
@@ -149,9 +152,9 @@ class scrapeServiceTest extends NewStartWebTestCase
 		$scrapeService = new ScrapeService();
 		$scrapeService->container = $this->container;
 
-		$infos = $scrapeService->getInfos('http://www.monshowroom.com/fr/zoom/2two/robe-imprimee-aunil/140932');
+		$infos = $scrapeService->getInfos('http://havefyve.local:8888/newStart/web/test/Robe%20imprime%CC%81e%20Aunil%20Noir%202two%20en%20promotion%20sur%20MonShowroom.com.html');
 		$this->assertEquals('Robe imprimée Aunil Noir 2two en promotion sur MonShowroom.com', $infos->title);
-		$this->assertEquals('http://static.monshowroom.com/img-collection/1/4/0/9/3/2/140932-01-e.jpg?d=2013-10-16_14:33:18', $infos->images[0]->src);
+		$this->assertEquals('http://havefyve.local:8888/newStart/web/test/Robe%20imprime%CC%81e%20Aunil%20Noir%202two%20en%20promotion%20sur%20MonShowroom.com_fichiers/140932-01-e.jpg', $infos->images[0]->src);
 		$this->assertEquals('68.50EUR', $infos->price);
 	}
 	
@@ -165,11 +168,28 @@ class scrapeServiceTest extends NewStartWebTestCase
 		$scrapeService = new ScrapeService();
 		$scrapeService->container = $this->container;
 
-		$infos = $scrapeService->getInfos('http://shop.mango.com/FR/p0/mango/accessoires/ras-de-cou-double-metallique/?id=23030141_94&n=1&s=accesorios.bisuteria&ident=0__1_0_1392134615537&ts=1392134615537');
+		$infos = $scrapeService->getInfos('http://havefyve.local:8888/newStart/web/test/MANGO%20-%20Accessoires%20-%20Bijoux%20-%20Ras-de-cou%20double%20me%CC%81tallique.html');
 		$this->assertEquals('MANGO - Accessoires - Bijoux - Ras-de-cou double métallique', $infos->title);
 		$this->assertEquals('http://st.mngbcn.com/rcs/pics/static/T2/fotos/S9/23030141_94.jpg', $infos->images[0]->src);
 		$this->assertEquals('24,99EUR', $infos->price);
 	}
+
+	/**
+	 * @test
+	 * @group scrape
+	 * @group zara
+	 */
+	public function getInfosZaraTest()
+	{
+		$scrapeService = new ScrapeService();
+		$scrapeService->container = $this->container;
+
+		$infos = $scrapeService->getInfos('http://havefyve.local:8888/newStart/web/test/MANTEAU%20COURT%20LAINE%20CAPUCHE%20-%20Manteaux%20-%20FEMME%20|%20ZARA%20France.html');
+		$this->assertEquals('MANTEAU COURT LAINE CAPUCHE - Manteaux - FEMME | ZARA France', $infos->title);
+		$this->assertEquals('http://static.zara.net/photos//2014/V/0/1/p/2128/303/620/2/w/1920/2128303620_1_1_1.jpg?timestamp=1390244997469', $infos->images[0]->src);
+		$this->assertEquals('79,95  EUR', $infos->price);
+	}
+	
 
 	/**
 	 * @test
@@ -186,7 +206,50 @@ class scrapeServiceTest extends NewStartWebTestCase
 		$this->assertEquals('', $infos->price);
 	}*/
 
-	
+	/**
+	 * @test
+	 * @group scrape
+	 */
+	/*public function getInfosAsos2Test()
+	{
+		$scrapeService = new ScrapeService();
+		$scrapeService->container = $this->container;
+
+		$infos = $scrapeService->getInfos('');
+		$this->assertEquals('', $infos->title);
+		$this->assertEquals('', $infos->images[0]->src);
+		$this->assertEquals('', $infos->price);
+	}*/
+
+	/**
+	 * @test
+	 * @group scrape
+	 */
+	/*public function getInfosAsos2Test()
+	{
+		$scrapeService = new ScrapeService();
+		$scrapeService->container = $this->container;
+
+		$infos = $scrapeService->getInfos('');
+		$this->assertEquals('', $infos->title);
+		$this->assertEquals('', $infos->images[0]->src);
+		$this->assertEquals('', $infos->price);
+	}*/
+
+	/**
+	 * @test
+	 * @group scrape
+	 */
+	/*public function getInfosAsos2Test()
+	{
+		$scrapeService = new ScrapeService();
+		$scrapeService->container = $this->container;
+
+		$infos = $scrapeService->getInfos('');
+		$this->assertEquals('', $infos->title);
+		$this->assertEquals('', $infos->images[0]->src);
+		$this->assertEquals('', $infos->price);
+	}*/
 
 	/**
 	 * @test

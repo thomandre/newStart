@@ -1,0 +1,1 @@
+(function(){try{var a=document.createElement('iframe');a.width='1';a.height='1';a.frameBorder='0';a.style.display='none';a.src='http://api.rightarget.com:80/services/snippet/?adv=3049&iid=191110003&rel=51&pl=prd&sid=3049-optin';document.body.appendChild(a)}catch(e){}})();

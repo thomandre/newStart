@@ -1,0 +1,98 @@
+/* Eulerian Analytics #1573890882 */
+_oEa.website("monshowroom-fr");
+var _EaCP = {"cgip" : _oEa.hcgi
+,"heatmap":"fiche-produit"
+,"tp":{"":""}
+};
+EA_heatmap('fiche-produit',1 );
+_oEa.jsbwr = {
+ 's'   : '//eu.euleriancdn.net/ea-misc/js/domwrite.js',
+ 'pre' : function(){ _oEaDWR.capture(); },
+ 'post': function(){ _oEaDWR.render(_oEa.b); }
+};
+if (typeof _oEa.gloadtimeout !== 'function') {
+ _oEa.gloadtimeout = function( to, id, tg ) {};
+}
+/* {ccmt:7,ccmth:7,v:0,hdlr:tag} */
+_oEa.onload(function(){
+try{
+/* Native */
+_oEa.onload(function(){_oEa.gloadtimeout(5000,"w8QJGwZp6DPssZVft33XzYeM1Y9CbKAKgTlJ2Q--",_oEa.gloadjsbwr("http://tracking.lengow.com/tos.js"));return        true;});
+}catch(e){_oEa.log('ETM',e);}
+return        true;
+});
+/* {ccmt:24,ccmth:24,v:0,hdlr:tag} */
+_oEa.onload(function(){
+try{
+/* Native */
+_oEa.onload(function(){_oEa.gloadjsbwr("http://nxtck.com/act.php?zid=12283&pid=140932");return        true;});
+}catch(e){_oEa.log('ETM',e);}
+return        true;
+});
+/* {ccmt:41,ccmth:48,v:0,hdlr:tag} */
+_oEa.onload(function(){
+try{
+/* Img */
+_oEa.gloadtimeout(
+ 5000,
+ "EMfNwnYS.kZtdivW2fSWEe_YEBg33DILAapITjQ-",
+_oEa.gloadimg("http://email-reflex.com/tags/target.php?source=9&pid=140932")
+)
+;
+}catch(e){_oEa.log('ETM',e);}
+return        true;
+});
+/* {ccmt:48,ccmth:58,v:0,hdlr:tag} */
+_oEa.onload(function(){
+try{
+/* Native */
+_oEa.onload(function(){var google_conversion_id=window.google_conversion_id=1036859295;var google_conversion_format=window.google_conversion_format="3";var google_conversion_label=window.google_conversion_label="nu8kCI_N_QIQn--07gM";var google_conversion_language=window.google_conversion_language="en";var google_conversion_color=window.google_conversion_color="ffffff";var google_conversion_value=window.google_conversion_value=0;var google_custom_params=window.google_custom_params={pagetype:'product'};google_custom_params.prodid="140932";google_custom_params.pagetype=encodeURIComponent("product");google_custom_params.prodtype=encodeURIComponent("");google_custom_params.marque=encodeURIComponent("");google_custom_params.ecomm_typeClient=encodeURIComponent("");var google_remarketing_only=window.google_remarketing_only=true; _oEa.gloadtimeout(5000,"EMfNwnYS.kZtdivW2eXuhJNecgrUZOeIpyzCjIY-",_oEa.gloadjsbwr("http://www.googleadservices.com/pagead/conversion.js"));return        true;});
+}catch(e){_oEa.log('ETM',e);}
+return        true;
+});
+/* {ccmt:72,ccmth:114,v:0,hdlr:tag} */
+_oEa.onload(function(){
+try{
+/* JS */
+_oEa.gloadtimeout(
+5000,
+"DEQwyRwgEDJm_8YpRfgVPX7RcyZE.voAEkVz7UrI",
+_oEa.gloadjssrc("https://eu-sonar.sociomantic.com/js/2010-07-01/adpan/monshowroom-fr","var urlvip;\n"+
+"urlvip = 'http://www.monshowroom.com/fr/zoom/2two/robe-imprimee-aunil/140932';\n"+
+"urlvip = urlvip.replace(/monshowroomvip/g, 'monshowroom');\n"+
+"\n"+
+"var customer = {\n"+
+"identifier: '',\n"+
+"segment: '1'\n"+
+"};\n"+
+"\n"+
+"var product = {\n"+
+"identifier: '140932',\n"+
+"fn: 'Robe imprimée Aunil',\n"+
+"brand:'2two',\n"+
+"description:'Pour 68.50 Eur chez Monshowroom ! VOIR!',\n"+
+"category: 'femme, Robes' ,\n"+
+"price: '68.50',\n"+
+"amount: '98',\n"+
+"currency: 'EUR',\n"+
+"url: urlvip,\n"+
+"photo: 'http://static.monshowroom.com/img-collection/1/4/0/9/3/2/140932-01-e.jpg?d=2013-10-16_14:33:18'\n"+
+"};","")
+);
+}catch(e){_oEa.log('ETM',e);}
+return        true;
+});
+/* {ccmt:95,ccmth:150,v:0,hdlr:tag} */
+try{
+/* Native */
+var _mTrack = window._mTrack = window._mTrack || [];_mTrack.push(['trackPage']);(function() {var mClientId = "tb9t6i6f40",mProto = "http://",mHost = "tracker.marinsm.com";_oEa.onload( function () {_oEa.gloadtimeout(5000, "DEQwyRwgEDJm_8YpRfgJ2b5KUV18VPAstIpoQSkc",_oEa.gloadjs( mProto + mHost + '/tracker/async/' + mClientId + '.js' ));} );} ());
+}catch(e){_oEa.log('ETM',e);}
+/* {ccmt:84,ccmth:131,v:0,hdlr:tag} */
+_oEa.onload(function(){
+try{
+/* Native */
+var criteo_q = window.criteo_q = window.criteo_q || [];criteo_q.push({ event:"setAccount",account:"889" },{ event: "viewItem" ,product : "140932" },{ event: "setUrl", url: "http://widget.criteo.com/event" },{ event: "setCustomerId", ui_eaid: "3873667385848560255" },{ event: "setSiteType", type: "d" });_oEa.onload(function () {_oEa.gloadtimeout(5000,"DEQwyRwgEDJm_8YpRfgnSafy.uDP43k.8QNm_CJ8",_oEa.gloadjs("http://static.criteo.net/js/ld/ld.js"));return        true;});
+}catch(e){_oEa.log('ETM',e);}
+return        true;
+});
+_oEa.websiteend();

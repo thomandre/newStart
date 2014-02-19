@@ -1,0 +1,25 @@
+/* MODULE LISTE PRODUITS */
+#titre-mod-listeproduits{width : 980px; margin : 15px 0 0 0; padding : 0; text-align : left; color : #333; font-size : 18px;}
+.td-mod-listeproduits-1 {border-left : 0; border-right : 0;}
+.td-mod-listeproduits-1 a{color:#333333; text-decoration : none}
+.td-mod-listeproduits-2 {border-left : 0; border-right : 0; padding-right : 20px;}
+.td-mod-listeproduits-2 a{color:#4D99E0; text-decoration : none;}
+#titre-mod-listeproduits td {border : 1px solid #ddd; padding-left : 20px; background : #F6F6F6; border-left : 0; border-right : 0}
+#modules-listeproduits>#slides_lp {border-top : 0; background : #FEFEFE;}
+.mod-listeproduits-nomproduit {padding : 0; margin : 0;}
+#slides_lp .slides_container {width:870px;padding : 20px 0;}
+#slides_lp .slides_container div {width:870px;display:block;}
+#slides_lp .prev{background : transparent url('../i/arrow-left.png') no-repeat center center; display : block;}
+#slides_lp .prev:hover{background : transparent url('../i/arrow-left-hover.png') no-repeat center center; display : block;}
+#slides_lp .next{background : transparent url('../i/arrow-right.png') no-repeat center center; display : block;}
+#slides_lp .next:hover{background : transparent url('../i/arrow-right-hover.png') no-repeat center center; display : block;}
+#slides_lp h4 {margin: 0 10px 0 10px; font: 11px/1.231 'Lucida Grande','Lucida Sans Unicode',Helvetica,Arial,Verdana,sans-serif;color: #4D99E0;text-decoration: none;}
+#slides_lp .h4smaller {margin: 0 10px 0 10px; font: 11px/1.231 'Lucida Grande','Lucida Sans Unicode',Helvetica,Arial,Verdana,sans-serif;color: #4D99E0;text-decoration: none;}
+#slides_lp h5 {margin: 0 10px 0 10px; font: 11px/1.231 'Lucida Grande','Lucida Sans Unicode',Helvetica,Arial,Verdana,sans-serif;color: #4D99E0;text-decoration: none;}
+#slides_lp .pagination {text-align : right; position : relative; top : -10px; left : -20px;}
+#slides_lp .pagination li {display : inline;}
+#slides_lp .pagination li>a{padding : 5px 9px; margin : 0 2px; border : 1px solid #ddd; color : #9C9C9C; text-decoration : none; background : #fff; font-size : 11px;}
+#slides_lp .pagination li>a:hover{box-shadow: inset 0px 0px 50px #dedede;}
+#slides_lp .pagination .current>a{padding : 5px 9px; margin : 0 2px; border : 1px solid #ddd; color : #fff; text-decoration : none; background : #4197EE}
+.highlight{color: #4D99E0; text-decoration : none;}
+.tablight{background : #dedede; line-height : 20px; display : block; text-align : left;}

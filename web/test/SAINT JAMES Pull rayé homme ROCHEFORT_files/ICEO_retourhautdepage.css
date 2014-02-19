@@ -1,0 +1,18 @@
+#toTop {
+	background: none repeat scroll 0 0 #F7F7F7;
+	border: 1px solid #CCCCCC;
+	bottom: 15px;
+	color: #4D5786;
+	cursor: pointer;
+	display: none;
+	font: 11px verdana,arial;
+	padding: 5px;
+	position: fixed;
+	right: 15px;
+	text-align: center;
+	width: 100px;
+}
+
+#toTop:hover{
+	background: none repeat scroll 0 0 #EEE;
+}

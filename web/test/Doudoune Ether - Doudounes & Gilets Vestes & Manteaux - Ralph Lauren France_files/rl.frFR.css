@@ -1,0 +1,598 @@
+/* Top nav */
+#TopNav li { margin-left:0px; }
+#TopNav li a.primary-nav { background-image: url("/images/FR/sprite_primary_nav.png"); }
+#TopNav li.men a.primary-nav { background-position: -5px -5px; width:69px; }
+#TopNav li.men a.primary-nav:hover, #TopNav li.men a.primary-nav.active { background-position: -5px -36px; }
+#TopNav li.women a.primary-nav { background-position: -88px -5px; width: 66px; }
+#TopNav li.women a.primary-nav:hover, #TopNav li.women a.primary-nav.active { background-position: -88px -36px; }
+#TopNav li.children a.primary-nav { background-position: -168px -5px; width:68px }
+#TopNav li.children a.primary-nav:hover, #TopNav li.children a.primary-nav.active { background-position: -168px -36px; }
+#TopNav li.baby a.primary-nav { background-position: -249px -5px; width:45px; }
+#TopNav li.baby a.primary-nav:hover, #TopNav li.baby a.primary-nav.active { background-position: -249px -36px; }
+#TopNav li.home a.primary-nav { background-position: -307px -5px; width:75px; }
+#TopNav li.home a.primary-nav:hover, #TopNav li.home a.primary-nav.active { background-position: -307px -36px; }
+#TopNav li.gifts a.primary-nav { background-position: -1006px -5px; width: 60px; }
+#TopNav li.gifts a.primary-nav:hover, #TopNav li.gifts a.primary-nav.active { background-position: -1006px -36px; }
+#TopNav li.sale a.primary-nav { background-position: -386px -5px; width: 61px; }
+#TopNav li.sale a.primary-nav:hover, #TopNav li.sale a.primary-nav.active { background-position: -386px -36px; }
+#TopNav li.style a.primary-nav { background-position: -570px -5px; width:91px; }
+#TopNav li.style a.primary-nav:hover, #TopNav li.style a.primary-nav.active { background-position: -570px -36px; } 
+#TopNav li.world a.primary-nav { background-position: -674px -5px; width: 169px; }
+#TopNav li.world a.primary-nav:hover, #TopNav li.world a.primary-nav.active { background-position: -674px -36px; }
+
+/* Flyouts */
+ul.subnav-hommes a, #flyout-men li div.topLink a { background: url(); }
+ul.subnav-femmes a, #flyout-women li div.topLink a { background: url(); }
+#flyout-world li div.topLink a { background: url(/images/FR/sprite_secondary_nav_worl.gif); }
+
+#flyout-men-div .flyout-tab-content { width: 70px; }
+#flyout-women-div .flyout-tab-content { width: 67px; margin-left: 78px; }
+#flyout-home-div .flyout-tab-content { width: 57px; }
+#flyout-rugby-div .flyout-tab-content { width: 55px; }
+#flyout-world-div .flyout-tab-content { width: 170px; margin-left:546px; }
+
+/* Mens flyout subnav */
+.subnav-hommes .shopall a, #flyout-men .shopall div.topLink a { background-position: -57px 0; width: 118px; }
+.subnav-hommes .shopall a:hover, .subnav-hommes .shopall a.active, #flyout-men .shopall div.topLink a:hover, #flyout-men .shopall div.topLink a.active { background-position: -57px -30px; }
+.subnav-hommes .purple a, #flyout-men .purple div.topLink a { background-position: -196px 0; width: 85px; }
+.subnav-hommes .purple a:hover, .subnav-hommes .purple a.active, #flyout-men .purple div.topLink a:hover, #flyout-men .purple div.topLink a.active { background-position: -196px -30px; }
+.subnav-hommes .black a, #flyout-men .black div.topLink a { background-position: -301px 0; width: 79px; }
+.subnav-hommes .black a:hover, .subnav-hommes .black a.active, #flyout-men .black div.topLink a:hover, #flyout-men .black div.topLink a.active { background-position: -301px -30px; }
+.subnav-hommes .prl a, #flyout-men .prl div.topLink a { background-position: -400px 0; width: 124px; }
+.subnav-hommes .prl a:hover, .subnav-hommes .prl a.active, #flyout-men .prl div.topLink a:hover, #flyout-men .prl div.topLink a.active { background-position: -400px -30px; }
+.subnav-hommes .rlx a, #flyout-men .rlx div.topLink a { background-position: -460px 0; width: 59px; }
+.subnav-hommes .rlx a:hover, .subnav-hommes .rlx a.active, #flyout-men .rlx div.topLink a:hover, #flyout-men .rlx div.topLink a.active { background-position: -460px -30px; }
+.subnav-hommes .rrl a, #flyout-men .rrl div.topLink a { background-position: -544px 0; width: 23px; }
+.subnav-hommes .rrl a:hover, .subnav-hommes .rrl a.active, #flyout-men .rrl div.topLink a:hover, #flyout-men .rrl div.topLink a.active { background-position: -544px -30px; }
+.subnav-hommes .denim a, #flyout-men .denim div.topLink a { background-position: -587px 0; width: 99px; }
+.subnav-hommes .denim a:hover, .subnav-hommes .denim a.active, #flyout-men .denim div.topLink a:hover, #flyout-men .denim div.topLink a.active { background-position: -587px -30px; }
+.subnav-hommes .bigtall a, #flyout-men .bigtall div.topLink a { background-position: -706px 0; width: 65px;}
+.subnav-hommes .bigtall a:hover, .subnav-hommes .bigtall a.active, #flyout-men .bigtall div.topLink a:hover, #flyout-men .bigtall div.topLink a.active { background-position: -706px -30px; }
+.subnav-hommes .golf a, #flyout-men .golf div.topLink a { background-position: -790px 0; width: 31px; }
+.subnav-hommes .golf a:hover, .subnav-hommes .golf a.active, #flyout-men .golf div.topLink a:hover, #flyout-men .golf div.topLink a.active { background-position: -790px -30px; }
+.subnav-hommes .tennis a, #flyout-men .tennis div.topLink a { background-position: -841px 0; width: 42px;}
+.subnav-hommes .tennis a:hover, .subnav-hommes .tennis a.active, #flyout-men .tennis div.topLink a:hover, #flyout-men .tennis div.topLink a.active { background-position: -841px -30px; }
+/* Womens flyout subnav */
+.subnav-femmes .shopall a, #flyout-women .shopall div.topLink a { background-position: -115px 0; width: 118px; }
+.subnav-femmes .shopall a:hover, .subnav-femmes .shopall a.active, #flyout-women .shopall div.topLink a:hover, #flyout-women .shopall div.topLink a.active { background-position: -115px -30px; }
+.subnav-femmes .collection a, #flyout-women .collection div.topLink a { background-position: -254px 0; width: 72px; }
+.subnav-femmes .collection a:hover, .subnav-femmes .collection a.active, #flyout-women .collection div.topLink a:hover, #flyout-women .collection div.topLink a.active { background-position: -254px -30px; }
+.subnav-femmes .black a, #flyout-women .black div.topLink a { background-position: -345px 0; width: 79px; }
+.subnav-femmes .black a:hover, .subnav-femmes .black a.active, #flyout-women .black div.topLink a:hover, #flyout-women .black div.topLink a.active { background-position: -345px -30px; }
+.subnav-femmes .blue a, #flyout-women .blue div.topLink a { background-position: -445px 0; width: 69px;}
+.subnav-femmes .blue a:hover, .subnav-femmes .blue a.active, #flyout-women .blue div.topLink a:hover, #flyout-women .blue div.topLink a.active { background-position: -445px -30px; }
+.subnav-femmes .lauren a, #flyout-women .lauren div.topLink a { background-position: -534px 0; width: 46px; }
+.subnav-femmes .lauren a:hover, .subnav-femmes .lauren a.active, #flyout-women .lauren div.topLink a:hover, #flyout-women .lauren div.topLink a.active { background-position: -534px -30px; }
+/*.subnav-femmes .pinkpony a, #flyout-women .pinkpony div.topLink a { background-position: -495px 0; width: 83px; }
+.subnav-femmes .pinkpony a:hover, .subnav-femmes .pinkpony a.active, #flyout-women .pinkpony div.topLink a:hover, #flyout-women .pinkpony div.topLink a.active { background-position: -495px -30px; }
+.subnav-femmes .rlx a, #flyout-women .rlx div.topLink a { background-position: -540px 0; width: 29px; }
+.subnav-femmes .rlx a:hover, .subnav-femmes .rlx a.active, #flyout-women .rlx div.topLink a:hover, #flyout-women .rlx div.topLink a.active { background-position: -540px -30px; }*/
+.subnav-femmes .denim a, #flyout-women .denim div.topLink a { background-position: -599px 0; width: 99px; }
+.subnav-femmes .denim a:hover, .subnav-femmes .denim a.active, #flyout-women .denim div.topLink a:hover, #flyout-women .denim div.topLink a.active { background-position: -599px -30px; }
+.subnav-femmes .golf a, #flyout-women .golf div.topLink a { background-position: -720px 0; width: 104px; }
+.subnav-femmes .golf a:hover, .subnav-femmes .golf a.active, #flyout-women .golf div.topLink a:hover, #flyout-women .golf div.topLink a.active { background-position: -720px -30px; }
+/*.subnav-femmes .tennis a, #flyout-women .tennis div.topLink a { background-position: -752px 0; width: 56px; display:none; }
+.subnav-femmes .tennis a:hover, .subnav-femmes .tennis a.active, #flyout-women .tennis div.topLink a:hover, #flyout-women .tennis div.topLink a.active {background-position: -752px -30px; }*/
+
+/* World flyout Subnav */
+#flyout-world .mag div.topLink a { background-position: -294px 0; width: 81px; }
+#flyout-world .mag div.topLink a:hover, #flyout-world .mag div.topLink a.active { background-position: -294px -30px; }
+#flyout-world .watches div.topLink a { background-position: -529px 0; width: 124px; }
+#flyout-world .watches div.topLink a:hover, #flyout-world .watches div.topLink a.active { background-position: -529px -30px; }
+#flyout-world .flagship div.topLink a { background-position: -395px 0; width: 114px; }
+#flyout-world .flagship div.topLink a:hover, #flyout-world .flagship div.topLink a.active { background-position: -395px -30px; }
+/*#flyout-world .giftvault div.topLink a { background-position: -450px 0; width: 52px; }
+#flyout-world .giftvault div.topLink a:hover, #flyout-world .giftvault div.topLink a.active { background-position: -450px -30px; }
+#flyout-world .restaurants div.topLink a { background-position: -603px 0; width: 81px; }
+#flyout-world .restaurants div.topLink a:hover, #flyout-world .restaurants div.topLink a.active { background-position: -603px -30px; }
+*/
+.subnav-hommes li, #TopNav  #flyout-men li.flyOutList,.subnav-femmes li, #TopNav  #flyout-women li.flyOutList, #TopNav  #flyout-world li.flyOutList, #TopNav  #flyout-world li.flyOutList {margin-right:26px}
+.subnav-hommes li.tennis, #TopNav #flyout-men li#flynavId-8151891.flyOutList, .subnav-femmes li.golf, #TopNav #flyout-women li#flynavId-4663961.flyOutList, #TopNav #flyout-world li#flynavId-5252911.flyOutList {margin-right: 0;}
+
+/* ------------------------------------------------------- FOOTER Content */
+#footer li.country span { background: url(/images/helpdesk/flag_france_19x13.gif) no-repeat 0px 0px; display: inline-block; text-indent: -10000px; height: 13px; width: 19px;}
+#rl_topnav li.country span { background: url(/images/helpdesk/flag_france_13x8.gif) no-repeat 0 0; }
+a.loc_FR { text-decoration: underline !important; }
+.minicart-footer {}
+
+/** Credit Card Logos */
+.cardLogos { background: url(/images/EN/cc_logos.png) no-repeat; }
+.cardLogos { background-position: right top; }
+
+.btn { cursor:pointer; border:0; outline: 0; text-indent: -100000px; display: block;}
+    .btn:hover {-moz-opacity: 0.9; opacity: 0.9; }
+    .btn.drk,
+    body#fec .action a.submit{ background: url(/images/FR/btn_drk.png) no-repeat; height: 21px;}
+    .btn.drk#monogram-preview { background-position: 0px 0px; width:157px; margin: auto; }
+    .btn.drk#employee-start-shopping { background-position: -0px -40px!important; width: 166px; height: 20px; }
+    .btn.drk#aos-signin { background-position: 0px -117px; width: 160px; }
+    .btn.drk#aos-logout { background-position: -250px -117px; width: 107px; float: right; }
+    .btn.drk#add-to-cart,
+    .btn.drk#add-cyo-to-cart,
+    .btn.drk#add-certificate-to-cart { background-position: -500px -0px; width:122px; margin: auto; }
+    .btn.drk#preview-gift-certificate-button { background-position: -250px 0; width: 168px; margin: 0 auto; }
+    .btn.drk#mc-goto-cart,
+    .btn.drk.continue { width: 159px; margin: 0 auto; background-position: -250px -40px; }
+    .btn.drk.ok {  background-position: 0 -160px; height: 20px; width: 111px; }
+    body#fec .action a.submit{ width:60px; height:19px; text-indent:999px; display:block; margin:0 0 10px 291px; overflow: hidden; background-position: -500px -120px;}
+
+.cyo-steps h4 { height: 20px; width: 338px; background: transparent url(/images/FR/CYO_stepsprite.png) no-repeat 0 0; text-indent: -9999px; }
+#cyo-step-size h4 { background-position: 0 -30px }
+#cyo-step-color h4 { background-position: 0 -60px }
+#cyo-step-embroidery-color h4 { background-position: 0 -90px; }
+#cyo-step-quantity h4 { background-position: 0 -150px }
+#cyo-step-initials-font h4 { background-position: 0 -120px }
+.monogram #cyo-step-quantity h4 { background-position: 0 -180px }
+#cyo-step-embroidery-color h4,
+#cyo-step-initials-font h4 { height: 30px; }
+
+/* Employee Page */
+#employee-welcome { background: url(/images/FR/rl.frFR.employee-welcome.gif) no-repeat; }
+#employee-discount { background: url(/images/FR/employee-discount.gif) no-repeat; }
+
+/* Signup Thank You */
+#footer-signup { background-image: url(/images/FR/signup-thank-you.png); }
+
+/* enlarge image headers */
+#enlarge-right-column h4 { background: #BAB8B9 url(/images/FR/hdr_overlay.png) no-repeat; height: 20px; text-indent: -100000px; }
+#enlarge-right-column h4.additional { background-position: 0 0 }
+#enlarge-right-column h4.colors { background-position: 0 -20px; }
+
+/* family page */
+form.parametricSort select, form.filter select { width: 120px; }
+
+/* ------------------- product level tabs */
+#ca-lightbox ul.ui-tabs-nav li,
+#tabs-zoom ul.ui-tabs-nav li,
+#tabs ul.ui-tabs-nav li { background: url(/images/FR/tabs.png) no-repeat; background-color: #fff!important; text-indent: -100000px; }
+#tabs-zoom ul.ui-tabs-nav { left: -2px; height: 23px; }
+#tabs-zoom ul.ui-tabs-nav li { background: url(/images/FR/tabs.png) no-repeat!important; }
+
+/* assistance */
+ul.ui-tabs-nav li#tab-assistance { background-position: 0px 0px; width: 104px;  }
+ul.ui-tabs-nav li#tab-assistance.ui-tabs-selected { background-position: 0px -27px;}
+/* details */
+#tabs ul.ui-tabs-nav li#tabDetails { background-position: -150px 0px; width: 53px;}
+#tabs ul.ui-tabs-nav li#tabDetails.ui-tabs-selected { background-position: -150px -27px; }
+/* email us */
+ul.ui-tabs-nav li#tab-email { background-position: -250px 0px; width: 142px; }
+ul.ui-tabs-nav li#tab-email.ui-tabs-selected { background-position: -250px -27px; }
+/* enlarge image */
+ul.ui-tabs-nav li#tab-enlarge { background-position: -500px 0px!important; width: 115px; }
+ul.ui-tabs-nav li#tab-enlarge.ui-tabs-selected { background-position: -500px -27px!important; }
+/* fit guide */
+ul.ui-tabs-nav li#tab-fit { background-position: -651px 0px!important; width: 107px; }
+ul.ui-tabs-nav li#tab-fit.ui-tabs-selected { background-position: -651px -27px!important; }
+/* gift services */
+ul.ui-tabs-nav li#tab-gift { background-position: -800px 0px; width: 99px; }
+ul.ui-tabs-nav li#tab-gift.ui-tabs-selected { background-position: -800px -27px; }
+/* returns and exchanges */
+ul.ui-tabs-nav li#tab-returns { background-position: -950px 0px; width: 121px; }
+ul.ui-tabs-nav li#tab-returns.ui-tabs-selected { background-position: -950px -27px; }
+/* shipping info */
+ul.ui-tabs-nav li#tab-shipping { background-position: -1104px 0px; width: 109px;}
+ul.ui-tabs-nav li#tab-shipping.ui-tabs-selected { background-position: -1104px -27px;}
+/* size chart */
+#tabs ul.ui-tabs-nav li#tabSize { background-position: -650px 0; width: 52px;}
+#tabs ul.ui-tabs-nav li#tabSize.ui-tabs-selected { background-position: 0 -26px; }
+#tabs-zoom ul.ui-tabs-nav li#tab-size { background-position: -1300px 0px!important; width: 110px; }
+#tabs-zoom ul.ui-tabs-nav li#tab-size.ui-tabs-selected { background-position: -1300px -27px!important; }
+/* RL style guide */
+#tabs ul.ui-tabs-nav li#tabStyle,
+#tabs-zoom ul.ui-tabs-nav li#tab-style { background-position: -1451px 0px!important; width: 91px; }
+#tabs ul.ui-tabs-nav li#tabStyle.ui-tabs-selected,
+#tabs-zoom ul.ui-tabs-nav li#tab-style.ui-tabs-selected { background-position: -1451px -27px!important; }
+/* rl magazine */
+ul.ui-tabs-nav li#tabMag { background-position: -1601px 0px; width: 81px;}
+ul.ui-tabs-nav li#tabMag.ui-tabs-selected { background-position: -1601px -27px;}
+/* rl TV */
+ul.ui-tabs-nav li#tabTV { background-position: -1698px 0px; width: 49px;}
+ul.ui-tabs-nav li#tabTV.ui-tabs-selected { background-position: -1698px -27px;}
+
+#tabs ul.ui-tabs-nav li.guide { background: url(/images/FR/tabs_guide.png) no-repeat; text-indent: -100000px; position: relative; width: 156px!important;}
+     /* big and tall */
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000147 { background-position: -0px 0px; }
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000147.ui-tabs-selected { background-position: -0px -25px!important; }
+    /* black label */
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000164 { background-position: 0px -50px; }
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000164.ui-tabs-selected { background-position: 0px -75px!important; }
+    /* ralph lauren */
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000628 { background-position: -200px -0px; }
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000628.ui-tabs-selected { background-position: -200px -25px!important; }
+    /* rlx */
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000165 { background-position: -200px -50px; }
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000165.ui-tabs-selected { background-position: -200px -75px!important; }
+    /* polo ralph lauren */
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000152 { background-position: -400px 0px; }
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000152.ui-tabs-selected { background-position: -400px -25px!important; }
+    /* golf */
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000172 { background-position: -400px -50px; }
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000172.ui-tabs-selected { background-position: -400px -75px!important; }
+    /* purple */
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000153 { background-position: -600px -0px; }
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000153.ui-tabs-selected { background-position: -600px -25px!important; }
+    /* lauren */
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000628 { background-position: -600px -50px; }
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000628.ui-tabs-selected { background-position: -600px -75px!important; }
+    /* collection */
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000583 {background-position: -800px 0px;}
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000583.ui-tabs-selected { background-position: -800px -25px; }
+    /* pink pony */
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000675 { background-position: -800px -50px; }
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000675.ui-tabs-selected { background-position: -800px -75px!important; }
+    /* blue label */
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000160 { background-position: -1000px 0px; }
+    ul.ui-tabs-nav li#tabGuide.guide.guide1000160.ui-tabs-selected { background-position: -1000px -25px; }
+
+/* ------------------- product level labels */
+#product .label { background: url(/images/FR/hdr_product.png) no-repeat; text-indent: -10000px; }
+#product .label.size { background-position: 0 10px!important; }
+#product .label.quantity { background-position: 0 -30px!important; }
+#product .label.color { background-position: 0 -70px!important; }
+#product .label.narrow { background-position: 0 -110px!important; width: 145px; }
+#product .label.country { background-position: 0 -240px!important; width: 140px;}
+
+.poloCustomFlagOutfit#product .label.color { width: 140px; background-position: 0 -280px !important; }
+
+#product .label.fit,
+#product .label.sizeGuide { display: block; height: 15px; }
+#product .label.fit { background-position: 7px -220px!important; width: 123px; background-color: #B2B4C3; }
+#product .label.sizeGuide { background-position: -199px -220px!important; width: 123px; margin-bottom: 5px; }
+
+/* You May Also Like / Recently Viewed */
+#product h4.label { height: 17px; font-size: 14px; text-indent: -9999px; border-bottom: 1px #dfdfdf solid; margin: 30px 0 10px -3px;}
+#product h4.label.related { background-position: 2px -200px; }
+#product h4.label.recent { background-position: 2px -160px; }
+
+/* set concept shop defaults */
+#side-nav .cs { background-image: url(/images/FR/nav_left.png); }
+#side-nav .refine { background-image: url(/graphics/category_images/rlfr_ln_refine_search.gif); }
+#side-nav .head-fi10, #side-nav .head-fi11 { height: 24px; }
+#side-nav .head-fi9 { height: 40px; }
+
+/* password lighbox overrides */
+#changePasswordCommand { width: 432px; }
+#changePasswordCommand label { width: 190px; }
+
+/* ------------------------------------ gold headlines - checkout - shopping - my account */
+h2#checkout-headline,
+h1#customer-assistance,
+#assistance-header,
+h2#my-account,
+h2#shopping-bag-header,
+h1#sitemap { height: 20px; text-indent: -9999px; margin-bottom: 13px; background: url(/images/FR/hdr_cart.gif) no-repeat; }
+    h2#checkout-headline { width: 128px; background-position: 0 0; float: left;}
+    #assistance-header,
+    h1#customer-assistance { width: 267px; background-position: 0 -20px ;}
+    h2#my-account { width: 160x; background-position: 0 -40px; margin-bottom: 20px; }
+    h2#shopping-bag-header { width: 165px; float: left; background-position: 0 -60px }
+    h1#sitemap { width: 155px; background-position: 0 -80px; }
+
+/*-------------------------------------------------------- CART */
+#shopping-empty-nav li a { padding: 0 10px; }
+
+/* ------------------------------------------------------- CHECKOUT */
+.btn_submit,
+.addToCartDisabled,
+.addToCart,
+.btn_edit,
+a.save,
+a.cancel,
+a.cancel-order-button,
+a#confirm-cancel,
+a.delete, .btn_delete, .deleteDisabled,
+.btn_cancel,
+.btn_Save,
+.btn_print,
+.btn_pdf,
+a.apply,
+a#promoApply,
+input#editSave,
+a.saveButton,
+input#save,
+a.editCancelLink,
+button#createUserButton,
+button#create,
+a.logout,
+a#logout,
+button#track-order-submit,
+input#signInButton,
+button#sign-in-button,
+a.return-to-order-history,
+a.return-to-shopping,
+a.gifting,
+#cart-continue-shopping a,
+a#move-all-to-cart,
+button.checkout.submit,
+input.checkout.submit,
+button#proceed-to-checkout,
+input#shipping-continue-button,
+a.cancelItemDest,
+button#update-bag,
+#bag-actions a#registration-user,
+#bag-actions a#move-to-wish-list,
+a#back-one,
+a#dont-cancel,
+a#view-wish-list,
+a#email-wishlist,
+#address-sugg-enter-diff-button,
+.btn_promotional,
+a.addanaddress,
+.btn_addtobag,
+.btn_editbilling,
+.btn_editshipping,
+.btn_editpayment,
+a#promoApply,
+div#review-submit .submit-order-enable ,
+div#review-submit .submit-order-disable,
+.btn_forgot,
+button#back-to-shopping,
+a.print,
+li.edit a { text-align: left; display: block; height: 30px; background: url(/images/FR/btn_spriteGRID.png); text-indent: -9999px; border: none; outline: 0; cursor: pointer; position: relative; padding: 0!important;}
+
+/* taller buttons */
+a.cancelItemDest,
+button.checkout.submit,
+input.checkout.submit,
+input#shipping-continue-button,
+button#address-sugg-enter-diff-button,
+button#continue-checkout,
+button#proceed-to-checkout,
+div#review-submit .submit-order-enable,
+div#review-submit .submit-order-disable { height: 40px!important; width: 226px;}
+
+.btn_edit,
+.btn_delete,
+.btn_cancel,
+.btn_Save,
+a.save,
+a.cancel,
+a.delete {float: left;}
+
+ul.addresses li.vcard div.title a { float: right; margin-left: 0; }
+
+/* Gold Sign In */
+input#signInButton,
+button#sign-in-button { width: 105px!important; background-position: 0px 0px; }
+input#signInButton:hover,
+button#sign-in-button:hover { background-position: 0px -40px; }
+
+button#createUserButton,
+input#signInButton { float: right; }
+button#sign-in-button.blue { background-position: 0px -80px; }
+button#sign-in-button.blue:hover { background-position: 0px -120px; }
+
+/* Logout */
+a.logout,
+a#logout { width: 127px; background-position: 0px -160px; }
+a.logout:hover,
+a#logout:hover { background-position: 0px -200px; }
+
+/* View Wishlist */
+a#view-wish-list { width:134px; background-position: 0px -400px; }
+a#view-wish-list:hover { background-position: 0px -440px; }
+
+/* Add an Address */
+a.addanaddress { width: 155px; background-position: 0px -560px; top: -2px;}
+a.addanaddress:hover { background-position: 0px -600px; }
+
+/* Create */
+button#createUserButton,
+button#create { width: 62px; background-position: -125px 0px; }
+button#createUserButton:hover,
+button#create:hover { background-position: -125px -40px; }
+button#create.blue { width: 85px; background-position: -125px -80px; }
+button#create.blue:hover { background-position: -125px -120px; }
+
+/* Apply Promo Code */
+form#promoCodeCommand input#promoCode {width: 115px;}
+a.apply,
+a#promoApply { width: 86px; background-position: -125px -160px; float: left; top: -1px;}
+a.apply:hover,
+a#promoApply:hover { background-position: -125px -200px; }
+
+/* Print */
+a.btn_print { width: 75px; background-position: -125px -240px; float: left; }
+a.btn_print:hover { background-position: -125px -280px; }
+
+/* Download PDF */
+a.btn_pdf { width: 141px; background-position: 0 -320px; float: left; }
+a.btn_pdf:hover { background-position: 0 -360px; }
+
+/* Print Receipt */
+a.print { width: 122px; background-position: -250px -240px; }
+a.print:hover { background-position: -250px -280px; }
+
+/* submit */
+.btn_submit { width: 80px; background-position: -250px 0px; }
+.btn_submit:hover { background-position: -250px -40px; }
+.btn_submit.blue { width: 80px; background-position: -250px -80px; }
+.btn_submit.blue:hover { background-position: -250px -120px; }
+
+/* Delete */
+a.delete,
+a.deleteDisabled,
+.btn_delete.disabled:hover,
+.btn_delete.deleteDisabled:hover,
+.btn_delete { width: 87px; background-position: -250px -160px; }
+a.delete:hover,
+.btn_delete:hover { background-position: -250px -200px; }
+
+/* Email Your Wishlist */
+a#email-wishlist { width: 216px; background-position: -250px -320px; }
+a#email-wishlist:hover { background-position: -250px -360px; }
+
+/* Move All to Wishlist */
+#bag-actions a#move-to-wish-list,
+#bag-actions a#registration-user { width: 251px; background-position: -250px -400px; }
+#bag-actions a#move-to-wish-list:hover,
+#bag-actions a#registration-user:hover { background-position: -250px -440px; }
+
+/* Edit Payment Method */
+.btn_editpayment { width: 166px; background-position: -250px -560px; margin: 0 auto}
+.btn_editpayment:hover { background-position: -250px -600px; }
+
+/* Track */
+button#track-order-submit { width: 63px; background-position: -375px 0px; }
+button#track-order-submit:hover { background-position: -375px -40px; }
+
+/* Edit */
+a.edit:hover,
+.btn_edit:hover,
+li.edit a:hover { background-position: -375px -120px; }
+a.edit,
+.btn_edit,
+.btn_edit.disabled:hover,
+.btn_edit.editDisabled:hover,
+li.edit a { width: 74px; background-position: -375px -80px; }
+
+/* Save */
+a.save,
+.btn_Save,
+input#editSave,
+a.saveButton,
+input#save { width: 109px; background-position: -374px -160px; }
+a.save:hover,
+.btn_Save:hover,
+input#editSave:hover,
+a.saveButton:hover,
+input#save:hover { background-position: -374px -200px; }
+
+/* back one step */
+a#back-one { width: 73px; background-position: -375px -240px; }
+a#back-one:hover { background-position: -375px -280px; }
+
+a#dont-cancel { background-position: -750px -159px; width: 235px; }
+a#dont-cancel:hover { background-position: -750px -199px; }
+
+/* Cancel */
+a.cancel,
+.btn_cancel,
+a.editCancelLink { width: 76px; background-position: -498px -80px; }
+a.cancel:hover,
+.btn_cancel:hover,
+a.editCancelLink:hover { background-position: -498px -120px; }
+
+/* Send email */
+.btn_forgot { width: 178px; background-position: -500px -160px; margin-top: -3px;}
+.btn_forgot:hover { background-position: -500px -200px; }
+
+/* Back to Shopping */
+button#back-to-shopping { width: 174px; background-position: -500px -240px; }
+button#back-to-shopping:hover { background-position: -500px -280px; }
+
+/* Edit Gift Option */
+a.gifting { width: 118px; background-position: -498px -400px; margin-left: -3px;}
+a.gifting:hover { background-position: -498px -440px; }
+
+/* Edit Address */
+#address-sugg-enter-diff-button { background-position: -500px -480px; }
+#address-sugg-enter-diff-button:hover { background-position: -500px -520px; }
+
+/* Edit Shipping + Billing Address */
+.btn_editbilling,
+.btn_editshipping { width: 136px; background-position: -500px -560px; margin-left: -2px;  }
+.btn_editbilling:hover,
+.btn_editshipping:hover { background-position: -500px -600px; }
+
+/* Continue Checkout */
+input#shipping-continue-button,
+input.checkout.submit,
+button.checkout.submit,
+body#authenticate #proceed-to-checkout { background-position: -500px 0px; float: right;}
+input#shipping-continue-button:hover,
+button.checkout.submit:hover,
+input.checkout.submit:hover,
+body#authenticate #proceed-to-checkout:hover { background-position: -500px -40px; }
+
+/* big cancel */
+a.cancelItemDest { background-position: -625px -80px; float: right; width: 87px }
+a.cancelItemDest:hover { background-position: -625px -120px; }
+
+/* Proceed to Checkout */
+button#proceed-to-checkout { background-position: -748px 0px; float: right; }
+button#proceed-to-checkout:hover { background-position: -748px -40px; }
+
+/* cancel order */
+a.cancel-order-button { background-position: -750px -80px; width: 162px; top: -4px; left: -3px; }
+a.cancel-order-button:hover { background-position: -750px -120px; }
+
+a#confirm-cancel {background-position: -750px -240px; width: 202px;  }
+a#confirm-cancel:hover {background-position: -750px -280px; }
+
+/* Edit Billing Address */
+.btn_editbilling {}
+.btn_editbilling:hover {}
+
+/* Update Bag */
+button#update-bag { width: 158px; background-position: -748px -480px; left: -2px; }
+button#update-bag:hover { background-position: -748px -520px; }
+
+a.return-to-order-history {width: 208px; background-position: -750px -560px;}
+a.return-to-order-history:hover { background-position: -750px -600px; }
+
+/* Submit Order  (Enabled and Disabled) */
+div#review-submit .submit-order-disable,
+div#review-submit .submit-order-enable { background-color: #f5f5f5; background-position: -1000px 0px; width: 197px;}
+div#review-submit .submit-order-disable:hover,
+div#review-submit .submit-order-enable:hover { background-position: -1000px -40px; }
+
+a.return-to-shopping { width: 168px; background-position: -1000px -80px;}
+a.return-to-shopping:hover {background-position: -1000px -120px;}
+
+/* Continue Shopping */
+#cart-continue-shopping a { width: 160px; background-position: -1000px -160px;}
+#cart-continue-shopping a:hover { background-position: -1000px -200px; }
+
+/* Move All to Shopping Bag */
+a#move-all-to-cart { width: 196px; background-position: -1000px -240px; }
+a#move-all-to-cart:hover { background-position: -1000px -280px; }
+
+/* Use Promotion Code */
+.btn_promotional { width: 156px; background-position: -1000px -320px; margin: 0 auto }
+.btn_promotional:hover { background-position: -1000px -360px; }
+
+/* add to bag - cross sells */
+.addToCartDisabled, 
+.btn_addtobag.disabled:hover,
+.addToCart,
+.btn_addtobag { width: 90px; background-position: -1000px -400px; margin: 8px 0; left: -3px;}
+.btn_addtobag:hover { background-position: -1000px -440px; }
+.crossSellAddToCart .btn_addtobag { width: 130px; }
+
+/* ------------------------------- checkout steps */
+ul#checkout-nav { overflow: hidden; margin: 0 auto 12px auto; width: 900px;}
+ul#checkout-nav li { float: left; display: block; text-indent: -9999px; height: 29px; background: url(/images/FR/checkout_steps.png) no-repeat; width: 170px; border-right: #fcfcfc 12px solid; }
+ul#checkout-nav li a { display: block; text-indent: -9999px; width: 100%; height: 21px; padding: 0 6px 14px 0; }
+/* ------------- step 1 */
+ul#checkout-nav li.addresses_completed { background-position: 0px -29px  }
+ul#checkout-nav li.addresses_selected  { background-position: 0px -58px }
+/* ------------- step 2 */
+ul#checkout-nav li.shipping_default   { background-position: -170px 0px; }
+ul#checkout-nav li.shipping_completed { background-position: -170px -29px; }
+ul#checkout-nav li.shipping_selected  { background-position: -170px -58px; }
+/* ------------- step 3 */
+ul#checkout-nav li.payment_default   { background-position: -348px -0px  }
+ul#checkout-nav li.payment_completed { background-position: -348px -29px }
+ul#checkout-nav li.payment_selected  { background-position: -348px -58px }
+/* ------------- step 4 */
+ul#checkout-nav li.review_default    { background-position: -525px 0px }
+ul#checkout-nav li.review_completed  { background-position: -525px -29px }
+ul#checkout-nav li.review_selected   { background-position: -525px -58px }
+/* ------------- step 5 */
+ul#checkout-nav li.receipt_default,
+ul#checkout-nav li.receipt_selected { border-right: none; }
+ul#checkout-nav li.receipt_default  { background-position: -700px -0px }
+ul#checkout-nav li.receipt_selected { background-position: -700px -58px }
+
+#header-promo-lbox a.ui-dialog-titlebar-close {
+    background: url("/images/FR/FR_close_btn.gif") no-repeat scroll right -7px transparent;
+}
+#rl-globalnav > li > a {
+	padding: 0px 9px 0px 9px;
+}
+#rl-accountsel-more li.line-break a {
+	line-height: 11px;
+	height: 37px;
+	padding-top:16px;
+}

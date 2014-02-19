@@ -1,0 +1,418 @@
+/**
+ * Owner: www.asos.com
+ * Theme: creative-generic.css
+ * Description: Sets font face for the creative pages
+ * Author: ASOS Creative coding team
+ * Media: Screen
+ */
+
+.futura-standard, p.futura-standard, h1.futura-standard, h2.futura-standard, h3.futura-standard, h4.futura-standard, .creative .futura-standard {font-family:'FuturaStd'; font-weight:normal; font-style:normal;}
+.futura-oblique, p.futura-oblique, h1.futura-oblique, h2.futura-oblique, h3.futura-oblique, h4.futura-oblique, .creative .futura-oblique {font-family:'FuturaStdBookOblique'; font-weight:normal; font-style:italic;}
+
+/********************************/
+
+/* GLOBAL BANNER */
+#globalBanner {width:974px; border:none; overflow:hidden; height:42px; }
+#globalBanner { margin-bottom:3px;}
+#globalBanner .men-link, #globalBanner .women-link {position:absolute; top:0;}
+#globalBanner .women-link {left:473px;}
+#globalBanner .men-link {left:548px;}
+#globalBanner a {float:left;}
+
+/********************************/
+
+/* NEWSLETTER */
+.site-content .newsletter a{font-weight:inherit;}
+
+/********************************/
+
+/* BRAND LOGOS */
+#category-banner {width:768px; background:url('http://images.asos.com/brandlogos/banner-assets/banner-bg-bottom.png') no-repeat 0 bottom; padding:0 0 14px 0; text-align:center;}
+#category-banner .banner-header {background:url('http://images.asos.com/brandlogos/banner-assets/banner-bg-top.png') no-repeat 0 top;}
+#category-banner .logo {padding:14px 25px 20px 25px; border-bottom:1px dotted #b5b5b5;}
+#category-banner p {padding:0 100px; margin:14px 0; font:11px Georgia, "Times New Roman", Times, serif; line-height:14px;}
+#category-banner p a {color:#000; text-decoration:underline;}
+#category-banner p a:hover {text-decoration:none;}
+#category-banner p strong {font-weight:bold;}
+#category-banner p em {font-style:italic;}
+
+/********************************/
+
+/* FB BUTTON FIX */
+.creative-panel #socialSharing #fb_xdm_frame_http,
+.creative-panel #socialSharing #fb_xdm_frame_https { border:none; width:0; height:0;}
+
+/********************************/
+
+/* TEST PAGE FIX FOR TOOLTIP */
+.creative-panel #globalBanner, .creative-panel #globalBanner-fc, .creative-panel #globalBanner-extra { height: 300px; }
+
+/********************************/
+
+/* GLOBAL BANNER - 3 BOX */
+ul#globalBanner { overflow:visible;}
+ul#globalBanner li { height:37px; cursor:default; width:305px; position:relative; margin-left:7px; margin-top:5px; display:inline-block; zoom:1; *dispay:inline; overflow:visible; float:left; text-align:center; background:#bcbcbc; }
+ul#globalBanner li.box01 { margin-left:4px; }
+ul#globalBanner li.box02 { width:346px; }
+ul#globalBanner li.box02 .link,
+ul#globalBanner li.box02 .no-link { width:345px; }
+ul#globalBanner li a,
+ul#globalBanner li a:hover { color:#000; text-decoration: none;}
+
+ul#globalBanner li .link,
+ul#globalBanner li .no-link { text-align:center; position:absolute; top:-3px; left:-4px; height:25px; width:304px; display:block; float:none; border:1px solid #b2b2b2; background:#fff; font-size:10px; font-family:Tahoma, Arial, Sans-serif; color:#020202; text-decoration:none; padding-top:10px; text-transform:uppercase; letter-spacing:1px; line-height: 13px; }
+ul#globalBanner li .double { padding-top:4px; height:31px; }
+ul#globalBanner li .in-link { display:inline; float:none; margin-left:5px; }
+ul#globalBanner li .two-links { color:#000;text-align:center; position:absolute; top:-3px; left:-4px; 
+                                height:25px; width:345px; display:block; float:none; 
+                                border:1px solid #b2b2b2; font-size:10px; 
+                                font-family:Tahoma, Arial, Sans-serif; 
+                                color:#020202; text-decoration:none; 
+                                padding:4px 0 6px 0; text-transform:uppercase; 
+                                letter-spacing:1px; line-height: 13px; }
+
+
+ul#globalBanner li .two-links a {font-family:Tahoma,Arial,Sans-serif;text-transform:uppercase;display:block;float:none;}
+ul#globalBanner li .two-links span a {display:inline;}
+ul#globalBanner li .link .txt-top { text-transform:none; font-size:11px;} /* text over two lines */
+ul#globalBanner li .link .txt-bottom { color:#666; font-size:8px;}
+ul#globalBanner li .no-link .txt-bottom { color:#666; font-size:8px; letter-spacing:1px;}
+ul#globalBanner li .link .txt-bottom .code,
+ul#globalBanner li .no-link .txt-bottom .code { color: #000;}
+/* ul#globalBanner li .link .txt-bottom .blue { color:#eb2e28; font-size:inherit;} */
+ul#globalBanner li .no-link .txt-bottom.white { color:#fff;}
+ul#globalBanner li .lwrcase { text-transform:none; } 
+
+ul#globalBanner li.half { width:481px; } /* 1/2 the width */
+ul#globalBanner li.half .link,
+ul#globalBanner li.half .no-link{ width:480px; }
+ul#globalBanner li.wide { width:643px; } /* 2/3 the width */
+ul#globalBanner li.wide .link{ width:642px; }
+ul#globalBanner .highlight {color:#f40000;}
+
+/*Sale */
+ul#globalBanner li.gb-sale { background-color:#bcbcbc; } 
+ul#globalBanner li.gb-sale .no-link { background:#f40000; border-color:#f40000; color: #fff; }
+ul#globalBanner li.gb-sale .no-link a { color: #fff; }
+ul#globalBanner li.gb-sale .two-links { background:#f40000; color:#fff; } 
+ul#globalBanner li.gb-sale .two-links a { color:#fff; }
+ul#globalBanner li.gb-sale-alt .link,
+ul#globalBanner li.gb-sale-alt .no-link {background:#cff8f9; border-color:#bcbcbc; color:#000;}
+ul#globalBanner li.gb-sale-alt .no-link a { color: #000; }
+ul#globalBanner li.gb-sale-alt .two-links { background:#cff8f9; color:#000; } 
+ul#globalBanner li.gb-sale-alt .two-links a { color:#000; }
+
+
+/* tooltip */
+.no-rgba ul#globalBanner li div.tooltip:before { border-color: transparent transparent #F2F2F2;}
+
+ul#globalBanner li div.tooltip:before { border-color: rgba(255, 255, 255, 0) rgba(255, 255, 255, 0) #F2F2F2; border-style: solid; border-width: 5px; content: " "; height: 0; left: 165px; position: absolute; top: -10px; width: 0; }
+ul#globalBanner li div.tooltip { background: none repeat scroll 0 0 #F2F2F2; box-shadow: 3px 4px 0 0 rgba(0, 0, 0, 0.2); color: #242424; display: block; font-family: Tahoma,Sans-Serif; font-size: 0.85em; text-transform: none; opacity: 0; padding: 10px; pointer-events: none; position: absolute; top: 34px; transform: translateY(-10px); -moz-transform: translateY(-10px); -webkit-transform: translateY(-10px); -ms-transform: translateY(-10px); -o-transform: translateY(-10px); transition: all 0.25s ease-out 0s; -moz-transition: all 0.25s ease-out 0s; -webkit-transition: all 0.25s ease-out 0s; -ms-transition: all 0.25s ease-out 0s; -o-transition: all 0.25s ease-out 0s; z-index: 12; left: 0; width:92%;}
+ul#globalBanner li.is-hover:hover div.tooltip { opacity: 1; pointer-events: auto; transform: translateY(0px); -webkit-transform: translateY(0px); -ms-transform: translateY(0px); -o-transform: translateY(0px); -moz-transform: translateY(0px); }
+
+/* IT tooltip font-size fix */
+ul#globalBanner li div.tooltip { font-size: 1em; top:32px;}
+ul#globalBanner li div.tooltip a { text-decoration: underline; float: none; }
+
+/* ie7 & ie8 tweeks */
+.ie7 ul#globalBanner { position: relative; z-index: 10; }
+.ie7 ul#globalBanner li.half,
+.ie8 ul#globalBanner li.half { width:481px;}
+
+.ie7 ul#globalBanner li.half .link,
+.ie8 ul#globalBanner li.half .link { width:480px;}
+
+/*.ie7 ul#globalBanner li .in-link:hover, 
+.ie7 ul#globalBanner li .in-link:visited,
+.ie7 ul#globalBanner li .in-link:active, 
+.ie7 ul#globalBanner li .in-link:link  { background:#f40000!important; }*/
+
+.ie7 ul#globalBanner li.premier .in-link:hover, 
+.ie7 ul#globalBanner li.premier .in-link:visited,
+.ie7 ul#globalBanner li.premier .in-link:active, 
+.ie7 ul#globalBanner li.premier .in-link:link  { background:#000!important; }
+
+.lt-ie9 ul#globalBanner li div.tooltip {display: none;}
+.lt-ie9 ul#globalBanner li:hover div.tooltip { display: block;}
+
+.ie7 nav#group-navigation ul li div.tooltip,
+.ie8 nav#group-navigation ul li div.tooltip {
+    Filter: progid:DXImageTransform.Microsoft.Shadow(color='#707070',direction='135',strength='2')
+}
+
+
+/********************************/
+
+/* GLOBAL BANNER XMAS */
+.creative .clearfix:before, .clearfix:after {content:""; display:table;}
+.creative .clearfix:after {clear:both;}
+.creative .clearfix {zoom:1;}
+ul#globalBanner-xmas {position:relative; overflow:visible; margin:0; padding:0; width:974px; height:78px; color:#fff; font-family: Arial,Tahoma,Sans-serif; font-weight:normal; margin-bottom:3px;}
+ul#globalBanner-xmas .content-box {position:relative; float:left; overflow:visible; text-transform:uppercase; text-align:center;}
+ul#globalBanner-xmas .content-box p {margin:0; padding:0;}
+ul#globalBanner-xmas .content-box a.full-link,
+ul#globalBanner-xmas .content-box span.no-link  {position:absolute; display:block; left:0; top:0; width:100%; height:100%; text-decoration:none; overflow:hidden;}
+
+ul#globalBanner-xmas .left-box {width:655px; height:78px; background:#6633cc; margin-right:10px; font-size:19px; line-height:19px;}
+/*ul#globalBanner-xmas .left-box.sat {background:#fd593f;}
+ul#globalBanner-xmas .left-box.mon {background:#167484;}*/
+ul#globalBanner-xmas .left-box.sale {background:#f40000; font-size:23px; line-height:23px;}
+
+ul#globalBanner-xmas .left-box .copy {margin-top:28px; padding:0 43px;}
+ul#globalBanner-xmas .left-box .copy.double {margin-top:16px;}
+ul#globalBanner-xmas .left-box .copy.triple {margin-top:7px;}
+/*ul#globalBanner-xmas .left-box .copy.sat {color:#330769;}
+ul#globalBanner-xmas .left-box .copy.mon {color:#ccfffe;}*/
+
+ul#globalBanner-xmas .left-box .mid-copy {font-size:16px; margin-top:1px;}
+
+ul#globalBanner-xmas .left-box .sub-copy {font-size:16px; margin-top:-6px;}
+/*ul#globalBanner-xmas .left-box .sub-copy.sat {color:#ffffff;}
+ul#globalBanner-xmas .left-box .sub-copy.mon {color:#ccfffe;}*/
+
+ul#globalBanner-xmas .left-box .sub-copy-2 {color:#330769; font-size:14px; margin-top:1px;}
+/*ul#globalBanner-xmas .left-box .sub-copy-2.mon {color:#ccfffe;}*/
+
+ul#globalBanner-xmas .left-box a { text-decoration:none; text-transform:uppercase; display:block; float:none;}
+ul#globalBanner-xmas .left-box a:hover {text-decoration:none;}
+
+ul#globalBanner-xmas .left-box a.sale {color:#ffffff; text-decoration:none; text-transform:uppercase; display:inline; float:none; line-height:25px; font-weight:bold;}
+ul#globalBanner-xmas .left-box a.sale:hover {color:#000000;}
+
+ul#globalBanner-xmas .right-box {width:303px; height:72px; background:#167484; border:solid 3px #6633cc; font-size:13px; line-height:17px;}
+/*ul#globalBanner-xmas .right-box.sat {background:#330769; border:solid 3px #fd593f; color:#fd593f;}*/
+ul#globalBanner-xmas .right-box.sale {background:#ffffff; border:solid 3px #f40000; color:#000000;}
+
+ul#globalBanner-xmas .right-box .full-link .copy,
+ul#globalBanner-xmas .right-box .no-link .copy {display:block; margin-top:11px; color:#ccfffe;}
+/*ul#globalBanner-xmas .right-box .full-link .copy.sat,
+ul#globalBanner-xmas .right-box .no-link .copy.sat {color:#000000;}*/
+ul#globalBanner-xmas .right-box .full-link .copy.sale,
+ul#globalBanner-xmas .right-box .no-link .copy.sale {color:#000000;}
+
+ul#globalBanner-xmas.uk .right-box .full-link .copy,
+ul#globalBanner-xmas.uk .right-box .no-link .copy {margin-top:29px;}
+ul#globalBanner-xmas.fr .right-box .full-link .copy,
+ul#globalBanner-xmas.fr .right-box .no-link .copy,
+ul#globalBanner-xmas.de .right-box .full-link .copy,
+ul#globalBanner-xmas.de .right-box .no-link .copy,
+ul#globalBanner-xmas.es .right-box .full-link .copy,
+ul#globalBanner-xmas.es .right-box .no-link .copy,
+ul#globalBanner-xmas.ru .right-box .full-link .copy,
+ul#globalBanner-xmas.ru .right-box .no-link .copy {margin-top:18px;}
+
+
+ul#globalBanner-xmas .right-box .full-link .copy .sub-copy,
+ul#globalBanner-xmas .right-box .no-link .copy .sub-copy {font-size:12px;}
+
+ul#globalBanner-xmas .highlight {color:#f40000;}
+ul#globalBanner-xmas .arrow {font-size:22px;}
+ul#globalBanner-xmas .flourish { display:none; position: absolute; width: 34px; height: 78px; background: url(http://images.asos.com/htmlpages/131214-Global-Banner/flourish_v4.gif) no-repeat;}
+ul#globalBanner-xmas .flourish.img-left {left: 4px;}
+ul#globalBanner-xmas .flourish.img-right {right: 4px;}
+ul#globalBanner-xmas .icon {position: absolute;}
+ul#globalBanner-xmas .icon.icon-right {right: 50px; top: 10px;}
+ul#globalBanner-xmas .icon.icon-left {left: 50px; top: 3px;} 
+
+/* Tooltip */
+.no-rgba ul#globalBanner-xmas li .tooltip:before { border-color: transparent transparent #F2F2F2;}
+ul#globalBanner-xmas li .tooltip:before { border-color: rgba(255, 255, 255, 0) rgba(255, 255, 255, 0) #F2F2F2; border-style: solid; border-width: 5px; content: " "; height: 0; left:50%; position: absolute; top: -10px; width: 0; }
+ul#globalBanner-xmas li .tooltip {left:24%; background: none repeat scroll 0 0 #F2F2F2; box-shadow: 3px 4px 0 0 rgba(0, 0, 0, 0.2); color: #242424; display: block; font-family: Tahoma,Sans-Serif; font-size: 10px; line-height:12px; text-transform: none; opacity: 0; padding: 10px; pointer-events: none; position: absolute; top:76px; transform: translateY(-10px); -moz-transform: translateY(-10px); -webkit-transform: translateY(-10px); -ms-transform: translateY(-10px); -o-transform: translateY(-10px); transition: all 0.25s ease-out 0s; -moz-transition: all 0.25s ease-out 0s; -webkit-transition: all 0.25s ease-out 0s; -ms-transition: all 0.25s ease-out 0s; -o-transition: all 0.25s ease-out 0s; z-index: 12; width: 50%;}
+ul#globalBanner-xmas li.is-hover:hover .tooltip { opacity: 1; pointer-events: auto; transform: translateY(0px); -webkit-transform: translateY(0px); -ms-transform: translateY(0px); -o-transform: translateY(0px); -moz-transform: translateY(0px); }
+ul#globalBanner-xmas li .tooltip a { text-decoration: underline; float: none; }
+.lt-ie9 ul#globalBanner-xmas li .tooltip { display: none; }
+.lt-ie9 ul#globalBanner-xmas li:hover .tooltip { display: block; }
+.ie7 ul#globalBanner-xmas nav#group-navigation ul li .tooltip,
+.ie8 ul#globalBanner-xmas nav#group-navigation ul li .tooltip {Filter: progid:DXImageTransform.Microsoft.Shadow(color='#707070',direction='135',strength='2')}
+ul#globalBanner-xmas li .tooltip a { color:#000000; text-decoration:underline; text-transform:none; display:inline; }
+ul#globalBanner-xmas .right-box .tooltip {left:10%; width:75%; margin-top:-4px;}
+
+/* FULL WIDTH */
+
+ul#globalBanner-xmas.us .left-box.sat {width:974px; height:78px; background:#fd593f;}
+ul#globalBanner-xmas.us .right-box.sat {display:none;}
+
+ul#globalBanner-xmas.us .left-box.sat.sun {width:655px; height:78px; background:#fd593f;}
+ul#globalBanner-xmas.us .right-box.sat.sun {display:block;}
+
+ul#globalBanner-xmas .left-box.mon {width:974px; height:78px;}
+ul#globalBanner-xmas .right-box.mon {display:none;}
+
+/********************************/
+
+/* GLOBAL BANNER FINAL CLEARANCE */
+.creative .clearfix:before, .clearfix:after {content:""; display:table;}
+.creative .clearfix:after {clear:both;}
+.creative .clearfix {zoom:1;}
+ul#globalBanner-fc {position:relative; overflow:visible; margin:0; padding:0; width:974px; height:40px; color:#fff; font-family: Arial,Tahoma,Sans-serif; font-weight:normal; margin-bottom:3px;}
+ul#globalBanner-fc .content-box {position:relative; float:left; overflow:visible; text-transform:uppercase; text-align:center;}
+ul#globalBanner-fc .content-box p {margin:0; padding:0;}
+ul#globalBanner-fc .content-box a.full-link,
+ul#globalBanner-fc .content-box span.no-link  {position:absolute; display:block; left:0; top:0; width:100%; height:100%; text-decoration:none; overflow:hidden;}
+
+ul#globalBanner-fc .left-box {width:655px; height:40px; background:#f40000; margin-right:10px; font-size:18px; line-height:18px;}
+
+ul#globalBanner-fc .left-box .copy {margin-top:28px; padding:0 15px;}
+ul#globalBanner-fc .left-box .copy.double {margin-top:16px;}
+ul#globalBanner-fc .left-box .copy.triple {margin-top:7px;}
+
+ul#globalBanner-fc .left-box .mid-copy {font-size:16px; margin-top:1px;}
+
+ul#globalBanner-fc .left-box .sub-copy {font-size:16px; margin-top:-6px;}
+
+ul#globalBanner-fc .left-box a { color:#ffffff; text-decoration:none; text-transform:uppercase; display:inline; float:none; line-height:25px; font-weight:bold;}
+ul#globalBanner-fc .left-box a:hover {text-decoration:none; color:#000;}
+
+ul#globalBanner-fc .right-box {width:303px; height:34px; background:#fff; border:solid 3px #f40000; color:#000000; font-size:13px; line-height:17px;}
+
+ul#globalBanner-fc .right-box .full-link .copy,
+ul#globalBanner-fc .right-box .no-link .copy {display:block; margin-top:11px; color:#000;}
+ul#globalBanner-fc.us .right-box.mon .full-link .copy {margin-top:0px;}
+
+ul#globalBanner-fc .highlight {color:#f40000;}
+ul#globalBanner-fc .left-box .arrow {font-size:22px;}
+ul#globalBanner-fc .right-box .arrow {font-size:16px;}
+
+/* Tooltip */
+.no-rgba ul#globalBanner-fc li .tooltip:before { border-color: transparent transparent #F2F2F2;}
+ul#globalBanner-fc li .tooltip:before { border-color: rgba(255, 255, 255, 0) rgba(255, 255, 255, 0) #F2F2F2; border-style: solid; border-width: 5px; content: " "; height: 0; left:50%; position: absolute; top: -10px; width: 0; }
+ul#globalBanner-fc li .tooltip {left:24%; background: none repeat scroll 0 0 #F2F2F2; box-shadow: 3px 4px 0 0 rgba(0, 0, 0, 0.2); color: #242424; display: block; font-family: Tahoma,Sans-Serif; font-size: 10px; line-height:12px; text-transform: none; opacity: 0; padding: 10px; pointer-events: none; position: absolute; top:42px; transform: translateY(-10px); -moz-transform: translateY(-10px); -webkit-transform: translateY(-10px); -ms-transform: translateY(-10px); -o-transform: translateY(-10px); transition: all 0.25s ease-out 0s; -moz-transition: all 0.25s ease-out 0s; -webkit-transition: all 0.25s ease-out 0s; -ms-transition: all 0.25s ease-out 0s; -o-transition: all 0.25s ease-out 0s; z-index: 12; width: 50%;}
+ul#globalBanner-fc li.is-hover:hover .tooltip { opacity: 1; pointer-events: auto; transform: translateY(0px); -webkit-transform: translateY(0px); -ms-transform: translateY(0px); -o-transform: translateY(0px); -moz-transform: translateY(0px); }
+ul#globalBanner-fc li .tooltip a { text-decoration: underline; float: none; }
+.lt-ie9 ul#globalBanner-fc li .tooltip { display: none; }
+.lt-ie9 ul#globalBanner-fc li:hover .tooltip { display: block; }
+.ie7 ul#globalBanner-fc nav#group-navigation ul li .tooltip,
+.ie8 ul#globalBanner-fc nav#group-navigation ul li .tooltip {Filter: progid:DXImageTransform.Microsoft.Shadow(color='#707070',direction='135',strength='2')}
+ul#globalBanner-fc li .tooltip a { color:#000000; text-decoration:underline; text-transform:none; display:inline; }
+ul#globalBanner-fc .right-box .tooltip {left:10%; width:75%; margin-top:-4px;}
+
+
+/********************************/
+
+/* GLOBAL BANNER US GROUNDHOG DAY */
+.creative .clearfix:before, .clearfix:after {content:""; display:table;}
+.creative .clearfix:after {clear:both;}
+.creative .clearfix {zoom:1;}
+ul#globalBanner-us-groundhog-day {position:relative; overflow:visible; margin:0; padding:0; width:974px; height:78px; color:#fff; font-family: Arial,Tahoma,Sans-serif; font-weight:normal; margin-bottom:3px;}
+ul#globalBanner-us-groundhog-day .content-box {position:relative; float:left; overflow:visible; text-transform:uppercase; text-align:center;}
+ul#globalBanner-us-groundhog-day .content-box p {margin:0; padding:0;}
+ul#globalBanner-us-groundhog-day .content-box a.full-link,
+ul#globalBanner-us-groundhog-day .content-box span.no-link  {position:absolute; display:block; left:0; top:0; width:100%; height:100%; text-decoration:none; overflow:hidden;}
+
+ul#globalBanner-us-groundhog-day .left-box {width:649px; height:72px; background:#aeaeba; border:solid 3px #da7e77; margin-right:10px; font-size:23px; line-height:19px;}
+
+
+ul#globalBanner-us-groundhog-day .left-box .copy {margin-top:8px; padding:0 15px; color:#fff; font-size:23px; }
+ul#globalBanner-us-groundhog-day .left-box .sub-copy {margin-top:2px; padding:0 15px; color:#fff; font-size:15px; }
+ul#globalBanner-us-groundhog-day .left-box .sub-copy-2 {margin-top:-2px; padding:0 15px; color:#fff; font-size:15px; }
+
+ul#globalBanner-us-groundhog-day .left-box a {text-decoration:none; text-transform:uppercase; display:inline; color:#fff; font-size:16px;}
+ul#globalBanner-us-groundhog-day .left-box a:hover {text-decoration:none; color:#000;}
+
+ul#globalBanner-us-groundhog-day .left-box a.left {float:left; margin-left:200px;}
+ul#globalBanner-us-groundhog-day .left-box a.right {float:right; margin-right:200px;}
+
+ul#globalBanner-us-groundhog-day .right-box {width:303px; height:72px; background:#fff; border:solid 3px #da7e77; font-size:20px; line-height:20px;}
+
+
+ul#globalBanner-us-groundhog-day .right-box .full-link .copy,
+ul#globalBanner-us-groundhog-day .right-box .no-link .copy {display:block; margin-top:27px; color:#000;}
+
+ul#globalBanner-us-groundhog-day .highlight {color:#f40000;}
+ul#globalBanner-us-groundhog-day .arrow {font-size:22px;}
+ul#globalBanner-us-groundhog-day .flourish.img-left {left: 4px;}
+ul#globalBanner-us-groundhog-day .flourish.img-right {right: 4px;}
+ul#globalBanner-us-groundhog-day .icon {position: absolute;}
+ul#globalBanner-us-groundhog-day .icon.icon-left {left: 29px; top: 0px;}
+ul#globalBanner-us-groundhog-day .icon.icon-right {left: 526px; top: 0px;} 
+
+/* Tooltip */
+.no-rgba ul#globalBanner-us-groundhog-day li .tooltip:before { border-color: transparent transparent #F2F2F2;}
+ul#globalBanner-us-groundhog-day li .tooltip:before { border-color: rgba(255, 255, 255, 0) rgba(255, 255, 255, 0) #F2F2F2; border-style: solid; border-width: 5px; content: " "; height: 0; left:50%; position: absolute; top: -10px; width: 0; }
+ul#globalBanner-us-groundhog-day li .tooltip {left:24%; background: none repeat scroll 0 0 #F2F2F2; box-shadow: 3px 4px 0 0 rgba(0, 0, 0, 0.2); color: #242424; display: block; font-family: Tahoma,Sans-Serif; font-size: 10px; line-height:12px; text-transform: none; opacity: 0; padding: 10px; pointer-events: none; position: absolute; top:76px; transform: translateY(-10px); -moz-transform: translateY(-10px); -webkit-transform: translateY(-10px); -ms-transform: translateY(-10px); -o-transform: translateY(-10px); transition: all 0.25s ease-out 0s; -moz-transition: all 0.25s ease-out 0s; -webkit-transition: all 0.25s ease-out 0s; -ms-transition: all 0.25s ease-out 0s; -o-transition: all 0.25s ease-out 0s; z-index: 12; width: 50%;}
+ul#globalBanner-us-groundhog-day li.is-hover:hover .tooltip { opacity: 1; pointer-events: auto; transform: translateY(0px); -webkit-transform: translateY(0px); -ms-transform: translateY(0px); -o-transform: translateY(0px); -moz-transform: translateY(0px); }
+ul#globalBanner-us-groundhog-day li .tooltip a { text-decoration: underline; float: none; }
+.lt-ie9 ul#globalBanner-us-groundhog-day li .tooltip { display: none; }
+.lt-ie9 ul#globalBanner-us-groundhog-day li:hover .tooltip { display: block; }
+.ie7 ul#globalBanner-us-groundhog-day nav#group-navigation ul li .tooltip,
+.ie8 ul#globalBanner-us-groundhog-day nav#group-navigation ul li .tooltip {Filter: progid:DXImageTransform.Microsoft.Shadow(color='#707070',direction='135',strength='2')}
+ul#globalBanner-us-groundhog-day li .tooltip a { color:#000000; text-decoration:underline; text-transform:none; display:inline; }
+ul#globalBanner-us-groundhog-day .right-box .tooltip {left:10%; width:75%; margin-top:-4px;}
+
+
+/********************************/
+
+/* GLOBAL BANNER SALE EXTRA 15 */
+.creative .clearfix:before, .clearfix:after {content:""; display:table;}
+.creative .clearfix:after {clear:both;}
+.creative .clearfix {zoom:1;}
+ul#globalBanner-extra {position:relative; overflow:visible; margin:0; padding:0; width:974px; height:70px; color:#fff; font-family: Arial,Tahoma,Sans-serif; font-weight:normal; margin-bottom:3px;}
+ul#globalBanner-extra .content-box {position:relative; float:left; overflow:visible; text-transform:uppercase; text-align:center;}
+ul#globalBanner-extra .content-box p {margin:0; padding:0;}
+ul#globalBanner-extra .content-box a.full-link,
+ul#globalBanner-extra .content-box span.no-link  {position:absolute; display:block; left:0; top:0; width:100%; height:100%; text-decoration:none; overflow:hidden;}
+
+ul#globalBanner-extra .left-box {width:655px; height:70px; background:#fbc932; margin-right:10px; font-size:16px; line-height:16px;}
+
+
+ul#globalBanner-extra .left-box .copy, ul#globalBanner-extra .left-box .sub-copy {padding:0 110px 0 136px; margin-top:0px; color:#000; font-size:16px;}
+ul#globalBanner-extra.us .left-box .copy, ul#globalBanner-extra.us .left-box .sub-copy  {padding:0 110px 0 136px;}
+ul#globalBanner-extra.fr .left-box .copy, ul#globalBanner-extra.fr .left-box .sub-copy {padding:0 132px 0 135px;}
+ul#globalBanner-extra.de .left-box .copy, ul#globalBanner-extra.de .left-box .sub-copy {padding:0 144px 0 134px;}
+ul#globalBanner-extra.it .left-box .copy, ul#globalBanner-extra.it .left-box .sub-copy {padding:0 123px 0 133px;}
+ul#globalBanner-extra.es .left-box .copy, ul#globalBanner-extra.es .left-box .sub-copy {padding:0 147px 0 132px;}
+ul#globalBanner-extra.ru .left-box .copy, ul#globalBanner-extra.ru .left-box .sub-copy {padding:0 155px 0 155px;}
+
+ul#globalBanner-extra .left-box .sub-copy {margin-top:6px; padding:0 50px 0 80px; color:#000; font-size:16px;}
+ul#globalBanner-extra .left-box .sub-copy span.code {text-decoration:underline; font-weight:bold;}
+
+
+ul#globalBanner-extra .left-box a.main-link { text-decoration:none; text-transform:uppercase; position:absolute; padding:7px; border:3px solid #000; color:#000; font-size:16px; font-weight:bold;}
+ul#globalBanner-extra .left-box a.main-link:hover {text-decoration:none;}
+
+ul#globalBanner-extra .left-box a.women {left:40px; top:15px;}
+ul#globalBanner-extra .left-box a.men {right:40px; top:15px;}
+
+ul#globalBanner-extra .right-box {width:303px; height:64px; background:#fff; border:solid 3px #fbc932; font-size:13px; line-height:17px;}
+
+
+ul#globalBanner-extra .right-box .full-link .copy,
+ul#globalBanner-extra .right-box .no-link .copy {display:block; margin-top:25px; color:#000;}
+
+ul#globalBanner-extra .highlight {color:#f40000;}
+ul#globalBanner-extra .arrow {font-size:22px;}
+ul#globalBanner-extra .flourish {position: absolute; width: 17px; height: 70px; background: url(http://images.asos.com/htmlpages/140204-Global-Banner/flourish.png) no-repeat;}
+ul#globalBanner-extra .flourish.img-left {left: 3px;}
+ul#globalBanner-extra .flourish.img-right {right: 3px;}
+ul#globalBanner-extra .icon {position: absolute;}
+ul#globalBanner-extra .icon.icon-right {right: 50px; top: 10px;}
+ul#globalBanner-extra .icon.icon-left {left: 50px; top: 3px;} 
+
+/* Tooltip */
+.no-rgba ul#globalBanner-extra li .tooltip:before { border-color: transparent transparent #F2F2F2;}
+ul#globalBanner-extra li .tooltip:before { border-color: rgba(255, 255, 255, 0) rgba(255, 255, 255, 0) #F2F2F2; border-style: solid; border-width: 5px; content: " "; height: 0; left:50%; position: absolute; top: -10px; width: 0; }
+ul#globalBanner-extra li .tooltip {left:24%; background: none repeat scroll 0 0 #F2F2F2; box-shadow: 3px 4px 0 0 rgba(0, 0, 0, 0.2); color: #242424; display: block; font-family: Tahoma,Sans-Serif; font-size: 10px; line-height:12px; text-transform: none; opacity: 0; padding: 10px; pointer-events: none; position: absolute; top:68px; transform: translateY(-10px); -moz-transform: translateY(-10px); -webkit-transform: translateY(-10px); -ms-transform: translateY(-10px); -o-transform: translateY(-10px); transition: all 0.25s ease-out 0s; -moz-transition: all 0.25s ease-out 0s; -webkit-transition: all 0.25s ease-out 0s; -ms-transition: all 0.25s ease-out 0s; -o-transition: all 0.25s ease-out 0s; z-index: 12; width: 50%;}
+ul#globalBanner-extra li.is-hover:hover .tooltip { opacity: 1; pointer-events: auto; transform: translateY(0px); -webkit-transform: translateY(0px); -ms-transform: translateY(0px); -o-transform: translateY(0px); -moz-transform: translateY(0px); }
+ul#globalBanner-extra li .tooltip a { text-decoration: underline; float: none; }
+.lt-ie9 ul#globalBanner-extra li .tooltip { display: none; }
+.lt-ie9 ul#globalBanner-extra li:hover .tooltip { display: block; }
+.ie7 ul#globalBanner-extra nav#group-navigation ul li .tooltip,
+.ie8 ul#globalBanner-extra nav#group-navigation ul li .tooltip {Filter: progid:DXImageTransform.Microsoft.Shadow(color='#707070',direction='135',strength='2')}
+ul#globalBanner-extra li .tooltip a { color:#000000; text-decoration:underline; text-transform:none; display:inline; }
+ul#globalBanner-extra .right-box .tooltip {left:10%; width:75%; margin-top:-4px;}
+
+
+/********************************/
+
+/* MINIBAG */
+
+.minibag { width: 284px; height: 35px; border-top: 1px solid #bababa; background: #fff; }
+.minibag p { width: 100%; height: 15px; margin:10px auto; text-align: center; text-transform: uppercase; font-size: 1.1em; }
+.minibag p.double { margin: 5px; }
+.minibag p.double .small { font: 10px Tahoma, Arial, Sans-Serif; color: #666; display: block; text-transform: none;}
+
+/********************************/
+/* FREE DELIVERY LP */
+/* NO NDD MESSAGE FOR ALL COUNTRIES */
+.creative .no-ndd-message {display:none !important; width:947px; height:22px; padding-top:11px; font-family:arial,sans-serif; font-size:14px; font-weight:bold; color:#000; border:3px solid #f40000; text-align:center; text-transform:uppercase;}
+ 

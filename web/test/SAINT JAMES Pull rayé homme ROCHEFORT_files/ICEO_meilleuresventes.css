@@ -1,0 +1,39 @@
+/* MODULE MEILLEURES VENTES */
+#titre-meilleures-ventes{width : 1000px; margin : 15px 0 0 0; padding : 0 0 5px; text-align : left; color : #666; font: 15px "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;text-align : right; border-bottom : 1px solid #dadada;  }
+.td-mod-meilleures-ventes-1 {border-left : 0; border-right : 0; padding-left : 25px !important; background : url('../i/arrow-bottom-666666.png') no-repeat 5px 12px; letter-spacing : 0px;}
+.td-mod-meilleures-ventes-1 a{color:#555; text-decoration : none; position : relative; top : 1px;}
+.td-mod-meilleures-ventes-2 {border-left : 0; border-right : 0; padding-right : 20px;}
+.td-mod-meilleures-ventes-2 a{color:#777; font : 12px 'Lucida Grande','Lucida Sans Unicode',Helvetica,Arial,Verdana,sans-serif; text-decoration : none; position : relative; top : -1px; left : -6px; letter-spacing : 1px;}
+#titre-meilleures-ventes td {border : 0; padding : 0}
+
+/* AFFICHAGE GRILLE */
+#slides_bs {text-align : center; padding : 0 auto;}
+#slides_bs .slides_container {width:870px; min-height : 260px; padding : 20px 0;}
+#slides_bs .slides_container div {width:890px;display:block;}
+#slides_bs .prev{background : transparent url('../i/arrow-left.png') no-repeat center center; display : block;}
+#slides_bs .prev:hover{background : transparent url('../i/arrow-left-hover.png') no-repeat center center; display : block;}
+#slides_bs .next{background : transparent url('../i/arrow-right.png') no-repeat center center; display : block;}
+#slides_bs .next:hover{background : transparent url('../i/arrow-right-hover.png') no-repeat center center; display : block;}
+#slides_bs h4 {margin: 10px 10px 0 10px; color: #004489;font: 13px/1.231 'Lucida Grande','Lucida Sans Unicode',Helvetica,Arial,Verdana,sans-serif;text-decoration: none;text-decoration: none;}
+#slides_bs .h4smaller {margin: 0 10px 0 10px; color: #999999;font: 11px/1.231 'Lucida Grande','Lucida Sans Unicode',Helvetica,Arial,Verdana,sans-serif;text-decoration: none;text-decoration: none;}
+#slides_bs h5 {margin: 0 10px 0 10px; font: 11px/1.231 'Lucida Grande','Lucida Sans Unicode',Helvetica,Arial,Verdana,sans-serif;color: #4D99E0;text-decoration: none;}
+#slides_bs .pagination {text-align : right; position : relative; top : -10px; left : -20px;}
+#slides_bs .pagination li {display : inline;}
+#slides_bs .pagination li>a{padding : 5px 9px; margin : 0 2px; border : 1px solid #ddd; color : #9C9C9C; text-decoration : none; background : #fff; font-size : 11px;}
+#slides_bs .pagination li>a:hover{box-shadow: inset 0px 0px 50px #dedede;}
+#slides_bs .pagination .current>a{padding : 5px 9px; margin : 0 2px; border : 1px solid #ddd; color : #fff; text-decoration : none; background : #4197EE}
+/* AFFICHAGE LISTE */
+#list_container{display : none; text-align : center; padding : 0 auto; margin-top : 10px;}
+#list_container > div {margin : 0 0 15px 0;}
+#list_container h4 {margin: 10px 10px 0 10px; color: #004489;font: 13px/1.231 'Lucida Grande','Lucida Sans Unicode',Helvetica,Arial,Verdana,sans-serif;text-decoration: none;text-decoration: none;}
+#list_container .h4smaller {margin: 0 10px 0 10px; color: #999999;font: 11px/1.231 'Lucida Grande','Lucida Sans Unicode',Helvetica,Arial,Verdana,sans-serif;text-decoration: none;text-decoration: none;}
+#list_container h5 {margin: 0 10px 0 10px; font: 11px/1.231 'Lucida Grande','Lucida Sans Unicode',Helvetica,Arial,Verdana,sans-serif;color: #4D99E0;text-decoration: none;}
+/* BOUTON SWITCH */
+.switch_thumb.langue1 {background: url("../i/icon_button_thumbs_F.png") no-repeat scroll 0 0 transparent;}
+.switch_thumb.langue1.swap {background: url("../i/icon_button_list_F.png") no-repeat scroll 0 0 transparent;}
+.switch_thumb.langue2 {background: url("../i/icon_button_thumbs_A.png") no-repeat scroll 0 0 transparent;}
+.switch_thumb.langue2.swap {background: url("../i/icon_button_list_A.png") no-repeat scroll 0 0 transparent;}
+#switch_thumb {cursor: pointer;display: block;height: 25px;line-height: 24px;width: 98px;}
+#switch_thumb span {color: #666666;font: 11px/1.231 Helvetica,Arial,Verdana,sans-serif;position: relative;top: 5px;}
+/* VIGNETTES */
+.meilleuresventes_vign{text-decoration : none; display : block; text-align : center; overflow : hidden; width : 200px; height : 205px; border-bottom: 1px solid #DDDDDD; padding-bottom : 5px; }

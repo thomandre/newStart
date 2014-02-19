@@ -1,0 +1,27 @@
+/* MODULE MENU */
+#menu {position : absolute; top : 145px; cursor : pointer; }
+#menu  img {position : relative; top : 0px;}
+.sous-categories {width : 100%; margin : 0 auto; display : none;position : absolute; top :203px; left : 0; background-color : transparent; border : 0; z-index : 20;}
+.sous-categories .border-white {width : 1020px !important; margin : 0 auto; background-color : #ffffff; border: 1px solid #bebbbf;-moz-box-shadow: 1px 1px 20px #333; -webkit-box-shadow: 1px 1px 20px #333;box-shadow: 1px 1px 20px #333;}
+.sous-categories table{background-color: #f6f6f6;border : 1px solid #e5e5e5;}
+.sous-categories a {font: 12px small Arial,Sans-serif;color: #636363; text-decoration : none; font-weight : normal; display : block}
+.sous-categories a:hover {text-decoration : none; background-color : #dbdbdb; }
+.sous-categories div {float: left; width : 45%; margin : 1px 10px 1px 0; display : inline;}
+.sous-categories .last div {width : 100%;}
+.sous-categories h4 {margin : 0 0 10px 0px; padding : 0; text-transform: uppercase; font : 14px/1.231 "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif; color : #333333;}
+.sous-categories td {padding : 20px 10px;}
+.sous-categories td a {}
+.sous-categories td td {border : 0; padding : 14px;}
+.sous-categories .separateur{border-left : 1px solid #dedede; height : 100%; margin : 0;}
+.sous-categories td .last {border: 0;background-color: #e5e5e5;-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#e5e5e5, endColorstr=#b3b3b3)";background-image: -moz-linear-gradient(top,#e5e5e5,#b3b3b3);background-image: -webkit-gradient(linear,0 0,0 100%,from(#e5e5e5),to(#b3b3b3));border-right : 1px solid #bfbfbf;}
+.sous-categories td .last a{font-weight : normal; color : #4d4d4d;}
+.sous-categories td .last a:hover{background-color : #bfbfbf;}
+.sous-categories td .last h4{}
+.sous-categories ul {padding : 1px 0 2px 0; margin:0 0 0 5px; list-style-type:none;}
+.sous-categories ul a {color : #7d7d7d; font-weight : normal;}
+#menu-home{padding: 9px 0px 11px; }
+#menu-home a{display : block; padding: 14px 19px 13px 19px; border : 0;}
+#menu-home a:hover {color : #ffffff; background: url("../i/categories-a-active.gif") repeat-x scroll left -2px;}
+#menu-separator{border : 1px solid transparent; display : none;}
+#menu-separator .gris{display : none;}
+#menu-hover-a {color : #ffffff;}
