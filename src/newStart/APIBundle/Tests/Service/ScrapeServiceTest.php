@@ -93,7 +93,7 @@ class scrapeServiceTest extends NewStartWebTestCase
 	 * @test
 	 * @group scrape
 	 */
-	public function getInfosLeviTest()
+	public function getInfosLevisTest()
 	{
 		$scrapeService = new ScrapeService();
 		$scrapeService->container = $this->container;
@@ -110,6 +110,7 @@ class scrapeServiceTest extends NewStartWebTestCase
 	 * @test
 	 * @group scrape
 	 * @group asos
+	 * @group asos1
 	 */
 	public function getInfosAsosTest()
 	{
@@ -119,12 +120,13 @@ class scrapeServiceTest extends NewStartWebTestCase
 		$infos = $scrapeService->getInfos('http://www.asos.fr/Superdry-Brad-Veste-en-cuir/11zo6n/?iid=3685064&cid=11760&sh=0&pge=1&pgesize=36&sort=-1&clr=Brown&r=2&mporgp=L1N1cGVyZHJ5L1N1cGVyZHJ5LUJyYWQtTGVhdGhlci1KYWNrZXQvUHJvZC8.');
 		$this->assertEquals('Superdry | Superdry - Brad - Veste en cuir chez ASOS', $infos->title);
 		//$this->assertEquals('', $infos->images[0]->src);
-		$this->assertEquals('309,75  EUR', $infos->price);
+		$this->assertEquals('223,00 £', $infos->price);
 	}
 	/**
 	 * @test
 	 * @group scrape
 	 * @group asos
+	 * @group asos2
 	 */
 	public function getInfosAsos2Test()
 	{

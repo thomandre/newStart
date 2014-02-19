@@ -5,9 +5,20 @@
   _ref = phantom.args, url = _ref[0], height = _ref[1], width = _ref[2];
 
   page = require('webpage').create();
+  var system = require('system');
 
   //page.settings.resourceTimeout = 5000;
   
+  page.onResourceRequested = function (request) {
+    system.stderr.writeLine('= onResourceRequested()');
+    system.stderr.writeLine('  request: ' + JSON.stringify(request, undefined, 4));
+  };
+ 
+  page.onResourceReceived = function(response) {
+    system.stderr.writeLine('= onResourceReceived()' );
+    system.stderr.writeLine('  id: ' + response.id + ', stage: "' + response.stage + '", response: ' + JSON.stringify(response));
+  };
+
   page.viewportSize = {
     width: width,
     height: height
@@ -18,11 +29,32 @@
   };
   
   page.onError = function (msg, trace) {
-      /*console.log(msg);
+      console.log(msg);
       trace.forEach(function(item) {
           console.log('  ', item.file, ':', item.line);
-      })*/
+      });
   }
+
+  page.customHeaders = {
+    "User-Agent" : "Phantom JS",
+    "Accept-Language": "fr-fr",
+    "Accept-Encoding": "deflate",
+    "Connection" : "keep-alive"
+  };
+  
+  page.onInitialized = function() {
+    page.customHeaders = {
+      "User-Agent" : "Phantom JS",
+      "Accept-Language": "fr-fr",
+      "Accept-Encoding": "deflate",
+      "Connection" : "keep-alive"
+    };
+  };
+
+  page.onResourceError = function(resourceError) {
+    page.reason = resourceError.errorString;
+    page.reason_url = resourceError.url;
+  };
 
   page.onResourceReceived = function(response) {
     //console.log('Receive ' + JSON.stringify(response, undefined, 4));
@@ -30,9 +62,11 @@
   
   page.open(url, function(status) {
     if (status !== "success") {
-      return console.log("Unable to open " + url + ' - status: ' + status);
+      console.log("Error opening url \"" + page.reason_url + "\": " + page.reason);
+      console.log("Unable to open " + url + ' - status: ' + status);
+      phantom.exit( 1 );
     } else {
-      //page.render('capture.png');
+      page.render('capture.png');
       var result = page.evaluate(function() {
         var debug = false;
         var pattern = /((?:(?:USD|EUR|GBP|\$|€|£){1}(?:\ {0,3})(?:[0-9]+[\.|\,]?[0-9]*){1}(?:\ {0,3})){1}|(?:(?:[0-9]+[\.|\,]?[0-9]*){1}(?:\ {0,3})(?:USD|EUR|GBP|\$|€|£){1}){1})/;

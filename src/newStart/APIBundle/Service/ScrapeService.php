@@ -20,9 +20,9 @@ class ScrapeService
 
 	public function getInfos($url) 
 	{
-		$path = $this->container->getParameter('kernel.root_dir').'/../getComputedStyle.js';
+		$path = $this->container->getParameter('kernel.root_dir').'/getComputedStyle.js';
 
-        $command = 'unset DYLD_LIBRARY_PATH; phantomjs --disk-cache=yes '.$path.' '.$url.' 1024 768 ';
+        $command = 'unset DYLD_LIBRARY_PATH; phantomjs --disk-cache=yes '.$path.' "'.($url).'" 1024 768 ';
         //var_dump($command);
         $process = new Process($command);
         $process->run();
@@ -32,7 +32,7 @@ class ScrapeService
         $match = array();
         $res = preg_match('/@@@(.*)@@@/', $buffer, $match);
 
-        if($res) {
+        if($res && $match[1] != 'null') {
         	$phantomResponse = json_decode($match[1]);
         	if($phantomResponse != null) {
 	        	return $phantomResponse;
@@ -40,8 +40,6 @@ class ScrapeService
     		throw new \Exception('JSON decode failed : command: '.$command.' Returned: '.$buffer);
         }
     	throw new \Exception('Preg Match Failed : command: '.$command.' Returned: '.$buffer);
-
-
 	}
 
 }
