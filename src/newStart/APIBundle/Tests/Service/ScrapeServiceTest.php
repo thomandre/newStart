@@ -142,7 +142,38 @@ class scrapeServiceTest extends NewStartWebTestCase
 	/**
 	 * @test
 	 * @group scrape
-	 * @group asos
+	 * @group monshowroom
+	 */
+	public function getInfosMonshowroomTest()
+	{
+		$scrapeService = new ScrapeService();
+		$scrapeService->container = $this->container;
+
+		$infos = $scrapeService->getInfos('http://www.monshowroom.com/fr/zoom/2two/robe-imprimee-aunil/140932');
+		$this->assertEquals('Robe imprimée Aunil Noir 2two en promotion sur MonShowroom.com', $infos->title);
+		$this->assertEquals('http://static.monshowroom.com/img-collection/1/4/0/9/3/2/140932-01-e.jpg?d=2013-10-16_14:33:18', $infos->images[0]->src);
+		$this->assertEquals('68.50EUR', $infos->price);
+	}
+
+	/**
+	 * @test
+	 * @group scrape
+	 */
+	/*public function getInfosAsos2Test()
+	{
+		$scrapeService = new ScrapeService();
+		$scrapeService->container = $this->container;
+
+		$infos = $scrapeService->getInfos('');
+		$this->assertEquals('', $infos->title);
+		$this->assertEquals('', $infos->images[0]->src);
+		$this->assertEquals('', $infos->price);
+	}*/
+
+
+	/**
+	 * @test
+	 * @group scrape
 	 */
 	/*public function getInfosAsos2Test()
 	{
