@@ -154,6 +154,22 @@ class scrapeServiceTest extends NewStartWebTestCase
 		$this->assertEquals('http://static.monshowroom.com/img-collection/1/4/0/9/3/2/140932-01-e.jpg?d=2013-10-16_14:33:18', $infos->images[0]->src);
 		$this->assertEquals('68.50EUR', $infos->price);
 	}
+	
+	/**
+	 * @test
+	 * @group scrape
+	 * @group mango
+	 */
+	public function getInfosMangoTest()
+	{
+		$scrapeService = new ScrapeService();
+		$scrapeService->container = $this->container;
+
+		$infos = $scrapeService->getInfos('http://shop.mango.com/FR/p0/mango/accessoires/ras-de-cou-double-metallique/?id=23030141_94&n=1&s=accesorios.bisuteria&ident=0__1_0_1392134615537&ts=1392134615537');
+		$this->assertEquals('MANGO - Accessoires - Bijoux - Ras-de-cou double métallique', $infos->title);
+		$this->assertEquals('http://st.mngbcn.com/rcs/pics/static/T2/fotos/S9/23030141_94.jpg', $infos->images[0]->src);
+		$this->assertEquals('24,99EUR', $infos->price);
+	}
 
 	/**
 	 * @test
@@ -170,6 +186,7 @@ class scrapeServiceTest extends NewStartWebTestCase
 		$this->assertEquals('', $infos->price);
 	}*/
 
+	
 
 	/**
 	 * @test

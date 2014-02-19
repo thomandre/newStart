@@ -151,7 +151,7 @@
               var price = parseFloat(matches[0].replace(',', '.').replace('EUR', '').replace('€', '').replace('$', '').replace('USD', '').replace('GBP', '').replace('£', ''));
               if(debug) console.log('### debug ' + el.nodeName + '.' + el.className + ' - price: ' + price + ' - top: ' + offset(el).top + ' - text-decoration: ' + attributes['text-decoration']);
               if(price > 0 && attributes['text-decoration'] != 'line-through') {
-                if(el.offsetWidth > 0 && el.offsetHeight > 0 && offset(el).top < 800 && offset(el).top > 50) {
+                if(el.offsetWidth > 0 && el.offsetHeight > 0 && offset(el).top < 800 && offset(el).top > 170) {
                   if(debug) console.log('### debug - font-size: ' + attributes['font-size'] + " - height: " + el.offsetHeight);
 
                   ruleList = el.ownerDocument.defaultView.getMatchedCSSRules(el, '') || [];
