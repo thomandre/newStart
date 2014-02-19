@@ -66,7 +66,7 @@
       console.log("Unable to open " + url + ' - status: ' + status);
       phantom.exit( 1 );
     } else {
-      page.render('capture.png');
+      //page.render('cap/capture_' + Math.floor((Math.random()*100000)+1) + '.png');
       var result = page.evaluate(function() {
         var debug = false;
         var pattern = /((?:(?:USD|EUR|GBP|\$|€|£){1}(?:\ {0,3})(?:[0-9]+[\.|\,]?[0-9]*){1}(?:\ {0,3})){1}|(?:(?:[0-9]+[\.|\,]?[0-9]*){1}(?:\ {0,3})(?:USD|EUR|GBP|\$|€|£){1}){1})/;

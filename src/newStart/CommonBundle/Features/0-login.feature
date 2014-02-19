@@ -76,7 +76,7 @@ Et je devrais voir "adresse électronique"
 Et je devrais voir "anniversaire"
 Et je devrais voir "mentions J’aime"
 Soit je presse "__CONFIRM__"
-Et j'attend "1" secondes
+Et j'attend "2" secondes
 Et j'attend que ".profile-image" soit sur la page
 Et je devrais voir "Ma liste de cadeaux"
 Et je me delogue
