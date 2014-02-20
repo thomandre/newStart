@@ -7,10 +7,10 @@ parameters:
     database_password: ~
 
     mailer_transport: smtp
-    mailer_user: notification@welovegifts.fr
-    mailer_password: notwelovegifts1818
-    mailer_host: smtp.welovegifts.fr
-    mailer_sender_address: notification@welovegifts.fr
+    mailer_user: notification@havefyve.com
+    mailer_password: nothavefyve
+    mailer_host: smtp.havefyve.com
+    mailer_sender_address: notification@havefyve.com
     mailer_sender_name: Welovegifts
     
     locale: fr
