@@ -11,13 +11,13 @@ Alors je devrais voir "Thomas Alban"
 Et je vais sur "https://www.facebook.com/settings/?tab=privacy&ref=mb&privacy_source=settings_menu"
 Soit je suis "Applications"
 Et j'attend "1" secondes
-Alors je devrais voir "HaveFyve Test"
-Et je suis le lien aria-label "Supprimer HaveFyve Test"
+Alors je devrais voir "Welovegifts Test"
+Et je suis le lien aria-label "Supprimer Welovegifts Test"
 Et j'attend "0.5" secondes
-Alors je devrais voir "Retirer HaveFyve Test ?"
+Alors je devrais voir "Retirer Welovegifts Test ?"
 Alors je clique sur ".uiButtonConfirm"
 Et j'attend "1" secondes
-Alors je ne devrais pas voir "HaveFyve Test"
+Alors je ne devrais pas voir "Welovegifts Test"
 Et je clique sur "#userNavigationLabel"
 Et je presse "Déconnexion"
 Soit je suis sur "/"
@@ -26,7 +26,7 @@ Et je remplis "email" avec "albanthomas1@gmail.com"
 Et je remplis "pass" avec "projetreecomate1"
 Et je valide le formulaire
 Et j'attend "1" secondes
-Et je devrais voir "HaveFyve Test"
+Et je devrais voir "Welovegifts Test"
 Et je devrais voir "recevra"
 Et je devrais voir "profil public"
 Et je devrais voir "liste d’amis"
@@ -59,16 +59,16 @@ Alors je devrais voir "Thomas Alban"
 Et je vais sur "https://www.facebook.com/settings/?tab=privacy&ref=mb&privacy_source=settings_menu"
 Soit je suis "Applications"
 Et j'attend "0.5" secondes
-Alors je devrais voir "HaveFyve Test"
-Et je suis le lien aria-label "Supprimer HaveFyve Test"
+Alors je devrais voir "Welovegifts Test"
+Et je suis le lien aria-label "Supprimer Welovegifts Test"
 Et j'attend "0.5" secondes
-Alors je devrais voir "Retirer HaveFyve Test ?"
+Alors je devrais voir "Retirer Welovegifts Test ?"
 Alors je clique sur ".uiButtonConfirm"
 Et j'attend "1" secondes
-Alors je ne devrais pas voir "HaveFyve Test"
+Alors je ne devrais pas voir "Welovegifts Test"
 Soit je suis sur "/"
 Soit je clique sur le bouton Facebook Connect
-Et je devrais voir "HaveFyve Test"
+Et je devrais voir "Welovegifts Test"
 Et je devrais voir "recevra"
 Et je devrais voir "profil public"
 Et je devrais voir "liste d’amis"

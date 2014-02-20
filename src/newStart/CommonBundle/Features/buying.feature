@@ -7,7 +7,7 @@ Scénario: Je suis Thomas et je veux partager un le MacBook Air de mes reves
 Soit je suis sur "/"
 Soit je me logue en tant que "thomandr1@yahoo.fr"
 Et j'attend "0.5" secondes
-Alors je devrais voir "Havefyve est le site le plus simple pour offrir les cadeaux qui font vraiment plaisir."
+Alors je devrais voir "Welovegifts est le site le plus simple pour offrir les cadeaux qui font vraiment plaisir."
 Alors je presse "Ok"
 Alors je remplis "url" avec "http://www.apple.com/fr/macbook-air/"
 Et je presse "Go !"
@@ -66,6 +66,7 @@ Et je bascule sur la popup
 Et je devrais voir "Le MacBook Air offre désormais une autonomie de 9 heures entre deux charges pour le modèle 11 pouces, et de 12 heures pour le modèle 13 pouces."
 Et je reviens sur la fenêtre principale
 Et je devrais voir "Vous avez décidé d’acheter ce cadeau finalement ?"
+Et je devrais voir "Si vous cliquez sur oui, le cadeau disparaitra ne sera plus visible dans la liste, sauf pour Thomas, pour lui garder la surprise"
 Et je presse "Oui, j'ai acheté ce cadeau"
 Et j'attend "1" secondes
 Et je ne devrais pas voir "Vous avez décidé d’acheter ce cadeau finalement ?"

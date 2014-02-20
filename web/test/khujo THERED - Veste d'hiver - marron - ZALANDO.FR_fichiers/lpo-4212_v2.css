@@ -1,0 +1,87 @@
+/* lpo-4212 2.1 */
+
+/*** USP-Teaser START ***/
+
+.uspTeaser {
+	background-color: #f3f3f3;
+	padding: 10px 0;
+}
+
+ul.uspTeaser li {
+	line-height: 12px;
+	text-transform: uppercase;
+}
+ul.uspTeaser li strong {
+	font-size: 11px;
+	letter-spacing: 0.5px;
+	line-height: 12px;
+}
+
+.uspTeaser span {
+	padding: 11px;
+	margin: 0 10px;
+	display: inline-block;
+}
+
+.uspTeaser .car {
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAASCAYAAABfJS4tAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMVJREFUeNpi/P//P8OsWbP+M5AJ0tLSGLGJMzHQCNDMYBZKDcASjIHA4NnAQgXHNSKx64HYAIgpNxjougYk19fTPIwZKU1uWILiABAfpEYY16PxHUB46KVjuhkMCvhAIHaE0gcI6EdXfwGbwQeAaRKkQAEaAQpQ/gZchmJRbwhTj5zcFIE4H4gLkDRPAOKJQHwfi8F41YMNRso596EuQHcVrnICXf0DoHpFbGH8gMQ4eoCLj25wIRB/gLI/QPn4AE71AAEGAP3nSqyW3hrqAAAAAElFTkSuQmCC)no-repeat center center;
+}
+.uspTeaser .customerService {
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAYCAYAAAD+vg1LAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAXhJREFUeNq0VdGRgjAQFcYCKIHrQDvQCk4qOPzh96QCtAK8X37ECsQKzg6kg6ODowPuZebF2ctEjIzszE4w2TxfNrsvXtd1kzFs2rdYFMUCwwd8BQ/EUguv4MckSS62vd49xgDNMWzElARYiO89wFMnYIAeMMRk9sXNrVgP+KefPEmJ9XUvMDZtMWQEXXI6Yzq0qTTs+P1N8B3At1ZgMvlh4Bw+gx96rkGxrOFXEnnTJ/ONQH1JJQPzB5efM67kvtU/xmAaG8zmrIaNQ2XtVXWQ9e0kvsjhzXCcmmlwsRnjpWUaOBSTzcCekOChbwkYCtzKH/5kJBsduHkxbqOB0xeASf1I+0ToZLTxPavYgb9KqFB6y0c5PjsyPQsC9cPLwz+XhlTa7MI43WBH16qIqAM2U/MRJVY1WCU70HN5mrA5FAKlXw8tUrGpbM7AxlOl7J2AAUs1MvVi+gTo1SJMKh2pZPo0sAG6Zk7bQa+0Rb0UeM1K6LU/AQYA3lqQMVzZKSwAAAAASUVORK5CYII=)no-repeat center center;
+}
+.uspTeaser .return {
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAARCAYAAAA/mJfHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAOlJREFUeNpi/P//PwO1AMusWbPQxQyAeD8QFwLxAkIGpKWlwdlMOAwSAOL5QJxAisuYcBgEA/bkGIbNIJAXE0k1DJtBDFAv/seD7wNxPzDMBZANw2YQMUABiAtAhgINNIAZVkhhigA5ZD/QQAUWaNg8AOL1aC68QMCifCAOQDKwngXKOQDEjmheBjk9Hk8kHIA6AGZgABOaS0AGfiDBixORvYueaJENJDlpsGARAxloCA1HQiAfif2BCYciQgY5oIUXCGxgQVOwn8zkAQqWRiYqlDwggxyBpccDJgoNAUWSIdAgUDgzAAQYAGH4PznUl+dQAAAAAElFTkSuQmCC)no-repeat center center;
+}
+
+/*   $ = Payment   # = Lock   " = Car    = Packstation   = Customer Service  */
+.uspTeaser .iconFont {
+	font-size: 22px;
+	color: #999999;
+	padding: 0px;
+	width: 22px;
+	text-align: center;
+}
+
+/* START Ergänzung lpo-5187 */
+
+.uspTeaser .payment {
+	background: url("http://a1276.ztat.net/lpo/zalando/lp/2013/12/lpo-5187/lp_onsite_pds_5187_payment_icon_test.png") no-repeat;
+	background-position: 0px 0px;
+	padding-bottom: 20px;
+}
+.uspTeaser .creditcardsIcons {
+	background: url("http://a1276.ztat.net/lpo/zalando/lp/2013/12/lpo-5187/lp_onsite_pds_5187_payment_icon_test.png") no-repeat;
+	background-position: -24px 0px;
+	width: 95px;
+	height: 26px;
+	margin: 2px 0 0 43px;
+	display: block;
+	cursor: default;
+}
+.uspTeaser .creditcardsIcons.paypalIcon {
+	background: url("http://a1276.ztat.net/lpo/zalando/lp/2013/12/lpo-5187/lp_onsite_pds_5187_payment_icon_test.png") no-repeat;
+	background-position: -125px 0px;
+	width: 85px;
+}
+
+/* END Ergänzung lpo-5187 */
+
+/*** USP-Teaser END ***/
+
+/* lpo-5457 ERGÄNZUNG Test mit Checks 24.02.2014 */
+.uspTeaser .car.check {
+	background: url(http://a1276.ztat.net/lpo/zalando/lp/2014/01/lpo-5457/check.png) no-repeat center center;
+}
+.uspTeaser .customerService.check {
+	background: url(http://a1276.ztat.net/lpo/zalando/lp/2014/01/lpo-5457/check.png) no-repeat center center;
+}
+.uspTeaser .return.check {
+	background: url(http://a1276.ztat.net/lpo/zalando/lp/2014/01/lpo-5457/check.png) no-repeat center center;
+}
+.uspTeaser .pay {
+	background: url(http://a1276.ztat.net/lpo/zalando/lp/2014/01/lpo-5457/payment.png) no-repeat center center;
+}
+.uspTeaser .pay.check {
+	background: url(http://a1276.ztat.net/lpo/zalando/lp/2014/01/lpo-5457/check.png) no-repeat center center;
+}
+

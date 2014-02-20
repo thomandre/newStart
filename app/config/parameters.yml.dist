@@ -7,16 +7,16 @@ parameters:
     database_password: ~
 
     mailer_transport: smtp
-    mailer_user: notification@havefyve.com
-    mailer_password: nothavefyve
-    mailer_host: smtp.havefyve.com
-    mailer_sender_address: notification@havefyve.com
-    mailer_sender_name: Havefyve
+    mailer_user: notification@welovegifts.fr
+    mailer_password: notwelovegifts1818
+    mailer_host: smtp.welovegifts.fr
+    mailer_sender_address: notification@welovegifts.fr
+    mailer_sender_name: Welovegifts
     
     locale: fr
     secret: ThisTokenIsNotSoSecretChangeIt
 
-    router.request_context.host: beta.havefyve.com
+    router.request_context.host: welovegifts.fr
     router.request_context.scheme: http
     router.request_context.base_url: ''
     pdo.db_options:

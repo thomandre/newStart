@@ -54,7 +54,7 @@ class fbUserService {
 
 			$this->mail->load('newStartCommonBundle:Mails:welcome.html.twig');
 			$body = $this->mail->renderBody(array('settingsUrl' => $settingsUrl));
-		    $this->mail->sendMessage($me['email'], 'Bienvenue sur HaveFyve, le reseau social des idées de cadeau', $body);
+		    $this->mail->sendMessage($me['email'], 'Bienvenue sur Welovegifts, le reseau social des idées de cadeau', $body);
 	    }
 
     	$user->setLastLogin(new \Datetime());
@@ -97,7 +97,7 @@ class fbUserService {
 				$this->mail->load('newStartCommonBundle:Mails:newfriend.html.twig');
 				$profileUrl = $this->router->generate('profile', array('userId' => $user->getFacebookId()), true);
 				$body = $this->mail->renderBody(array('username' =>$user->getFullname(), 'profileUrl' => $profileUrl, 'settingsUrl' => $settingsUrl, 'user' => $user));
-			    $this->mail->sendMessage($friendObj->getEmail(), $user->getFullname().' est maintenant sur Havefyve', $body);
+			    $this->mail->sendMessage($friendObj->getEmail(), $user->getFullname().' est maintenant sur Welovegifts', $body);
 	        }
 
 	    }

@@ -7,7 +7,7 @@
   page = require('webpage').create();
   var system = require('system');
 
-  //page.settings.resourceTimeout = 5000;
+  page.settings.resourceTimeout = 10000;
   
   page.onResourceRequested = function (request) {
     //system.stderr.writeLine('= onResourceRequested()');
@@ -255,7 +255,7 @@
             }
           });
 
-          console.log(JSON.stringify(output.imgs, null, 4));
+          //console.log(JSON.stringify(output.imgs, null, 4));
           //return console.log(JSON.stringify(output, null, 5));
           /*var imgs_array = ''; 
           for(i=0; i < output.imgs.length; i++) {

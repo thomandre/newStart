@@ -30,8 +30,8 @@ function MyFriendsListCtrl($scope, $timeout, Friend, $rootScope) {
 }
 
 
-var ModalInstanceCtrl = function ($scope, $modalInstance, items) {
-
+var ModalInstanceCtrl = function ($scope, $modalInstance, firstName) {
+  $scope.firstName = firstName;
   $scope.ok = function () {
     $modalInstance.close('ok');
   };
@@ -100,9 +100,9 @@ function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal) {
 	      templateUrl: 'myModalContent.html',
 	      controller: ModalInstanceCtrl,
 	      resolve: {
-	        items: function () {
-	          return $scope.product.fullName;
-	        }
+	        firstName: function () {
+	          return $scope.product.firstName;
+	        }, 
 	      }
 	    });
 

@@ -1,5 +1,5 @@
 set :application, "newStart"
-set :domain,      "beta.havefyve.com"
+set :domain,      "welovegifts.fr"
 set :deploy_to,   "/var/www/havefyve"
 
 set :app_path,    "app"
