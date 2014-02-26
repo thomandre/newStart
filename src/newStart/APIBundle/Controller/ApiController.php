@@ -418,7 +418,9 @@ class ApiController extends Controller
         $bug->setCauses($request->get('causes'));
         $bug->setType($request->get('type'));
         $bug->setPriority($request->get('priority'));
-        $bug->setUserName($user->getFullName());
+        if(is_object($user)) {
+            $bug->setUserName($user->getFullName());
+        }
         $bug->setUserAgent($request->headers->get('user-agent'));
 
         $em->persist($bug);
