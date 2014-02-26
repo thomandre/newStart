@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use newStart\CommonBundle\Tests\NewStartWebTestCase;
 
 
-class scrapeServiceTest extends NewStartWebTestCase
+class ScrapeServiceTest extends NewStartWebTestCase
 {
 
 	/**

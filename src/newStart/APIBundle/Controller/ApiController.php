@@ -26,6 +26,9 @@ class ApiController extends Controller
     /** @DI\Inject("newstart_api_service_download") */
     public $dlService;
 
+    /** @DI\Inject("newstart_api_service_tracking") */
+    public $trackingService;
+
     /**
      * @Route("/api/v1/profile/private", name="profile_prive")
      * @Template()
@@ -264,7 +267,8 @@ class ApiController extends Controller
 
         $data = $product->toArray();
         $data['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 180, 'height' => 222, 'image' => $product->getImageName()));
-     
+        $data['url'] = $this->trackingService->track($data['url']);
+
         $response = new JsonResponse();
         $response->setData($data);
         return $response;

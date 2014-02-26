@@ -6,7 +6,7 @@ use newStart\APIBundle\Service\DownloadService;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use newStart\CommonBundle\Tests\NewStartWebTestCase;
 
-class downloadServiceTest extends NewStartWebTestCase
+class DownloadServiceTest extends NewStartWebTestCase
 {
 
 	/**
