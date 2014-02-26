@@ -16,7 +16,7 @@
 			<p>{{ product.name }}</p>
 			<p>{{ product.price }}</p>
 			<p class="comment small">{{ product.comment }}</p>
-			<a href="http://www.leetchi.com/fr/fundraising/CheckUserStatus?FormDto.AcceptContributionsInformation=true&FormDto.AcceptContributionsInformation=false&FormDto.AmountCollectedHidden=false&FormDto.Beneficiary={{ product.fullName }}&FormDto.BeneficiaryFacebookId={{ product.fbUserId }}&FormDto.ContributionsPrivate=false&FormDto.Event=Birthday&FormDto.Expiration=20%2F02%2F2014&FormDto.HasPromotionCode=false&FormDto.HasSuggestedAmountEuroCents=false&FormDto.IsPublic=false&FormDto.Name=Anniversaire%20{{ product.firstName }}&FormDto.PromotionCode=&FormDto.RaisingGoalEuroCents={{ product.price }}&FormDto.SuggestedAmountEuroCents=&FormDto.Utmccn=not%20present&FormDto.Utmcmd=not%20present&FormDto.Utmcsr=not%20present&FormDto.Utmctr=not%20present&FundraisingId=" class="btn btn-default" target="_blank">Créer une cagnotte</a> 
+			<!--a href="http://www.leetchi.com/fr/fundraising/CheckUserStatus?FormDto.AcceptContributionsInformation=true&FormDto.AcceptContributionsInformation=false&FormDto.AmountCollectedHidden=false&FormDto.Beneficiary={{ product.fullName }}&FormDto.BeneficiaryFacebookId={{ product.fbUserId }}&FormDto.ContributionsPrivate=false&FormDto.Event=Birthday&FormDto.Expiration=20%2F02%2F2014&FormDto.HasPromotionCode=false&FormDto.HasSuggestedAmountEuroCents=false&FormDto.IsPublic=false&FormDto.Name=Anniversaire%20{{ product.firstName }}&FormDto.PromotionCode=&FormDto.RaisingGoalEuroCents={{ product.price }}&FormDto.SuggestedAmountEuroCents=&FormDto.Utmccn=not%20present&FormDto.Utmcmd=not%20present&FormDto.Utmcsr=not%20present&FormDto.Utmctr=not%20present&FundraisingId=" class="btn btn-default" target="_blank">Créer une cagnotte</a!--> 
 
 			<a href="{{ product.url }}" class="product-link btn btn-primary" target="_blank" ng-click="open()">Acheter</a>
 		</div>
@@ -27,7 +27,7 @@
 <script type="text/ng-template" id="myModalContent.html">
 	<div class="modal-content">
 	  <div class="modal-header">
-	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	    <button type="button" ng-click="cancel()" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	    <h4 class="modal-title">Vous avez décidé d’acheter ce cadeau finalement ?</h4>
 	  </div>
 	  <div class="modal-body">
