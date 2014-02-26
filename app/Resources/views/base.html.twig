@@ -64,12 +64,8 @@
         </div>
         <div id="fb-root"></div>
 
-        <svg id="svg-image-blur">
-            <filter id="blur-effect">
-                <feGaussianBlur stdDeviation="15" />
-            </filter>
-        </svg>
-          {% javascripts 
+
+        {% javascripts 
               '@newStartCommonBundle/Resources/public/js/vendor/jquery-1.9.1.min.js'
               '@newStartCommonBundle/Resources/public/js/main.js'
               '@newStartCommonBundle/Resources/public/js/vendor/jquery.ba-outside-events.min.js'
@@ -82,11 +78,11 @@
               '@newStartCommonBundle/Resources/public/js/app_ng.js'
               '@newStartCommonBundle/Resources/public/js/controllers.js'
               '@newStartCommonBundle/Resources/public/js/services.js'
-           %}
-              <script src="{{ asset_url }}"></script>
-         {% endjavascripts %}
-         {% block javascripts %}
-         <script>
+          %}
+          <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        {% block javascripts %}
+          <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -94,7 +90,7 @@
 
             ga('create', 'UA-47974421-1', 'welovegifts.fr');
             ga('send', 'pageview');
-         </script>
-         {% endblock %}
+          </script>
+        {% endblock %}
     </body>
 </html> 
