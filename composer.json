@@ -51,7 +51,8 @@
         "querypath/querypath": "dev-master",
         "luxifer/doctrine-functions": "dev-master",
         "doctrine/data-fixtures": "*",
-        "doctrine/doctrine-fixtures-bundle": "*"
+        "doctrine/doctrine-fixtures-bundle": "*",
+        "behat/mink-zombie-driver": "*"
     },
     "scripts": {
         "post-install-cmd": [

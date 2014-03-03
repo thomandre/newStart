@@ -14,14 +14,14 @@ class Friends
 {
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="myFriends")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $friendsWithMe;
 
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="friendsWithMe")
      * @ORM\JoinColumn(name="friend_user_id", referencedColumnName="id")
      */
     protected $myFriends;

@@ -71,7 +71,7 @@ class MailService
      * @param boolean $cli
      * @return array
      */
-    public function sendMessage($to, $subject, $body, $cli = false)
+    public function sendMessage($to, $subject, $body, $cli = false, $cc = null)
     {
         $mail = \Swift_Message::newInstance();
         $mail
@@ -79,6 +79,7 @@ class MailService
                 ->setTo($to)
                 ->setSubject($subject)
                 ->setBody($body)
+                ->setCc($cc)
                 ->setContentType('text/html');
         
         if($this->container->hasParameter('mailer_cci_address')) {

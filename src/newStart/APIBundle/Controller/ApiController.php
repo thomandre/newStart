@@ -79,7 +79,6 @@ class ApiController extends Controller
 
     /**
      * @Route("/api/v1/product/scrape", name="scrape")
-     * @Cache(expires="+2hours", public="true")
      */
     public function scrapeAction(Request $request) 
     {
@@ -422,6 +421,11 @@ class ApiController extends Controller
             $bug->setUserName($user->getFullName());
         }
         $bug->setUserAgent($request->headers->get('user-agent'));
+
+        $mail = $this->container->get('newstart_common_service_mail');
+        $mail->load('newStartAPIBundle:Default:bug.html.twig');
+        $body = $mail->renderBody(array('bug' => $bug)); 
+        $mail->sendMessage('thomandre@gmail.com', 'Nouveau message via le formulaire de contact', $body, false, 'albanmargain@gmail.com');
 
         $em->persist($bug);
         $em->flush();

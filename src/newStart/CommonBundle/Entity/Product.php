@@ -57,7 +57,7 @@ class Product
     protected $imgUrl;
 
     /**
-     * @ORM\ManyToOne(targetEntity="\newStart\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="\newStart\UserBundle\Entity\User", inversedBy="products")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
