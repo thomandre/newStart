@@ -16,7 +16,8 @@ Et je presse "Enregistrer"
 Et j'attend que "#completeContainer" ne soit plus visible 
 Et le champ "url" devrait contenir ""
 Et je devrais voir "Apple - iPod Classic"
-Et je vais sur "/me/settings"
+Et je clique sur ".settings"
+Et je suis "Settings"
 Alors je devrais voir "Profil privé"
 Et la case à cocher "prive" ne devrait pas être cochée
 Et le champ "profileUrl" devrait contenir "http://welovegifts.local/app_test.php/profile/678776921"
@@ -42,7 +43,8 @@ Alors je devrais voir "Se connecter via Facebook"
 Scénario: Je suis Thomas et je veux partager passer mon profil en public
 Soit je suis sur "/"
 Soit je me logue en tant que "thomandr1@yahoo.fr"
-Et je vais sur "/me/settings"
+Et je clique sur ".settings"
+Et je suis "Settings"
 Alors je devrais voir "Profil privé"
 Et la case à cocher "prive" devrait être cochée
 Alors je décoche "prive"
