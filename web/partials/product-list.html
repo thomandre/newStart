@@ -1,15 +1,84 @@
+<div class="row row-user-profile">
+	<div class="col-md-2 col-sm-2 col-xs-4 user-profile">
+		<div class="viewed-profile">
+			<h2>{{ products.user.fullName }}</h2>
+			<div class="profile-image">
+				<img ng-src="https://graph.facebook.com/{{ products.user.facebookId }}/picture?width=180&height=180" width="180px"/>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6 col-sm-6 col-xs-6 url-block">
+		<div class="input-group url input-lg">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
+			<input type="text" name="url" id="url" class="form-control" ng-model="url" placeholder="Copiez-collez l'URL des cadeaux que vous souhaitez recevoir !" ui-keydown="{13:'productScrape()', 27:'productScrapeCancel()'}" />
+			<span class="input-group-btn">
+				<button class="btn btn-primary" type="button" id="go_btn" ng-click="productScrape()">
+					<span ng-show="scrapeLoading" class="loader glyphicon glyphicon-refresh ng-hide" ></span>
+					<span class="lbl">Go !</span>
+				</button>
+			</span>
+		</div>
+	</div>
+	
+	<div id="completeContainer" ng-hide="scrappedProduct == null" class="col-md-6 col-sm-6 col-xs-6 ng-hide">
+		<div id="complete">
+			<div id="product" class="row">
+				<div class="col-md-5 col-sm-5 col-xs-5" style="height:200px">
+					<img ng-show="imageLoading" src="../../bundles/newstartcommon/images/loader.gif" />
+					<img ng-hide="imageLoading" ng-src="{{ scrappedProduct.imgThumb }}" class="preview" />
+				</div>
+				<div class="col-md-5 col-sm-5 col-xs-5">
+					<h4>
+						<span class="productTitle" ng-hide="editModeTitle">{{ scrappedProduct.title }}</span>
+						<textarea class="title" ng-show="editModeTitle" ng-model="scrappedProduct.title" data-ng-required></textarea>
+						<a ng-click="editTitle()" ng-hide="editModeTitle" class="glyphicon glyphicon-pencil" title="modifier"></a>
+						<a ng-click="cancelEditTitle()" ng-show="editModeTitle" class="glyphicon glyphicon-remove-sign" title="annuler"></a>
+						<a ng-click="saveTitle()" ng-show="editModeTitle" class="glyphicon glyphicon-ok-sign" title="ok"></a>
+					</h4>
+					<p class="price">
+						<span ng-hide="editModePrice">{{ scrappedProduct.price }}</span> 
+						<input type="text" class="title" ui-keydown="{13:'savePrice()', 27:'cancelEditPrice()'}" ng-show="editModePrice" ng-model="scrappedProduct.price" data-ng-required />
+						<a ng-click="editPrice()" ng-hide="editModePrice" class="glyphicon glyphicon-pencil" title="modifier"></a>
+						<a ng-click="cancelEditPrice()" ng-show="editModePrice" class="glyphicon glyphicon-remove-sign" title="annuler"></a>
+						<a ng-click="savePrice()" ng-show="editModePrice" class="glyphicon glyphicon-ok-sign" title="ok"></a>
+					</p>
+					<textarea ng:model="scrappedProduct.comment" id="comment" style="width: 205px; height: 75px;" placeholder="Vous pouvez préciser la couleur, la taille..."></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-5 imageBtns">
+					<button class="btn prev" type="button" ng-click="prevImg()"><span class="glyphicon glyphicon-arrow-left"></span></button>
+					<span class="index">{{ imageIndex + 1 }} / {{ scrappedProduct.imgNumber }}</span>
+					<button class="btn next" type="button" ng-click="nextImg()"><span class="glyphicon glyphicon-arrow-right"></span></button>
+				</div>
+				<div class="col-md-5 btns">
+					<button class="btn btn-primary" type="button" id="save_btn" ng-click="productSave(scrappedProduct)"><span ng-show="productLoading" class="loader glyphicon glyphicon-refresh"></span>Enregistrer</button>
+					<button class="btn" type="button" ng-click="productScrapeCancel()">Annuler</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="row">
 	<div class="col-md-6 col-sm-6 col-xs-6"><h2>Ma liste de cadeaux</h2></div>
 </div>
+<div class="row alerts" style="display:none;margin-top:15px;">
+	<div class="alert alert-info" ng-show="info">{{ info }}</div>
+	<div class="alert alert-danger" ng-show="danger">{{ danger }}</div>
+	<div class="alert alert-warning" ng-show="warning">{{ warning }}</div>
+	<div class="alert alert-success" ng-show="success">{{ success }}</div>
+	<div class="alert alert-notice" ng-show="notice">{{ notice }}</div>
+</div>
 <div class="row products">
-	<div class="col-md-2 col-sm-3 col-xs-5 product" ng-repeat="product in products">
+	<div class="col-md-2 col-sm-3 col-xs-5 product" ng-repeat="product in products.products">
 		<div class="product-image" ng-controller="ProductItemCtrl">
-			<a href="#/product/{{product.id}}" ng-show="product.thumb_url != null"><img ng-src='{{ product.thumb_url }}' /></a>
+			<a href="me/product/{{product.id}}" ng-show="product.thumb_url != null"><img ng-src='{{ product.thumb_url }}' /></a>
 			<p ng-show="product.thumb_url != null">
-				<span class="name"><span class="price">{{ product.price }}</span> <a href="#/product/{{product.id}}">{{ product.name }}</a></span>
-				<a href="#" title="supprimer" class="glyphicon glyphicon-trash" ng-click="remove()"></a> 
+				<span class="name"><span class="price">{{ product.price }}</span> <a href="me/product/{{product.id}}">{{ product.name }}</a></span>
+				<a href="" title="supprimer" class="glyphicon glyphicon-trash" ng-click="remove()"></a> 
 			</p>
 			<span class="glyphicon glyphicon-camera" ng-show="product.thumb_url == null"></span>
 		</div>
 	</div>
 </div>
+

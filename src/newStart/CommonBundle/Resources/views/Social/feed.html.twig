@@ -3,50 +3,34 @@
 {% block body %}
 	<div class="container">
 		{% include '::header.html.twig' %}
-		<div class="row feed">
-			<div class="row"><div class="col-md-6 col-sm-6 col-xs-6"><h2>Derniers cadeaux</h2></div></div>
+		<div ng-view>
+			<div class="row feed">
+				<div class="row"><div class="col-md-6 col-sm-6 col-xs-6"><h2>Derniers cadeaux</h2></div></div>
 
-			<div class="row products">
-				{% for product in products %}
-					<div class="col-md-2 col-sm-3 col-xs-5 product">
-						<div class="product-image">
-							<a href="../profiles/{{ product.user.facebookId }}#/profile/{{ product.user.facebookId }}/product/{{ product.id }}"><img src='{{ product.thumb_url }}' /></a>
-							<p>
-								<a href="../profiles/{{ product.user.facebookId }}#/profile/{{ product.user.facebookId }}/product/{{ product.id }}">
-									<span class="productname">{{ product.name }}</span>
-								</a>
-							</p>
-							<p class="sharefriend">
-								<a href="../profiles/{{ product.user.facebookId }}#/profile/{{ product.user.facebookId }}"><img src="https://graph.facebook.com/{{ product.user.facebookId }}/picture?width=20&height=20" /></a> 
-								<a href="../profiles/{{ product.user.facebookId }}#/profile/{{ product.user.facebookId }}">
-									<span class="sharename">{{ product.user.fullName }}</span>
-								</a>
-							</p>
+				<div class="row products">
+					{% for product in products %}
+						<div class="col-md-2 col-sm-3 col-xs-5 product">
+							<div class="product-image">
+								<a href="../profiles/{{ product.user.facebookId }}#/profile/{{ product.user.facebookId }}/product/{{ product.id }}"><img src='{{ product.thumb_url }}' /></a>
+								<p>
+									<a href="../profiles/{{ product.user.facebookId }}#/profile/{{ product.user.facebookId }}/product/{{ product.id }}">
+										<span class="productname">{{ product.name }}</span>
+									</a>
+								</p>
+								<p class="sharefriend">
+									<a href="../profiles/{{ product.user.facebookId }}#/profile/{{ product.user.facebookId }}"><img src="https://graph.facebook.com/{{ product.user.facebookId }}/picture?width=20&height=20" /></a> 
+									<a href="../profiles/{{ product.user.facebookId }}#/profile/{{ product.user.facebookId }}">
+										<span class="sharename">{{ product.user.fullName }}</span>
+									</a>
+								</p>
+							</div>
 						</div>
-					</div>
-				{% else %}
-					<div style="margin-top:100px">Votre feed se remplira avec les cadeaux que vos amis auront enregistrés.</div>
-				{% endfor %}
+					{% else %}
+						<div style="margin-top:100px">Votre feed se remplira avec les cadeaux que vos amis auront enregistrés.</div>
+					{% endfor %}
+				</div>
 			</div>
 		</div>
 	</div>
-{% endblock %}
-
-
-
-
-{% block javascripts %}
-	{{ parent() }}
-	<script src="{{ asset('bundles/newstartcommon/js/vendor/jquery.resizecrop-1.0.3.min.js') }}"></script>
-	<script>
-		$('.product img.img-responsive').resizecrop({
-		  width:180,
-		  height:180,
-		  vertical:'top'
-		});
-
-	</script>
-
-
 {% endblock %}
 

@@ -12,5 +12,5 @@ SetEnv SESSION_USE_TRANS_SID 0
     RewriteEngine On
     #RewriteBase /path/to/app
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ app.php [L]
+    RewriteRule ^ app_dev.php [L]
 </IfModule>

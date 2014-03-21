@@ -5,6 +5,7 @@
         <meta name="description" content="Welovegifts, " />
         <meta name="keywords" content="cadeaux, social" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <base href="{{ app.request.getBaseURL() }}/" />
         <title>{% block title %}Welovegifts{% endblock %}</title>
         {% stylesheets 
                        'bundles/newstartcommon/css/vendor/bootstrap/css/bootstrap.css' 

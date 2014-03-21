@@ -1,3 +1,16 @@
+<div class="row row-user-profile">
+	<div class="col-md-2 col-sm-2 col-xs-4 user-profile">
+		<div class="viewed-profile">
+			<h2><a href="{{ path('profile', {userId:userProfile.getFacebookId}) }}">{{ products[0].fullName }}</a></h2>
+			<br />
+			<div class="profile-image">
+				<a href="{{ path('profile', {userId:userProfile.getFacebookId}) }}">
+					<img ng-src="https://graph.facebook.com/{{ products[0].fbUserId }}/picture?width=180&height=180" width="180px" />
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
 
 <div class="row">
 	<div class="col-md-6 col-sm-6 col-xs-6"><h2>Sa liste de cadeaux</h2></div>
@@ -11,7 +24,5 @@
 			</p>
 		</div>
 	</div>
-
 	<div ng-hide="products.length || loading">Aucun cadeau n'a été enregistré pour le moment.</div>
-
 </div>

@@ -1,6 +1,14 @@
 var wlgControllers = angular.module('wlgControllers', []);
 
-
+function MyFeedCtrl($scope, $timeout, Feed, $rootScope) {
+	$scope.updateFeed = function () {
+		$rootScope.loading = true;
+		$rootScope.feed = Feed.read({}, function (data) {
+			$rootScope.loading = false;
+		});
+    }
+    $scope.updateFeed();
+}
 
 function FriendCtrl($scope, Friend, $rootScope) {
 	$('#search').focus();
@@ -116,7 +124,7 @@ function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal) {
 		  if(clickedBtn == 'ok') {
 			Product.remove({id: $scope.product.id}, function (data) {
 			  $rootScope.products = data;
-	  	      $scope.countProducts();
+	  	      //$scope.countProducts();
 
 			  $('#boughtModal').modal('hide');
 			  $rootScope.notice = 'Génial !';
@@ -156,8 +164,6 @@ function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal) {
 }
 
 function ProductItemCtrl($scope, Product, $rootScope) {
-
-
 	$scope.remove = function () {
 		if(confirm('Voulez-vous supprimer ' + $scope.product.name + ' ?')) {
 			Product.remove({id: $scope.product.id}, function (data) {
@@ -252,7 +258,7 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 		$scope.imageLoading = true;
   		$scope.imageIndex = 0;
   			
-		//console.log($scope.url.substr(0, 3));
+		//console.log($scope);
 		if($scope.url.substr(0, 3) == 'www') {
 			$scope.url = 'http://' + $scope.url;
 		}
@@ -309,9 +315,10 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 
 	$scope.countProducts = function () {
 		$rootScope.nbProducts = 0;
-		while($rootScope.products.length && $rootScope.nbProducts < 5 && $rootScope.products[$rootScope.nbProducts]['name'] != undefined) {
+		while($rootScope.products.products.length && $rootScope.nbProducts < 5 && $rootScope.products.products[$rootScope.nbProducts]['name'] != undefined) {
 			$rootScope.nbProducts++;
 		}
+		console.log($rootScope.nbProducts);
 	};
 
 	$scope.updateProducts = function () {
@@ -332,5 +339,6 @@ MyProductListCtrl.$inject = ['$scope', '$http','Product', '$timeout', '$location
 ProductDetailCtrl.$inject = ['$scope', '$routeParams', 'Product', '$rootScope', '$modal'];
 ProductItemCtrl.$inject = ['$scope', 'Product', '$rootScope'];
 MyFriendsListCtrl.$inject = ['$scope', '$timeout', 'Friend', '$rootScope'];
+MyFeedCtrl.$inject = ['$scope', '$timeout', 'Feed', '$rootScope'];
 FriendCtrl.$inject = ['$scope', 'Friend', '$rootScope'];
 

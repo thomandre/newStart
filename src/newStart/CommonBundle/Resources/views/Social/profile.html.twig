@@ -7,41 +7,33 @@
 		{% else %}
 			{% include '::guest_header.html.twig' %}
 		{% endif %}
-		<div class="row row-user-profile">
-			<div class="col-md-2 col-sm-2 col-xs-4 user-profile">
-				<div class="viewed-profile">
-					<h2><a href="{{ path('profile', {userId:userProfile.getFacebookId}) }}#/profile/{{ userProfile.getFacebookId }}">{{ userProfile.firstName }} {{ userProfile.lastName }}</a></h2>
-					<br />
-					<div class="profile-image">
-						<a href="{{ path('profile', {userId:userProfile.getFacebookId}) }}#/profile/{{ userProfile.getFacebookId }}">
-							<img src="https://graph.facebook.com/{{ userProfile.username }}/picture?width=180&height=180" width="180px" />
-						</a>
+		<div ng-view>
+			<div class="row row-user-profile">
+				<div class="col-md-2 col-sm-2 col-xs-4 user-profile">
+					<div class="viewed-profile">
+						<h2><a href="{{ path('profile', {userId:userProfile.getFacebookId}) }}#/profile/{{ userProfile.getFacebookId }}">{{ userProfile.firstName }} {{ userProfile.lastName }}</a></h2>
+						<br />
+						<div class="profile-image">
+							<a href="{{ path('profile', {userId:userProfile.getFacebookId}) }}#/profile/{{ userProfile.getFacebookId }}">
+								<img src="https://graph.facebook.com/{{ userProfile.username }}/picture?width=180&height=180" width="180px" />
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		{% raw %}
-			<div class="row alerts" style="display:none;">
-				<div class="alert alert-info" ng-show="info">{{ info }}</div>
-				<div class="alert alert-danger" ng-show="danger">{{ danger }}</div>
-				<div class="alert alert-warning" ng-show="warning">{{ warning }}</div>
-				<div class="alert alert-success" ng-show="success">{{ success }}</div>
-				<div class="alert alert-notice" ng-show="notice">{{ notice }}</div>
-			</div>
-		{% endraw %}
-
-		<div ng-view class="row">
-			<div class="row products ng-hide">
-				<h2>Sa liste de cadeaux</h2>
-				{% for gift in gifts %}
-	 				<div class="col-md-2 col-sm-3 col-xs-5 product">
-	 					<div class="product-image">
-							<a href="#/product/{{gift.id}}"><img src='{{ gift['thumb_url'] }}' /></a>
-	 						<p><span>{{ gift.name }}</span></p>
-	 					</div>
-	 				</div>
-	 			{% endfor %}
+			<div class="row">
+				<div class="row products ng-hide">
+					<h2>Sa liste de cadeaux</h2>
+					{% for gift in gifts %}
+		 				<div class="col-md-2 col-sm-3 col-xs-5 product">
+		 					<div class="product-image">
+								<a href="#/product/{{gift.id}}"><img src='{{ gift['thumb_url'] }}' /></a>
+		 						<p><span>{{ gift.name }}</span></p>
+		 					</div>
+		 				</div>
+		 			{% endfor %}
+				</div>
 			</div>
 		</div>
 	</div>

@@ -6,7 +6,9 @@ Contexte: Je souhaite désactiver les mails
 Scénario: Je suis Thomas et je ne veux plus recevoir d'emails
 Soit je suis sur "/"
 Soit je me logue en tant que "albanthomas1@gmail.com"
-Et je vais sur "/me/settings"
+Et je clique sur ".settings"
+Et je suis "Settings"
+#Et je vais sur "/me/settings"
 Alors je décoche "email"
 Et j'attend "1" secondes
 Et je recharge la page

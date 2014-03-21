@@ -1,43 +1,43 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-	<div class="container" ng-controller="MyFriendsListCtrl">
+	<div class="container">
 		{% include '::header.html.twig' %}
-		<div class="row products">
-			<h2>Friends</h2>
+		<div ng-view>
+			<div class="row products">
+				<h2>Friends</h2>
 
-			<div class="row">
-				<div class="col-md-6 col-md-offset-2 col-sm-6 col-xs-6">
-					<div class="input-group input-lg">
-						<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-						<input type="text" class="form-control" ng-model="name" ng-change="autoFriendsSearch()" name="search" id="search" />
-						<span class="input-group-btn">
-							<button class="btn btn-primary" type="button" id="go_btn" ng-click="productScrape()"><span class="glyphicon glyphicon-search"></span></button>
-						</span>
+				<div class="row">
+					<div class="col-md-6 col-md-offset-2 col-sm-6 col-xs-6">
+						<div class="input-group input-lg">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+							<input type="text" class="form-control" ng-model="name" ng-change="autoFriendsSearch()" name="search" id="search" />
+							<span class="input-group-btn">
+								<button class="btn btn-primary" type="button" id="go_btn" ng-click="productScrape()"><span class="glyphicon glyphicon-search"></span></button>
+							</span>
+						</div>
 					</div>
 				</div>
-			</div>
-			<br />
-			{% if displayPopIn %}
-				<div id="modalExplainFriends" class="modal fade">
-				  <div class="modal-dialog">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				        <h4 class="modal-title">Choix des 5 amis</h4>
-				      </div>
-				      <div class="modal-body">
-						<p class="small">Choisissez les amis à qui vous ferez un cadeau.</p>
-						<p class="small"><span class="glyphicon glyphicon-star" style="color:#428BCA"></span> : Je lui ferai surement un cadeau</p>
-				      </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-primary" id="ok">Ok</button>
-				      </div>
-				    </div>
-				  </div>
-				</div>
-			{% endif %}
-			<div ng-view>
+				<br />
+				{% if displayPopIn %}
+					<div id="modalExplainFriends" class="modal fade">
+					  <div class="modal-dialog">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					        <h4 class="modal-title">Choix des 5 amis</h4>
+					      </div>
+					      <div class="modal-body">
+							<p class="small">Choisissez les amis à qui vous ferez un cadeau.</p>
+							<p class="small"><span class="glyphicon glyphicon-star" style="color:#428BCA"></span> : Je lui ferai surement un cadeau</p>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-primary" id="ok">Ok</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				{% endif %}
 				{% for friend in user.getMyFriends() %}
 					<div class="col-md-2 col-sm-3 col-xs-5">
 						<div class="ng-hide">

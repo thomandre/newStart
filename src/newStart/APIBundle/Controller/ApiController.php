@@ -227,7 +227,7 @@ class ApiController extends Controller
         }
 
         $response = new JsonResponse();
-        $response->setData($data);
+        $response->setData(array('products' => $data, 'user' => $user->toArray()));
         return $response;
     }
 
@@ -402,6 +402,31 @@ class ApiController extends Controller
         return $response;
     }
 
+    /**
+     * @Route("/api/v1/feed", name="api_feed")
+     * @Template()
+     */
+    public function feedAction()
+    {
+        $user = $this->getUser();
+
+        if($user != null) {
+            $em = $this->getDoctrine()->getManager();
+            $products = $em->getRepository('newStartCommonBundle:Product')->getProductsFeedForUser($user);    
+            $data = array();
+            foreach($products as $p) {
+                $tmp = $p->toArray();
+                $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 176, 'height' => 165, 'image' => $p->getImageName()));
+                $tmp['user'] = $p->getUser()->toArray();
+                $data[] = $tmp;
+            }
+            
+            $response = new JsonResponse();
+            $response->setData(array('user' => $user, 'products' => $data));
+            
+            return $response;
+        }
+    }
 
     /**
      * @Route("/api/v1/bug-report", name="bug_report")

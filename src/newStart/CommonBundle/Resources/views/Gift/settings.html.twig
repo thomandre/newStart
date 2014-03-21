@@ -18,7 +18,7 @@
  			<input type="checkbox" name="prive" id="prive" {% if not user.public %}checked="checked"{% endif %}>
 			<div class="profileUrl" {% if not user.public %}style="display:none"{% endif %}>
 				Vous pouvez partager cette URL via mail ou via les réseaux sociaux :
-				<br /><input type="text" size="100" value="{{ app.request.getSchemeAndHttpHost() ~ path('profile', {userId: user.facebookId}) }}#/profile/{{ user.facebookId }}" id="profileUrl">
+				<br /><input type="text" size="100" value="{{ app.request.getSchemeAndHttpHost() ~ path('profile', {userId: user.facebookId}) }}" id="profileUrl">
 			</div>
 		</div>
 		<div class="row setting">
