@@ -1,0 +1,26 @@
+<div class="row feed">
+	<div class="row">
+		<div class="col-md-6 col-sm-6 col-xs-6">
+			<h2>Derniers cadeaux</h2>
+		</div>
+	</div>
+	<div class="row products">
+		<div class="col-md-2 col-sm-3 col-xs-5 product" ng-repeat="product in feed.products">
+			<div class="product-image">
+				<a href="profile/{{ product.user.facebookId }}/product/{{ product.id }}"><img ng-src='{{ product.thumb_url }}' /></a>
+				<p>
+					<a href="profile/{{ product.user.facebookId }}/product/{{ product.id }}">
+						<span class="productname">{{ product.name }}</span>
+					</a>
+				</p>
+				<p class="sharefriend">
+					<a href="profile/{{ product.user.facebookId }}"><img ng-src="https://graph.facebook.com/{{ product.user.facebookId }}/picture?width=20&height=20" /></a> 
+					<a href="profile/{{ product.user.facebookId }}">
+						<span class="sharename">{{ product.user.fullName }}</span>
+					</a>
+				</p>
+			</div>
+		</div>
+		<div ng-show="feed.products.length == 0" style="margin-top:100px" class="ng-hide">Votre feed se remplira avec les cadeaux que vos amis auront enregistrés.</div>
+	</div>
+</div>

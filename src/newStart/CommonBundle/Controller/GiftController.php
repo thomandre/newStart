@@ -28,6 +28,7 @@ class GiftController extends Controller
 
     /**
      * @Route("/me/", name="me")
+     * @Route("/me/product/{id}", name="my_product")
      * @Template()
      */
     public function indexAction(Request $request)

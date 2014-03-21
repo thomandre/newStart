@@ -66,7 +66,8 @@ class SocialController extends Controller
     }
 
     /**
-     * @Route("/profiles/{userId}", name="profile")
+     * @Route("/profile/{userId}", name="profile")
+     * @Route("/profile/{userId}/product/{id}", name="user_products")
      * @Template()
      */
     public function profileAction($userId)
