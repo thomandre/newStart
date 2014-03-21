@@ -39,9 +39,9 @@
 			{% endif %}
 			<div ng-view>
 				{% for friend in user.getMyFriends() %}
-					<div class="col-md-2 col-sm-3 col-xs-5 product">
-						<div class="product-image">
-							<a href="{{ path('profile', {userId:friend.myFriends.getFacebookId}) }}#/profile/{{ friend.myFriends.getFacebookId }}"><img src='' height="220" width="176"/></a>
+					<div class="col-md-2 col-sm-3 col-xs-5">
+						<div class="ng-hide">
+							<a href="{{ path('profile', {userId:friend.myFriends.getFacebookId}) }}#/profile/{{ friend.myFriends.getFacebookId }}"></a>
 							<p><span><a href="{{ path('profile', {userId:friend.myFriends.getFacebookId}) }}#/profile/{{ friend.myFriends.getFacebookId }}">{{ friend.myFriends.getFullName() }}</a></span></p>
 						</div>
 					</div>

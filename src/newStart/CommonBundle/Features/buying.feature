@@ -130,21 +130,4 @@ Et je clique sur "#userNavigationLabel"
 Et j'attend "0.5" secondes
 Et je presse "Déconnexion"
 
-@javascript @logout
-Scénario: Je veux pouvoir me deloguer
-Soit je vais sur "/"
-Soit je me logue en tant que "thomandr1@yahoo.fr"
-Et j'attend "0.5" secondes
-Et je me delogue
-Soit je vais sur "https://www.facebook.com"
-Et je clique sur "#userNavigationLabel"
-Et j'attend "0.5" secondes
-Et je presse "Déconnexion"
-Soit je vais sur "/"
-Soit je me logue en tant que "albanthomas1@gmail.com"
-Et j'attend "0.5" secondes
-Et je me delogue
-Soit je vais sur "https://www.facebook.com"
-Et je clique sur "#userNavigationLabel"
-Et j'attend "0.5" secondes
-Et je presse "Déconnexion"
+

@@ -48,18 +48,18 @@ Et je presse "Enregistrer"
 Et j'attend que "#completeContainer" ne soit plus visible 
 Et je devrais voir "Apple - iPad mini"
 
-Alors je remplis "url" avec "http://www.edel-optics.fr/CLASSIC-3-NE2-EJ-de-Yves-Saint-Laurent,2,1,33,131632,VTFZ6ABZXB13C,,.html"
+Alors je remplis "url" avec "http://remix.ray-ban.com/fr/index.aspx?gclid=CP_1o5boo70CFYQfwwodw4IASw"
 Et je presse "Go !"
 Et j'attend que "#completeContainer" soit visible 
-Alors je devrais voir "Yves Saint Laurent CLASSIC 3 (NE2/EJ)"
+Alors je devrais voir "Ray-Ban® Remix"
 Et je presse "Enregistrer"
 Et j'attend que "#completeContainer" ne soit plus visible 
 Et j'attend "1" secondes
 
-Alors je devrais voir "Vous avez déjà 5 cadeaux, pour ajouter Yves Saint Laurent CLASSIC 3 (NE2/EJ), vous devez supprimer un cadeau."
+Alors je devrais voir "Vous avez déjà 5 cadeaux, pour ajouter Ray-Ban® Remix | Personnalisez vos lunettes Ray-Ban® - Store France, vous devez supprimer un cadeau."
 
 Et je recharge la page
-Alors je ne devrais pas voir "Yves Saint Laurent"
+Alors je ne devrais pas voir "Ray-Ban® Remix"
 
 Et j'attend "0.5" secondes
 Et je devrais voir "Levi's" 
@@ -69,19 +69,19 @@ Et j'attend "1" secondes
 
 Et je ne devrais pas voir "511™ Slim Fit Hybrid Trousers" 
 
-Alors je remplis "url" avec "http://www.edel-optics.fr/CLASSIC-3-NE2-EJ-de-Yves-Saint-Laurent,2,1,33,131632,VTFZ6ABZXB13C,,.html"
+Alors je remplis "url" avec "http://remix.ray-ban.com/fr/index.aspx?gclid=CP_1o5boo70CFYQfwwodw4IASw"
 Et je presse "Go !"
 Et j'attend que "#completeContainer" soit visible 
-Alors je devrais voir "Yves Saint Laurent CLASSIC 3 (NE2/EJ)"
+Alors je devrais voir "Ray-Ban® Remix"
 Et je presse "Enregistrer"
 Et j'attend que "#completeContainer" ne soit plus visible 
-Alors je devrais voir "Yves Saint Laurent"
+Alors je devrais voir "Ray-Ban® Remix"
 
-Alors je ne devrais pas voir "Vous avez déjà 5 cadeaux, pour ajouter Yves Saint Laurent CLASSIC 3 (NE2/EJ), vous devez supprimer un cadeau."
+Alors je ne devrais pas voir "Vous avez déjà 5 cadeaux, pour ajouter Ray-Ban® Remix | Personnalisez vos lunettes Ray-Ban® - Store France, vous devez supprimer un cadeau."
 
 Et je recharge la page
 Et j'attend "0.5" secondes
-Alors je devrais voir "Yves Saint Laurent"
+Alors je devrais voir "Ray-Ban® Remix"
 
 Et je me delogue
 Soit je vais sur "https://www.facebook.com"

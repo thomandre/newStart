@@ -7,7 +7,7 @@
 	<div class="col-md-5 col-sm-5 col-xs-5">
 		<div class="productDetail">
 			<a href="{{ product.url }}" target="_blank">
-				<img ng-src="{{ product.imgUrl }}"></img>
+				<img ng-src="{{ product.imgUrl }}" ng-hide="loading"></img>
 			</a>
 		</div>
 	</div>
@@ -16,8 +16,6 @@
 			<p>{{ product.name }}</p>
 			<p>{{ product.price }}</p>
 			<p class="comment small">{{ product.comment }}</p>
-			<!--a href="http://www.leetchi.com/fr/fundraising/CheckUserStatus?FormDto.AcceptContributionsInformation=true&FormDto.AcceptContributionsInformation=false&FormDto.AmountCollectedHidden=false&FormDto.Beneficiary={{ product.fullName }}&FormDto.BeneficiaryFacebookId={{ product.fbUserId }}&FormDto.ContributionsPrivate=false&FormDto.Event=Birthday&FormDto.Expiration=20%2F02%2F2014&FormDto.HasPromotionCode=false&FormDto.HasSuggestedAmountEuroCents=false&FormDto.IsPublic=false&FormDto.Name=Anniversaire%20{{ product.firstName }}&FormDto.PromotionCode=&FormDto.RaisingGoalEuroCents={{ product.price }}&FormDto.SuggestedAmountEuroCents=&FormDto.Utmccn=not%20present&FormDto.Utmcmd=not%20present&FormDto.Utmcsr=not%20present&FormDto.Utmctr=not%20present&FundraisingId=" class="btn btn-default" target="_blank">Créer une cagnotte</a!--> 
-
 			<a href="{{ product.url }}" class="product-link btn btn-primary" target="_blank" ng-click="open()">Acheter</a>
 		</div>
 	</div>

@@ -1,4 +1,4 @@
-var havefyveControllers = angular.module('havefyveControllers', []);
+var wlgControllers = angular.module('wlgControllers', []);
 
 
 
@@ -23,8 +23,11 @@ function MyFriendsListCtrl($scope, $timeout, Friend, $rootScope) {
     }
 
 	$scope.updateFriends = function () {
+		$rootScope.loading = true;
 		$rootScope.friends = Friend.listMine({'id':$scope.name}, function (data) {
+			$rootScope.loading = false;
 		});
+		//
     }
     $scope.updateFriends();
 }
@@ -46,10 +49,13 @@ var ModalInstanceCtrl = function ($scope, $modalInstance, firstName) {
 };
 
 
-
 function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal) {
 	$scope.editModeName = false;
-	$scope.product = Product.show({id: $routeParams.productId}, function () {});
+	$rootScope.loading = true;
+
+	$scope.product = Product.show({id: $routeParams.productId}, function () {
+		$rootScope.loading = false;
+	});
 	$scope.productId = $routeParams.productId;
 
 
@@ -113,17 +119,16 @@ function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal) {
 	  	      $scope.countProducts();
 
 			  $('#boughtModal').modal('hide');
-			  $('.alert-notice').html('Génial !');
-			  $('.alert-notice').show();
+			  $rootScope.notice = 'Génial !';
+			  $('.alert-notice, .alerts').show();
   		    });
 		  } else {
 			Product.buy({id: $scope.product.id}, function (data) {
 			  $rootScope.products = data;
-	  	      //$scope.countProducts();
 
 			  $('#boughtModal').modal('hide');
-			  $('.alert-notice').html('Génial ! ' + $scope.product.fullName + ' sera forcément aux anges !');
-			  $('.alert-notice').show();
+			  $rootScope.notice = 'Génial ! ' + $scope.product.fullName + ' sera forcément aux anges !';
+			  $('.alert-notice, .alerts').show();
   		    });
 		  }
 	      
@@ -164,8 +169,11 @@ function ProductItemCtrl($scope, Product, $rootScope) {
 }
 
 function ProductListCtrl($scope, Product, $timeout, $location, $rootScope, $routeParams) {
+	$rootScope.loading = true;
 	$scope.updateProducts = function () {
-      $rootScope.products = Product.list({id: $routeParams.userId});
+      $rootScope.products = Product.list({id: $routeParams.userId}, function (){
+      	$rootScope.loading = false;
+      });
 	}
 	if($routeParams.userId != undefined) {
 	    $scope.updateProducts();
@@ -292,6 +300,7 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
   	  } else {
    		  $scope.scrappedProduct = null;
 	   	  $scope.warning = 'Vous avez déjà 5 cadeaux, pour ajouter ' + scrappedProduct.title + ', vous devez supprimer un cadeau.';
+	   	  $('.alerts').show();
 	   	  $timeout(function () {
  			$scope.warning = null;
 		  }, 10000);
@@ -306,8 +315,10 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 	};
 
 	$scope.updateProducts = function () {
+      $rootScope.loading = true;
       $rootScope.products = Product.listMine(function (response) {
 		$scope.countProducts();
+	    $rootScope.loading = false;
       });
 
 	  //console.log( $('.viewed-profile img').attr('src'));

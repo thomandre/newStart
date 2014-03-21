@@ -1,7 +1,7 @@
-var havefyveApp = angular.module('havefyveApp', ['havefyveServices', 'ui.keypress', 'ui.bootstrap']);
+var wlgApp = angular.module('wlgApp', ['ngRoute', 'wlgServices', 'ui.keypress', 'ui.bootstrap']);
 
 
-havefyveApp.config(['$routeProvider',
+wlgApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/', {

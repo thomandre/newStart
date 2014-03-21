@@ -1,6 +1,10 @@
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
 }
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
+.ng-cloak, .x-ng-cloak, .ng-hide {
+    display: none !important;
+}
 p.comment {
     color:#CA2D56;
 }
@@ -475,3 +479,5 @@ h4 {
 .product-image span.price {
     display:block;
 }
+
+

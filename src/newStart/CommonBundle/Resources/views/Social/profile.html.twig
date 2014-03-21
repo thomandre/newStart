@@ -22,16 +22,17 @@
 		</div>
 
 		{% raw %}
-			<div class="row">
-				<div class="alert alert-warning" ng-show="warning" style="display:none;">{{ warning }}</div>
-			</div>
-			<div class="row">
-				<div class="alert alert-notice" ng-show="notice" style="display:none;">{{ notice }}</div>
+			<div class="row alerts" style="display:none;">
+				<div class="alert alert-info" ng-show="info">{{ info }}</div>
+				<div class="alert alert-danger" ng-show="danger">{{ danger }}</div>
+				<div class="alert alert-warning" ng-show="warning">{{ warning }}</div>
+				<div class="alert alert-success" ng-show="success">{{ success }}</div>
+				<div class="alert alert-notice" ng-show="notice">{{ notice }}</div>
 			</div>
 		{% endraw %}
 
 		<div ng-view class="row">
-			<div class="row products">
+			<div class="row products ng-hide">
 				<h2>Sa liste de cadeaux</h2>
 				{% for gift in gifts %}
 	 				<div class="col-md-2 col-sm-3 col-xs-5 product">
