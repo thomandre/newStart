@@ -257,7 +257,8 @@ class ApiController extends Controller
         }
 
         $response = new JsonResponse();
-        $response->setData($data);
+        $response->setData(array('products' => $data, 'user' => $userProfile->toArray()));
+
         return $response;
     }
 

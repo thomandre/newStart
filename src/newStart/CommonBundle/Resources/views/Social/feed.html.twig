@@ -11,15 +11,15 @@
 					{% for product in products %}
 						<div class="col-md-2 col-sm-3 col-xs-5 product">
 							<div class="product-image">
-								<a href="../profiles/{{ product.user.facebookId }}#/profile/{{ product.user.facebookId }}/product/{{ product.id }}"><img src='{{ product.thumb_url }}' /></a>
+								<a href="../profiles/{{ product.user.facebookId }}/product/{{ product.id }}"><img ng-src='{{ product.thumb_url }}' /></a>
 								<p>
-									<a href="../profiles/{{ product.user.facebookId }}#/profile/{{ product.user.facebookId }}/product/{{ product.id }}">
+									<a href="profile/{{ product.user.facebookId }}/product/{{ product.id }}">
 										<span class="productname">{{ product.name }}</span>
 									</a>
 								</p>
 								<p class="sharefriend">
-									<a href="../profiles/{{ product.user.facebookId }}#/profile/{{ product.user.facebookId }}"><img ng-src="https://graph.facebook.com/{{ product.user.facebookId }}/picture?width=20&height=20" /></a> 
-									<a href="../profiles/{{ product.user.facebookId }}#/profile/{{ product.user.facebookId }}">
+									<a href="profile/{{ product.user.facebookId }}"><img ng-src="https://graph.facebook.com/{{ product.user.facebookId }}/picture?width=20&height=20" /></a> 
+									<a href="profile/{{ product.user.facebookId }}">
 										<span class="sharename">{{ product.user.fullName }}</span>
 									</a>
 								</p>

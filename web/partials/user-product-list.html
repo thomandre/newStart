@@ -1,11 +1,11 @@
 <div class="row row-user-profile">
 	<div class="col-md-2 col-sm-2 col-xs-4 user-profile">
 		<div class="viewed-profile">
-			<h2><a href="{{ path('profile', {userId:userProfile.getFacebookId}) }}">{{ products[0].fullName }}</a></h2>
+			<h2><a href="">{{ products.user.fullName }}</a></h2>
 			<br />
 			<div class="profile-image">
-				<a href="{{ path('profile', {userId:userProfile.getFacebookId}) }}">
-					<img ng-src="https://graph.facebook.com/{{ products[0].fbUserId }}/picture?width=180&height=180" width="180px" />
+				<a href="">
+					<img ng-src="https://graph.facebook.com/{{ products.user.facebookId }}/picture?width=180&height=180" width="180px" />
 				</a>
 			</div>
 		</div>
@@ -16,7 +16,7 @@
 	<div class="col-md-6 col-sm-6 col-xs-6"><h2>Sa liste de cadeaux</h2></div>
 </div>	
 <div class="row products">
-	<div class="col-md-2 col-sm-3 col-xs-5 product" ng-repeat="product in products">
+	<div class="col-md-2 col-sm-3 col-xs-5 product" ng-repeat="product in products.products">
 		<div class="product-image" ng-controller="ProductItemCtrl">
 			<a href="#/profile/{{ product.fbUserId }}/product/{{product.id}}"><img ng-src='{{ product.thumb_url }}' /></a>
 			<p>

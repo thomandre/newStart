@@ -2,7 +2,7 @@ angular.module('wlgServices', ['ngResource']).
     factory('Product', function($resource){
 	  return $resource('api/v1/product/:method/:id', {}, {
 	    listMine: {method:'GET', params:{method:'list-mine'}},
-	    list: {method:'GET', params:{method:'list'}, isArray:true},
+	    list: {method:'GET', params:{method:'list'}},
 	    add: {method:'POST', params:{method:'add'}},
 	    show: {method:'GET', params:{method:'show'}},
 	    edit: {method:'GET', params:{method:'edit'}},
