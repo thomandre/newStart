@@ -116,6 +116,7 @@ class User extends BaseUser
                         'fullName'              => $this->getFullname(),
                         'displayPopinProfile'   => $this->getDisplayPopinProfile(),
                         'displayPopinFriends'   => $this->getDisplayPopinFriends(),
+                        'profilePic'            => 'https://graph.facebook.com/'.$this->facebookId.'/picture?width=180&height=180'
                     );
     }
 
