@@ -109,11 +109,13 @@ class User extends BaseUser
 
     public function toArray() {
         return array(
-                        'id'            => $this->id,
-                        'firstname'     => $this->firstname,
-                        'lastname'      => $this->lastname,
-                        'facebookId'    => $this->facebookId,
-                        'fullName'      => $this->getFullname(),
+                        'id'                    => $this->id,
+                        'firstname'             => $this->firstname,
+                        'lastname'              => $this->lastname,
+                        'facebookId'            => $this->facebookId,
+                        'fullName'              => $this->getFullname(),
+                        'displayPopinProfile'   => $this->getDisplayPopinProfile(),
+                        'displayPopinFriends'   => $this->getDisplayPopinFriends(),
                     );
     }
 

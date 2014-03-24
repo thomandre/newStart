@@ -45,8 +45,9 @@ class UserBirthdayMailCommand extends ContainerAwareCommand
         $mailSent = 0;
         foreach($users as $user) {
             if($user->getEmailStop() == false) {
+                $profileUrl = $router->generate('profile', array('userId' => $user->getFacebookId()), true);
                 $mail->load('newStartCommonBundle:Mails:userBirthdaySoon.html.twig');
-                $body = $mail->renderBody(array('settingsUrl' => $settingsUrl));
+                $body = $mail->renderBody(array('settingsUrl' => $settingsUrl, 'profileUrl' => $profileUrl));
 
                 if($debug == 'true') {
                     var_dump($body);            

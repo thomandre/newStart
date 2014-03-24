@@ -23,7 +23,7 @@ class FriendBirthdayMailCommand extends ContainerAwareCommand
     }
 
     /**
-     * Lancement mails de notification avec informations compilées sur les fiches client transmises
+     * Lancement mails de notification 
      * @param  InputInterface  $input
      * @param  OutputInterface $output
      * @return void

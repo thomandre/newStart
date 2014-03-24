@@ -9,7 +9,7 @@
 					<div class="viewed-profile">
 						<h2>{{ user.firstName }} {{ user.lastName }}</h2>
 						<div class="profile-image">
-							<img src="https://graph.facebook.com/{{ user.username }}/picture?width=180&height=180" width="180px"/>
+							<img ng-src="https://graph.facebook.com/{{ user.username }}/picture?width=180&height=180" width="180px" />
 						</div>
 					</div>
 				</div>
@@ -67,27 +67,6 @@
 					</div>
 				{% endraw %}
 			</div>
-
-			{% if displayPopIn %}
-				<div id="modalExplainMain" class="modal fade">
-				  <div class="modal-dialog">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				        <h4 class="modal-title">Explication du concept</h4>
-				      </div>
-				      <div class="modal-body">
-						<p class="small">Welovegifts est le site le plus simple pour offrir les cadeaux qui font vraiment plaisir. Pourquoi ? Parce que vos proches enregistrent les cadeaux qu’ils souhaiteraient et pour vous, le tour est joué. Vous n’avez plus à vous poser la question « Qu’est-ce qui lui ferait plaisir ? », vous le savez déjà.</p>
-						<p class="small">Vous ne saviez pas quoi lui acheter ? Avec Welovegifts, vous ne pourrez plus vous tromper !</p>
-				      </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-primary" id="ok">Ok</button>
-				      </div>
-				    </div>
-				  </div>
-				</div>
-			{% endif %}
-
 			<div class="row">
 				<div class="row ng-hide">
 					<div class="col-md-6 col-sm-6 col-xs-6"><h2>Ma liste de cadeaux</h2></div>
@@ -106,16 +85,3 @@
 	</div>
 {% endblock %}
 
-{% block javascripts %}
-	{{ parent() }}
-	{% if displayPopIn %}
-		<script>
-			$(document).ready(function () {
-				$('#modalExplainMain').modal('show');
-			});
-			$('#ok').click(function () {
-				$('#modalExplainMain').modal('hide');
-			});
-		</script>
-	{% endif %}
-{% endblock %}

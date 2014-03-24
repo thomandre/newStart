@@ -219,6 +219,13 @@ class ApiController extends Controller
         
             $data[] = $tmp;
         }
+
+        $userArray = $user->toArray();
+        if($user->getDisplayPopinProfile() == true) {
+            $user->setDisplayPopinProfile(false);
+            $em->persist($user);
+            $em->flush();
+        }
         
         $nbProducts = count($data);
 
@@ -227,7 +234,7 @@ class ApiController extends Controller
         }
 
         $response = new JsonResponse();
-        $response->setData(array('products' => $data, 'user' => $user->toArray()));
+        $response->setData(array('products' => $data, 'user' => $userArray));
         return $response;
     }
 
@@ -327,7 +334,8 @@ class ApiController extends Controller
     public function friendsAction($friendName = null)
     {
         $user = $this->getUser();
-
+        $em = $this->getDoctrine()->getManager();
+        
         $data = array();
         foreach($user->getMyFriends() as $friend) {
             $patern = '/^'.$friendName.'/i';
@@ -337,8 +345,16 @@ class ApiController extends Controller
                 $data[] = $tmp;                
             }
         }
+
+        $userArray = $user->toArray();
+        if($user->getDisplayPopinFriends()) {
+            $user->setDisplayPopinFriends(false);
+            $em->persist($user);
+            $em->flush();
+        }
+
         $response = new JsonResponse();
-        $response->setData($data);
+        $response->setData(array('friends' => $data, 'user' => $userArray));
         
         return $response;
     }

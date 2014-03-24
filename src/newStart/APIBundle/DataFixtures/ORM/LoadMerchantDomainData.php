@@ -1,6 +1,6 @@
 <?php
 
-namespace Grdf\CarmaBundle\DataFixtures\ORM;
+namespace newStart\APIBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;

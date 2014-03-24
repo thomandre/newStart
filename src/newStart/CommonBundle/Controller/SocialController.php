@@ -56,13 +56,8 @@ class SocialController extends Controller
         if($user == null) {
             return new RedirectResponse($this->container->get('router')->generate('logout'));
         }
-        $displayPopIn = $user->getDisplayPopinFriends();
-        $user->setDisplayPopinFriends(false);
 
-        $this->em->persist($user);
-        $this->em->flush();
-
-        return array('user' => $user, 'displayPopIn' => $displayPopIn);
+        return array('user' => $user);
     }
 
     /**

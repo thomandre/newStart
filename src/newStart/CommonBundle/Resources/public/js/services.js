@@ -11,7 +11,7 @@ angular.module('wlgServices', ['ngResource']).
 	  });
 	}).factory('Friend', function($resource){
 	  return $resource('api/v1/friends/:method/:id', {}, {
-	    listMine: {method:'GET', params:{method:'list-mine'}, isArray:true},
+	    listMine: {method:'GET', params:{method:'list-mine'}},
 	    favorize: {method:'GET', params:{method:'favorize'}}
 	  });
 	}).factory('Feed', function($resource){

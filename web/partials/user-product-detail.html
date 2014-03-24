@@ -5,7 +5,7 @@
 			<br />
 			<div class="profile-image">
 				<a href="{{ path('profile', {userId:userProfile.getFacebookId}) }}">
-					<img src="https://graph.facebook.com/{{ product.fbUserId }}/picture?width=180&height=180" width="180px" />
+					<img ng-src="https://graph.facebook.com/{{ product.fbUserId }}/picture?width=180&height=180" width="180px" />
 				</a>
 			</div>
 		</div>
@@ -56,3 +56,4 @@
 	  </div>
 	</div>
 </script>
+

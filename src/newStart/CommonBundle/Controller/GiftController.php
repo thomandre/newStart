@@ -53,15 +53,9 @@ class GiftController extends Controller
             $data[] = $tmp;
         }
 
-        $displayPopIn = $user->getDisplayPopinProfile();
-        $user->setDisplayPopinProfile(false);
-        $this->em->persist($user);
-        $this->em->flush();
-
         return array('gifts'        => $data,
                     'user'          => $user,
-                    'img_size'      => 75,
-                    'displayPopIn'  => $displayPopIn
+                    'img_size'      => 75
         );
     }
 

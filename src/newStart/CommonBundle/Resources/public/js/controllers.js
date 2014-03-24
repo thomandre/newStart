@@ -19,7 +19,7 @@ function FriendCtrl($scope, Friend, $rootScope) {
 	}
 }
 
-function MyFriendsListCtrl($scope, $timeout, Friend, $rootScope) {
+function MyFriendsListCtrl($scope, $timeout, Friend, $rootScope, $modal) {
 	var timer = false;
     $scope.autoFriendsSearch = function () {
         if(timer) {
@@ -30,10 +30,20 @@ function MyFriendsListCtrl($scope, $timeout, Friend, $rootScope) {
         }, 300);
     }
 
+    $scope.welcomeFriends = function() {
+    	var modalInstance = $modal.open({
+	      templateUrl: 'welcomeFriends.html',
+	      controller: WelcomeCtrl
+	    });
+    } 
+
 	$scope.updateFriends = function () {
 		$rootScope.loading = true;
 		$rootScope.friends = Friend.listMine({'id':$scope.name}, function (data) {
 			$rootScope.loading = false;
+			if($rootScope.friends.user.displayPopinFriends == true) {
+				$scope.welcomeFriends();
+		    }
 		});
 		//
     }
@@ -41,7 +51,7 @@ function MyFriendsListCtrl($scope, $timeout, Friend, $rootScope) {
 }
 
 
-var ModalInstanceCtrl = function ($scope, $modalInstance, firstName) {
+function ModalInstanceCtrl($scope, $modalInstance, firstName) {
   $scope.firstName = firstName;
   $scope.ok = function () {
     $modalInstance.close('ok');
@@ -187,13 +197,25 @@ function ProductListCtrl($scope, Product, $timeout, $location, $rootScope, $rout
 
 }
 
-function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope) {
+function WelcomeCtrl($scope, $modalInstance) {
+	$scope.close = function () {
+	    $modalInstance.close('close');
+  	};
+}
 
+function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope, $modal) {
 	$scope.warning = false;
 	$scope.imageIndex = 0;
 	$scope.editModeTitle = false;
 	$scope.editModePrice = false;
 	$('#url').focus();
+
+	$scope.welcome = function () {
+		var modalInstance = $modal.open({
+	      templateUrl: 'welcome.html',
+	      controller: WelcomeCtrl
+	    });
+	};
 
 	$scope.nextImg = function () {
 		if($scope.imageIndex < $scope.scrappedProduct.images.length-1) {
@@ -318,7 +340,7 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 		while($rootScope.products.products.length && $rootScope.nbProducts < 5 && $rootScope.products.products[$rootScope.nbProducts]['name'] != undefined) {
 			$rootScope.nbProducts++;
 		}
-		console.log($rootScope.nbProducts);
+		//console.log($rootScope.nbProducts);
 	};
 
 	$scope.updateProducts = function () {
@@ -326,19 +348,21 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
       $rootScope.products = Product.listMine(function (response) {
 		$scope.countProducts();
 	    $rootScope.loading = false;
+	    if($rootScope.products.user.displayPopinProfile == true) {
+			$scope.welcome();
+	    }
       });
-
-	  //console.log( $('.viewed-profile img').attr('src'));
 	};
+
     $scope.updateProducts();
 }
 
 
 ProductListCtrl.$inject = ['$scope', 'Product', '$timeout', '$location', '$rootScope', '$routeParams'];
-MyProductListCtrl.$inject = ['$scope', '$http','Product', '$timeout', '$location', '$rootScope'];
+MyProductListCtrl.$inject = ['$scope', '$http','Product', '$timeout', '$location', '$rootScope', '$modal'];
 ProductDetailCtrl.$inject = ['$scope', '$routeParams', 'Product', '$rootScope', '$modal'];
 ProductItemCtrl.$inject = ['$scope', 'Product', '$rootScope'];
-MyFriendsListCtrl.$inject = ['$scope', '$timeout', 'Friend', '$rootScope'];
+MyFriendsListCtrl.$inject = ['$scope', '$timeout', 'Friend', '$rootScope', '$modal'];
 MyFeedCtrl.$inject = ['$scope', '$timeout', 'Feed', '$rootScope'];
 FriendCtrl.$inject = ['$scope', 'Friend', '$rootScope'];
 
