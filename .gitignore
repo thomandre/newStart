@@ -14,3 +14,7 @@ ns.sublime-project
 ns.sublime-workspace
 web/css/*
 web/js/*
+web/captures/
+captures/
+node_modules/.bin/
+node_modules/zombie/
