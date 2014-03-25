@@ -88,11 +88,6 @@ services:
     class: newStart\UserBundle\Service\Facebook
     arguments: [{ appId: %facebook.appId%, secret: %facebook.secret% }]
 
-  security.authentication.success_handler:
-    class: newStart\CommonBundle\Service\myFacebookAuthSuccessHandlerService
-    public: false
-    arguments:  ['@router', '@security.user.entity_manager']
-
   pdo:
     class: PDO
     arguments:

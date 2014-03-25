@@ -14,8 +14,8 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 //
 // Require 3rd-party libraries here:
 //
-require_once 'PHPUnit/Autoload.php';
-require_once 'PHPUnit/Framework/Assert/Functions.php';
+//require_once 'PHPUnit/Autoload.php';
+//require_once 'PHPUnit/Framework/Assert/Functions.php';
 //
 
 

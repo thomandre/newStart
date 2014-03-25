@@ -7,7 +7,6 @@ Scénario: Je suis Thomas et je veux essayer les suggestions
 Soit je suis sur "/"
 Soit je me logue en tant que "albanthomas1@gmail.com"
 Alors je devrais voir "Ma liste de cadeaux"
-Et je presse "Ok"
 Et j'attend "1" secondes
 Et je presse "Suggestions"
 Et j'attend "5" secondes
