@@ -60,6 +60,7 @@ class fbUserService {
     	$user->setLastLogin(new \Datetime());
 
 	    // updating user info in case it had changed... Doesn't happend much, but it can ;-)
+        $user->setGender($me['gender']);
     	$user->setEmail($me['email']);
     	$user->setFirstname($me['first_name']);
     	$user->setLastname($me['last_name']);

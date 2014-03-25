@@ -7,7 +7,8 @@ angular.module('wlgServices', ['ngResource']).
 	    show: {method:'GET', params:{method:'show'}},
 	    edit: {method:'GET', params:{method:'edit'}},
 	    remove: {method:'GET', params:{method:'remove'}},
-	    buy: {method:'GET', params:{method:'bought'}}
+	    buy: {method:'GET', params:{method:'bought'}},
+	    suggest: {method:'GET', params:{method:'suggestions'}, isArray:true},
 	  });
 	}).factory('Friend', function($resource){
 	  return $resource('api/v1/friends/:method/:id', {}, {

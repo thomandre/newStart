@@ -29,6 +29,7 @@ class ApiController extends Controller
     /** @DI\Inject("newstart_api_service_tracking") */
     public $trackingService;
 
+
     /**
      * @Route("/api/v1/profile/private", name="profile_prive")
      * @Template()
@@ -79,6 +80,7 @@ class ApiController extends Controller
 
     /**
      * @Route("/api/v1/product/scrape", name="scrape")
+     * @Cache(expires="+2hours", public="true")
      */
     public function scrapeAction(Request $request) 
     {
@@ -137,6 +139,7 @@ class ApiController extends Controller
         $product = new Product();
         $product->setName($params['title']);
         $product->setUrl($params['url']);
+        $response = new JsonResponse();
 
         if($params['img'] == null || $params['img'] == 'null') {
             try {
@@ -198,6 +201,36 @@ class ApiController extends Controller
         }
 
         $response = $this->forward('newStartAPIBundle:Api:myProducts', array());
+        return $response;
+    }
+
+    /**
+     * @Route("/api/v1/product/suggestions", name="product_suggestions")
+     * @Template()
+     */
+    public function productSuggestionAction(Request $request)
+    {
+        $dlService = $this->dlService;
+        $router = $this->container->get('router');
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $suggestions = $em->getRepository('newStartCommonBundle:Suggestion')->findBy(array('gender' => $user->getGender()));
+
+        $suggestionsArray = array();
+        foreach($suggestions as $suggestion) {
+            $imageEntity = $dlService->getImageViaCache($suggestion->getImgUrl());
+            $imageEntity->getCurrentUrl($request);
+            $tmp = $suggestion->toArray();
+
+            $tmp['images']      = array($imageEntity->getCurrentUrl($request));
+            $tmp['imagesThumb'] = array($router->generate('image_resize', array('width' => 200, 'height' => 200, 'image' => $imageEntity->getName())));
+            $tmp['imgNumber']   = 1;
+            $suggestionsArray[] = $tmp;
+        }
+
+        $response = new JsonResponse();
+        $response->setData($suggestionsArray);
         return $response;
     }
 

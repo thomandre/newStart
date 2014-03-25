@@ -185,7 +185,7 @@ div.ddown {
     position: relative;
     width: 130px;
     z-index: 10;
-    top: 13px;
+    top: 12px;
 }
 
 .profile-image {
@@ -479,5 +479,21 @@ h4 {
 .product-image span.price {
     display:block;
 }
-
+.suggestionList {
+    position: absolute;
+    width: 92%;
+    z-index: 5;
+}
+.suggestionList ul {
+    background-color: #F2F2F2;
+    border-radius: 5px;
+    margin: 10px 115px;
+    padding: 5px 10px;
+    width: 331px;
+}
+.suggestionList ul li {
+    text-align: left;
+    list-style: none outside none;
+    
+}
 

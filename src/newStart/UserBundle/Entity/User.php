@@ -88,6 +88,11 @@ class User extends BaseUser
      */
     protected $emailStop;
 
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $gender;
 
     public function getEmailStop()
     {
@@ -434,5 +439,20 @@ class User extends BaseUser
         $this->myFriends->removeElement($myFriends);
     }
 
+    /**
+     * @return string
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * @param string $gender
+     */
+    public function setGender($gender=null)
+    {
+        $this->gender = $gender;
+    }
 
 }
