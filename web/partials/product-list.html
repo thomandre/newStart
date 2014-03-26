@@ -10,7 +10,7 @@
 	<div class="col-md-6 col-sm-6 col-xs-10 url-block">
 		<div class="input-group url input-lg">
 			<span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
-			<input type="text" name="url" id="url" class="form-control" ng-model="url" placeholder="Copiez-collez l'URL des cadeaux que vous souhaitez recevoir !" ui-keydown="{13:'productScrape($event)', 27:'productScrapeCancel()'}" />
+			<input type="text" name="url" id="url" class="form-control" ng-model="url" placeholder="Copiez-collez l'URL des cadeaux que vous souhaitez recevoir !" ng-focus="mobileEmpty()" ui-keydown="{13:'productScrape($event)', 27:'productScrapeCancel()'}" />
 			<span class="input-group-btn">
 				<button class="btn btn-primary" type="button" id="go_btn" ng-click="productScrape($event)">
 					<span ng-show="scrapeLoading" class="loader glyphicon glyphicon-refresh ng-hide" ></span>
@@ -33,11 +33,11 @@
 	<div id="completeContainer" ng-hide="(scrappedProduct == null || scrappedProductHide == true)" class="col-md-6 col-sm-6 col-xs-8 ng-hide">
 		<div id="complete">
 			<div id="product" class="row">
-				<div class="col-md-5 col-sm-5 col-xs-5" style="height:200px">
+				<div class="col-md-5 col-sm-5 col-xs-4 imageContainer">
 					<img ng-show="imageLoading" src="../../bundles/newstartcommon/images/loader.gif" />
-					<div style="background:url({{ scrappedProduct.imgThumb }}) no-repeat scroll center center / cover;" class="previewImg"></div>
+					<div style="background:url({{ scrappedProduct.imgThumb }}) no-repeat scroll center center / cover;" class="previewImg" ng-swipe-right="nextImg()"></div>
 				</div>
-				<div class="col-md-5 col-sm-5 col-xs-5">
+				<div class="col-md-5 col-sm-5 col-xs-6">
 					<h4>
 						<span class="productTitle" ng-hide="editModeTitle">{{ scrappedProduct.title }}</span>
 						<textarea class="title" ng-show="editModeTitle" ng-model="scrappedProduct.title" data-ng-required></textarea>
@@ -52,16 +52,16 @@
 						<a ng-click="cancelEditPrice()" ng-show="editModePrice" class="glyphicon glyphicon-remove-sign" title="annuler"></a>
 						<a ng-click="savePrice()" ng-show="editModePrice" class="glyphicon glyphicon-ok-sign" title="ok"></a>
 					</p>
-					<textarea ng:model="scrappedProduct.comment" id="comment" style="width: 205px; height: 75px;" placeholder="Vous pouvez préciser la couleur, la taille..."></textarea>
+					<textarea ng:model="scrappedProduct.comment" id="comment" placeholder="Vous pouvez préciser la couleur, la taille..."></textarea>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-5 imageBtns">
+				<div class="col-md-5 col-sm-5 col-xs-4 imageBtns">
 					<button class="btn prev" type="button" ng-click="prevImg()"><span class="glyphicon glyphicon-arrow-left"></span></button>
 					<span class="index">{{ imageIndex + 1 }} / {{ scrappedProduct.imgNumber }}</span>
 					<button class="btn next" type="button" ng-click="nextImg()"><span class="glyphicon glyphicon-arrow-right"></span></button>
 				</div>
-				<div class="col-md-5 btns">
+				<div class="col-md-5 col-sm-5 col-xs-6 btns">
 					<button class="btn btn-primary" type="button" id="save_btn" ng-click="productSave(scrappedProduct)"><span ng-show="productLoading" class="loader glyphicon glyphicon-refresh"></span>Enregistrer</button>
 					<button class="btn" type="button" ng-click="productScrapeCancel()" id="Annuler">Annuler</button>
 				</div>
