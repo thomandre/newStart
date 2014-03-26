@@ -197,6 +197,7 @@ div.ddown {
     padding: 8px;
     text-align: left;
     width: 196px;
+    height: 180px;
 }
 
 /* ----- Products ----- */
@@ -253,12 +254,12 @@ div.ddown {
     font-size: 40px;
     margin-top: 75px;
     text-align: center;
-    width: 182px;
+    width: 100%;
 }
 .product-image .glyphicon-trash, .product-image .glyphicon-star {
     position:absolute;
-    left:176px;
-    top:248px;
+    right: 17px;
+    top: 86%;
     cursor:pointer;
 }
 .product-image .glyphicon-star.favorized {
@@ -494,6 +495,75 @@ h4 {
 .suggestionList ul li {
     text-align: left;
     list-style: none outside none;
-    
 }
 
+span.hidden-xs {
+    display:inline !important;
+}
+.profile-image div{
+    height: 100%
+}
+.product-image a div {
+    height: 85%;
+}
+.feed.product-image a div {
+    height: 66%;
+}
+@media (max-width: 768px) { 
+    span.hidden-xs {
+        display:none !important;
+    }
+    .header .menu-links {
+        margin-right: 4px;
+    }
+    .header div.logo {
+        padding: 3px 12px;
+    }
+    .profile-image {
+        height: 85px;
+        width: 85px;
+    }
+    .right-link {
+        top: 61px;
+    }
+    .name a {
+        width:80%;
+        display: block;
+    }
+    .header {
+        margin: 0;
+        padding: 8px 0;
+    }
+    .container {
+        width: 100%;
+        overflow: hidden;
+    }
+    .product-image {
+        height: 219px;
+    }
+    .product-image a div {
+        height: 82%;
+    }
+    .right-link a {
+        padding: 7px 0;
+    }
+    .header .ddown-menu {
+        top: 0;
+    }
+    p.login {
+        margin: 10px;
+    }
+    .viewed-profile {
+        margin-top: 0   px;
+    }
+    .viewed-profile h2 {
+        font-size:12px;
+    }
+    div.url {
+        margin: 5px;
+    }
+    .suggestionList ul {
+        margin: 10px 5%;
+        width: 93%;
+    }
+}

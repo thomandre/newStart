@@ -4731,7 +4731,7 @@ td.hidden-xs {
 }
 @media (min-width: 1200px) {
   .hidden-xs {
-    display: block !important;
+    display: block;
   }
   tr.hidden-xs {
     display: table-row !important;

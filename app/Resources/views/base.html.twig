@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="description" content="Welovegifts, " />
         <meta name="keywords" content="cadeaux, social" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <base href="{{ app.request.getBaseURL() }}/" />
         <title>{% block title %}Welovegifts{% endblock %}</title>
         {% stylesheets 
@@ -20,7 +20,7 @@
     </head>
     <body>
         <span class="right-link">
-          <a href="#" id="bugReport">Contactez-nous !<span class="glyphicon glyphicon-pencil"></span></a>
+          <a href="#" id="bugReport"><span class="hidden-xs">Contactez-nous !</span><span class="glyphicon glyphicon-pencil"></span></a>
         </span>
         {% block body %}{% endblock %}
         <input type="hidden" id="path_bug_report" value="{{ path('bug_report') }}" />

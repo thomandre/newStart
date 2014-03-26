@@ -5,7 +5,7 @@
 			<br />
 			<div class="profile-image">
 				<a href="">
-					<img ng-src="{{ products.user.profilePic }}" width="180px" />
+					<div style="background:url({{ products.user.profilePic }}) no-repeat scroll center center / cover;"></div>
 				</a>
 			</div>
 		</div>
@@ -18,7 +18,9 @@
 <div class="row products">
 	<div class="col-md-2 col-sm-3 col-xs-5 product" ng-repeat="product in products.products">
 		<div class="product-image" ng-controller="ProductItemCtrl">
-			<a href="#/profile/{{ product.fbUserId }}/product/{{product.id}}"><img ng-src='{{ product.thumb_url }}' /></a>
+			<a href="#/profile/{{ product.fbUserId }}/product/{{product.id}}">
+				<div style="background:url({{ product.thumb_url }}) no-repeat scroll center center / cover;"></div>
+			</a>
 			<p>
 				<span class="name"><span class="price">{{ product.price }}</span><a href="#/profile/{{ product.fbUserId }}/product/{{product.id}}">{{ product.name }}</a></span>
 			</p>

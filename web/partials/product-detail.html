@@ -1,13 +1,13 @@
 <div class="row row-user-profile">
-	<div class="col-md-2 col-sm-2 col-xs-4 user-profile">
+	<div class="col-md-2 col-sm-3 col-xs-2 user-profile">
 		<div class="viewed-profile">
 			<h2>{{ product.fullName }}</h2>
 			<div class="profile-image">
-				<img ng-src="https://graph.facebook.com/{{ product.fbUserId }}/picture?width=180&height=180" width="180px"/>
+				<div style="background:url(https://graph.facebook.com/{{ product.fbUserId }}/picture?width=180&height=180) no-repeat scroll center center / cover;"></div>
 			</div>
 		</div>
 	</div>
-	<div class="col-md-6 col-sm-6 col-xs-6 url-block">
+	<div class="col-md-6 col-sm-6 col-xs-10 url-block">
 		<div class="input-group url input-lg">
 			<span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
 			<input type="text" name="url" id="url" class="form-control" ng-model="url" placeholder="Copiez-collez l'URL des cadeaux que vous souhaitez recevoir !" ui-keydown="{13:'productScrape()', 27:'productScrapeCancel()'}" />
@@ -20,7 +20,7 @@
 		</div>
 	</div>
 	
-	<div id="completeContainer" ng-hide="scrappedProduct == null" class="col-md-6 col-sm-6 col-xs-6 ng-hide">
+	<div id="completeContainer" ng-hide="scrappedProduct == null" class="col-md-6 col-sm-6 col-xs-8  ng-hide">
 		<div id="complete">
 			<div id="product" class="row">
 				<div class="col-md-5 col-sm-5 col-xs-5" style="height:200px">
@@ -72,14 +72,14 @@
 	</div>
 	<br />
 	<div class="row">
-		<div class="col-md-5 col-sm-5 col-xs-5">
+		<div class="col-md-5 col-sm-5 col-xs-10">
 			<div class="productDetail">
 				<a href="{{ product.url }}" target="_blank">
-					<img ng-src="{{ product.imgUrl }}" ng-hide="loading"></img>
+					<div style="background:url({{ product.imgUrl }}) no-repeat scroll center center / cover; height:500px"></div>
 				</a>
 			</div>
 		</div>
-		<div class="col-md-5 col-sm-5 col-xs-5">
+		<div class="col-md-5 col-sm-5 col-xs-10">
 			<div class="product-desc">
 				<p>
 					<span ng-hide="editModeName">{{ product.name }}</span> 

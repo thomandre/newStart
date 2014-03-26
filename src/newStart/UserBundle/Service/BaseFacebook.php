@@ -908,6 +908,8 @@ abstract class BaseFacebook
       $params
     ), true);
 
+    var_dump($result);
+
     // results are returned, errors are thrown
     if (is_array($result) && isset($result['error'])) {
       $this->throwAPIException($result);
@@ -1332,6 +1334,10 @@ abstract class BaseFacebook
    */
   protected function throwAPIException($result) {
     $e = new FacebookApiException($result);
+
+    var_dump($e->getType());
+    var_dump($e->getMessage());
+
     switch ($e->getType()) {
       // OAuth 2.0 Draft 00 style
       case 'OAuthException':

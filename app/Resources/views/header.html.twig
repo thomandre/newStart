@@ -4,10 +4,10 @@
 			</div>
 			<div class="menu">
 				<span class="menu-links">
-					<a href="{{ url('feed') }}"><span class="glyphicon glyphicon-calendar"></span>What's new ?</a>
+					<a href="{{ url('feed') }}"><span class="glyphicon glyphicon-calendar"></span><span class="hidden-xs">What's new ?</span></a>
 				</span>
 				<span class="menu-links">
-					<a href="{{ path('friends') }}"><span class="glyphicon  glyphicon-user"></span>Friends</a>
+					<a href="{{ path('friends') }}"><span class="glyphicon  glyphicon-user"></span><span class="hidden-xs">Friends</span></a>
 				</span>
 				<span id="profile">
 					<a href="{{ path('me') }}">{{ user.firstName }} {{ user.lastName }}</a>

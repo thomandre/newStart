@@ -78,7 +78,15 @@ class fbUserService {
 	    $this->em->flush();
 
 	    // managing friendship 
-	    $friends = $this->facebook->api('/me/friends?fields=name,id,email');
+	    try{ 
+			$friends = $this->facebook->api('/'.$me['id'].'/friends');
+	    } catch(\Exception $e) {
+	    	var_dump('Erreur lors de la recuperation des amis FB.');
+	    	$friends['data'] = array();
+	    	exit;
+	    }
+	    
+
 	    foreach($friends['data'] as $friend) {
 	        $friendObj = $userRepository->findOneByFacebookId($friend['id']);
 	        if($friendObj != null && $user->isMyFriend($friendObj) == false) {
@@ -100,7 +108,6 @@ class fbUserService {
 				$body = $this->mail->renderBody(array('username' =>$user->getFullname(), 'profileUrl' => $profileUrl, 'settingsUrl' => $settingsUrl, 'user' => $user));
 			    $this->mail->sendMessage($friendObj->getEmail(), $user->getFullname().' est maintenant sur Welovegifts', $body);
 	        }
-
 	    }
 
 	    $this->em->flush();
