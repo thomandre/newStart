@@ -536,7 +536,7 @@ span.hidden-xs {
     }
     .right-link {
         position: absolute;
-        right: -6px;
+        right: 0px;
         top: 72px;
     }
     .right-link a span.glyphicon {
@@ -612,5 +612,9 @@ span.hidden-xs {
     }
     .btn {
         padding: 5px 10px;
+    }
+    .productDetail {
+        margin-left: 1%;
+        width: 98%;
     }
 }
