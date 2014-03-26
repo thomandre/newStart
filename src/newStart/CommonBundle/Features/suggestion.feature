@@ -10,7 +10,7 @@ Alors je devrais voir "Ma liste de cadeaux"
 Et j'attend "1" secondes
 Et je presse "Suggestions"
 Et j'attend que "#suggestionList ul li" soit visible 
-Et j'attend "1" secondes
+Et j'attend "2" secondes
 Alors je devrais voir "Pantalon de costume coupe cigarette"
 Soit je suis "Pantalon de costume coupe cigarette"
 Et j'attend que "#completeContainer" soit visible 

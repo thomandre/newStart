@@ -35,7 +35,7 @@
 			<div id="product" class="row">
 				<div class="col-md-5 col-sm-5 col-xs-5" style="height:200px">
 					<img ng-show="imageLoading" src="../../bundles/newstartcommon/images/loader.gif" />
-					<img ng-hide="imageLoading" ng-src="{{ scrappedProduct.imgThumb }}" class="preview" height="200" width="200"/>
+					<div style="background:url({{ scrappedProduct.imgThumb }}) no-repeat scroll center center / cover;" class="previewImg"></div>
 				</div>
 				<div class="col-md-5 col-sm-5 col-xs-5">
 					<h4>

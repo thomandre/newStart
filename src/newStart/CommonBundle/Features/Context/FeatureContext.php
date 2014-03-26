@@ -28,7 +28,7 @@ class FeatureContext extends FeatureGlobal
             return array(
                 new Step\When('je me delogue'),
                 new Step\When('je vais sur "https://www.facebook.com"'),
-                new Step\When('je clique sur "#userNavigationLabel"'),
+                new Step\When('je clique sur "#navAccountLink"'),
                 new Step\When('je presse "Déconnexion"'),
             );
         }

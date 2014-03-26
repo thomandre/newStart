@@ -20,7 +20,7 @@ Et je clique sur ".settings"
 Et je suis "Settings"
 Alors je devrais voir "Profil privé"
 Et la case à cocher "prive" ne devrait pas être cochée
-Et le champ "profileUrl" devrait contenir "http://welovegifts.local/app_test.php/profile/678776921"
+Et le champ "profileUrl" devrait contenir "http://dev.welovegifts.fr/app_test.php/profile/678776921"
 Alors je coche "prive"
 Et j'attend "0.5" secondes
 Et je recharge la page
@@ -33,7 +33,7 @@ Et je presse "Déconnexion"
 
 @javascript @guest @guest_step2
 Scénario: Je suis un mechant pirate et je veux voir le profil de Thomas
-Soit je suis sur "http://welovegifts.local/app_test.php/profile/678776921"
+Soit je suis sur "http://dev.welovegifts.fr/app_test.php/profile/678776921"
 Et j'attend "4" secondes
 Alors je ne devrais pas voir "Thomas André"
 Alors je devrais voir "Le premier site pour connaître les cadeaux qui rendront vos amis heureux"
@@ -59,7 +59,7 @@ Et je presse "Déconnexion"
 
 @javascript @guest @guest_step4
 Scénario: Je suis la maman de Thomas, je n'ai pas de compte et je veux offrir un beau cadeau à mon fils
-Soit je suis sur "http://welovegifts.local/app_test.php/profile/678776921"
+Soit je suis sur "http://dev.welovegifts.fr/app_test.php/profile/678776921"
 Et j'attend "2" secondes
 Alors je devrais voir "Thomas André"
 Et je devrais voir "Sa liste de cadeaux"

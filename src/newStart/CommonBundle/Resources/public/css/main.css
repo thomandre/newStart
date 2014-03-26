@@ -509,6 +509,11 @@ span.hidden-xs {
 .feed.product-image a div {
     height: 66%;
 }
+.previewImg {
+    height:200px;
+    width:200px;
+} 
+
 @media (max-width: 768px) { 
     span.hidden-xs {
         display:none !important;
@@ -565,5 +570,9 @@ span.hidden-xs {
     .suggestionList ul {
         margin: 10px 5%;
         width: 93%;
+    }
+    .previewImg {
+        height: 125px;
+        width: 125px;
     }
 }

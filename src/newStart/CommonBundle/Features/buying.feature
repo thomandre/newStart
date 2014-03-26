@@ -28,21 +28,7 @@ Et je presse "Déconnexion"
 @javascript @buying @buying_step2
 Scénario: Je suis AlbanThomas et je veux offrir un beau cadeau a Thomas 
 Soit je vais sur "/"
-Soit je clique sur le bouton Facebook Connect
-Et je remplis "email" avec "albanthomas1@gmail.com"
-Et je remplis "pass" avec "projetreecomate1"
-Et je valide le formulaire
-Et j'attend "1" secondes
-Et je devrais voir "Welovegifts Test"
-Et je devrais voir "recevra"
-Et je devrais voir "profil public"
-Et je devrais voir "liste d’amis"
-Et je devrais voir "adresse électronique"
-Et je devrais voir "anniversaire"
-Et je devrais voir "mentions J’aime"
-Soit je presse "__CONFIRM__"
-Et j'attend "2" secondes
-Et j'attend que ".profile-image" soit sur la page
+Soit je me logue en tant que "albanthomas1@gmail.com"
 Alors je devrais voir "Welovegifts est le site le plus simple pour offrir les cadeaux qui font vraiment plaisir."
 Alors je presse "Ok"
 Et je suis "Friends"
