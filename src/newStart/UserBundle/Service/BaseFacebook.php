@@ -14,7 +14,6 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace newStart\UserBundle\Service;
 
 if (!function_exists('curl_init')) {
@@ -39,7 +38,7 @@ class FacebookApiException extends \Exception
   protected $result;
 
   /**
-   * Make a new API Exception with the given result.
+   * Make a new API \Exception with the given result.
    *
    * @param array $result The result from the API server
    */
@@ -908,8 +907,6 @@ abstract class BaseFacebook
       $params
     ), true);
 
-    var_dump($result);
-
     // results are returned, errors are thrown
     if (is_array($result) && isset($result['error'])) {
       $this->throwAPIException($result);
@@ -934,7 +931,7 @@ abstract class BaseFacebook
       $params['access_token'] = $this->getAccessToken();
     }
 
-    if (isset($params['access_token'])) {
+    if (isset($params['access_token']) && !isset($params['appsecret_proof'])) {
       $params['appsecret_proof'] = $this->getAppSecretProof($params['access_token']);
     }
 
@@ -1050,13 +1047,21 @@ abstract class BaseFacebook
    * @return array The payload inside it or null if the sig is wrong
    */
   protected function parseSignedRequest($signed_request) {
+
+    if (!$signed_request || strpos($signed_request, '.') === false) {
+        self::errorLog('Signed request was invalid!');
+        return null;
+    }
+
     list($encoded_sig, $payload) = explode('.', $signed_request, 2);
 
     // decode the data
     $sig = self::base64UrlDecode($encoded_sig);
     $data = json_decode(self::base64UrlDecode($payload), true);
 
-    if (strtoupper($data['algorithm']) !== self::SIGNED_REQUEST_ALGORITHM) {
+    if (!isset($data['algorithm'])
+        || strtoupper($data['algorithm']) !==  self::SIGNED_REQUEST_ALGORITHM
+    ) {
       self::errorLog(
         'Unknown algorithm. Expected ' . self::SIGNED_REQUEST_ALGORITHM);
       return null;
@@ -1334,16 +1339,12 @@ abstract class BaseFacebook
    */
   protected function throwAPIException($result) {
     $e = new FacebookApiException($result);
-
-    var_dump($e->getType());
-    var_dump($e->getMessage());
-
     switch ($e->getType()) {
       // OAuth 2.0 Draft 00 style
       case 'OAuthException':
         // OAuth 2.0 Draft 10 style
       case 'invalid_token':
-        // REST server errors are just Exceptions
+        // REST server errors are just \Exceptions
       case 'Exception':
         $message = $e->getMessage();
         if ((strpos($message, 'Error validating access token') !== false) ||

@@ -10,7 +10,7 @@
 		<div class="col-md-2 col-sm-2 col-xs-10">
 			<p class='login'>
 				<!--button class="btn" id="disconnect" onclick="fb_logout();">Déconnexion</button!-->
-				<button class="btn btn-primary" id="login" data-url="{{ facebook.loginUrl({ redirect_uri: url('fblogin'), scope: 'email, user_birthday, user_likes, user_interests' }) }}">> Se connecter via Facebook</button>
+				<button class="btn btn-primary" id="login" data-url="{{ facebook.loginUrl({ redirect_uri: url('fblogin'), scope: 'email,user_birthday,user_likes,user_interests,user_friends' }) }}">> Se connecter via Facebook</button>
 			</p>
 		</div>
 	</div>

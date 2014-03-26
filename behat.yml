@@ -10,7 +10,7 @@ default:
         env: test
         debug: false
     Behat\MinkExtension\Extension:
-      base_url: 'http://welovegifts.local/app_test.php/feed/'
+      base_url: 'http://dev.welovegifts.fr/app_test.php/'
       show_cmd: open -a firefox %s &
       javascript_session: selenium2
       browser_name: firefox
@@ -26,5 +26,5 @@ javascript:
       show_cmd: open -a firefox %s &
       default_session: selenium2
       javascript_session: selenium2
-      base_url: 'http://welovegifts.local/app_test.php/feed/'
+      base_url: 'http://dev.welovegifts.fr/app_test.php/'
 

@@ -78,15 +78,14 @@ class fbUserService {
 	    $this->em->flush();
 
 	    // managing friendship 
+
 	    try{ 
-			$friends = $this->facebook->api('/'.$me['id'].'/friends');
+			$friends = $this->facebook->api('/me/friends', 'GET');
 	    } catch(\Exception $e) {
 	    	var_dump('Erreur lors de la recuperation des amis FB.');
 	    	$friends['data'] = array();
-	    	exit;
 	    }
-	    
-
+	    		
 	    foreach($friends['data'] as $friend) {
 	        $friendObj = $userRepository->findOneByFacebookId($friend['id']);
 	        if($friendObj != null && $user->isMyFriend($friendObj) == false) {
