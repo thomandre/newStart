@@ -11,7 +11,7 @@ function MyFeedCtrl($scope, $timeout, Feed, $rootScope) {
 }
 
 function FriendCtrl($scope, Friend, $rootScope, $window) {
-	if ($window.document.width > 700) {
+	if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
 		$('#search').focus();
 	}
 	$scope.favorize = function () {
@@ -73,115 +73,115 @@ function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal, $w
 	$scope.editModeName = false;
 	$rootScope.loading = true;
 
-$scope.productSuggest = function () {
-	if($rootScope.suggestions == undefined) {
-		$rootScope.suggestions = Product.suggest(function (response) {
+	$scope.productSuggest = function () {
+		if($rootScope.suggestions == undefined) {
+			$rootScope.suggestions = Product.suggest(function (response) {
 
-		});
-		//console.log($rootScope.suggestions);
-	} else {
-		$rootScope.suggestions = undefined;
-	}
-};
-
-$scope.suggestionTest = function (event, suggestion) {
-	$scope.imageLoading = true;
-	$scope.scrappedProductHide = false;
-	if(event) event.stopPropagation();
-	$scope.url = suggestion.url;
-	$scope.editModeTitle = false;
-	$scope.editModePrice = false;
-		$scope.imageIndex = 0;
-	$scope.scrapeLoading = true;
-		$('#go_btn .lbl').html('');
-	$scope.scrappedProduct = suggestion;
-
-	$scope.scrappedProduct.title = suggestion.name;
-	$scope.scrappedProduct.imgThumb = suggestion.imagesThumb[$scope.imageIndex];
-	$scope.scrapeLoading = false;
-		$('#go_btn .lbl').html('Go !');
-	$rootScope.suggestions = undefined;	
-
-		$window.onclick = function (event) {
-			//$window.onclick = null;
-			var target = $(event.target);
-			if(!target) return;
-			if(target.parents('#complete').length == 0 && target.parents('.input-group.url.input-lg').length == 0) {
-  			$scope.productScrapeCancel();
-  			$scope.$apply();
-			}
+			});
+			//console.log($rootScope.suggestions);
+		} else {
+			$rootScope.suggestions = undefined;
+		}
 	};
-	$scope.imageLoading = false;
-	if ($window.document.width > 700) {
-		$('#url').focus();
-	}
-};
 
-$scope.mobileEmpty = function () {
-	if ($window.document.width <= 700) {
-		$scope.url = '';
-		$scope.productScrapeCancel();
+	$scope.suggestionTest = function (event, suggestion) {
+		$scope.imageLoading = true;
+		$scope.scrappedProductHide = false;
+		if(event) event.stopPropagation();
+		$scope.url = suggestion.url;
+		$scope.editModeTitle = false;
+		$scope.editModePrice = false;
+			$scope.imageIndex = 0;
+		$scope.scrapeLoading = true;
+			$('#go_btn .lbl').html('');
+		$scope.scrappedProduct = suggestion;
+
+		$scope.scrappedProduct.title = suggestion.name;
+		$scope.scrappedProduct.imgThumb = suggestion.imagesThumb[$scope.imageIndex];
+		$scope.scrapeLoading = false;
+			$('#go_btn .lbl').html('Go !');
+		$rootScope.suggestions = undefined;	
+
+			$window.onclick = function (event) {
+				//$window.onclick = null;
+				var target = $(event.target);
+				if(!target) return;
+				if(target.parents('#complete').length == 0 && target.parents('.input-group.url.input-lg').length == 0) {
+	  			$scope.productScrapeCancel();
+	  			$scope.$apply();
+				}
+		};
+		$scope.imageLoading = false;
+		if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
+			$('#url').focus();
+		}
+	};
+
+	$scope.mobileEmpty = function () {
+		if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
+			$scope.url = '';
+			$scope.productScrapeCancel();
+		}
 	}
-}
 
 	$scope.productScrapeCancel = function(name) {
 		if($scope.scrapeLoading == false) {
   		$scope.scrappedProductHide = true;
 		}
-};
+	};
 
 	$scope.productScrape = function(event, name) {
 		if($scope.scrappedProduct != null && $scope.url == $scope.scrappedProduct.url) {
 			$scope.scrappedProductHide = false;
-		if ($window.document.width > 700) {
-			$('#url').focus();
-		}
+			if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
+				$('#url').focus();
+			}
 		} else {
 			$scope.scrappedProductHide = false;
-		if ($window.document.width > 700) {
- 			$('#url').focus();
- 		}
-  		$scope.scrappedProduct = null;
-  		$scope.editModeTitle = false;
-		$scope.editModePrice = false;
-		$scope.imageLoading = true;
-  		$scope.imageIndex = 0;
-  			
-		//console.log($scope);
-		if($scope.url != null && $scope.url.substr(0, 3) == 'www') {
-			$scope.url = 'http://' + $scope.url;
-		}
+			if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
+	 			$('#url').focus();
+	 		}
+	  		$scope.scrappedProduct = null;
+	  		$scope.editModeTitle = false;
+			$scope.editModePrice = false;
+			$scope.imageLoading = true;
+	  		$scope.imageIndex = 0;
+	  			
+			//console.log($scope);
+			if($scope.url != null && $scope.url.substr(0, 3) == 'www') {
+				$scope.url = 'http://' + $scope.url;
+			}
 
-  		if($scope.url != undefined) {
-	  		$scope.scrapeLoading = true;
-	  		$('#go_btn .lbl').html('');
-			$http.get('../api/v1/product/scrape?url=' + $scope.url).success(function (data) {
-				$scope.scrappedProduct = data;
-				if(data.imgNumber > 0) {
-					$scope.scrappedProduct.imgThumb = data.imagesThumb[$scope.imageIndex];
-				} else {
-					$scope.scrappedProduct.imgThumb = '../../bundles/newstartcommon/images/imageNotFound.jpg';
-				}
-				$scope.scrapeLoading = false;
-				$scope.imageLoading = false;
-		  		$('#go_btn .lbl').html('Go !');
+	  		if($scope.url != undefined) {
+		  		$scope.scrapeLoading = true;
+		  		$('#go_btn .lbl').html('');
+				$http.get('../api/v1/product/scrape?url=' + $scope.url).success(function (data) {
+					$scope.scrappedProduct = data;
+					if(data.imgNumber > 0) {
+						$scope.scrappedProduct.imgThumb = data.imagesThumb[$scope.imageIndex];
+					} else {
+						$scope.scrappedProduct.imgThumb = '../../bundles/newstartcommon/images/imageNotFound.jpg';
+					}
+					$scope.scrapeLoading = false;
+					$scope.imageLoading = false;
+			  		$('#go_btn .lbl').html('Go !');
 
-  		  		$window.onclick = function (event) {
-		  			//$window.onclick = null;
-		  			var target = $(event.target);
-		  			if(!target) return;
-		  			if(target.parents('#complete').length == 0 && target.parents('.input-group.url.input-lg').length == 0) {
-			  			$scope.productScrapeCancel();
-			  			$scope.$apply();
-		   			}
-				};
-				if ($window.document.width > 700) {
-					$('#url').focus();
-				}
-			});
+	  		  		$window.onclick = function (event) {
+			  			//$window.onclick = null;
+			  			var target = $(event.target);
+			  			if(!target) return;
+			  			if(target.parents('#complete').length == 0 && target.parents('.input-group.url.input-lg').length == 0) {
+				  			$scope.productScrapeCancel();
+				  			$scope.$apply();
+			   			}
+					};
+					if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
+						$('#url').focus();
+					}
+				});
+	  		}
   		}
-  	}
-};
+	};
 
   	$scope.productSave = function(scrappedProduct) {
   	  if($rootScope.nbProducts < 5) {
@@ -354,7 +354,8 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 	$scope.imageIndex = 0;
 	$scope.editModeTitle = false;
 	$scope.editModePrice = false;
-	if ($window.document.width > 700) {
+
+	if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
 		$('#url').focus();
 	}
 
@@ -398,12 +399,12 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
    			}
 		};
 		$scope.imageLoading = false;
-		if ($window.document.width > 700) {
+		if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
 			$('#url').focus();
 		}
 	};
 	$scope.mobileEmpty = function () {
-		if ($window.document.width <= 700) {
+		if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
 			$scope.url = '';
 			$scope.productScrapeCancel();
 		}
@@ -474,12 +475,12 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
   	$scope.productScrape = function(event, name) {
   		if($scope.scrappedProduct != null && $scope.url == $scope.scrappedProduct.url) {
   			$scope.scrappedProductHide = false;
-			if ($window.document.width > 700) {
+			if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
 				$('#url').focus();
 			}
   		} else {
   			$scope.scrappedProductHide = false;
-			if ($window.document.width > 700) {
+			if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
 	 			$('#url').focus();
 	 		}
 	  		$scope.scrappedProduct = null;
@@ -516,7 +517,7 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 				  			$scope.$apply();
 			   			}
 					};
-					if ($window.document.width > 700) {
+					if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
 						$('#url').focus();
 					}
 				});

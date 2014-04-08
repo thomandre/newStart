@@ -3,6 +3,9 @@
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;
 
+ini_set('session.cookie_httponly',1);
+ini_set('session.use_only_cookies',1);
+
 // If you don't want to setup permissions the proper way, just uncomment the following PHP line
 // read http://symfony.com/doc/current/book/installation.html#configuration-and-setup for more information
 //umask(0000);
@@ -13,7 +16,7 @@ use Symfony\Component\Debug\Debug;
 //var_dump(array($_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_X_FORWARDED_FOR']));
 
 if (isset($_SERVER['HTTP_CLIENT_IP'])
-//    || isset($_SERVER['HTTP_X_FORWARDED_FOR'])
+    || isset($_SERVER['HTTP_X_FORWARDED_FOR'])
     || !in_array(@$_SERVER['REMOTE_ADDR'], array('127.0.0.1', 'fe80::1', '::1', '192.168.1.162', '192.168.1.135', '192.168.1.173'))
 ) {
     header('HTTP/1.0 403 Forbidden');

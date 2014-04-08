@@ -1,5 +1,8 @@
 <?php
 
+ini_set('session.cookie_httponly',1);
+ini_set('session.use_only_cookies',1);
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;
 
