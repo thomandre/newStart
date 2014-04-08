@@ -1,10 +1,10 @@
 <div class="row row-user-profile">
 	<div class="col-md-2 col-sm-2 col-xs-4 user-profile">
 		<div class="viewed-profile">
-			<h2><a href="">{{ products.user.fullName }}</a></h2>
+			<h2><a href="/profile/{{ products.user.facebookId }}">{{ products.user.fullName }}</a></h2>
 			<br />
 			<div class="profile-image">
-				<a href="">
+				<a href="/profile/{{ products.user.facebookId }}">
 					<div style="background:url({{ products.user.profilePic }}) no-repeat scroll center center / cover;"></div>
 				</a>
 			</div>

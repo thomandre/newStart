@@ -1,10 +1,10 @@
 <div class="row row-user-profile">
 	<div class="col-md-2 col-sm-2 col-xs-4 user-profile">
 		<div class="viewed-profile">
-			<h2><a href="{{ path('profile', {userId:userProfile.getFacebookId}) }}">{{ product.fullName }}</a></h2>
+			<h2><a href="/profile/{{ product.fbUserId }}">{{ product.fullName }}</a></h2>
 			<br />
 			<div class="profile-image">
-				<a href="{{ path('profile', {userId:userProfile.getFacebookId}) }}">
+				<a href="/profile/{{ product.fbUserId }}">
 					<div style="background:url(https://graph.facebook.com/{{ product.fbUserId }}/picture?width=180&height=180) no-repeat scroll center center / cover;"></div>
 				</a>
 			</div>
