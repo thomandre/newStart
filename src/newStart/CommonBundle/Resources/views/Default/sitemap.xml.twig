@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<urlset xmlns="http://www.google.com/schemas/sitemap/0.84">
+  <url>
+    <loc>http://welovegifts.fr</loc>
+    <lastmod>2014-04-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  {% for profile in profiles %}
+  <url>
+    <loc>http://welovegifts.fr/profile/{{ profile.getFacebookId }}</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.1</priority>
+  </url>
+  {% endfor %}
+</urlset>

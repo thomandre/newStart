@@ -76,6 +76,19 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/sitemap.xml", name="sitemap")
+     * @Template("newStartCommonBundle:Default:sitemap.xml.twig")
+     */
+    public function sitemapAction(Request $request) {
+        $profiles = $this->em->getRepository('UserBundle:User')->findAll(array('public' => true));
+        foreach($profiles as $profile) {
+
+        }
+
+        return array('profiles' => $profiles);
+    }    
+
+    /**
      * @Route("/fblogin", name="fblogin")
      */
     public function login(Request $request) {
