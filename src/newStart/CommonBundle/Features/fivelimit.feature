@@ -24,13 +24,13 @@ Et je presse "Enregistrer"
 Et j'attend que "#completeContainer" ne soit plus visible 
 Et je devrais voir "Tablette Kindle Fire HDX"
 
-Alors je remplis "url" avec "http://www.balibaris.com/soie-et-laine/908-clan-vert-blanc.html"
+Alors je remplis "url" avec "www.balibaris.com/soie/608-marine-double-ligne-rouge.html"
 Et je presse "Go !"
 Et j'attend que "#completeContainer" soit visible 
-Alors je devrais voir "Cravates - Soie et laine - Cravate Clan // vert blanc - Balibaris"
+Alors je devrais voir "Cravates - Soie - Cravate Marine // Double Ligne Rouge - Balibaris"
 Et je presse "Enregistrer"
 Et j'attend que "#completeContainer" ne soit plus visible 
-Et je devrais voir "Cravates - Soie et laine"
+Et je devrais voir "Cravates - Soie - Cravate Marine"
 
 Alors je remplis "url" avec "http://www.boutique-saint-james.fr/pull-raye-homme-rochefort-p654-z6680.html"
 Et je presse "Go !"
