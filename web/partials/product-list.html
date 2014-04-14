@@ -3,7 +3,7 @@
 		<div class="viewed-profile">
 			<h2>{{ products.user.fullName }}</h2>
 			<div class="profile-image">
-				<div style="background:url({{ products.user.profilePic }}) no-repeat scroll center center / cover;"></div>
+				<div style="background-image:url({{ products.user.profilePic }});" class="cover"></div>
 			</div>
 		</div>
 	</div>
@@ -35,7 +35,7 @@
 			<div id="product" class="row">
 				<div class="col-md-5 col-sm-5 col-xs-4 imageContainer">
 					<img ng-show="imageLoading" src="../../bundles/newstartcommon/images/loader.gif" />
-					<div style="background:url({{ scrappedProduct.imgThumb }}) no-repeat scroll center center / cover;" class="previewImg" ng-swipe-right="nextImg()"></div>
+					<div style="background-image:url({{ scrappedProduct.imgThumb }});" class="previewImg cover" ng-swipe-right="nextImg()"></div>
 				</div>
 				<div class="col-md-5 col-sm-5 col-xs-6">
 					<h4>
@@ -83,7 +83,7 @@
 	<div class="col-md-2 col-sm-3 col-xs-5 product" ng-repeat="product in products.products">
 		<div class="product-image" ng-controller="ProductItemCtrl">
 			<a href="me/product/{{product.id}}" ng-show="product.thumb_url != null">
-				<div style="background:url({{ product.thumb_url }}) no-repeat scroll center center / cover;"></div>
+				<div style="background-image:url({{ product.thumb_url }});" class="cover"></div>
 			</a>
 			<p ng-show="product.thumb_url != null">
 				<span class="name"><span class="price">{{ product.price }}</span> <a href="me/product/{{product.id}}">{{ product.name }}</a></span>

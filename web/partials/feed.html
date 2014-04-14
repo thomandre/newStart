@@ -8,7 +8,7 @@
 		<div class="col-md-2 col-sm-3 col-xs-5 product" ng-repeat="product in feed.products">
 			<div class="product-image feed">
 				<a href="profile/{{ product.user.facebookId }}/product/{{ product.id }}">
-					<div style="background:url({{ product.thumb_url }}) no-repeat scroll center center / cover;"></div>
+					<div style="background-image:url({{ product.thumb_url }});" class="cover"></div>
 				</a>
 				<p>
 					<a href="profile/{{ product.user.facebookId }}/product/{{ product.id }}">

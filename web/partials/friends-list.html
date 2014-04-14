@@ -17,7 +17,7 @@
 		<div class="col-md-2 col-sm-3 col-xs-5 product" ng-repeat="friend in friends.friends">
 			<div class="product-image" ng-controller="FriendCtrl">
 				<a href="profile/{{ friend.facebookId }}">
-					<div style="background:url(https://graph.facebook.com/{{ friend.facebookId }}/picture?width=176&height=220) no-repeat scroll center center / cover;"></div>
+					<div style="background-image:url(https://graph.facebook.com/{{ friend.facebookId }}/picture?width=176&height=220);" class="cover"></div>
 				</a>
 				<p>
 					<span><a href="profile/{{ friend.facebookId }}">{{ friend.fullName }}</a></span>

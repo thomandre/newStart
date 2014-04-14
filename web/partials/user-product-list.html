@@ -5,7 +5,7 @@
 			<br />
 			<div class="profile-image">
 				<a href="/profile/{{ products.user.facebookId }}">
-					<div style="background:url({{ products.user.profilePic }}) no-repeat scroll center center / cover;"></div>
+					<div style="background-image:url({{ products.user.profilePic }});" class="cover"></div>
 				</a>
 			</div>
 		</div>
@@ -19,7 +19,7 @@
 	<div class="col-md-2 col-sm-3 col-xs-5 product" ng-repeat="product in products.products">
 		<div class="product-image" ng-controller="ProductItemCtrl">
 			<a href="#/profile/{{ product.fbUserId }}/product/{{product.id}}">
-				<div style="background:url({{ product.thumb_url }}) no-repeat scroll center center / cover;"></div>
+				<div style="background-image:url({{ product.thumb_url }});" class="cover"></div>
 			</a>
 			<p>
 				<span class="name"><span class="price">{{ product.price }}</span><a href="#/profile/{{ product.fbUserId }}/product/{{product.id}}">{{ product.name }}</a></span>

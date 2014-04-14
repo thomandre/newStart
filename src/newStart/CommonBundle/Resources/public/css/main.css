@@ -5,6 +5,15 @@ body {
 .ng-cloak, .x-ng-cloak, .ng-hide {
     display: none !important;
 }
+.cover {
+  background-size: 100%;
+  -webkit-background-size: cover; /* pour Chrome et Safari */
+  -moz-background-size: cover; /* pour Firefox */
+  -o-background-size: cover; /* pour Opera */
+  -khtml-background-size: cover;
+  background-size: cover; /* version standardisée */
+  background-repeat: no-repeat scroll center center;
+}
 p.comment {
     color:#CA2D56;
 }
