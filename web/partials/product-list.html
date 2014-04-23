@@ -3,7 +3,7 @@
 		<div class="viewed-profile">
 			<h2>{{ products.user.fullName }}</h2>
 			<div class="profile-image">
-				<div style="background-image:url({{ products.user.profilePic }});" class="cover"></div>
+				<div ng-style="{ 'background-image': 'url('+products.user.profilePic+')' }" class="cover"></div>
 			</div>
 		</div>
 	</div>
@@ -35,7 +35,7 @@
 			<div id="product" class="row">
 				<div class="col-md-5 col-sm-5 col-xs-4 imageContainer">
 					<img ng-show="imageLoading" src="../../bundles/newstartcommon/images/loader.gif" />
-					<div style="background-image:url({{ scrappedProduct.imgThumb }});" class="previewImg cover" ng-swipe-right="nextImg()"></div>
+					<div ng-style="{ 'background-image': 'url('+scrappedProduct.imgThumb+')' }" class="previewImg cover" ng-swipe-right="nextImg()"></div>
 				</div>
 				<div class="col-md-5 col-sm-5 col-xs-6">
 					<h4>
@@ -57,13 +57,13 @@
 			</div>
 			<div class="row">
 				<div class="col-md-5 col-sm-5 col-xs-4 imageBtns">
-					<button class="btn prev" type="button" ng-click="prevImg()"><span class="glyphicon glyphicon-arrow-left"></span></button>
-					<span class="index">{{ imageIndex + 1 }} / {{ scrappedProduct.imgNumber }}</span>
-					<button class="btn next" type="button" ng-click="nextImg()"><span class="glyphicon glyphicon-arrow-right"></span></button>
+					<button class="btn prev" ng-hide="(scrappedProduct == null || scrappedProductHide == true)" type="button" ng-click="prevImg()"><span class="glyphicon glyphicon-arrow-left"></span></button>
+					<span class="index" ng-hide="(scrappedProduct == null || scrappedProductHide == true)">{{ imageIndex + 1 }} / {{ scrappedProduct.imgNumber }}</span>
+					<button class="btn next" ng-hide="(scrappedProduct == null || scrappedProductHide == true)" type="button" ng-click="nextImg()"><span class="glyphicon glyphicon-arrow-right"></span></button>
 				</div>
 				<div class="col-md-5 col-sm-5 col-xs-6 btns">
-					<button class="btn btn-primary" type="button" id="save_btn" ng-click="productSave(scrappedProduct)"><span ng-show="productLoading" class="loader glyphicon glyphicon-refresh"></span>Enregistrer</button>
-					<button class="btn" type="button" ng-click="productScrapeCancel()" id="Annuler">Annuler</button>
+					<button class="btn btn-primary" ng-hide="(scrappedProduct == null || scrappedProductHide == true)" type="button" id="save_btn" ng-click="productSave(scrappedProduct)"><span ng-show="productLoading" class="loader glyphicon glyphicon-refresh"></span>Enregistrer</button>
+					<button class="btn" type="button" ng-hide="(scrappedProduct == null || scrappedProductHide == true)" ng-click="productScrapeCancel()" id="Annuler">Annuler</button>
 				</div>
 			</div>
 		</div>
@@ -83,7 +83,7 @@
 	<div class="col-md-2 col-sm-3 col-xs-5 product" ng-repeat="product in products.products">
 		<div class="product-image" ng-controller="ProductItemCtrl">
 			<a href="me/product/{{product.id}}" ng-show="product.thumb_url != null">
-				<div style="background-image:url({{ product.thumb_url }});" class="cover"></div>
+				<div ng-style="{ 'background-image': 'url('+product.thumb_url+')' }" class="cover"></div>
 			</a>
 			<p ng-show="product.thumb_url != null">
 				<span class="name"><span class="price">{{ product.price }}</span> <a href="me/product/{{product.id}}">{{ product.name }}</a></span>

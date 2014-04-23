@@ -2,7 +2,7 @@ var wlgApp = angular.module('wlgApp', ['ngRoute', 'wlgServices', 'ui.keypress', 
 
 
 wlgApp.config(
-  function($routeProvider, $locationProvider) {
+  function($routeProvider, $locationProvider, $provide) {
     $routeProvider.
       when('/me/', {
         templateUrl: '../partials/product-list.html',

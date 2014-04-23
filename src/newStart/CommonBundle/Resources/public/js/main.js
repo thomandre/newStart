@@ -29,6 +29,10 @@ $('#bugReportSend').click(function () {
 });
 
 $('#login').click(function () {
-    window.location.href = $(this).attr('data-url');
+    if(navigator.userAgent.match(/(MSIE)/g)) {
+        alert("Welovegifts n'est pas compatible avec Internet Explorer pour l'instant. Merci d'utiliser Firefox, Chorme ou Safari.");
+    } else {
+        window.location.href = $(this).attr('data-url');
+    }
 });
 
