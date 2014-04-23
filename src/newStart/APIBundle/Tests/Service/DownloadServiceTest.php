@@ -12,14 +12,15 @@ class DownloadServiceTest extends NewStartWebTestCase
 	/**
 	 * @test
 	 * @group download
+	 * @group ko
 	 */
 	public function returnContentforExistantUrlTest()
 	{
 		$downloadService = new DownloadService();
 		$downloadService->container = $this->container;
-		$content = $downloadService->download('http://www.nomorerack.com/daily_deals/view/261387-new_ipad_1ghz_64gb_9_7__with_wifi_and_bonus_premium_package');
+		$content = $downloadService->download('http://www.nomorerack.com/daily_deals/view/936751-armor_hybrid_shockproof_case_for_iphone__174___4___5___assorted_colors');
 
-		$this->assertRegExp('/Apple iPad 3 1GHz 64GB 9.7" Tablet & Accessories Package/', $content);
+		$this->assertRegExp('/Armor Hybrid Shockproof Case/', $content);
 
 		//$content = $downloadService->download("http://www.levi.com/FR/fr_FR/men-jeans/p/191110003");
 		//$this->assertRegExp('/511 Slim Fit Commuter/', $content);
