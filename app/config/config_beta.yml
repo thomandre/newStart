@@ -15,7 +15,7 @@ monolog:
 parameters:
     database_driver: pdo_mysql
     database_host: havefyvebeta.ctd1aa4og4yv.us-west-2.rds.amazonaws.com
-    database_name: HaveFyveBeta
+    database_name: wlgBeta
     database_user: HaveFyveBeta
     database_password: jAZgHBwkhavefyve
     database_port: 3306
