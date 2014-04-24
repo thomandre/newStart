@@ -1,0 +1,23 @@
+imports:
+    - { resource: config.yml }
+
+monolog:
+    handlers:
+        main:
+            type:         fingers_crossed
+            action_level: error
+            handler:      nested
+        nested:
+            type:  stream
+            path:  %kernel.logs_dir%/%kernel.environment%.log
+            level: debug
+
+parameters:
+    database_driver: pdo_mysql
+    database_host: havefyvebeta.ctd1aa4og4yv.us-west-2.rds.amazonaws.com
+    database_name: HaveFyveBeta
+    database_user: HaveFyveBeta
+    database_password: jAZgHBwkhavefyve
+    database_port: 3306
+    facebook.appId: 316846361801148
+    facebook.secret: eae39601279d906fff1eaaca7cacbbd2

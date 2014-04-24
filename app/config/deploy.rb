@@ -1,3 +1,9 @@
+set :stages,        %w(beta prod)
+set :default_stage, "beta"
+set :stage_dir,     "app/config/deploy"
+
+require 'capistrano/ext/multistage'
+
 set :application, "newStart"
 set :domain,      "welovegifts.fr"
 set :deploy_to,   "/var/www/havefyve"

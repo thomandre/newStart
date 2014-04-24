@@ -543,9 +543,10 @@ span.hidden-xs {
     top: 6px;
     transform: rotate(45deg);
     width: 138px;
+    font-size: 12px;
 }
 .feed .beenBought {
-    height: 40px !important;
+    height: 35px !important;
 }
 .productDetail .beenBought {
     height: 40px !important;
