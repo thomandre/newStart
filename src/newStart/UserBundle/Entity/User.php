@@ -67,6 +67,11 @@ class User extends BaseUser
     protected $products;
 
     /**
+     * @ORM\OneToMany(targetEntity="\newStart\CommonBundle\Entity\Product", mappedBy="boughtBy")
+     */
+    protected $productsBought;
+
+    /**
      * @ORM\OneToMany(targetEntity="newStart\UserBundle\Entity\Friends", mappedBy="myFriends", cascade={"persist"})
      */
     protected $friendsWithMe;
@@ -453,6 +458,39 @@ class User extends BaseUser
     public function setGender($gender=null)
     {
         $this->gender = $gender;
+    }
+
+/**
+     * Add productsBought
+     *
+     * @param \newStart\CommonBundle\Entity\Product $productsBought
+     * @return User
+     */
+    public function addProductsBought(\newStart\CommonBundle\Entity\Product $productsBought)
+    {
+        $this->productsBought[] = $productsBought;
+    
+        return $this;
+    }
+
+    /**
+     * Remove productsBought
+     *
+     * @param \newStart\CommonBundle\Entity\Product $productsBought
+     */
+    public function removeProductsBought(\newStart\CommonBundle\Entity\Product $productsBought)
+    {
+        $this->productsBought->removeElement($productsBought);
+    }
+
+    /**
+     * Get productsBought
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProductsBought()
+    {
+        return $this->productsBought;
     }
 
 }

@@ -5,7 +5,7 @@
 			<br />
 			<div class="profile-image">
 				<a href="/profile/{{ product.fbUserId }}">
-					<div ng-style="{ 'background-image': 'url(https://graph.facebook.com/'+product.fbUserId+'/picture?width=180&height=180)'}" class="cover"></div>
+					<div ng-style="{ 'background-image': 'url('+product.profilePic+')' }" class="cover"></div>
 				</a>
 			</div>
 		</div>
@@ -26,6 +26,7 @@
 	<div class="col-md-5 col-sm-5 col-xs-10">
 		<div class="productDetail">
 			<a href="{{ product.url }}" target="_blank">
+				<div ng-show="product.beenBought == 1" class="beenBought">Acheté par <br />{{ product.buyer }}</div>
 				<div ng-style="{ 'background-image': 'url('+product.imgUrl+')', 'height':'500px' }" class="cover"></div>
 			</a>
 		</div>

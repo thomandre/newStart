@@ -239,6 +239,7 @@ div.ddown {
     height: 278px;
     padding: 10px;
     text-align: left;
+    overflow: hidden;
 }
 .product-image .cadre {
     background-color: #EAEAEA;
@@ -531,6 +532,34 @@ span.hidden-xs {
 .imageContainer {
     height:200px;
 }
+.beenBought {
+    background-color: #0000DC;
+    color: #FFFFFF;
+    float: left;
+    height: 20px !important;
+    left: 85px;
+    position: relative;
+    text-align: center;
+    top: 6px;
+    transform: rotate(45deg);
+    width: 138px;
+}
+.feed .beenBought {
+    height: 40px !important;
+}
+.productDetail .beenBought {
+    height: 40px !important;
+    left: 380px;
+    top: 19px;
+    width: 157px;
+}
+.productDetail {
+    overflow: hidden;
+}
+
+
+
+
 @media (max-width: 768px) { 
     span.hidden-xs {
         display:none !important;

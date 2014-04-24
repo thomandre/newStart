@@ -19,6 +19,9 @@ Et je presse "Enregistrer"
 Et j'attend que "#completeContainer" ne soit plus visible 
 Et le champ "url" devrait contenir ""
 Et je devrais voir "Apple - MacBook Air"
+Soit je suis "What's new ?"
+Et j'attend "0.5" secondes
+Alors je devrais voir "Apple - MacBook Air"
 Et je me delogue
 Soit je vais sur "https://www.facebook.com"
 Et je clique sur "#userNavigationLabel"
@@ -80,7 +83,10 @@ Et j'attend "1" secondes
 Alors je devrais voir "Thomas André"
 Et je suis "Thomas André"
 Et j'attend "1" secondes
-Alors je ne devrais pas voir "Apple - MacBook Air"
+Alors je devrais voir "Apple - MacBook Air"
+Et je devrais voir "Acheté"
+Soit je suis "Apple - MacBook Air"
+Et je devrais voir "Acheté par Thomas Alban"
 Et je me delogue
 Soit je vais sur "https://www.facebook.com"
 Et je clique sur "#userNavigationLabel"

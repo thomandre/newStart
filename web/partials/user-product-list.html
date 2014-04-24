@@ -19,6 +19,7 @@
 	<div class="col-md-2 col-sm-3 col-xs-5 product" ng-repeat="product in products.products">
 		<div class="product-image" ng-controller="ProductItemCtrl">
 			<a href="#/profile/{{ product.fbUserId }}/product/{{product.id}}">
+				<div ng-show="product.beenBought == 1" class="beenBought">Acheté</div>
 				<div ng-style="{ 'background-image': 'url('+product.thumb_url+')' }" class="cover"></div>
 			</a>
 			<p>

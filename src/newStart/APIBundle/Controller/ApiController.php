@@ -280,7 +280,7 @@ class ApiController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $userProfile = $em->getRepository('UserBundle:User')->findOneBy(array('facebookId' => $userId));    
-        $products = $em->getRepository('newStartCommonBundle:Product')->findBy(array('user' => $userProfile, 'deleted' => false, 'beenBought' => false));
+        $products = $em->getRepository('newStartCommonBundle:Product')->findBy(array('user' => $userProfile, 'deleted' => false));
 
         $data = array();
         foreach($products as $key => $p) {
@@ -352,6 +352,7 @@ class ApiController extends Controller
         if($product->getUser() == $user) {
             $product->setDeleted(true);
         }
+        $product->setBoughtBy($user);
         $product->setBeenBought(true);
         $em->persist($product);
         $em->flush();
@@ -468,6 +469,12 @@ class ApiController extends Controller
                 $tmp = $p->toArray();
                 $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 176, 'height' => 165, 'image' => $p->getImageName()));
                 $tmp['user'] = $p->getUser()->toArray();
+
+                // ce truc permet que tu ne voies pas que tes cadeaux ont étés achetés
+                if($p->getUser()->getId() == $user->getId()) {
+                    $tmp['beenBought'] = 0;
+                }
+
                 $data[] = $tmp;
             }
             

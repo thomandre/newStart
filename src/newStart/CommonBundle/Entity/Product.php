@@ -70,6 +70,12 @@ class Product
     protected $beenBought;
 
     /**
+     * @ORM\ManyToOne(targetEntity="\newStart\UserBundle\Entity\User", inversedBy="productsBought")
+     * @ORM\JoinColumn(name="buyer", referencedColumnName="id")
+     */
+    protected $boughtBy;
+
+    /**
      * @var integer
      *
      * @ORM\Column(type="integer", options={"default":0}))
@@ -79,6 +85,12 @@ class Product
 
 
     public function toArray() {
+        if($this->boughtBy != null) {
+            $buyer = $this->boughtBy->getFullname();
+        } else {
+            $buyer = null;
+        }
+
         return array(
                         'id'        => $this->id,
                         'name'      => $this->name,
@@ -91,7 +103,8 @@ class Product
                         'fbUserId'  => $this->user->getFacebookId(),
                         'fullName'  => $this->user->getFullname(),
                         'firstName' => $this->user->getFirstname(),
-
+                        'profilePic'=> 'https://graph.facebook.com/'.$this->user->getFacebookId().'/picture?width=180&height=180',
+                        'buyer'     => $buyer
                     );
     }
 
@@ -312,4 +325,27 @@ class Product
         return $this->deleted;
     }
 
+
+    /**
+     * Set boughtBy
+     *
+     * @param \newStart\UserBundle\Entity\User $boughtBy
+     * @return Product
+     */
+    public function setBoughtBy(\newStart\UserBundle\Entity\User $boughtBy = null)
+    {
+        $this->boughtBy = $boughtBy;
+    
+        return $this;
+    }
+
+    /**
+     * Get boughtBy
+     *
+     * @return \newStart\UserBundle\Entity\User 
+     */
+    public function getBoughtBy()
+    {
+        return $this->boughtBy;
+    }
 }

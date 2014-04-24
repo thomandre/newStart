@@ -14,11 +14,10 @@ class ProductRepository extends EntityRepository
     {
         $em = $this->getEntityManager();
 
-        $query = $em->createQuery('SELECT p FROM newStartCommonBundle:Product p, UserBundle:Friends f 
-        						   WHERE p.user = f.myFriends
-                                   AND f.friendsWithMe = :user
-                                   AND p.beenBought = 0
-                                   AND p.deleted = 0
+        $query = $em->createQuery('SELECT p FROM newStartCommonBundle:Product p 
+                                   LEFT JOIN UserBundle:Friends f 
+        						               WITH ((p.user = f.myFriends AND f.friendsWithMe = :user) OR (p.user = :user))
+                                   WHERE p.deleted = 0
                                    ORDER BY p.id DESC')
                 ->setParameter('user', $user);
 
