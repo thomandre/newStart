@@ -18,6 +18,7 @@ class ProductRepository extends EntityRepository
                                    LEFT JOIN UserBundle:Friends f 
         						               WITH ((p.user = f.myFriends AND f.friendsWithMe = :user) OR (p.user = :user))
                                    WHERE p.deleted = 0
+                                   AND ((p.user = f.myFriends AND f.friendsWithMe = :user) OR (p.user = :user))
                                    ORDER BY p.id DESC')
                 ->setParameter('user', $user);
 
