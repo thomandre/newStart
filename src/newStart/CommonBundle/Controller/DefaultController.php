@@ -45,12 +45,17 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {   
-        if($this->kernel->getEnvironment() == 'test') {
+        /*if($this->kernel->getEnvironment() == 'test') {
             try {
                 //session_start();
             } catch(\Exception $e) {
 
             }
+        }*/
+
+        $user = $this->getUser();
+        if($user != null) {
+            return new RedirectResponse($this->container->get('router')->generate('me'));
         }
 
         if(strpos($_SERVER['HTTP_USER_AGENT'], 'Googlebot') === false) {
