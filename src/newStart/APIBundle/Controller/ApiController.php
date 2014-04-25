@@ -372,13 +372,21 @@ class ApiController extends Controller
         $em = $this->getDoctrine()->getManager();
         
         $data = array();
-        foreach($user->getMyFriends() as $friend) {
+        /*foreach($user->getMyFriends() as $friend) {
             $patern = '/^'.$friendName.'/i';
             if(preg_match($patern, $friend->getMyFriends()->getFirstName()) || preg_match($patern, $friend->getMyFriends()->getLastName()) || preg_match($patern, $friend->getMyFriends()->getFullName())) {
                 $tmp = $friend->getMyFriends()->toArray();
                 $tmp['favorite'] = $friend->isFavorite();
                 $data[] = $tmp;                
             }
+        }*/
+
+        $friends = $em->getRepository('UserBundle:Friends')->getFriends($user, $friendName, 'u.lastname ASC');
+
+        foreach($friends as $friend) {
+            $tmp = $friend[0]->toArray();
+            $tmp['favorite'] = $friend['favorite'];
+            $data[] = $tmp;
         }
 
         $userArray = $user->toArray();

@@ -7,7 +7,7 @@ use newStart\CommonBundle\Entity\Product;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="newStart\UserBundle\Repository\FriendRepository")
  * @ORM\Table(name="friends")
  */
 class Friends
