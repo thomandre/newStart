@@ -6,7 +6,6 @@ require 'capistrano/ext/multistage'
 
 set :application, "newStart"
 set :domain,      "welovegifts.fr"
-set :deploy_to,   "/var/www/havefyve"
 
 set :app_path,    "app"
 set :branch, 	  "develop"
@@ -25,8 +24,6 @@ set :shared_children,     [app_path + "/logs", web_path + "/uploads", web_path +
 set :use_composer, true
 
 set :user,                "ubuntu"
-set :writable_dirs,       ["app/cache", "app/logs"]
-set :writable_dirs,       ["app/cache"]
 set :webserver_user,      "www-data"
 set :dump_assetic_assets, true
 set :permission_method,   :acl

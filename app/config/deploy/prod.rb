@@ -6,5 +6,6 @@ set :branch, "develop"
 role :web,        domain
 role :app,        domain, :primary => true
 set :deploy_to,   "/var/www/havefyve/"
+set :writable_dirs,       ["app/cache", "app/logs"]
 
 #set :symfony_env_prod, "demo"
