@@ -542,6 +542,8 @@ span.hidden-xs {
     text-align: center;
     top: 6px;
     transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
     width: 138px;
     font-size: 12px;
 }
