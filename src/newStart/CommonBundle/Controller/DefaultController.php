@@ -44,15 +44,7 @@ class DefaultController extends Controller
      * @Template()
      */
     public function indexAction()
-    {   
-        /*if($this->kernel->getEnvironment() == 'test') {
-            try {
-                //session_start();
-            } catch(\Exception $e) {
-
-            }
-        }*/
-
+    {
         $user = $this->getUser();
         if($user != null) {
             return new RedirectResponse($this->container->get('router')->generate('me'));
@@ -86,9 +78,6 @@ class DefaultController extends Controller
      */
     public function sitemapAction(Request $request) {
         $profiles = $this->em->getRepository('UserBundle:User')->findAll(array('public' => true));
-        foreach($profiles as $profile) {
-
-        }
 
         return array('profiles' => $profiles);
     }    
