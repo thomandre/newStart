@@ -8,6 +8,7 @@ use newStart\APIBundle\Service\UrlService;
 use JMS\DiExtraBundle\Annotation\Inject;
 use JMS\DiExtraBundle\Annotation\InjectParams;
 use Symfony\Component\Process\Process;
+use Symfony\Component\Process\ProcessBuilder;
 
 /** @DI\Service("newstart_api_service_scrape") */
 class ScrapeService
@@ -22,13 +23,16 @@ class ScrapeService
 	{
 		$path = $this->container->getParameter('kernel.root_dir').'/getComputedStyle.js';
 
-        $command = 'unset DYLD_LIBRARY_PATH; phantomjs --disk-cache=yes '.$path.' "'.($url).'" 768 1024 ';
+        //$command = 'unset DYLD_LIBRARY_PATH; phantomjs --disk-cache=yes '.$path.' "'.($url).'" 768 1024 ';
+        $command = '';
         //var_dump($command);
-        $process = new Process($command);
+        $builder = new ProcessBuilder(array('phantomjs', '--disk-cache=yes', $path, $url, '768', '1024'));
+        //$builder->setPrefix('unset DYLD_LIBRARY_PATH;');
+        $builder->setEnv('DYLD_LIBRARY_PATH', null);
+        $process = $builder->getProcess();
         $process->run();
 
         $buffer = $process->getOutput();
-
         $match = array();
         $res = preg_match('/@@@(.*)@@@/', $buffer, $match);
 
@@ -37,9 +41,9 @@ class ScrapeService
         	if($phantomResponse != null) {
 	        	return $phantomResponse;
         	}
-    		throw new \Exception('JSON decode failed : command: '.$command.' Returned: '.$buffer);
+    		throw new \Exception('JSON decode failed : command returned: '.$buffer);
         }
-    	throw new \Exception('Preg Match Failed : command: '.$command.' Returned: '.$buffer);
+    	throw new \Exception('Preg Match Failed : command returned: '.$buffer);
 	}
 
 }
