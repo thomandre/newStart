@@ -11,7 +11,7 @@ use Doctrine\ORM\Query\ResultSetMapping;
 class FriendRepository extends EntityRepository
 {
 
-    public function getFriends($user, $str, $order)
+    public function getFriends($user, $str, $order, $favorite = false)
     {
     	$connection = $this->getEntityManager()->getConnection();
 
@@ -39,13 +39,18 @@ class FriendRepository extends EntityRepository
 							OR u.lastname LIKE '%".$str."%'  
 							OR CONCAT(u.firstname, ' ', u.lastname) LIKE '%".$str."%'
 							OR CONCAT(u.lastname, ' ', u.firstname) LIKE '%".$str."%' 
-                        )
-						ORDER BY ".$orderClause;
+                        ) ";
 
-        //echo $query;
+        if($favorite == true) {
+            $query.= " AND favorite = 1";
+        }
+
+        $query.= " ORDER BY ".$orderClause;
+
+        //echo $query."\n\n<br /><br />";
         
         $iterator = $connection->query($query);
-
+        $data = array();
         while (is_object($iterator) AND ($array = $iterator->fetch()) !== FALSE) {  
             $data[] = $array;
         }

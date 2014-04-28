@@ -370,12 +370,17 @@ class ApiController extends Controller
     public function friendsAction(Request $request, $friendName = null)
     {
         $order = $request->get('order');
+        if($request->get('filter') == 'favorite') {
+            $favorite = true;
+        } else {
+            $favorite = false;
+        }
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
         
         $data = array();
 
-        $friends = $em->getRepository('UserBundle:Friends')->getFriends($user, $friendName, $order);
+        $friends = $em->getRepository('UserBundle:Friends')->getFriends($user, $friendName, $order, $favorite);
 
         foreach ($friends as $key => $friend) {
             $friends[$key]['profilePic'] = "https://graph.facebook.com/".$friend['facebookId']."/picture?width=180\u0026height=180";

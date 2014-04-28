@@ -12,9 +12,18 @@
 			</div>
 		</div>
 	</div>
-	<div class="sort">
-		<a ng-click="order = 'name'; autoFriendsSearch();">Name</a> / 
-		<a ng-click="order = 'birthday'; autoFriendsSearch();">Birthday</a>
+	<div class="sort row">
+		<div class="col-md-3">
+			Filtrer par :  
+			<a ng-click="filter = 'all'; autoFriendsSearch();" class="label label-default" ng-class="{all:'selected'}[filter]">Tous</a> 
+			<a ng-click="filter = 'favorite'; autoFriendsSearch();" class="label label-default" ng-class="{favorite:'selected'}[filter]">Favoris</a> 
+		</div>
+		<div class="col-md-3">
+			Trier par : 
+			<a ng-click="order = 'name'; autoFriendsSearch();" class="label label-default" ng-class="{name:'selected'}[order]">Nom</a> 
+			<a ng-click="order = 'birthday'; autoFriendsSearch();" class="label label-default" ng-class="{birthday:'selected'}[order]">Date d'anniveraire</a>
+		</div>
+
 	</div>
 
 	<br />
