@@ -364,6 +364,7 @@ class ApiController extends Controller
 
     /**
      * @Route("/api/v1/friends/list-mine/{friendName}", name="friend_api")
+     * @Route("/api/v1/friends/list-mine/")
      * @Template()
      */
     public function friendsAction(Request $request, $friendName = null)
@@ -376,10 +377,10 @@ class ApiController extends Controller
 
         $friends = $em->getRepository('UserBundle:Friends')->getFriends($user, $friendName, $order);
 
-        foreach($friends as $friend) {
-            $tmp = $friend[0]->toArray();
-            $tmp['favorite'] = $friend['favorite'];
-            $data[] = $tmp;
+        foreach ($friends as $key => $friend) {
+            $friends[$key]['profilePic'] = "https://graph.facebook.com/".$friend['facebookId']."/picture?width=180\u0026height=180";
+            $friends[$key]['fullName']   = $friend['firstname'].' '.$friend['lastname'];
+            $friends[$key]['favorite']   = (bool) $friend['favorite'];
         }
 
         $userArray = $user->toArray();
@@ -390,7 +391,7 @@ class ApiController extends Controller
         }
 
         $response = new JsonResponse();
-        $response->setData(array('friends' => $data, 'user' => $userArray));
+        $response->setData(array('friends' => $friends, 'user' => $userArray));
         
         return $response;
     }

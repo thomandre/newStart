@@ -12,6 +12,11 @@
 			</div>
 		</div>
 	</div>
+	<div class="sort">
+		<a ng-click="order = 'name'; autoFriendsSearch();">Name</a> / 
+		<a ng-click="order = 'birthday'; autoFriendsSearch();">Birthday</a>
+	</div>
+
 	<br />
 	<div>
 		<div class="col-md-2 col-sm-3 col-xs-5 product" ng-repeat="friend in friends.friends">

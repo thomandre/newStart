@@ -11,7 +11,7 @@ angular.module('wlgServices', ['ngResource']).
 	    suggest: {method:'GET', params:{method:'suggestions'}, isArray:true},
 	  });
 	}).factory('Friend', function($resource){
-	  return $resource('api/v1/friends/:method/:id', {}, {
+	  return $resource('api/v1/friends/:method/:id?order=:order', {}, {
 	    listMine: {method:'GET', params:{method:'list-mine'}},
 	    favorize: {method:'GET', params:{method:'favorize'}}
 	  });

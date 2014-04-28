@@ -23,6 +23,8 @@ function FriendCtrl($scope, Friend, $rootScope, $window) {
 
 function MyFriendsListCtrl($scope, $timeout, Friend, $rootScope, $modal) {
 	var timer = false;
+	$scope.order = 'name';
+
     $scope.autoFriendsSearch = function () {
         if(timer) {
             $timeout.cancel(timer);
@@ -41,7 +43,7 @@ function MyFriendsListCtrl($scope, $timeout, Friend, $rootScope, $modal) {
 
 	$scope.updateFriends = function () {
 		$rootScope.loading = true;
-		$rootScope.friends = Friend.listMine({'id':$scope.name}, function (data) {
+		$rootScope.friends = Friend.listMine({'id':$scope.name, 'order':$scope.order}, function (data) {
 			$rootScope.loading = false;
 			if($rootScope.friends.user.displayPopinFriends == true) {
 				$scope.welcomeFriends();

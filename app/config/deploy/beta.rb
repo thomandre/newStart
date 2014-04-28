@@ -8,4 +8,6 @@ role :app,        domain, :primary => true
 set :deploy_to,   "/var/www/wlg-beta/"
 set :writable_dirs,       ["app/cache", "app/logs"]
 
+set :keep_releases,  2
+
 #set :symfony_env_prod, "demo"
