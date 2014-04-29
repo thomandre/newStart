@@ -40,7 +40,8 @@
 			</div>
 		</div>
 
-		<div ng-hide="friends.friends.length || loading">Aucun de vos amis Facebook n'est pour l'instant sur Welovegifts, souhaitez-vous partager ce site avec eux ?</div>
+		<div ng-hide="((friends.friends.length || loading) || filter != 'all')">Aucun de vos amis Facebook n'est pour l'instant sur Welovegifts, souhaitez-vous partager ce site avec eux ?</div>
+		<div ng-hide="((friends.friends.length || loading) || filter != 'favorite')">Vous n'avez pas encore d'ami favori. Cliquez sur <span class="glyphicon glyphicon-star" style="color:#428BCA"></span> sur leur profil pour mettre vos amis en favori, ce qui vous permettra d'être prévenu quand ce sera leur anniveraire.</div>
 	</div>
 </div>
 

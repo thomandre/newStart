@@ -1,7 +1,7 @@
 <div class="row row-user-profile">
 	<div class="col-md-2 col-sm-2 col-xs-4 user-profile">
 		<div class="viewed-profile">
-			<h2><a href="/profile/{{ products.user.facebookId }}">{{ products.user.fullName }}</a></h2>
+			<h2><a href="/profile/{{ products.user.facebookId }}">{{ products.user.fullName }}</a> <a title="Ajouter {{ friend.fullName }} à mon réseau" class="glyphicon glyphicon-star" ng-class="{favorized:products.user.favorite}" ng-click="favorize()"></a> </h2>
 			<br />
 			<div class="profile-image">
 				<a href="/profile/{{ products.user.facebookId }}">

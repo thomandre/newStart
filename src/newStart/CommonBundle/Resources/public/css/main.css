@@ -274,10 +274,13 @@ div.ddown {
     top: 86%;
     cursor:pointer;
 }
-.product-image .glyphicon-star.favorized {
+.viewed-profile .glyphicon-star {
+    cursor:pointer;
+}
+.product-image .glyphicon-star.favorized, .viewed-profile .glyphicon-star.favorized {
     color:#428BCA;
 }
-.product-image .glyphicon-star {
+.product-image .glyphicon-star, .viewed-profile .glyphicon-star {
     color:#ddd;
 }
 
@@ -573,7 +576,10 @@ span.hidden-xs {
     color:#ccc;
     text-decoration: none;
 }
-
+.viewed-profile a.glyphicon-star:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
 @media (max-width: 768px) { 
     span.hidden-xs {
         display:none !important;

@@ -282,15 +282,19 @@ class ApiController extends Controller
         $userProfile = $em->getRepository('UserBundle:User')->findOneBy(array('facebookId' => $userId));    
         $products = $em->getRepository('newStartCommonBundle:Product')->findBy(array('user' => $userProfile, 'deleted' => false));
 
+        $favorite = $em->getRepository('UserBundle:Friends')->areFavorite($user, $userProfile);
+
         $data = array();
         foreach($products as $key => $p) {
             $tmp = $p->toArray();
             $tmp['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 176, 'height' => 222, 'image' => $p->getImageName()));
             $data[] = $tmp;
         }
-
+        
+        $userArray = $userProfile->toArray();
+        $userArray['favorite'] = $favorite;
         $response = new JsonResponse();
-        $response->setData(array('products' => $data, 'user' => $userProfile->toArray()));
+        $response->setData(array('products' => $data, 'user' => $userArray));
 
         return $response;
     }

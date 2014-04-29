@@ -55,6 +55,23 @@ class FriendRepository extends EntityRepository
             $data[] = $array;
         }
         return $data;
-    }   
+    }
+
+
+    public function areFavorite($currentUser, $testUser)
+    {
+        $qb = $this->createQueryBuilder('f')
+                   ->where('f.friendsWithMe = :currentUser')
+                   ->andWhere('f.myFriends = :testUser')
+                   ->setParameter('currentUser', $currentUser)
+                   ->setParameter('testUser', $testUser);
+
+        $query = $qb->getQuery();
+        $result = $query->getResult();
+        if(!isset($result[0]) || !is_object($result[0])) {
+            return false;
+        }
+        return $result[0]->isFavorite();
+    }
 
 }

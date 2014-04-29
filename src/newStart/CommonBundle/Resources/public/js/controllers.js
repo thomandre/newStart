@@ -335,17 +335,22 @@ function ProductItemCtrl($scope, Product, $rootScope) {
 	}
 }
 
-function ProductListCtrl($scope, Product, $timeout, $location, $rootScope, $routeParams) {
+function ProductListCtrl($scope, Product, $timeout, $location, $rootScope, $routeParams, Friend) {
 	$rootScope.loading = true;
 	$scope.updateProducts = function () {
       $rootScope.products = Product.list({id: $routeParams.userId}, function (){
       	$rootScope.loading = false;
+	    $scope.friend = $rootScope.products.user;
       });
 	}
 	if($routeParams.userId != undefined) {
 	    $scope.updateProducts();
 	}
-
+	$scope.favorize = function () {
+		Friend.favorize({id: $scope.friend.facebookId}, function (data) {
+			$scope.friend.favorite = data.favorized;
+		});	
+	}
 }
 
 function WelcomeCtrl($scope, $modalInstance) {
@@ -586,7 +591,7 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 }
 
 
-ProductListCtrl.$inject = ['$scope', 'Product', '$timeout', '$location', '$rootScope', '$routeParams'];
+ProductListCtrl.$inject = ['$scope', 'Product', '$timeout', '$location', '$rootScope', '$routeParams', 'Friend'];
 MyProductListCtrl.$inject = ['$scope', '$http','Product', '$timeout', '$location', '$rootScope', '$modal', '$window'];
 ProductDetailCtrl.$inject = ['$scope', '$routeParams', 'Product', '$rootScope', '$modal', '$window'];
 ProductItemCtrl.$inject = ['$scope', 'Product', '$rootScope'];
