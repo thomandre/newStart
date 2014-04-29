@@ -4,6 +4,14 @@
 			<h2>Derniers cadeaux</h2>
 		</div>
 	</div>
+	<div class="sort row">
+		<div class="col-md-3">
+			Filtrer par :  
+			<a ng-click="filter = 'all'; updateFeed();" class="label label-default" ng-class="{all:'selected'}[filter]">Tous</a> 
+			<a ng-click="filter = 'me'; updateFeed();" class="label label-default" ng-class="{me:'selected'}[filter]">Achetés par moi</a> 
+		</div>
+	</div>
+
 	<div class="row products">
 		<div class="col-md-2 col-sm-3 col-xs-5 product" ng-repeat="product in feed.products">
 			<div class="product-image feed">

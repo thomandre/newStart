@@ -142,12 +142,22 @@ class DownloadService
 
 			// @TODO : on vérifie que le nom n'est pas déjà pris
 
-			// on dl l'image
-			$content = $this->download($url);
+			// On vérifie que l'image n'est pas en base64
+			if(strpos($url, 'data:image/jpeg') === false) {
+				// on dl l'image
+				$content = $this->download($url);
 
-			// on la sauve sur le disque
-			$path = $this->saveImage($content, $name);
-			list($width, $height) = getimagesize($path);
+				// on la sauve sur le disque
+				$path = $this->saveImage($content, $name);
+				list($width, $height) = getimagesize($path);
+			} else {
+				$content = str_replace('data:image/jpeg;base64,', '', $url);
+				$content = str_replace(' ', '+', $content);
+				$content = base64_decode($content);
+
+				$path = $this->saveImage($content, $name);
+				list($width, $height) = getimagesize($path);
+			}
 
 			$image->setHeight($height);
 			$image->setWidth($width);

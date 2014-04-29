@@ -48,16 +48,14 @@ Et je presse "Enregistrer"
 Et j'attend que "#completeContainer" ne soit plus visible 
 Et je devrais voir "Apple - iPad mini"
 
-Alors je remplis "url" avec "http://www.rueducommerce.fr/Ordinateurs/Ordinateur-Portable/Ordinateur-Portable-Grand-Public/APPLE/4900138-MacBook-Air-13-Intel-Core-i5-Dual-Core-Haswell-1-3-GHz-SSD-128-Go-RAM-4-Go-Intel-HD-Graphics-5000-OS-X-Mountain-Lion.htm#moid:MO-19E29M22457656"
+Alors je remplis "url" avec "http://www.amazon.fr/Gopro-Black-Edition-Caméra-intégré/dp/B009TCD8V8"
 Et je presse "Go !"
 Et j'attend que "#completeContainer" soit visible 
-Alors je devrais voir "Macbook Air"
+Alors je devrais voir "Gopro HERO 3 Black Edition"
 Et je presse "Enregistrer"
 Et j'attend que "#completeContainer" ne soit plus visible 
 Et j'attend "1" secondes
-
-Alors je devrais voir "Vous avez déjà 5 cadeaux, pour ajouter Apple - MacBook Air 13''"
-Et je devrais voir "vous devez supprimer un cadeau."
+Alors je devrais voir "Vous avez déjà 5 cadeaux, pour ajouter Gopro HERO 3 Black Edition"
 
 Et je recharge la page
 Alors je ne devrais pas voir "MacBook Air 13"
@@ -70,20 +68,20 @@ Et j'attend "1" secondes
 
 Et je ne devrais pas voir "511™ Slim Fit Hybrid Trousers" 
 
-Alors je remplis "url" avec "http://www.rueducommerce.fr/Ordinateurs/Ordinateur-Portable/Ordinateur-Portable-Grand-Public/APPLE/4900138-MacBook-Air-13-Intel-Core-i5-Dual-Core-Haswell-1-3-GHz-SSD-128-Go-RAM-4-Go-Intel-HD-Graphics-5000-OS-X-Mountain-Lion.htm#moid:MO-19E29M22457656"
+Alors je remplis "url" avec "http://www.amazon.fr/Gopro-Black-Edition-Caméra-intégré/dp/B009TCD8V8"
 Et je presse "Go !"
 Et j'attend que "#completeContainer" soit visible 
-Alors je devrais voir "MacBook Air 13"
+Alors je devrais voir "Gopro HERO 3 Black Edition"
 Et je presse "Enregistrer"
 Et j'attend que "#completeContainer" ne soit plus visible 
-Alors je devrais voir "MacBook Air 13"
+Alors je devrais voir "Gopro HERO 3 Black Edition"
 
-Alors je ne devrais pas voir "Vous avez déjà 5 cadeaux, pour ajouter Apple - MacBook Air 13''"
+Alors je ne devrais pas voir "Vous avez déjà 5 cadeaux, pour ajouter Gopro HERO 3 Black Edition"
 Et je ne devrais pas voir "vous devez supprimer un cadeau."
 
 Et je recharge la page
 Et j'attend "0.5" secondes
-Alors je devrais voir "MacBook Air 13"
+Alors je devrais voir "Gopro HERO 3 Black Edition"
 
 Et je me delogue
 Soit je vais sur "https://www.facebook.com"

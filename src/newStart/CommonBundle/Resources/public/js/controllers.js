@@ -1,9 +1,11 @@
 var wlgControllers = angular.module('wlgControllers', []);
 
 function MyFeedCtrl($scope, $timeout, Feed, $rootScope) {
+	$scope.filter = 'all';
+
 	$scope.updateFeed = function () {
 		$rootScope.loading = true;
-		$rootScope.feed = Feed.read({}, function (data) {
+		$rootScope.feed = Feed.read({'filter':$scope.filter}, function (data) {
 			$rootScope.loading = false;
 		});
     }

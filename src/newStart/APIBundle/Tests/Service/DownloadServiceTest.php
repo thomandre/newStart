@@ -12,7 +12,6 @@ class DownloadServiceTest extends NewStartWebTestCase
 	/**
 	 * @test
 	 * @group download
-	 * @group ko
 	 */
 	public function returnContentforExistantUrlTest()
 	{
@@ -56,8 +55,23 @@ class DownloadServiceTest extends NewStartWebTestCase
 		$this->assertEquals($url, $image->getOriginalUrl());
 		$this->assertEquals(656, $image->getHeight());
 		$this->assertEquals(483, $image->getWidth());
+	}
 
-
+	/**
+	 * @test
+	 * @group download
+	 */
+	public function getImageBase64ViaCacheTest()
+	{
+		$downloadService = new DownloadService();
+		$downloadService->container = $this->container;
+		$url ='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABsSFBcUERsXFhceHBsgKEIrKCUlKFE6PTBCYFVlZF9VXVtqeJmBanGQc1tdhbWGkJ6jq62rZ4C8ybqmx5moq6T/2wBDARweHigjKE4rK06kbl1upKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT/wAARCAEsASwDASIAAhEB';
+		$image = $downloadService->getImageViaCache($url);
+		$this->assertNotNull($image);
+		$this->assertNotEquals(false, strpos($image->getPath(), 'web/images/'));
+		$this->assertEquals($url, $image->getOriginalUrl());
+		$this->assertEquals(300, $image->getHeight());
+		$this->assertEquals(300, $image->getWidth());
 	}
 
 	/**

@@ -32,8 +32,7 @@ class GiftController extends Controller
      * @Template()
      */
     public function indexAction(Request $request)
-    {   
-
+    {
         try {
             $user = $this->getUser();
             if(!is_object($user)) {

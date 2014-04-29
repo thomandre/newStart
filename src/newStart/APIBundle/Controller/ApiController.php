@@ -464,13 +464,25 @@ class ApiController extends Controller
      * @Route("/api/v1/feed", name="api_feed")
      * @Template()
      */
-    public function feedAction()
+    public function feedAction(Request $request)
     {
         $user = $this->getUser();
+        
+        if($request->get('filter') == 'me') {
+            $me = true;
+        } else {
+            $me = false;
+        }
 
         if($user != null) {
             $em = $this->getDoctrine()->getManager();
-            $products = $em->getRepository('newStartCommonBundle:Product')->getProductsFeedForUser($user);    
+
+            if($me) {
+                $products = $em->getRepository('newStartCommonBundle:Product')->findBy(array('boughtBy' => $user));
+            } else {
+                $products = $em->getRepository('newStartCommonBundle:Product')->getProductsFeedForUser($user);
+            }
+
             $data = array();
             foreach($products as $p) {
                 $tmp = $p->toArray();

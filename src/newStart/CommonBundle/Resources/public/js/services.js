@@ -16,7 +16,7 @@ angular.module('wlgServices', ['ngResource']).
 	    favorize: {method:'GET', params:{method:'favorize'}}
 	  });
 	}).factory('Feed', function($resource){
-	  return $resource('api/v1/feed/', {}, {
+	  return $resource('api/v1/feed?filter=:filter', {}, {
 	    read: {method:'GET'}
 	  });
 	});

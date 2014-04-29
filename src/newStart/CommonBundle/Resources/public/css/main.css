@@ -560,12 +560,18 @@ span.hidden-xs {
     overflow: hidden;
 }
 
-
+.sort {
+    height:40px;
+}
 .sort a {
     cursor: pointer;
 }
 .sort a.selected {
     background-color: #0A0A5A;
+}
+.sort a:hover {
+    color:#ccc;
+    text-decoration: none;
 }
 
 @media (max-width: 768px) { 

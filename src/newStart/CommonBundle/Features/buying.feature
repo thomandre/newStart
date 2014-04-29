@@ -69,7 +69,7 @@ Et je devrais voir "Acheter"
 Et je suis "Acheter"
 Et j'attend "0.5" secondes
 Et je bascule sur la popup
-Et je devrais voir "Le MacBook Air offre désormais une autonomie de 9 heures entre deux charges pour le modèle 11 pouces, et de 12 heures pour le modèle 13 pouces."
+Et je devrais voir "Le MacBook Air offre une autonomie de 9 heures entre deux charges pour le modèle 11 pouces, et de 12 heures pour le modèle 13 pouces."
 Et je reviens sur la fenêtre principale
 Et je devrais voir "Vous avez décidé d’acheter ce cadeau finalement ?"
 Et je devrais voir "Si vous cliquez sur oui, le cadeau disparaitra ne sera plus visible dans la liste, sauf pour Thomas, pour lui garder la surprise"
