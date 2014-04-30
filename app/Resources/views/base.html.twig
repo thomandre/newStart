@@ -13,7 +13,7 @@
                        'bundles/newstartcommon/css/vendor/normalize.css'
                        'bundles/newstartcommon/css/vendor/style.css'
                        'bundles/newstartcommon/css/main.css'
-          filter='cssrewrite' %}
+          filter='minifier_css' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
         {% block stylesheets %}
@@ -61,7 +61,7 @@
               '@newStartCommonBundle/Resources/public/js/app_ng.js'
               '@newStartCommonBundle/Resources/public/js/controllers.js'
               '@newStartCommonBundle/Resources/public/js/services.js'
-          %}
+          filter='minifier_js' %}
           <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
         {% block javascripts %}

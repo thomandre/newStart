@@ -33,6 +33,7 @@
         "jms/security-extra-bundle": "dev-master",
         "jms/di-extra-bundle": "dev-master",
         "jms/serializer-bundle": "dev-master",
+        "toopay/assetic-minifier": "dev-master",
         "behat/behat": "2.5.0",
         "behat/symfony2-extension": "1.1.*@dev",
         "behat/mink": "dev-FindWindowNames as 1.5.x-dev",

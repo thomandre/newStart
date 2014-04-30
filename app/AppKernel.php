@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new newStart\APIBundle\newStartAPIBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Minifier\MinifierBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
