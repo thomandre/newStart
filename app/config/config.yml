@@ -27,6 +27,11 @@ twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
 
+minifier:
+    filter:
+        name:
+            css: myCssMinifierFilterName
+            js:  myJsMinifierFilterName
 
 # Assetic Configuration
 assetic:
@@ -34,8 +39,8 @@ assetic:
     use_controller: false
     bundles:        [ ]
     #java: /usr/bin/java
-    filters:
-        cssrewrite: ~
+
+
 
 # Doctrine Configuration
 doctrine:
