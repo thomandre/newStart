@@ -74,51 +74,38 @@ function ModalInstanceCtrl($scope, $modalInstance, firstName) {
 };
 
 
-function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal, $window) {
+function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal, $window, ProductService) {
 	$scope.editModeName = false;
 	$rootScope.loading = true;
 
-	$scope.productSuggest = function () {
-		if($rootScope.suggestions == undefined) {
-			$rootScope.suggestions = Product.suggest(function (response) {
-
-			});
-			//console.log($rootScope.suggestions);
-		} else {
-			$rootScope.suggestions = undefined;
-		}
-	};
-
 	$scope.suggestionTest = function (event, suggestion) {
-		$scope.imageLoading = true;
-		$scope.scrappedProductHide = false;
-		if(event) event.stopPropagation();
-		$scope.url = suggestion.url;
-		$scope.editModeTitle = false;
-		$scope.editModePrice = false;
-			$scope.imageIndex = 0;
-		$scope.scrapeLoading = true;
-			$('#go_btn .lbl').html('');
-		$scope.scrappedProduct = suggestion;
+		if(event) {
+			event.stopPropagation();
+		}
 
-		$scope.scrappedProduct.title = suggestion.name;
-		$scope.scrappedProduct.imgThumb = suggestion.imagesThumb[$scope.imageIndex];
-		$scope.scrapeLoading = false;
-			$('#go_btn .lbl').html('Go !');
-		$rootScope.suggestions = undefined;	
-
-			$window.onclick = function (event) {
-				//$window.onclick = null;
-				var target = $(event.target);
-				if(!target) return;
-				if(target.parents('#complete').length == 0 && target.parents('.input-group.url.input-lg').length == 0) {
-	  			$scope.productScrapeCancel();
-	  			$scope.$apply();
-				}
-		};
-		$scope.imageLoading = false;
+		ProductService.suggestionTest(suggestion, $scope, $rootScope);
+		
 		if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
 			$('#url').focus();
+		}
+
+		$window.onclick = function (event) {
+			var target = $(event.target);
+			if(!target) return;
+			if(target.parents('#complete').length == 0 && target.parents('.input-group.url.input-lg').length == 0) {
+				$scope.productScrapeCancel();
+				if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
+					$scope.$apply();
+				}
+			}
+		};
+	};
+	
+	$scope.productSuggest = function () {
+		if($rootScope.suggestions == undefined) {
+			$rootScope.suggestions = Product.suggest(function (response) {});
+		} else {
+			$rootScope.suggestions = undefined;
 		}
 	};
 
@@ -131,88 +118,26 @@ function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal, $w
 
 	$scope.productScrapeCancel = function(name) {
 		if($scope.scrapeLoading == false) {
-  		$scope.scrappedProductHide = true;
+  			$scope.scrappedProductHide = true;
 		}
 	};
 
 	$scope.productScrape = function(event, name) {
-		if($scope.scrappedProduct != null && $scope.url == $scope.scrappedProduct.url) {
-			$scope.scrappedProductHide = false;
-			if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
-				$('#url').focus();
+		ProductService.productScrape($scope, $rootScope, $http);
+  		$window.onclick = function (event) {
+			//$window.onclick = null;
+			console.log('plop');
+			var target = $(event.target);
+			if(!target) return;
+			if(target.parents('#complete').length == 0 && target.parents('.input-group.url.input-lg').length == 0) {
+				$scope.productScrapeCancel();
+				$scope.$apply();
 			}
-		} else {
-			$scope.scrappedProductHide = false;
-			if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
-	 			$('#url').focus();
-	 		}
-	  		$scope.scrappedProduct = null;
-	  		$scope.editModeTitle = false;
-			$scope.editModePrice = false;
-			$scope.imageLoading = true;
-	  		$scope.imageIndex = 0;
-	  			
-			//console.log($scope);
-			if($scope.url != null && $scope.url.substr(0, 3) == 'www') {
-				$scope.url = 'http://' + $scope.url;
-			}
-
-	  		if($scope.url != undefined) {
-		  		$scope.scrapeLoading = true;
-		  		$('#go_btn .lbl').html('');
-				$http.get('../api/v1/product/scrape?url=' + $scope.url).success(function (data) {
-					$scope.scrappedProduct = data;
-					if(data.imgNumber > 0) {
-						$scope.scrappedProduct.imgThumb = data.imagesThumb[$scope.imageIndex];
-					} else {
-						$scope.scrappedProduct.imgThumb = '../../bundles/newstartcommon/images/imageNotFound.jpg';
-					}
-					$scope.scrapeLoading = false;
-					$scope.imageLoading = false;
-			  		$('#go_btn .lbl').html('Go !');
-
-	  		  		$window.onclick = function (event) {
-			  			//$window.onclick = null;
-			  			var target = $(event.target);
-			  			if(!target) return;
-			  			if(target.parents('#complete').length == 0 && target.parents('.input-group.url.input-lg').length == 0) {
-				  			$scope.productScrapeCancel();
-				  			$scope.$apply();
-			   			}
-					};
-					if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
-						$('#url').focus();
-					}
-				});
-	  		}
-  		}
+		};
 	};
 
   	$scope.productSave = function(scrappedProduct) {
-  	  if($rootScope.nbProducts < 5) {
-	  	  $scope.productLoading = true;
-	  	  if($scope.scrappedProduct.images != undefined) {
-	  		  $scope.scrappedProduct.img = $scope.scrappedProduct.images[$scope.imageIndex];
-	  	  } else {
-	  		  $scope.scrappedProduct.img   = null;
-	  		  $scope.scrappedProduct.price = null;
-	  	  }
-
-		  Product.add(scrappedProduct, function(data) {
-			$scope.scrappedProduct = null;
-			$scope.url = null;
-			$rootScope.products = data;
-			$scope.countProducts();
-			$scope.productLoading = false;
-	   	  });
-  	  } else {
-   		  $scope.scrappedProduct = null;
-	   	  $scope.warning = 'Vous avez déjà 5 cadeaux, pour ajouter ' + scrappedProduct.title + ', vous devez supprimer un cadeau.';
-	   	  $('.alerts').show();
-	   	  $timeout(function () {
- 			$scope.warning = null;
-		  }, 10000);
-  	  }
+		ProductService.productSave($scope, $rootScope, scrappedProduct, Product);
 	};
 
 	$scope.countProducts = function () {
@@ -234,10 +159,10 @@ function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal, $w
 	};
 	$scope.cancelEditName = function () {
 		setTimeout(function(){ 
-			$scope.$apply(function(){
+			//$scope.$apply(function(){
 				$scope.product.name = $scope.oldName;
 				$scope.editModeName = false;
-			});
+			//});
 		});
 	};	
 	$scope.saveName = function () {
@@ -359,7 +284,7 @@ function WelcomeCtrl($scope, $modalInstance) {
   	};
 }
 
-function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope, $modal, $window) {
+function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootScope, $modal, $window, ProductService) {
 	$scope.warning = false;
 	$scope.imageIndex = 0;
 	$scope.editModeTitle = false;
@@ -372,47 +297,35 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 
 	$scope.productSuggest = function () {
 		if($rootScope.suggestions == undefined) {
-			$rootScope.suggestions = Product.suggest(function (response) {
-
-			});
-			//console.log($rootScope.suggestions);
+			$rootScope.suggestions = Product.suggest(function (response) {});
 		} else {
 			$rootScope.suggestions = undefined;
 		}
 	};
 
 	$scope.suggestionTest = function (event, suggestion) {
-		$scope.imageLoading = true;
-		$scope.scrappedProductHide = false;
-		if(event) event.stopPropagation();
-		$scope.url = suggestion.url;
-		$scope.editModeTitle = false;
-		$scope.editModePrice = false;
-  		$scope.imageIndex = 0;
-		$scope.scrapeLoading = true;
-  		$('#go_btn .lbl').html('');
-		$scope.scrappedProduct = suggestion;
+		if(event) {
+			event.stopPropagation();
+		}
 
-		$scope.scrappedProduct.title = suggestion.name;
-		$scope.scrappedProduct.imgThumb = suggestion.imagesThumb[$scope.imageIndex];
-		$scope.scrapeLoading = false;
-  		$('#go_btn .lbl').html('Go !');
-		$rootScope.suggestions = undefined;	
-
-  		$window.onclick = function (event) {
-  			//$window.onclick = null;
-  			var target = $(event.target);
-  			if(!target) return;
-  			if(target.parents('#complete').length == 0 && target.parents('.input-group.url.input-lg').length == 0) {
-	  			$scope.productScrapeCancel();
-	  			$scope.$apply();
-   			}
-		};
-		$scope.imageLoading = false;
+		ProductService.suggestionTest(suggestion, $scope, $rootScope);
+		
 		if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
 			$('#url').focus();
 		}
+
+		$window.onclick = function (event) {
+			var target = $(event.target);
+			if(!target) return;
+			if(target.parents('#complete').length == 0 && target.parents('.input-group.url.input-lg').length == 0) {
+				$scope.productScrapeCancel();
+				if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
+					$scope.$apply();
+				}
+			}
+		};
 	};
+
 	$scope.mobileEmpty = function () {
 		if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
 			$scope.url = '';
@@ -482,57 +395,17 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 		$scope.editModePrice = false;
 	};
 
-  	$scope.productScrape = function(event, name) {
-  		if($scope.scrappedProduct != null && $scope.url == $scope.scrappedProduct.url) {
-  			$scope.scrappedProductHide = false;
-			if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
-				$('#url').focus();
-			}
-  		} else {
-  			$scope.scrappedProductHide = false;
-			if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
-	 			$('#url').focus();
-	 		}
-	  		$scope.scrappedProduct = null;
-	  		$scope.editModeTitle = false;
-			$scope.editModePrice = false;
-			$scope.imageLoading = true;
-	  		$scope.imageIndex = 0;
-	  			
-			//console.log($scope);
-			if($scope.url != null && $scope.url.substr(0, 3) == 'www') {
-				$scope.url = 'http://' + $scope.url;
-			}
+	$scope.productScrape = function(event, name) {
+		ProductService.productScrape($scope, $rootScope, $http);
 
-	  		if($scope.url != undefined) {
-		  		$scope.scrapeLoading = true;
-		  		$('#go_btn .lbl').html('');
-				$http.get('../api/v1/product/scrape?url=' + $scope.url).success(function (data) {
-					$scope.scrappedProduct = data;
-					if(data.imgNumber > 0) {
-						$scope.scrappedProduct.imgThumb = data.imagesThumb[$scope.imageIndex];
-					} else {
-						$scope.scrappedProduct.imgThumb = '../../bundles/newstartcommon/images/imageNotFound.jpg';
-					}
-					$scope.scrapeLoading = false;
-					$scope.imageLoading = false;
-			  		$('#go_btn .lbl').html('Go !');
-
-	  		  		$window.onclick = function (event) {
-			  			//$window.onclick = null;
-			  			var target = $(event.target);
-			  			if(!target) return;
-			  			if(target.parents('#complete').length == 0 && target.parents('.input-group.url.input-lg').length == 0) {
-				  			$scope.productScrapeCancel();
-				  			$scope.$apply();
-			   			}
-					};
-					if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
-						$('#url').focus();
-					}
-				});
-	  		}
-	  	}
+  		$window.onclick = function (event) {
+			var target = $(event.target);
+			if(!target) return;
+			if(target.parents('#complete').length == 0 && target.parents('.input-group.url.input-lg').length == 0) {
+				$scope.productScrapeCancel();
+				$scope.$apply();
+			}
+		};
 	};
 
   	$scope.productScrapeCancel = function(name) {
@@ -542,30 +415,7 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 	};
 
   	$scope.productSave = function(scrappedProduct) {
-  	  if($rootScope.nbProducts < 5) {
-	  	  $scope.productLoading = true;
-	  	  if($scope.scrappedProduct.images != undefined) {
-	  		  $scope.scrappedProduct.img = $scope.scrappedProduct.images[$scope.imageIndex];
-	  	  } else {
-	  		  $scope.scrappedProduct.img   = null;
-	  		  $scope.scrappedProduct.price = null;
-	  	  }
-
-		  Product.add(scrappedProduct, function(data) {
-			$scope.scrappedProduct = null;
-			$scope.url = null;
-			$rootScope.products = data;
-			$scope.countProducts();
-			$scope.productLoading = false;
-	   	  });
-  	  } else {
-   		  $scope.scrappedProduct = null;
-	   	  $scope.warning = 'Vous avez déjà 5 cadeaux, pour ajouter ' + scrappedProduct.title + ', vous devez supprimer un cadeau.';
-	   	  $('.alerts').show();
-	   	  $timeout(function () {
- 			$scope.warning = null;
-		  }, 10000);
-  	  }
+		ProductService.productSave($scope, $rootScope, scrappedProduct, Product);
 	};
 
 	$scope.countProducts = function () {
@@ -592,10 +442,11 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 
 
 ProductListCtrl.$inject = ['$scope', 'Product', '$timeout', '$location', '$rootScope', '$routeParams', 'Friend'];
-MyProductListCtrl.$inject = ['$scope', '$http','Product', '$timeout', '$location', '$rootScope', '$modal', '$window'];
-ProductDetailCtrl.$inject = ['$scope', '$routeParams', 'Product', '$rootScope', '$modal', '$window'];
+MyProductListCtrl.$inject = ['$scope', '$http','Product', '$timeout', '$location', '$rootScope', '$modal', '$window', 'ProductService'];
+ProductDetailCtrl.$inject = ['$scope', '$routeParams', 'Product', '$rootScope', '$modal', '$window', 'ProductService'];
 ProductItemCtrl.$inject = ['$scope', 'Product', '$rootScope'];
 MyFriendsListCtrl.$inject = ['$scope', '$timeout', 'Friend', '$rootScope', '$modal'];
 MyFeedCtrl.$inject = ['$scope', '$timeout', 'Feed', '$rootScope'];
 FriendCtrl.$inject = ['$scope', 'Friend', '$rootScope', '$window'];
+
 
