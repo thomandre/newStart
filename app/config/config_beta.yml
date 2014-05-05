@@ -1,6 +1,9 @@
 imports:
     - { resource: config.yml }
 
+web_profiler:
+    toolbar: false
+
 monolog:
     handlers:
         main:
