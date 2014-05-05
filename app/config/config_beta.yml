@@ -2,7 +2,7 @@ imports:
     - { resource: config.yml }
 
 web_profiler:
-    toolbar: false
+    toolbar: true
 
 monolog:
     handlers:
