@@ -44,7 +44,7 @@ class AppKernel extends Kernel
     
     protected function getContainerBaseClass()
     {
-        if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+        if (in_array($this->getEnvironment(), array('dev', 'test', 'beta'))) {
             return '\JMS\DebuggingBundle\DependencyInjection\TraceableContainer';
         }
 
