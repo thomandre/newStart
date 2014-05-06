@@ -24,10 +24,10 @@ p.login {
     margin:56px 0 0 -20px;
 }
 .form-register {
-	max-width: 450px;
-	width: 450px;
-	padding: 15px;
-	margin: 0 auto;
+    max-width: 450px;
+    width: 450px;
+    padding: 15px;
+    margin: 0 auto;
 }
 .product-desc {
     padding:8px;
@@ -48,15 +48,15 @@ p.login {
     margin-left:10px;
 }
 #slide-home h1, #slide-home h2, #slide-home h3, #slide-home p, #slide-home a, .whiteText {
-	color: #fff;
-	text-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
 }
 #conditions, #causes {
     width: 100%; 
     height: 133px;
 }
 h1 {
-	font-size:43px;
+    font-size:43px;
     font-weight: 300;
     margin: 0.2em 0;
 }
@@ -69,65 +69,65 @@ p {
     font-size:16px;
 }
 body. {
-	background-color: #fafafa;
+    background-color: #fafafa;
 }
 #slide-home, #slide-faq {
-	min-height:750px;
-	width:100%;
+    min-height:750px;
+    width:100%;
 }
 #slide-faq {
-	padding:50px;
-	background-color:#fff;
+    padding:50px;
+    background-color:#fff;
 }
 a.faq {
-	position:absolute;
-	margin-top:110px;
-	cursor:pointer;
+    position:absolute;
+    margin-top:110px;
+    cursor:pointer;
     font-weight: 300;
 }
 .friend p {
-	font-size:17px;
-	line-height:normal;
+    font-size:17px;
+    line-height:normal;
 }
 .friend p .glyphicon {
-	line-height: 1;
-	font-size: 12px;
+    line-height: 1;
+    font-size: 12px;
     position: absolute;
     top: 74px;
     left:250px;
 }
 .friend p a {
-	text-overflow:ellipsis;
-	display: block;
+    text-overflow:ellipsis;
+    display: block;
     height: 20px;
 }
 
 .friend {
-	margin-bottom: 5px;
-	padding: 0 2px;
-	box-shadow: 2px 2px 2px #CCCCCC;
+    margin-bottom: 5px;
+    padding: 0 2px;
+    box-shadow: 2px 2px 2px #CCCCCC;
 
 }
 .myWell {
-	background-color:#;
+    background-color:#;
     padding: 4px;
     background-color:#fff;
-	font-weight: 200;
+    font-weight: 200;
 }
 .selected .myWell {
-	border-color:#00349a;
+    border-color:#00349a;
 }
 .friend.notSelected span.glyphicon {
-	display:none;
+    display:none;
 }
 .friends {
-	height:340px;
-	overflow:scroll;
-	margin:5px 0;
-	color:#0A0A5A;
-	padding:12px 0;
-	border-width: 1px;
-	margin: 2px;
+    height:340px;
+    overflow:scroll;
+    margin:5px 0;
+    color:#0A0A5A;
+    padding:12px 0;
+    border-width: 1px;
+    margin: 2px;
 }
 
 /* ----- Header ----- */
@@ -224,15 +224,15 @@ div.ddown {
     padding: 8px;
 }
 .product img {
-	-ms-interpolation-mode: bicubic;
+    -ms-interpolation-mode: bicubic;
     border: 1px solid #F1F1F1 !important;
 }
 .product {
-	margin-bottom: 10px;
-	padding:0 3px;
+    margin-bottom: 10px;
+    padding:0 3px;
 }
 .product-image {
-	background-color: #FFF;
+    background-color: #FFF;
     border-color: #000000;
     box-shadow: 1px 1px 5px #CCCCCC;
     color: #000000;
@@ -286,17 +286,17 @@ div.ddown {
 
 /* ----- URL Field ----- */
 div.url {
-	margin:145px 0 0;
+    margin:145px 0 0;
 }
 #url-block {
     margin: 20px 0;
 }
 .url-block {
-	text-align: center;
+    text-align: center;
 }
 .btn-primary {
-	background-color: #0A0A5A;
-	border-color: #0A0A5A;
+    background-color: #0A0A5A;
+    border-color: #0A0A5A;
 }
 .btn-primary:hover {
     background-color: #1B1B7B;
@@ -306,7 +306,7 @@ div.url {
 
 /* ----- Missing Gift ----- */
 .missing-gift {
-	font-size: 58px;
+    font-size: 58px;
     height: 220px;
     text-align: center;
     border-style:dashed;
@@ -332,17 +332,17 @@ div.url {
 
 /* ----- Friends Profile ----- */
 .viewed-profile {
-	margin-top:50px;
+    margin-top:50px;
 }
 .user-profile {
-	padding-left: 0px;
-	padding-right: 0px; 
+    padding-left: 0px;
+    padding-right: 0px; 
 }
 .viewed-profile h2 {
-	margin: 12px 1px 0;
+    margin: 12px 1px 0;
 }
 .form-control, .btn {
-	font-weight:200;
+    font-weight:200;
 }
 .url .form-control, .url button {
     height:40px;
@@ -379,7 +379,7 @@ div#complete {
 }
 span.loader {
     display: inline-block;
-	margin-right: 5px;
+    margin-right: 5px;
 }
 .loader.glyphicon {
     -webkit-animation: rotate 1s linear infinite;
@@ -677,4 +677,8 @@ span.hidden-xs {
         margin-left: 1%;
         width: 98%;
     }
+}
+p.birthday {
+    font-size:14px;
+    margin: 10px 0 0 0;
 }

@@ -94,7 +94,6 @@ class TrackingServiceTest extends NewStartWebTestCase
 	/**
 	 * @test
 	 * @group tracking
-	 * @group wip
 	 */
 	public function vgExempleWithSubDomainIsOK()
 	{

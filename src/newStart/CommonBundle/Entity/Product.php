@@ -92,19 +92,21 @@ class Product
         }
 
         return array(
-                        'id'        => $this->id,
-                        'name'      => $this->name,
-                        'comment'   => $this->comment,
-                        'url'       => $this->url,
-                        'price'     => $this->price,
-                        'imgUrl'    => $this->imgUrl,
-                        'beenBought'=> $this->beenBought, 
-                        'userId'    => $this->user->getId(),
-                        'fbUserId'  => $this->user->getFacebookId(),
-                        'fullName'  => $this->user->getFullname(),
-                        'firstName' => $this->user->getFirstname(),
-                        'profilePic'=> 'https://graph.facebook.com/'.$this->user->getFacebookId().'/picture?width=180&height=180',
-                        'buyer'     => $buyer
+                        'id'                => $this->id,
+                        'name'              => $this->name,
+                        'comment'           => $this->comment,
+                        'url'               => $this->url,
+                        'price'             => $this->price,
+                        'imgUrl'            => $this->imgUrl,
+                        'beenBought'        => $this->beenBought, 
+                        'userId'            => $this->user->getId(),
+                        'fbUserId'          => $this->user->getFacebookId(),
+                        'fullName'          => $this->user->getFullname(),
+                        'firstName'         => $this->user->getFirstname(),
+                        'birthday'          => $this->user->getBirthday()->format('Y-m-d'),
+                        'daysToBirthday'    => $this->user->getDaysToBirtday(),
+                        'profilePic'        => 'https://graph.facebook.com/'.$this->user->getFacebookId().'/picture?width=180&height=180',
+                        'buyer'             => $buyer
                     );
     }
 

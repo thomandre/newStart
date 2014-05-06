@@ -1,7 +1,7 @@
 <?php
 namespace newStart\UserBundle\Entity;
 
-use FOS\UserBundle\Entity\User as BaseUser;
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use newStart\CommonBundle\Entity\Product;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -126,8 +126,32 @@ class User extends BaseUser
                         'fullName'              => $this->getFullname(),
                         'displayPopinProfile'   => $this->getDisplayPopinProfile(),
                         'displayPopinFriends'   => $this->getDisplayPopinFriends(),
+                        'birthday'              => $this->getBirthday()->format('Y-m-d'),
+                        'daysToBirthday'        => $this->getDaysToBirtday(),
                         'profilePic'            => 'https://graph.facebook.com/'.$this->facebookId.'/picture?width=180&height=180'
                     );
+    }
+
+    public function getDaysToBirtday($year = null, $currentDate = null)
+    {
+        if($year == null) {
+            $year = gmdate('Y');
+        }
+        if($currentDate == null) {
+            $currentDate = new \Datetime();
+        }
+        $thisYearBirthday = new \DateTime();
+        $thisYearBirthday->setDate($year, $this->getBirthday()->format('m'), $this->getBirthday()->format('d'));
+
+        $diff = $currentDate->diff($thisYearBirthday, false);
+        if($diff->invert == 0) {
+            return $diff->days;
+        } else {
+            $nextYearBirthday = new \DateTime();
+            $nextYearBirthday->setDate($year+1, $this->getBirthday()->format('m'), $this->getBirthday()->format('d'));
+            $diff = $currentDate->diff($nextYearBirthday, false);
+            return $diff->days;
+        }
     }
 
     public function setPublic($public)

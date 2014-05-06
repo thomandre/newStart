@@ -1,8 +1,8 @@
 <div class="row row-user-profile">
 	<div class="col-md-2 col-sm-2 col-xs-4 user-profile">
 		<div class="viewed-profile">
-			<h2><a href="/profile/{{ products.user.facebookId }}">{{ products.user.fullName }}</a> <a title="Ajouter {{ friend.fullName }} à mon réseau" class="glyphicon glyphicon-star" ng-class="{favorized:products.user.favorite}" ng-click="favorize()"></a> </h2>
-			<br />
+			<h2><a href="/profile/{{ products.user.facebookId }}">{{ products.user.fullName }}</a> <a title="Ajouter {{ friend.fullName }} à mon réseau" class="glyphicon glyphicon-star" ng-class="{favorized:products.user.favorite}" ng-click="favorize()"></a></h2>
+			<p class="birthday">{{ products.user.birthday | date:'dd MMMM' }} ({{ products.user.daysToBirthday }} jours)<p>
 			<div class="profile-image">
 				<a href="/profile/{{ products.user.facebookId }}">
 					<div ng-style="{ 'background-image': 'url('+products.user.profilePic+')' }" class="cover"></div>

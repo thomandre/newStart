@@ -2,7 +2,7 @@
 	<div class="col-md-2 col-sm-2 col-xs-4 user-profile">
 		<div class="viewed-profile">
 			<h2><a href="/profile/{{ product.fbUserId }}">{{ product.fullName }}</a></h2>
-			<br />
+			<p class="birthday">{{ product.birthday | date:'dd MMMM' }} ({{ product.daysToBirthday }} jours)<p>
 			<div class="profile-image">
 				<a href="/profile/{{ product.fbUserId }}">
 					<div ng-style="{ 'background-image': 'url('+product.profilePic+')' }" class="cover"></div>
