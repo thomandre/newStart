@@ -74,10 +74,10 @@ function ModalInstanceCtrl($scope, $modalInstance, firstName) {
 };
 
 
-function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal, $window, ProductService) {
+function ProductDetailCtrl($scope, $http, $routeParams, Product, $rootScope, $modal, $window, ProductService, $timeout) {
 	$scope.editModeName = false;
 	$rootScope.loading = true;
-
+	
 	$scope.suggestionTest = function (event, suggestion) {
 		if(event) {
 			event.stopPropagation();
@@ -85,7 +85,7 @@ function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal, $w
 
 		ProductService.suggestionTest(suggestion, $scope, $rootScope);
 		
-		if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
+		if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null && $scope.$root.$$phase != '$apply') {
 			$('#url').focus();
 		}
 
@@ -126,7 +126,6 @@ function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal, $w
 		ProductService.productScrape($scope, $rootScope, $http);
   		$window.onclick = function (event) {
 			//$window.onclick = null;
-			console.log('plop');
 			var target = $(event.target);
 			if(!target) return;
 			if(target.parents('#complete').length == 0 && target.parents('.input-group.url.input-lg').length == 0) {
@@ -137,20 +136,23 @@ function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal, $w
 	};
 
   	$scope.productSave = function(scrappedProduct) {
-		ProductService.productSave($scope, $rootScope, scrappedProduct, Product);
+		ProductService.productSave($scope, $rootScope, scrappedProduct, Product, $timeout, true);
 	};
 
 	$scope.countProducts = function () {
-		$rootScope.nbProducts = 0;
-		while($rootScope.products.products.length && $rootScope.nbProducts < 5 && $rootScope.products.products[$rootScope.nbProducts]['name'] != undefined) {
-			$rootScope.nbProducts++;
+		if($rootScope.products != undefined) {
+			ProductService.countProducts($rootScope);
+		} else {
+			$rootScope.nbProducts = $scope.product.nbProducts;
 		}
-		//console.log($rootScope.nbProducts);
 	};
 
+	
 	$scope.product = Product.show({id: $routeParams.productId}, function () {
 		$rootScope.loading = false;
+		$scope.countProducts();
 	});
+
 	$scope.productId = $routeParams.productId;
 
 	$scope.editName = function () {
@@ -159,12 +161,12 @@ function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal, $w
 	};
 	$scope.cancelEditName = function () {
 		setTimeout(function(){ 
-			//$scope.$apply(function(){
+			$scope.$apply(function(){
 				$scope.product.name = $scope.oldName;
 				$scope.editModeName = false;
-			//});
+			});
 		});
-	};	
+	};
 	$scope.saveName = function () {
 		if($scope.product.name != '') {
 		 	Product.edit({'id':$scope.product.id, 'name':$scope.product.name, 'price':$scope.product.price, 'comment':$scope.product.comment}, function(data) {});			
@@ -172,6 +174,23 @@ function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal, $w
 			$scope.product.name = $scope.oldName;
 		}
 		$scope.editModeName = false;
+	};
+	
+	$scope.editTitle = function () {
+		$scope.editModeTitle = true;
+		$scope.oldTitle = $scope.scrappedProduct.title;
+	};
+
+	$scope.cancelEditTitle = function () {
+		$scope.scrappedProduct.title = $scope.oldTitle;
+		$scope.editModeTitle = false;
+	};
+
+	$scope.saveTitle = function () {
+		if($scope.scrappedProduct.title == '') {
+			$scope.scrappedProduct.title = $scope.oldTitle;
+		}
+		$scope.editModeTitle = false;
 	};
 
 	$scope.editPrice = function () {
@@ -185,7 +204,7 @@ function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal, $w
 				$scope.editModePrice = false;
 			});
 		});
-	};	
+	};
 	$scope.savePrice = function () {
 		if($scope.product.price != '') {
 		 	Product.edit({'id':$scope.product.id, 'name':$scope.product.name, 'price':$scope.product.price, 'comment':$scope.product.comment}, function(data) {});
@@ -242,11 +261,12 @@ function ProductDetailCtrl($scope, $routeParams, Product, $rootScope, $modal, $w
 				$scope.editModeComment = false;
 			});
 		});
-	};	
+	};
 	$scope.saveComment = function () {
 	 	Product.edit({'id':$scope.product.id, 'name':$scope.product.name, 'price':$scope.product.price, 'comment':$scope.product.comment}, function(data) {});
 		$scope.editModeComment = false;
 	};
+
 }
 
 function ProductItemCtrl($scope, Product, $rootScope) {
@@ -274,7 +294,7 @@ function ProductListCtrl($scope, Product, $timeout, $location, $rootScope, $rout
 	$scope.favorize = function () {
 		Friend.favorize({id: $scope.friend.facebookId}, function (data) {
 			$scope.friend.favorite = data.favorized;
-		});	
+		});
 	}
 }
 
@@ -310,7 +330,7 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 
 		ProductService.suggestionTest(suggestion, $scope, $rootScope);
 		
-		if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null) {
+		if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) == null && $scope.$root.$$phase != '$apply') {
 			$('#url').focus();
 		}
 
@@ -346,7 +366,7 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 			$scope.imageIndex = 0;
 		}
 		$scope.scrappedProduct.imgThumb = $scope.scrappedProduct.imagesThumb[$scope.imageIndex];  	
-	};	
+	};
 
 	$scope.prevImg = function () {
 		if($scope.imageIndex > 0) {
@@ -415,15 +435,11 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 	};
 
   	$scope.productSave = function(scrappedProduct) {
-		ProductService.productSave($scope, $rootScope, scrappedProduct, Product);
+		ProductService.productSave($scope, $rootScope, scrappedProduct, Product, $timeout);
 	};
 
 	$scope.countProducts = function () {
-		$rootScope.nbProducts = 0;
-		while($rootScope.products.products.length && $rootScope.nbProducts < 5 && $rootScope.products.products[$rootScope.nbProducts]['name'] != undefined) {
-			$rootScope.nbProducts++;
-		}
-		//console.log($rootScope.nbProducts);
+		ProductService.countProducts($rootScope);
 	};
 
 	$scope.updateProducts = function () {
@@ -442,8 +458,8 @@ function MyProductListCtrl($scope, $http, Product, $timeout, $location, $rootSco
 
 
 ProductListCtrl.$inject = ['$scope', 'Product', '$timeout', '$location', '$rootScope', '$routeParams', 'Friend'];
-MyProductListCtrl.$inject = ['$scope', '$http','Product', '$timeout', '$location', '$rootScope', '$modal', '$window', 'ProductService'];
-ProductDetailCtrl.$inject = ['$scope', '$routeParams', 'Product', '$rootScope', '$modal', '$window', 'ProductService'];
+MyProductListCtrl.$inject = ['$scope', '$http', 'Product', '$timeout', '$location', '$rootScope', '$modal', '$window', 'ProductService'];
+ProductDetailCtrl.$inject = ['$scope', '$http', '$routeParams', 'Product', '$rootScope', '$modal', '$window', 'ProductService', '$timeout'];
 ProductItemCtrl.$inject = ['$scope', 'Product', '$rootScope'];
 MyFriendsListCtrl.$inject = ['$scope', '$timeout', 'Friend', '$rootScope', '$modal'];
 MyFeedCtrl.$inject = ['$scope', '$timeout', 'Feed', '$rootScope'];

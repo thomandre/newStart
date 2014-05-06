@@ -307,11 +307,13 @@ class ApiController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
-        $product = $em->getRepository('newStartCommonBundle:Product')->find($productId);
+        $product  = $em->getRepository('newStartCommonBundle:Product')->find($productId);
+        $products = $em->getRepository('newStartCommonBundle:Product')->findBy(array('user' => $product->getUser(), 'deleted' => false));
 
         $data = $product->toArray();
         $data['thumb_url'] = $this->container->get('router')->generate('image_resize', array('width' => 180, 'height' => 222, 'image' => $product->getImageName()));
         $data['url'] = $this->trackingService->track($data['url']);
+        $data['nbProducts'] = count($products);
 
         $response = new JsonResponse();
         $response->setData($data);
